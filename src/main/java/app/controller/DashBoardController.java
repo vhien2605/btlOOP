@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
-public class DashBoardController {
+public class DashBoardController implements BaseController {
     @FXML
     private Label headerLabel;
     @FXML
@@ -27,5 +27,11 @@ public class DashBoardController {
     @FXML
     private Button cancelButton;
     @FXML
+
     private Button saveButton;
+
+    @Override
+    public void initialize() {
+
+    }
 }

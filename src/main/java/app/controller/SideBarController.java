@@ -3,7 +3,7 @@ package app.controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class SideBarController {
+public class SideBarController implements BaseController {
     @FXML
     private Button homeButton;
 
@@ -58,5 +58,10 @@ public class SideBarController {
     @FXML
     private void handleSideBarClose() {
         System.out.println(7);
+    }
+
+    @Override
+    public void initialize() {
+
     }
 }
