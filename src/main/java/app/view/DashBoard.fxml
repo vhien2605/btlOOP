@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:controller="app.controller.DashBoardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
+    xmlns="http://javafx.com/javafx/23"
+    xmlns:fx="http://javafx.com/fxml/1">
+    <top>
+        <fx:include source="./staticLayout/header.fxml"/>
+    </top>
+    <center>
+        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn prefWidth="75.0" text="Id" />
+                <TableColumn prefWidth="75.0" text="Name" />
+                <TableColumn prefWidth="75.0" text="Author" />
+                <TableColumn prefWidth="75.0" text="Content" />
+                <TableColumn prefWidth="75.0" text="Description" />
+            </columns>
+        </TableView>
+    </center>
+    <right>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <TextField layoutX="26.0" layoutY="86.0" promptText="Name" />
+                <TextField layoutX="26.0" layoutY="120.0" promptText="Author" />
+                <TextField layoutX="26.0" layoutY="156.0" promptText="Content" />
+                <TextField layoutX="26.0" layoutY="194.0" promptText="Description" />
+                <Label layoutX="31.0" layoutY="48.0" text="Book information">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Label>
+                <Button layoutX="26.0" layoutY="249.0" mnemonicParsing="false" text="Cancel" />
+                <Button layoutX="123.0" layoutY="249.0" mnemonicParsing="false" text="Save" />
+            </children>
+        </Pane>
+    </right>
+    <bottom>
+        <fx:include source="./staticLayout/footer.fxml"/>
+    </bottom>
+</BorderPane>
