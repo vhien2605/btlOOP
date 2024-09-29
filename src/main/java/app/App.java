@@ -24,7 +24,7 @@ public class App extends Application {
     public void start(Stage arg0) throws Exception {
         stage = arg0;
         FXMLLoader layout = new FXMLLoader(getClass().getResource("/app/view/DashBoard.fxml"));
-        scene = new Scene(layout.load(), 600, 600);
+        scene = new Scene(layout.load(), 1280, 640);
         stage.setScene(scene);
         stage.show();
     }

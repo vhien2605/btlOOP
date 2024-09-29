@@ -16,6 +16,9 @@
     <top>
         <fx:include source="./staticLayout/header.fxml"/>
     </top>
+    <left>
+        <fx:include source="./staticLayout/sidebar.fxml"/>
+    </left>
     <center>
         <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <columns>

@@ -8,24 +8,24 @@ import javafx.scene.control.TextField;
 
 public class DashBoardController {
     @FXML
-    Label headerLabel;
+    private Label headerLabel;
     @FXML
-    TableView tableView;
+    private TableView tableView;
 
     @FXML
-    TextField textFieldRight1;
+    private TextField textFieldRight1;
     @FXML
-    TextField textFieldRight2;
+    private TextField textFieldRight2;
     @FXML
-    TextField textFieldRight3;
+    private TextField textFieldRight3;
     @FXML
-    TextField textFieldRight4;
+    private TextField textFieldRight4;
 
     @FXML
-    Label informationLabel;
+    private Label informationLabel;
 
     @FXML
-    Button cancelButton;
+    private Button cancelButton;
     @FXML
-    Button saveButton;
+    private Button saveButton;
 }
