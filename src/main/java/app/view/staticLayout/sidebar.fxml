@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="100.0"
+    xmlns="http://javafx.com/javafx/23"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SideBarController">
+    <children>
+        <Button layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSideBarHome" text="Home" />
+        <Button layoutX="24.0" layoutY="51.0" mnemonicParsing="false" onAction="#handleSideBarBooks" text="Books" />
+        <Button layoutX="17.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleSideBarStudents" text="Students" />
+        <Button layoutX="9.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleSideBarIssueBooks" text="Issue books" />
+        <Button layoutX="4.0" layoutY="160.0" mnemonicParsing="false" onAction="#handleSideBarReturnBooks" text="Return books" />
+        <Button layoutX="18.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleSideBarSettings" text="Settings" />
+        <Button layoutX="25.0" layoutY="236.0" mnemonicParsing="false" onAction="#handleSideBarClose" text="Close" />
+    </children>
+</Pane>
