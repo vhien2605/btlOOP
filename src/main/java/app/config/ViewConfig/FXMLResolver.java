@@ -2,6 +2,8 @@ package app.config.ViewConfig;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -9,6 +11,8 @@ public class FXMLResolver implements Resolver {
     private String rootPath;
     private String type = "fxml";
     private static FXMLResolver fxmlResolver;
+    private Stage primaryStage;
+    private Scene scene;
 
     private FXMLResolver() {
 
@@ -21,8 +25,7 @@ public class FXMLResolver implements Resolver {
         return fxmlResolver;
     }
 
-    @Override
-    public Parent resolve(String viewName) {
+    private Parent resolve(String viewName) {
         try {
             String pathLoader = rootPath + "/" + viewName + "." + type;
             System.out.println(pathLoader);
@@ -35,7 +38,15 @@ public class FXMLResolver implements Resolver {
     }
 
     @Override
-    public void setPath(String path) {
-        rootPath = path;
+    public void setUp(String path, Stage stage) {
+        this.rootPath = path;
+        this.primaryStage = stage;
+    }
+
+    @Override
+    public void renderScene(String viewName, int width, int height) {
+        scene = new Scene(resolve(viewName), width, height);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

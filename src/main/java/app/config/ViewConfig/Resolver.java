@@ -1,9 +1,9 @@
 package app.config.ViewConfig;
 
-import javafx.scene.Parent;
+import javafx.stage.Stage;
 
 public interface Resolver {
-    Parent resolve(String viewName);
+    void setUp(String path, Stage stage);
 
-    void setPath(String path);
+    void renderScene(String viewName, int width, int height);
 }
