@@ -15,7 +15,7 @@ public class DbConfig {
 
     }
 
-    private Connection getConnection() {
+    public Connection getConnection() {
         try {
             if (connection == null) {
                 connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
