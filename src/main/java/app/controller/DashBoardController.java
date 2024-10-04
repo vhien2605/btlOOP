@@ -1,5 +1,6 @@
 package app.controller;
 
+import app.domain.Book;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -27,7 +28,6 @@ public class DashBoardController implements BaseController {
     @FXML
     private Button cancelButton;
     @FXML
-
     private Button saveButton;
 
     @Override
