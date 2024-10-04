@@ -4,6 +4,7 @@ import app.config.ViewConfig.FXMLResolver;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
+
 /**
  * JavaFX App
  */
@@ -13,7 +14,7 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage arg0) throws Exception {
+    public void start(Stage arg0) {
         FXMLResolver.getInstance().setUp("/app/view", arg0);
         FXMLResolver.getInstance().renderScene("home_tab", 1280, 640);
     }

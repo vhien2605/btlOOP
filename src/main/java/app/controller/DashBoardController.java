@@ -30,6 +30,7 @@ public class DashBoardController implements BaseController {
     @FXML
     private Button saveButton;
 
+    @FXML
     @Override
     public void initialize() {
 
