@@ -20,51 +20,63 @@ public class Book {
         this.bookRemaining = new SimpleIntegerProperty(bookRemaining);
     }
 
-    public SimpleIntegerProperty getId() {
-        return id;
+    public int getId() {
+        return id.get();
     }
 
     public void setId(SimpleIntegerProperty id) {
         this.id = id;
     }
 
-    public SimpleStringProperty getName() {
-        return name;
+    public String getName() {
+        return name.get();
     }
 
     public void setName(SimpleStringProperty name) {
         this.name = name;
     }
 
-    public SimpleStringProperty getAuthor() {
-        return author;
+    public String getAuthor() {
+        return author.get();
     }
 
     public void setAuthor(SimpleStringProperty author) {
         this.author = author;
     }
 
-    public SimpleStringProperty getBookPublisher() {
-        return bookPublisher;
+    public String getBookPublisher() {
+        return bookPublisher.get();
     }
 
     public void setBookPublisher(SimpleStringProperty bookPublisher) {
         this.bookPublisher = bookPublisher;
     }
 
-    public SimpleIntegerProperty getBookQuantity() {
-        return bookQuantity;
+    public int getBookQuantity() {
+        return bookQuantity.get();
     }
 
     public void setBookQuantity(SimpleIntegerProperty bookQuantity) {
         this.bookQuantity = bookQuantity;
     }
 
-    public SimpleIntegerProperty getBookRemaining() {
-        return bookRemaining;
+    public int getBookRemaining() {
+        return bookRemaining.get();
     }
 
     public void setBookRemaining(SimpleIntegerProperty bookRemaining) {
         this.bookRemaining = bookRemaining;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name=" + name +
+                ", author=" + author +
+                ", bookPublisher=" + bookPublisher +
+                ", bookQuantity=" + bookQuantity +
+                ", bookRemaining=" + bookRemaining +
+                '}';
     }
 }

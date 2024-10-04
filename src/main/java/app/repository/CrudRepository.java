@@ -9,7 +9,7 @@ public interface CrudRepository<T, ID> {
 
     void deleteById(ID id);
 
-    <S extends T> S save(S entity);
+    void save(T entity);
 
-    long count();
+    int count();
 }
