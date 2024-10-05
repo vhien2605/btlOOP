@@ -34,10 +34,6 @@ public class MainPanelController implements BaseController {
      */
     @FXML
     private void handdleButtonAction(ActionEvent e) {
-        if (e.getSource() == focused_button) {
-            return; // chưa xét focused_button :>
-        }
-
         if (e.getSource() == homeButton) {
             new ChangeTabController().homeTab();
         } else if (e.getSource() == booksButton) {
