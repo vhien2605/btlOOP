@@ -15,6 +15,6 @@ public class App extends Application {
     @Override
     public void start(Stage arg0) {
         FXMLResolver.getInstance().setUp("/app/view", arg0);
-        FXMLResolver.getInstance().renderScene("home_tab", 1280, 640);
+        FXMLResolver.getInstance().renderScene("home_tab", 1300, 720);
     }
 }

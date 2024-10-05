@@ -33,6 +33,7 @@ public class FXMLResolver implements Resolver {
             return loaderObject.load();
         } catch (IOException e) {
             System.out.println("can't find view " + viewName);
+            System.out.println(e);
             return null;
         }
     }
