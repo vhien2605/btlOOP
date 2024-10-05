@@ -6,48 +6,64 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane fx:controller="app.controller.DashBoardController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0"
-    xmlns="http://javafx.com/javafx/23"
-    xmlns:fx="http://javafx.com/fxml/1">
-    <top>
-        <fx:include source="./staticLayout/header.fxml"/>
-    </top>
-    <left>
-        <fx:include source="./staticLayout/sidebar.fxml"/>
-    </left>
-    <center>
-        <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <columns>
-                <TableColumn prefWidth="75.0" text="Id" />
-                <TableColumn prefWidth="75.0" text="Name" />
-                <TableColumn prefWidth="75.0" text="Author" />
-                <TableColumn prefWidth="75.0" text="Content" />
-                <TableColumn prefWidth="75.0" text="Description" />
-            </columns>
-        </TableView>
-    </center>
-    <right>
-        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeTab.MainHomeController">
+    <children>
+        <VBox prefHeight="720.0" prefWidth="120.0">
             <children>
-                <TextField layoutX="26.0" layoutY="86.0" promptText="Name" />
-                <TextField layoutX="26.0" layoutY="120.0" promptText="Author" />
-                <TextField layoutX="26.0" layoutY="156.0" promptText="Content" />
-                <TextField layoutX="26.0" layoutY="194.0" promptText="Description" />
-                <Label layoutX="31.0" layoutY="48.0" text="Book information">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </Label>
-                <Button layoutX="26.0" layoutY="249.0" mnemonicParsing="false" text="Cancel" />
-                <Button layoutX="123.0" layoutY="249.0" mnemonicParsing="false" text="Save" />
+                <fx:include source="staticLayout/sidebar.fxml" />
             </children>
-        </Pane>
-    </right>
-    <bottom>
-        <fx:include source="./staticLayout/footer.fxml"/>
-    </bottom>
-</BorderPane>
+        </VBox>
+        <BorderPane minHeight="400.0" minWidth="500.0" prefHeight="720.0" prefWidth="1180.0">
+            <center>
+                <TableView fx:id="tableViewBook" prefHeight="625.0" prefWidth="830.0" BorderPane.alignment="CENTER">
+                    <columns>
+                        <TableColumn fx:id="colBookId" prefWidth="87.20001983642578" text="Book Id" />
+                        <TableColumn fx:id="colBookTitle" minWidth="1.600006103515625" prefWidth="187.1999969482422" text="Book Title" />
+                        <TableColumn fx:id="colBookAuthor" prefWidth="184.0" text="Book Author" />
+                        <TableColumn fx:id="colBookPublisher" prefWidth="181.60003662109375" text="Book Publisher" />
+                        <TableColumn fx:id="colBookQuantity" prefWidth="96.79998779296875" text="Quantity" />
+                        <TableColumn fx:id="colBookRemaining" prefWidth="93.5999755859375" text="Remaining" />
+                    </columns>
+                </TableView>
+            </center>
+
+            <right>
+                <Pane prefHeight="640.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <TextField fx:id="bookIdTextFiled" layoutX="41.0" layoutY="76.0" prefHeight="25.0" prefWidth="250.0" promptText="Book id" />
+                        <TextField fx:id="bookTitleTextFiled" layoutX="40.0" layoutY="138.0" prefHeight="25.0" prefWidth="250.0" promptText="Book title" />
+                        <TextField fx:id="bookAuthorTextFiled" layoutX="39.0" layoutY="208.0" prefHeight="25.0" prefWidth="250.0" promptText="Book author" />
+                        <TextField fx:id="bookPublisherTextFiled" layoutX="40.0" layoutY="283.0" prefHeight="25.0" prefWidth="250.0" promptText="Book publisher" />
+                        <TextField fx:id="bookQuantityTextFiled" layoutX="40.0" layoutY="359.0" prefHeight="25.0" prefWidth="249.0" promptText="Book quantity" />
+                        <TextField fx:id="bookRemainingTextFiled" layoutX="40.0" layoutY="438.0" prefHeight="25.0" prefWidth="250.0" promptText="Book description" />
+                        <Label layoutX="40.0" layoutY="55.0" text="Book Id:" />
+                        <Label layoutX="40.0" layoutY="120.0" text="Book Title:" />
+                        <Label layoutX="40.0" layoutY="265.0" text="Book Publisher:" />
+                        <Label layoutX="40.0" layoutY="190.0" text="Book Author:" />
+                        <Label layoutX="40.0" layoutY="420.0" text="Book Remaining:" />
+                        <Label layoutX="40.0" layoutY="342.0" text="Book Quantity:" />
+                        <Button fx:id="buttonSave" layoutX="110.0" layoutY="497.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="49.0" text="Save" />
+                        <Button fx:id="buttonCencel" layoutX="42.0" layoutY="497.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Cencel" />
+                        <Button fx:id="buttonUpdate" layoutX="175.0" layoutY="497.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Update" />
+                        <Button fx:id="buttonDelete" layoutX="248.0" layoutY="497.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="55.0" text="Delete" />
+                    </children>
+                </Pane>
+            </right>
+            <top>
+                <Pane prefHeight="50.0" prefWidth="1180.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label layoutX="34.0" layoutY="17.0" text="Books" />
+                        <TextField fx:id="searchBookTextFiled" layoutX="272.0" layoutY="13.0" prefHeight="25.0" prefWidth="290.0" promptText="Search Book" />
+                    </children>
+                </Pane>
+            </top>
+            <bottom>
+                <Pane prefHeight="42.0" prefWidth="1180.0" BorderPane.alignment="CENTER" />
+            </bottom>
+        </BorderPane>
+    </children>
+</HBox>
