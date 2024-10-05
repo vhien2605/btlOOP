@@ -10,16 +10,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1300.0"
-    xmlns="http://javafx.com/javafx/23"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeTab.MainHomeController" stylesheets="@../css/home_tab.css">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1300.0" stylesheets="@css/home_tab.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeTab.MainHomeController">
     <children>
         <VBox prefHeight="720.0" prefWidth="120.0">
             <children>
                 <fx:include source="staticLayout/sidebar.fxml" />
             </children>
         </VBox>
-        <BorderPane minHeight="400.0" minWidth="500.0" prefHeight="720.0" prefWidth="1180.0">
+        <BorderPane minHeight="400.0" minWidth="500.0" prefHeight="720.0" prefWidth="1180.0" styleClass="border-pane">
             <center>
                 <TableView fx:id="tableViewBook" prefHeight="625.0" prefWidth="830.0" BorderPane.alignment="CENTER">
                     <columns>
@@ -34,15 +32,15 @@
             </center>
 
             <right>
-                <Pane prefHeight="640.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+                <Pane prefHeight="640.0" prefWidth="350.0" styleClass="right-pane" BorderPane.alignment="CENTER">
                     <children>
-                        <TextField fx:id="bookIdTextFiled" layoutX="41.0" layoutY="76.0" prefHeight="25.0" prefWidth="250.0" promptText="Book id" />
+                        <TextField fx:id="bookIdTextFiled" layoutX="41.0" layoutY="67.0" prefHeight="25.0" prefWidth="250.0" promptText="Book id" />
                         <TextField fx:id="bookTitleTextFiled" layoutX="40.0" layoutY="138.0" prefHeight="25.0" prefWidth="250.0" promptText="Book title" />
                         <TextField fx:id="bookAuthorTextFiled" layoutX="39.0" layoutY="208.0" prefHeight="25.0" prefWidth="250.0" promptText="Book author" />
                         <TextField fx:id="bookPublisherTextFiled" layoutX="40.0" layoutY="283.0" prefHeight="25.0" prefWidth="250.0" promptText="Book publisher" />
                         <TextField fx:id="bookQuantityTextFiled" layoutX="40.0" layoutY="359.0" prefHeight="25.0" prefWidth="249.0" promptText="Book quantity" />
                         <TextField fx:id="bookRemainingTextFiled" layoutX="40.0" layoutY="438.0" prefHeight="25.0" prefWidth="250.0" promptText="Book description" />
-                        <Label layoutX="40.0" layoutY="55.0" text="Book Id:" />
+                        <Label layoutX="40.0" layoutY="50.0" text="Book Id:" />
                         <Label layoutX="40.0" layoutY="120.0" text="Book Title:" />
                         <Label layoutX="40.0" layoutY="265.0" text="Book Publisher:" />
                         <Label layoutX="40.0" layoutY="190.0" text="Book Author:" />
@@ -56,9 +54,9 @@
                 </Pane>
             </right>
             <top>
-                <Pane prefHeight="50.0" prefWidth="1180.0" BorderPane.alignment="CENTER">
+                <Pane prefHeight="50.0" prefWidth="1180.0" styleClass="top-pane" BorderPane.alignment="CENTER">
                     <children>
-                        <Label layoutX="34.0" layoutY="17.0" text="Books" />
+                        <Label layoutX="14.0" layoutY="2.0" text="Books" />
                         <TextField fx:id="searchBookTextFiled" layoutX="272.0" layoutY="13.0" prefHeight="25.0" prefWidth="290.0" promptText="Search Book" />
                     </children>
                 </Pane>
