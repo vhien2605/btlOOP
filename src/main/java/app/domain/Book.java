@@ -71,12 +71,12 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "id=" + id +
-                ", name=" + name +
-                ", author=" + author +
-                ", bookPublisher=" + bookPublisher +
-                ", bookQuantity=" + bookQuantity +
-                ", bookRemaining=" + bookRemaining +
+                "id=" + id.get() +
+                ", name=" + name.get() +
+                ", author=" + author.get() +
+                ", bookPublisher=" + bookPublisher.get() +
+                ", bookQuantity=" + bookQuantity.get() +
+                ", bookRemaining=" + bookRemaining.get() +
                 '}';
     }
 }
