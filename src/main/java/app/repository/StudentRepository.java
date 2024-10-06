@@ -2,62 +2,60 @@ package app.repository;
 
 import app.config.DbConfig;
 import app.domain.Book;
+import app.domain.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BookRepository implements CrudRepository<Book, Integer> {
-
+public class StudentRepository implements CrudRepository<Student,Integer>{
     @Override
-    public List<Book> findAll() {
-        List<Book> list = new ArrayList<>();
+    public Iterable findAll() {
+        List<Student> list = new ArrayList<>();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        String query = "SELECT * FROM book";
+        String query = "SELECT * FROM student";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                list.add(new Book(resultSet.getInt("id"),
+                list.add(new Student(resultSet.getInt("id"),
                         resultSet.getString("name"),
-                        resultSet.getString("author"),
-                        resultSet.getString("bookPublisher"),
-                        resultSet.getInt("bookQuantity"),
-                        resultSet.getInt("bookRemaining")));
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber")));
             }
             resultSet.close();
         } catch (SQLException e) {
-            System.out.println("error in findAll function in Book repo");
+            System.out.println("error in findAll function in Student repo");
         }
         return list;
     }
 
     @Override
-    public Optional<Book> findById(Integer Id) {
+    public Optional findById(Integer Id) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        String query = "SELECT * FROM book WHERE id = ?";
+        String query = "SELECT * FROM student WHERE id = ?";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.prepareStatement(query);
             statement.setInt(1, Id);
             resultSet = statement.executeQuery();
             resultSet.next();
-            Book book = new Book(
+            Student student = new Student(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
-                    resultSet.getString("author"),
-                    resultSet.getString("bookPublisher"),
-                    resultSet.getInt("bookQuantity"),
-                    resultSet.getInt("bookRemaining"));
-            return Optional.of(book);
+                    resultSet.getString("address"),
+                    resultSet.getString("email"),
+                    resultSet.getString("phoneNumber"));
+            return Optional.of(student);
         } catch (SQLException e) {
-            System.out.println("error in findById function in Book repo");
+            System.out.println("error in findById function in Student repo");
         }
         return Optional.empty();
     }
@@ -66,33 +64,32 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     public void deleteById(Integer Id) {
         Connection connection = null;
         PreparedStatement statement = null;
-        String query = "DELETE FROM book WHERE id = ?";
+        String query = "DELETE FROM student WHERE id = ?";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.prepareStatement(query);
             statement.setInt(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in deleteById function in Book repo");
+            System.out.println("error in deleteById function in Student repo");
         }
     }
 
     @Override
-    public void save(Book entity) {
+    public void save(Student student) {
         Connection connection = null;
         PreparedStatement statement = null;
         String query = "INSERT INTO book(name,author,bookPublisher,bookQuantity,bookRemaining) VALUES(?,?,?,?,?)";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.prepareStatement(query);
-            statement.setString(1, entity.getName());
-            statement.setString(2, entity.getAuthor());
-            statement.setString(3, entity.getBookPublisher());
-            statement.setInt(4, entity.getBookQuantity());
-            statement.setInt(5, entity.getBookRemaining());
+            statement.setString(1, student.getName());
+            statement.setString(2, student.getAddress());
+            statement.setString(3, student.getEmail());
+            statement.setString(4, student.getPhoneNumber());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in save function in Book repo");
+            System.out.println("error in save function in Student repo");
             System.out.println(e.getMessage());
         }
     }
@@ -102,17 +99,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         Connection connection = null;
         Statement statement = null;
         ResultSet rs = null;
-        String query = "SELECT COUNT (*) FROM book";
+        String query = "SELECT COUNT (*) FROM student";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.createStatement();
             rs = statement.executeQuery(query);
-            // resultSet default doesn't ref to any value. must rs.next to ref first value
             if (rs.next()) {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            System.out.println("error in count function in Book repo");
+            System.out.println("error in count function in Student repo");
         }
         return 0;
     }
