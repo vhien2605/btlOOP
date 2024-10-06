@@ -55,6 +55,6 @@ public class MainPanelController implements BaseController {
 
     @Override
     public void initialize() {
-        focused_button = homeButton;
+
     }
 }
