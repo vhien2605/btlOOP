@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class FXMLResolver implements Resolver {
+    private int sceneWidth;
+    private int sceneHeight;
+
     private String rootPath;
     private String type = "fxml";
     private static FXMLResolver fxmlResolver;
@@ -39,14 +42,16 @@ public class FXMLResolver implements Resolver {
     }
 
     @Override
-    public void setUp(String path, Stage stage) {
+    public void setUp(String path, Stage stage, int sceneWidth, int sceneHeight) {
         this.rootPath = path;
         this.primaryStage = stage;
+        this.sceneWidth = sceneWidth;
+        this.sceneHeight = sceneHeight;
     }
 
     @Override
-    public void renderScene(String viewName, int width, int height) {
-        scene = new Scene(resolve(viewName), width, height);
+    public void renderScene(String viewName) {
+        scene = new Scene(resolve(viewName), sceneWidth, sceneHeight);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
