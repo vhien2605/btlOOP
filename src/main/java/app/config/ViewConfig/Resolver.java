@@ -3,7 +3,7 @@ package app.config.ViewConfig;
 import javafx.stage.Stage;
 
 public interface Resolver {
-    void setUp(String path, Stage stage);
+    void setUp(String path, Stage stage, int sceneWidth, int sceneHeight);
 
-    void renderScene(String viewName, int width, int height);
+    void renderScene(String viewName);
 }
