@@ -10,8 +10,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class StudentRepository implements CrudRepository<Student,Integer>{
+    /**
+     * Find all Student documents in database
+     *
+     * @return Collection of all students in database
+     */
     @Override
-    public Iterable findAll() {
+    public List<Student> findAll() {
         List<Student> list = new ArrayList<>();
         Connection connection = null;
         Statement statement = null;
@@ -35,6 +40,12 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
         return list;
     }
 
+    /**
+     * Find the Student entity which have ID input in database
+     *
+     * @param Id Document's id want to query from database
+     * @return Optional wrapper of Student object. Avoid null pointer access error
+     */
     @Override
     public Optional findById(Integer Id) {
         Connection connection = null;
@@ -60,6 +71,12 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
         return Optional.empty();
     }
 
+
+    /**
+     * Delete document which have ID input from database
+     *
+     * @param Id Document's ID want to delete from T table in database
+     */
     @Override
     public void deleteById(Integer Id) {
         Connection connection = null;
@@ -75,6 +92,11 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
         }
     }
 
+    /**
+     * Save the Student object mapping to entity in database
+     *
+     * @param student Object want to save to database (mapping to T type table)
+     */
     @Override
     public void save(Student student) {
         Connection connection = null;
@@ -94,6 +116,11 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
         }
     }
 
+    /**
+     * Count all Student document in database
+     *
+     * @return the num of Student's document in database
+     */
     @Override
     public int count() {
         Connection connection = null;

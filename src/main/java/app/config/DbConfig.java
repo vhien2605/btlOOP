@@ -1,9 +1,12 @@
 package app.config;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * DBConfig class to access to database for excute query
+ * use Singleton design pattern to only use one database connection instance in application
+ */
 public class DbConfig {
     private Connection connection;
     private static DbConfig dbConfig;
@@ -15,6 +18,10 @@ public class DbConfig {
 
     }
 
+    /**
+     * Create Connection function
+     * @return JavaFx Connection instance for connecting to database
+     */
     public Connection getConnection() {
         try {
             if (connection == null) {
@@ -29,6 +36,12 @@ public class DbConfig {
         }
     }
 
+    /**
+     * getInstance function for singleton design pattern
+     *
+     *
+     * @return current DBConfig instance or new instance
+     */
     public static DbConfig getInstance() {
         if (dbConfig == null) {
             dbConfig = new DbConfig();
