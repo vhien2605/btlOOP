@@ -9,7 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookRepository implements CrudRepository<Book, Integer> {
-
+    /** this function will get all books document in database
+     * @return return list of all books in database
+     * @throws SQLException if there are any error when excute query or getConnection
+     */
     @Override
     public List<Book> findAll() {
         List<Book> list = new ArrayList<>();
@@ -35,7 +38,11 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
         return list;
     }
-
+    /** Find book by id
+     * @param Id book's id want to query(primary key in database)
+     * @return return Optional wrapper of Book
+     * @throws SQLException if there are any error when excute query or getConnection
+     */
     @Override
     public Optional<Book> findById(Integer Id) {
         Connection connection = null;
@@ -62,6 +69,11 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         return Optional.empty();
     }
 
+    /**
+     * This function is used to delete one book by id in database
+     * @param Id Book's id want to delete from database
+     * @throws SQLException if there are any error when excute query or getConnection
+     */
     @Override
     public void deleteById(Integer Id) {
         Connection connection = null;
@@ -77,6 +89,11 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
     }
 
+    /**
+     * This function is used to save Book object in database
+     * @param entity Book object you want to save in Book table in database
+     * @throws SQLException if there are any error when excute query or getConnection
+     */
     @Override
     public void save(Book entity) {
         Connection connection = null;
@@ -97,6 +114,11 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
     }
 
+    /**
+     * This function is used to count the num of document in Book database
+     * @return the num of document in Book database
+     * @throws SQLException if there are any error when excute query or getConnection
+     */
     @Override
     public int count() {
         Connection connection = null;
