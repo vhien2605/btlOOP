@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class MainPanelController implements BaseController {
+public class SidebarController implements BaseController {
     @FXML
     private Button homeButton;
 
@@ -23,9 +23,6 @@ public class MainPanelController implements BaseController {
 
     @FXML
     private Button settingsButton;
-
-    @FXML
-    private Button closeButton;
 
     private Button focused_button = null;
 

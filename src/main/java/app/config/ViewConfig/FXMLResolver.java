@@ -28,7 +28,9 @@ public class FXMLResolver implements Resolver {
 
     }
 
-    /** getInstance function get the current instance for singleton or create new instance
+    /**
+     * getInstance function get the current instance for singleton or create new
+     * instance
      *
      * @return Instance of FXMLResolver
      */
@@ -38,7 +40,6 @@ public class FXMLResolver implements Resolver {
         }
         return fxmlResolver;
     }
-
 
     /**
      *
@@ -53,16 +54,16 @@ public class FXMLResolver implements Resolver {
             return loaderObject.load();
         } catch (IOException e) {
             System.out.println("can't find view " + viewName);
-            System.out.println(e.getMessage());
+            // System.out.println(e.getMessage());
             return null;
         }
     }
 
     /**
      *
-     * @param path Path to resources file
-     * @param stage JavaFX 's stage
-     * @param sceneWidth sceneWidth when rendering in stage
+     * @param path        Path to resources file
+     * @param stage       JavaFX 's stage
+     * @param sceneWidth  sceneWidth when rendering in stage
      * @param sceneHeight sceneHeight when rendering in stage
      */
     @Override

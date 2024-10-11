@@ -1,18 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="120.0" stylesheets="@../../css/sidebar.css"
-    xmlns="http://javafx.com/javafx/23"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.MainPanelController">
-    <children>
-        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#handdleButtonAction" text="Home" />
-        <Button fx:id="booksButton" layoutY="40.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Books" />
-        <Button fx:id="studentsButton" layoutY="80.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Students" />
-        <Button fx:id="issueBooksButton" layoutY="120.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Issue books" />
-        <Button fx:id="returnBooksButton" layoutY="160.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefWidth="120.0" text="Return books" />
-        <Button fx:id="settingsButton" layoutY="200.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Settings" />
-        <Button fx:id="closeButton" layoutY="240.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Close" />
-    </children>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../css/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.SidebarController">
+   <children>
+      <Button fx:id="homeButton" layoutY="152.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Home">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="booksButton" layoutY="201.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Docoment">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="studentsButton" layoutY="250.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Students">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="issueBooksButton" layoutY="299.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Issue books">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnBooksButton" layoutY="348.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="      Return books">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="settingsButton" layoutX="-1.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Settings">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <FontAwesomeIconView glyphName="BOOK" layoutX="16.0" layoutY="230.0" size="1.7em" text="" />
+      <FontAwesomeIconView glyphName="GRADUATION_CAP" layoutX="11.0" layoutY="281.0" size="1.7em" />
+      <FontAwesomeIconView glyphName="CLIPBOARD" layoutX="16.0" layoutY="328.0" size="1.7em" text="" />
+      <FontAwesomeIconView glyphName="REPLY" layoutX="14.0" layoutY="379.0" size="1.7em" />
+      <FontAwesomeIconView glyphName="COG" layoutX="16.0" layoutY="426.0" size="1.7em" />
+      <Label layoutX="33.0" layoutY="90.0" text="Admin">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView glyphName="HOME" layoutX="17.0" layoutY="183.0" size="1.7em" text="" />
+      <FontAwesomeIconView glyphName="USER" layoutX="48.0" layoutY="76.0" size="6em" text="" />
+      <Line endX="116.00003051757812" endY="-1.52587890625E-5" layoutX="33.0" layoutY="152.0" startX="-33.99999237060547" startY="-1.52587890625E-5" />
+   </children>
 </Pane>
