@@ -10,7 +10,7 @@ public class MainPanelController implements BaseController {
     private Button homeButton;
 
     @FXML
-    private Button booksButton;
+    private Button docomentsButton;
 
     @FXML
     private Button studentsButton;
@@ -24,9 +24,6 @@ public class MainPanelController implements BaseController {
     @FXML
     private Button settingsButton;
 
-    @FXML
-    private Button closeButton;
-
     private Button focused_button = null;
 
     /**
@@ -36,7 +33,7 @@ public class MainPanelController implements BaseController {
     private void handdleButtonAction(ActionEvent e) {
         if (e.getSource() == homeButton) {
             new ChangeTabController().homeTab();
-        } else if (e.getSource() == booksButton) {
+        } else if (e.getSource() == docomentsButton) {
             new ChangeTabController().bookTab();
         } else if (e.getSource() == studentsButton) {
             new ChangeTabController().studentTab();
