@@ -7,14 +7,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" stylesheets="@../../css/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.MainPanelController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../css/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.SidebarController">
    <children>
       <Button fx:id="homeButton" layoutY="152.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Home">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="docomentsButton" layoutY="201.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Docoment">
+      <Button fx:id="booksButton" layoutY="201.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Docoment">
          <font>
             <Font size="16.0" />
          </font>

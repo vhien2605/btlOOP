@@ -5,12 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class MainPanelController implements BaseController {
+public class SidebarController implements BaseController {
     @FXML
     private Button homeButton;
 
     @FXML
-    private Button docomentsButton;
+    private Button booksButton;
 
     @FXML
     private Button studentsButton;
@@ -33,7 +33,7 @@ public class MainPanelController implements BaseController {
     private void handdleButtonAction(ActionEvent e) {
         if (e.getSource() == homeButton) {
             new ChangeTabController().homeTab();
-        } else if (e.getSource() == docomentsButton) {
+        } else if (e.getSource() == booksButton) {
             new ChangeTabController().bookTab();
         } else if (e.getSource() == studentsButton) {
             new ChangeTabController().studentTab();
