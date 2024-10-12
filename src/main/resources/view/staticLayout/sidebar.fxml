@@ -14,7 +14,7 @@
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="booksButton" layoutY="201.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="     Docoment">
+      <Button fx:id="booksButton" layoutY="201.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="49.0" prefWidth="150.0" text="  Books">
          <font>
             <Font size="16.0" />
          </font>
