@@ -4,7 +4,8 @@ import java.util.Optional;
 
 /**
  * Interface CrudRepository used for all data access logic in application
- * @param <T> Object type reference to entity in database
+ * 
+ * @param <T>  Object type reference to entity in database
  * @param <ID> Other data type used in implement methods
  */
 public interface CrudRepository<T, ID> {
@@ -21,8 +22,9 @@ public interface CrudRepository<T, ID> {
      *
      *
      * @param id Document's id want to query from database
-     * @return Optional wrapper of object . Optional object will return the true object or Optional.empty()
-     * avoid from access null pointer error
+     * @return Optional wrapper of object . Optional object will return the true
+     *         object or Optional.empty()
+     *         avoid from access null pointer error
      */
     Optional<T> findById(ID id);
 
@@ -34,7 +36,6 @@ public interface CrudRepository<T, ID> {
      */
     void deleteById(ID id);
 
-
     /**
      * Save the object as a document to the database
      *
@@ -42,7 +43,6 @@ public interface CrudRepository<T, ID> {
      * @param entity Object want to save to database (mapping to T type table)
      */
     void save(T entity);
-
 
     /**
      * Count document in table of T object in database

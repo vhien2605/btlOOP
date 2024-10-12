@@ -29,6 +29,12 @@ public class MainBookController implements BaseController {
     private TableColumn<Book, String> colBookAuthor;
 
     @FXML
+    private TableColumn<Book, String> colDescription;
+
+    @FXML
+    private TableColumn<Book, String> colCategory;
+
+    @FXML
     private TableColumn<Book, String> colBookPublisher;
 
     @FXML

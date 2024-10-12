@@ -1,6 +1,5 @@
 package app.controller;
 
-import app.domain.Book;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
