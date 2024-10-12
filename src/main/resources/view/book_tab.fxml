@@ -57,13 +57,14 @@
                <right>
                   <TableView fx:id="tableViewBook" prefHeight="535.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <columns>
-                        <TableColumn fx:id="colBookISBN" prefWidth="95.19992065429688" text="Book ISBN" />
-                        <TableColumn fx:id="colBookTitle" prefWidth="170.4000244140625" text="Book Title" />
-                        <TableColumn fx:id="colBookAuthor" prefWidth="180.00006103515625" text="Book Author" />
-                        <TableColumn fx:id="colBookPublisher" prefWidth="148.79989624023438" text="Book Publisher" />
-                        <TableColumn fx:id="colBookQuantity" prefWidth="95.20001220703125" text="Quantity" />
-                        <TableColumn fx:id="colBookRemaining" minWidth="0.0" prefWidth="99.20001220703125" text="Remaining Book" />
-                        <TableColumn fx:id="colBookCategory" prefWidth="164.00006103515625" text="Category" />
+                        <TableColumn fx:id="colBookISBN" prefWidth="76.79998624324799" text="Book ISBN" />
+                        <TableColumn fx:id="colBookName" prefWidth="171.20001983642578" text="Book Name" />
+                        <TableColumn fx:id="colBookAuthor" prefWidth="148.79998779296875" text="Book Author" />
+                        <TableColumn fx:id="colBookDescription" minWidth="0.0" prefWidth="144.0" text="Description" />
+                        <TableColumn fx:id="colBookCategory" prefWidth="127.199951171875" text="Category" />
+                        <TableColumn fx:id="colBookPublisher" prefWidth="133.60000610351562" text="Book Publisher" />
+                        <TableColumn fx:id="colBookQuantity" minWidth="0.0" prefWidth="75.199951171875" text="Quantity" />
+                        <TableColumn fx:id="colBookRemaining" minWidth="0.0" prefWidth="76.0" text="Remaining" />
                      </columns>
                   </TableView>
                </right>
