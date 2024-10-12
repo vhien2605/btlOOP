@@ -19,7 +19,7 @@
             <fx:include source="staticLayout/sidebar.fxml" />
          </children>
       </VBox>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane prefHeight="650.0" prefWidth="950.0">
          <top>
             <fx:include source="staticLayout/header.fxml" />
          </top>
