@@ -2,9 +2,9 @@ package app.controller.StudentTab;
 
 import app.controller.BaseController;
 import app.domain.Student;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -12,66 +12,43 @@ import javafx.scene.control.TextField;
 public class MainStudentController implements BaseController {
 
     @FXML
-    TableView studentTableView;
+    TableView<Student> studentTableView;
 
     @FXML
-    TableColumn<Student, Integer> idColumn;
+    TableColumn<Student, Integer> studentIdCol;
 
     @FXML
-    TableColumn<Student, String> nameColumn;
+    TableColumn<Student, String> studentNameCol;
 
     @FXML
-    TableColumn<Student, String> addressColumn;
+    TableColumn<Student, String> phoneNumberCol;
 
     @FXML
-    TableColumn<Student, String> emailColumn;
+    TableColumn<Student, String> studentEmailCol;
 
     @FXML
-    TableColumn<Student, String> phoneNumberColumn;
-    @FXML
-    TextField idTextField;
-    @FXML
-    TextField nameTextField;
-    @FXML
-    TextField addressTextField;
-    @FXML
-    TextField emailTextField;
-    @FXML
-    TextField phoneTextField;
+    TableColumn<Student, String> studentAddressCol;
 
     @FXML
-    Button addButton;
-    @FXML
-    Button deleteButton;
-    @FXML
-    Button updateButton;
-    @FXML
-    Button deleteAllButton;
-    @FXML
-    TextField searchTextField;
-    @FXML
-    Button searchButton;
-    @FXML
-    Label studentManageLabel;
+    TextField studentIdTextFiled, studentNameTextFiled, phoneNumberTextFiled, studentEmailTextFiled,
+            studentAddressTextFiled, searchStudentTextFiled;
 
-    public void studentAddButton() {
-        System.out.println(1);
-    }
+    @FXML
+    Button cencelButton, insertButton, updateButton, deleteButton, importDataButton;
 
-    public void studentUpdateButton() {
-        System.out.println(2);
-    }
-
-    public void studentDeleteButton() {
-        System.out.println(3);
-    }
-
-    public void studentDeleteAllButton() {
-        System.out.println(4);
-    }
-
-    public void handleSearchButton() {
-        System.out.println(5);
+    @FXML
+    private void handdleButtonAction(ActionEvent e) {
+        if (e.getSource() == cencelButton) {
+            System.out.println("click button cencel");
+        } else if (e.getSource() == insertButton) {
+            System.out.println("click button insert");
+        } else if (e.getSource() == updateButton) {
+            System.out.println("click button update");
+        } else if (e.getSource() == deleteButton) {
+            System.out.println("click button delete");
+        } else if (e.getSource() == importDataButton) {
+            System.out.println("click button import data");
+        }
     }
 
     @Override

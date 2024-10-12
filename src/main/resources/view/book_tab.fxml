@@ -12,9 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.MainBookController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.MainBookController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
@@ -28,14 +26,14 @@
          <center>
             <BorderPane prefHeight="630.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                <top>
-                  <Pane prefHeight="53.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                  <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label layoutX="25.0" text="Books" textFill="#1037b7">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="searchBookTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="297.0" promptText="Search Book" />
+                        <TextField fx:id="searchBookTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Book" />
                         <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
                         <Button fx:id="buttonAddBook" layoutX="784.0" layoutY="10.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="112.0" text="    Add book">
                            <font>
@@ -47,7 +45,7 @@
                   </Pane>
                </top>
                <bottom>
-                  <Pane prefHeight="36.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                  <Pane prefHeight="35.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
                         <Button fx:id="buttonDelete" layoutX="77.0" layoutY="5.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="84.0" text=" Delete" />
                         <FontAwesomeIconView fill="#bf0d0d" glyphName="TRASH" layoutX="84.0" layoutY="22.0" text="" />
@@ -56,8 +54,8 @@
                      </children>
                   </Pane>
                </bottom>
-               <center>
-                  <TableView fx:id="tableViewBook" prefHeight="533.0" prefWidth="926.0" BorderPane.alignment="CENTER">
+               <right>
+                  <TableView fx:id="tableViewBook" prefHeight="535.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn fx:id="colBookISBN" prefWidth="95.19992065429688" text="Book ISBN" />
                         <TableColumn fx:id="colBookTitle" prefWidth="170.4000244140625" text="Book Title" />
@@ -68,7 +66,7 @@
                         <TableColumn fx:id="colBookCategory" prefWidth="164.00006103515625" text="Category" />
                      </columns>
                   </TableView>
-               </center>
+               </right>
             </BorderPane>
          </center>
       </BorderPane>
