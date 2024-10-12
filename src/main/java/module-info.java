@@ -11,6 +11,7 @@ module app {
     opens app.controller.ReturnBookTab to javafx.fxml;
     opens app.controller.SettingTab to javafx.fxml;
     opens app.controller.StudentTab to javafx.fxml;
+    opens app.domain to javafx.base;
 
     exports app;
 }
