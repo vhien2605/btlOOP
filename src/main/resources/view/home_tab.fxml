@@ -9,10 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeTab.MainHomeController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.HomeTab.MainHomeController">
    <children>
       <fx:include source="staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -24,7 +21,7 @@
                <top>
                   <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="21.0" text="Dashboard" textFill="#1d3ec4">
+                        <Label layoutX="25.0" text="Dashboard" textFill="#1d3ec4">
                            <font>
                               <Font size="35.0" />
                            </font>

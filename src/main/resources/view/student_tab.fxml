@@ -23,13 +23,13 @@
                <top>
                   <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="32.0" prefHeight="47.0" prefWidth="136.0" text="Students" textFill="#1d3ec4">
+                        <Label layoutX="25.0" prefHeight="47.0" prefWidth="136.0" text="Students" textFill="#1d3ec4">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="searchStudentTextFiled" layoutX="288.0" layoutY="10.0" prefHeight="30.0" prefWidth="300.0" promptText="Search Student" />
-                        <FontAwesomeIconView fill="#313ec7" glyphName="SEARCH" layoutX="256.0" layoutY="29.0" size="1.7em" text="" />
+                        <TextField fx:id="searchStudentTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Student" />
+                        <FontAwesomeIconView fill="#313ec7" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
                         <Button fx:id="importDataButton" layoutX="776.0" layoutY="10.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="30.0" prefWidth="112.0" text="    Import data">
                            <font>
                               <Font size="14.0" />
