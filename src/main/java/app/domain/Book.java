@@ -7,17 +7,24 @@ public class Book {
     private SimpleIntegerProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty author;
+    private SimpleStringProperty description;
+    private SimpleStringProperty category;
     private SimpleStringProperty bookPublisher;
     private SimpleIntegerProperty bookQuantity;
     private SimpleIntegerProperty bookRemaining;
+    private SimpleStringProperty imagePath;
 
-    public Book(int id, String name, String author, String bookPublisher, int bookQuantity, int bookRemaining) {
+    public Book(int id, String name, String author, String description, String category, String bookPublisher,
+            int bookQuantity, int bookRemaining, String imagePath) {
         this.id = new SimpleIntegerProperty(id);
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
+        this.description = new SimpleStringProperty(description);
+        this.category = new SimpleStringProperty(category);
         this.bookPublisher = new SimpleStringProperty(bookPublisher);
         this.bookQuantity = new SimpleIntegerProperty(bookQuantity);
         this.bookRemaining = new SimpleIntegerProperty(bookRemaining);
+        this.imagePath = new SimpleStringProperty(imagePath);
     }
 
     public int getId() {
@@ -44,6 +51,22 @@ public class Book {
         this.author = author;
     }
 
+    public String getDescription() {
+        return description.get();
+    }
+
+    public void setDescription(SimpleStringProperty desc) {
+        this.description = desc;
+    }
+
+    public String getCategory() {
+        return category.get();
+    }
+
+    public void setCategory(SimpleStringProperty newCate) {
+        category = newCate;
+    }
+
     public String getBookPublisher() {
         return bookPublisher.get();
     }
@@ -66,6 +89,14 @@ public class Book {
 
     public void setBookRemaining(SimpleIntegerProperty bookRemaining) {
         this.bookRemaining = bookRemaining;
+    }
+
+    public String getImagePath() {
+        return imagePath.get();
+    }
+
+    public void setImagePath(SimpleStringProperty newImagePath) {
+        this.imagePath = newImagePath;
     }
 
     @Override

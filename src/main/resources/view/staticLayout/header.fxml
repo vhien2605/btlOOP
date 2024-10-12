@@ -7,9 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.HeaderController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="950.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Panel.HeaderController">
    <children>
-      <Label layoutX="292.0" layoutY="-2.0" prefHeight="34.0" prefWidth="306.0" text="Lybrary Menagement System" textFill="#848080">
+      <Label layoutX="292.0" layoutY="-2.0" prefHeight="34.0" prefWidth="306.0" text="Library Menagement System" textFill="#848080">
          <font>
             <Font size="23.0" />
          </font>

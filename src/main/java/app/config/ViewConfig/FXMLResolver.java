@@ -84,4 +84,12 @@ public class FXMLResolver implements Resolver {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    /**
+     * 
+     * @return Javafx Stage
+     */
+    public Stage getStage() {
+        return this.primaryStage;
+    }
 }

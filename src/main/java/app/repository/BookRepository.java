@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookRepository implements CrudRepository<Book, Integer> {
-    /** this function will get all books document in database
+    /**
+     * this function will get all books document in database
+     * 
      * @return return list of all books in database
-     * @throws SQLException if there are any error when excute query or getConnection
+     * @throws SQLException if there are any error when excute query or
+     *                      getConnection
      */
     @Override
     public List<Book> findAll() {
@@ -25,12 +28,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                list.add(new Book(resultSet.getInt("id"),
+                list.add(new Book(
+                        resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("author"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
                         resultSet.getString("bookPublisher"),
                         resultSet.getInt("bookQuantity"),
-                        resultSet.getInt("bookRemaining")));
+                        resultSet.getInt("bookRemaining"),
+                        resultSet.getString("imagePath")));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -38,10 +45,14 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
         return list;
     }
-    /** Find book by id
+
+    /**
+     * Find book by id
+     * 
      * @param Id book's id want to query(primary key in database)
      * @return return Optional wrapper of Book
-     * @throws SQLException if there are any error when excute query or getConnection
+     * @throws SQLException if there are any error when excute query or
+     *                      getConnection
      */
     @Override
     public Optional<Book> findById(Integer Id) {
@@ -59,9 +70,12 @@ public class BookRepository implements CrudRepository<Book, Integer> {
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("author"),
+                    resultSet.getString("description"),
+                    resultSet.getString("category"),
                     resultSet.getString("bookPublisher"),
                     resultSet.getInt("bookQuantity"),
-                    resultSet.getInt("bookRemaining"));
+                    resultSet.getInt("bookRemaining"),
+                    resultSet.getString("imagePath"));
             return Optional.of(book);
         } catch (SQLException e) {
             System.out.println("error in findById function in Book repo");
@@ -71,8 +85,10 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to delete one book by id in database
+     * 
      * @param Id Book's id want to delete from database
-     * @throws SQLException if there are any error when excute query or getConnection
+     * @throws SQLException if there are any error when excute query or
+     *                      getConnection
      */
     @Override
     public void deleteById(Integer Id) {
@@ -91,8 +107,10 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to save Book object in database
+     * 
      * @param entity Book object you want to save in Book table in database
-     * @throws SQLException if there are any error when excute query or getConnection
+     * @throws SQLException if there are any error when excute query or
+     *                      getConnection
      */
     @Override
     public void save(Book entity) {
@@ -104,9 +122,12 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             statement = connection.prepareStatement(query);
             statement.setString(1, entity.getName());
             statement.setString(2, entity.getAuthor());
-            statement.setString(3, entity.getBookPublisher());
-            statement.setInt(4, entity.getBookQuantity());
-            statement.setInt(5, entity.getBookRemaining());
+            statement.setString(3, entity.getDescription());
+            statement.setString(4, entity.getCategory());
+            statement.setString(5, entity.getBookPublisher());
+            statement.setInt(6, entity.getBookQuantity());
+            statement.setInt(7, entity.getBookRemaining());
+            statement.setString(8, entity.getImagePath());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error in save function in Book repo");
@@ -116,8 +137,10 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to count the num of document in Book database
+     * 
      * @return the num of document in Book database
-     * @throws SQLException if there are any error when excute query or getConnection
+     * @throws SQLException if there are any error when excute query or
+     *                      getConnection
      */
     @Override
     public int count() {
