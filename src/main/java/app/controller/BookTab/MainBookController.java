@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.service.BookService;
@@ -56,7 +57,7 @@ public class MainBookController implements BaseController {
     @FXML
     private void handdleButtonAction(ActionEvent e) {
         if (e.getSource() == buttonAddBook) {
-            System.out.println("click button add book");
+            FXMLResolver.getInstance().renderScene("bookTab/create_book");
         } else if (e.getSource() == buttonUpdate) {
             System.out.println("click button update");
         } else if (e.getSource() == buttonDelete) {
@@ -87,6 +88,5 @@ public class MainBookController implements BaseController {
         // Đặt danh sách vào TableView
         tableViewBook.setItems(list);
     }
-
 
 }
