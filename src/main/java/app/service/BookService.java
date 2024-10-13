@@ -14,7 +14,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    ObservableList<Book> getAllBooks() {
+    public ObservableList<Book> getAllBooks() {
         List<Book> listOfBooks = bookRepository.findAll();
         return FXCollections.observableList(listOfBooks);
     }
