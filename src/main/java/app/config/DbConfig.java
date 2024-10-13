@@ -1,4 +1,5 @@
 package app.config;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,26 +20,16 @@ public class DbConfig {
     }
 
     /**
-     * Create Connection function
+     * JDBC Connection getter
+     *
      * @return JavaFx Connection instance for connecting to database
      */
     public Connection getConnection() {
-        try {
-            if (connection == null) {
-                connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
-                System.out.println("Connect database successfully");
-                return connection;
-            }
-            return connection;
-        } catch (SQLException e) {
-            System.out.println("connect database failed");
-            return null;
-        }
+        return connection;
     }
 
     /**
      * getInstance function for singleton design pattern
-     *
      *
      * @return current DBConfig instance or new instance
      */
@@ -48,5 +39,21 @@ public class DbConfig {
             return dbConfig;
         }
         return dbConfig;
+    }
+
+    /**
+     * Create JDBC Connection instance
+     */
+    public void initializeConnection() {
+        try {
+            if (connection == null) {
+                connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+                System.out.println("Connect database successfully");
+            }
+        } catch (SQLException e) {
+            System.out.println("connect database failed");
+            System.out.println(e.getMessage());
+            connection = null;
+        }
     }
 }

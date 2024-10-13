@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import app.config.DbConfig;
 import app.controller.BaseController;
 import app.domain.Book;
+import app.service.BookService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,7 +17,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import app.service.BookService;
 import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
@@ -64,22 +63,17 @@ public class MainBookController implements BaseController {
             System.out.println("click button delete");
         }
     }
-    
-    private static BookRepository bookRepository;
-    public void showBooks() {
-        // Tạo danh sách các đối tượng Book
-        ObservableList<Book> list = FXCollections.observableArrayList(
-        new Book(1, "Book Title 1", "Author 1", "Description for book 1", "Fiction",
-        "Publisher 1", 10, 8, "////"),
-        new Book(2, "Book Title 2", "Author 2", "Description for book 2",
-        "Non-Fiction", "Publisher 2", 5, 5, "////"),
-        new Book(3, "Book Title 3", "Author 3", "Description for book 3", "Science",
-        "Publisher 3", 7, 6, "////"),
-        new Book(4, "Book Title 4", "Author 4", "Description for book 4", "History",
-        "Publisher 4", 12, 10, "///"),
-        new Book(5, "Book Title 5", "Author 5", "Description for book 5", "Fantasy",
-        "Publisher 5", 15, 14, "///"));
 
+    private BookService bookService;
+
+    @Override
+    public void initialize() {
+        bookService = new BookService(new BookRepository());
+        showBooks();
+    }
+
+    public void showBooks() {
+        ObservableList<Book> list = bookService.getAllBooks();
         // Thiết lập các cột cho TableView
         colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
         colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
@@ -94,10 +88,5 @@ public class MainBookController implements BaseController {
         tableViewBook.setItems(list);
     }
 
-
-    @Override
-    public void initialize() {
-        showBooks();
-    }
 
 }
