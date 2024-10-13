@@ -22,7 +22,7 @@ import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
     @FXML
-    private TextField searchBookTextFiled;
+    private TextField searchBookTextField;
 
     @FXML
     private Button buttonUpdate, buttonDelete, buttonAddBook;
@@ -55,7 +55,7 @@ public class MainBookController implements BaseController {
     private TableColumn<Book, Integer> colBookRemaining;
 
     @FXML
-    private void handdleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == buttonAddBook) {
             FXMLResolver.getInstance().renderScene("bookTab/create_book");
         } else if (e.getSource() == buttonUpdate) {
