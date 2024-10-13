@@ -30,14 +30,14 @@ public class MainStudentController implements BaseController {
     TableColumn<Student, String> studentAddressCol;
 
     @FXML
-    TextField studentIdTextFiled, studentNameTextFiled, phoneNumberTextFiled, studentEmailTextFiled,
-            studentAddressTextFiled, searchStudentTextFiled;
+    TextField studentIdTextField, studentNameTextField, phoneNumberTextField, studentEmailTextField,
+            studentAddressTextField, searchStudentTextField;
 
     @FXML
     Button cencelButton, insertButton, updateButton, deleteButton, importDataButton;
 
     @FXML
-    private void handdleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == cencelButton) {
             System.out.println("click button cencel");
         } else if (e.getSource() == insertButton) {

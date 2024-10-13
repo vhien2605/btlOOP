@@ -10,8 +10,8 @@ import javafx.scene.control.TextField;
 
 public class CreateBookController implements BaseController {
     @FXML
-    private TextField bookISBNTextFiled, bookNameTextFiled, bookAuthorTextFiled, bookQuantityTextFiled,
-            bookPublisherTextFiled, bookCategoryTextFiled;
+    private TextField bookISBNTextField, bookNameTextField, bookAuthorTextField, bookQuantityTextField,
+            bookPublisherTextField, bookCategoryTextField;
 
     @FXML
     private TextArea bookDescriptionTextArea;
@@ -20,7 +20,7 @@ public class CreateBookController implements BaseController {
     private Button comeBackButton, cancelButton, saveButton;
 
     @FXML
-    private void handdleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == cancelButton) {
@@ -33,12 +33,12 @@ public class CreateBookController implements BaseController {
     @FXML
     private void clearFields() {
         // Xóa nội dung của các TextField
-        bookISBNTextFiled.clear();
-        bookNameTextFiled.clear();
-        bookAuthorTextFiled.clear();
-        bookQuantityTextFiled.clear();
-        bookPublisherTextFiled.clear();
-        bookCategoryTextFiled.clear();
+        bookISBNTextField.clear();
+        bookNameTextField.clear();
+        bookAuthorTextField.clear();
+        bookQuantityTextField.clear();
+        bookPublisherTextField.clear();
+        bookCategoryTextField.clear();
 
         // Xóa nội dung của TextArea
         bookDescriptionTextArea.clear();
