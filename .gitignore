@@ -34,6 +34,7 @@ build/
 
 ### VS Code ###
 .vscode/
+**/database.properties
 
 ### Mac OS ###
 .DS_Store
