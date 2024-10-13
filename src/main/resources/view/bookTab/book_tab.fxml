@@ -12,16 +12,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.MainBookController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.MainBookController">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
-            <fx:include source="staticLayout/sidebar.fxml" />
+            <fx:include source="../staticLayout/sidebar.fxml" />
          </children>
       </VBox>
       <BorderPane prefHeight="650.0" prefWidth="950.0">
          <top>
-            <fx:include source="staticLayout/header.fxml" />
+            <fx:include source="../staticLayout/header.fxml" />
          </top>
          <center>
             <BorderPane prefHeight="630.0" prefWidth="950.0" BorderPane.alignment="CENTER">

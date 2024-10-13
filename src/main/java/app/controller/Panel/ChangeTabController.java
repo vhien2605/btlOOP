@@ -8,7 +8,7 @@ public class ChangeTabController {
     }
 
     public void bookTab() {
-        FXMLResolver.getInstance().renderScene("book_tab");
+        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
     }
 
     public void issueBookTab() {
