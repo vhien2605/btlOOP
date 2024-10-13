@@ -68,7 +68,7 @@
                         <TextField fx:id="phoneNumberTextFiled" layoutX="33.0" layoutY="228.0" prefHeight="25.0" prefWidth="225.0" promptText="Phone Number" />
                         <TextField fx:id="studentEmailTextFiled" layoutX="33.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Email" />
                         <TextField fx:id="studentAddressTextFiled" layoutX="33.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Address" />
-                        <Button fx:id="cencelButton" layoutX="22.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Cencel" />
+                        <Button fx:id="cencelButton" layoutX="22.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Cancel" />
                         <Button fx:id="insertButton" layoutX="93.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="52.0" text="Insert" />
                         <Button fx:id="updateButton" layoutX="163.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Update" />
                         <Button fx:id="deleteButton" layoutX="234.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Delete" />
