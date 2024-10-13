@@ -22,7 +22,7 @@ public class CreateBookController implements BaseController {
     @FXML
     private void handdleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
-            FXMLResolver.getInstance().renderScene("book_tab");
+            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == cancelButton) {
             clearFields();
         } else if (e.getSource() == saveButton) {
