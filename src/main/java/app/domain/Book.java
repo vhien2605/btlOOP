@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Book {
-    private SimpleIntegerProperty id;
+    private SimpleStringProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty author;
     private SimpleStringProperty description;
@@ -14,9 +14,9 @@ public class Book {
     private SimpleIntegerProperty bookRemaining;
     private SimpleStringProperty imagePath;
 
-    public Book(int id, String name, String author, String description, String category, String bookPublisher,
+    public Book(String id, String name, String author, String description, String category, String bookPublisher,
             int bookQuantity, int bookRemaining, String imagePath) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
@@ -27,11 +27,20 @@ public class Book {
         this.imagePath = new SimpleStringProperty(imagePath);
     }
 
-    public int getId() {
+    public Book(String id, String name, String author, String description, String category, String bookPublisher) {
+        this.id = new SimpleStringProperty(id);
+        this.name = new SimpleStringProperty(name);
+        this.author = new SimpleStringProperty(author);
+        this.description = new SimpleStringProperty(description);
+        this.category = new SimpleStringProperty(category);
+        this.bookPublisher = new SimpleStringProperty(bookPublisher);
+    }
+
+    public String getId() {
         return id.get();
     }
 
-    public void setId(SimpleIntegerProperty id) {
+    public void setId(SimpleStringProperty id) {
         this.id = id;
     }
 

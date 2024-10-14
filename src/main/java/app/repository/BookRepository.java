@@ -29,7 +29,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new Book(
-                        resultSet.getInt("id"),
+                        resultSet.getString("id"),
                         resultSet.getString("name"),
                         resultSet.getString("author"),
                         resultSet.getString("description"),
@@ -67,7 +67,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             resultSet = statement.executeQuery();
             resultSet.next();
             Book book = new Book(
-                    resultSet.getInt("id"),
+                    resultSet.getString("id"),
                     resultSet.getString("name"),
                     resultSet.getString("author"),
                     resultSet.getString("description"),
@@ -116,12 +116,12 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     public void save(Book entity) {
         Connection connection = null;
         PreparedStatement statement = null;
-        String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) " +
-                "VALUES(?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) "
+                + "VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.prepareStatement(query);
-            statement.setInt(1, entity.getId());
+            statement.setString(1, entity.getId());
             statement.setString(2, entity.getName());
             statement.setString(3, entity.getAuthor());
             statement.setString(4, entity.getDescription());
