@@ -1,8 +1,5 @@
 package app.controller.BookTab;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
@@ -19,8 +16,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -97,7 +92,7 @@ public class CreateBookController implements BaseController {
 
     private Book getBook() {
         Book book = new Book(
-                Integer.valueOf(bookISBNTextField.getText()),
+                bookISBNTextField.getText(),
                 bookNameTextField.getText(),
                 bookAuthorTextField.getText(),
                 bookDescriptionTextArea.getText(),
@@ -111,7 +106,7 @@ public class CreateBookController implements BaseController {
     }
 
     private void setTextFields(Book book) {
-        bookISBNTextField.setText(String.valueOf(book.getId()));
+        bookISBNTextField.setText(book.getId());
         bookNameTextField.setText(book.getName());
         bookAuthorTextField.setText(book.getAuthor());
         bookPublisherTextField.setText(book.getBookPublisher());

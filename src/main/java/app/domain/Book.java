@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Book {
-    private SimpleIntegerProperty id;
+    private SimpleStringProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty author;
     private SimpleStringProperty description;
@@ -14,9 +14,9 @@ public class Book {
     private SimpleIntegerProperty bookRemaining;
     private SimpleStringProperty imagePath;
 
-    public Book(int id, String name, String author, String description, String category, String bookPublisher,
+    public Book(String id, String name, String author, String description, String category, String bookPublisher,
             int bookQuantity, int bookRemaining, String imagePath) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
@@ -28,8 +28,7 @@ public class Book {
     }
 
     public Book(String id, String name, String author, String description, String category, String bookPublisher) {
-        // Chỗ này sau sửa id vì id lấy từ api là string...
-        this.id = new SimpleIntegerProperty(Integer.valueOf(id.substring(7)));
+        this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.author = new SimpleStringProperty(author);
         this.description = new SimpleStringProperty(description);
@@ -37,11 +36,11 @@ public class Book {
         this.bookPublisher = new SimpleStringProperty(bookPublisher);
     }
 
-    public int getId() {
+    public String getId() {
         return id.get();
     }
 
-    public void setId(SimpleIntegerProperty id) {
+    public void setId(SimpleStringProperty id) {
         this.id = id;
     }
 

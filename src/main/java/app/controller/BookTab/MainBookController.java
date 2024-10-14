@@ -31,7 +31,7 @@ public class MainBookController implements BaseController {
     private TableView<Book> tableViewBook;
 
     @FXML
-    private TableColumn<Book, Integer> colBookISBN;
+    private TableColumn<Book, String> colBookISBN;
 
     @FXML
     private TableColumn<Book, String> colBookName;
@@ -76,7 +76,7 @@ public class MainBookController implements BaseController {
     public void showBooks() {
         ObservableList<Book> list = bookService.getAllBooks();
         // Thiết lập các cột cho TableView
-        colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
+        colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
         colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
         colBookAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
         colBookDescription.setCellValueFactory(new PropertyValueFactory<Book, String>("description"));
