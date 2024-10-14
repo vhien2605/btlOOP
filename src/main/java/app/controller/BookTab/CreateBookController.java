@@ -22,6 +22,8 @@ public class CreateBookController implements BaseController {
     @FXML
     private Button comeBackButton, cancelButton, saveButton;
 
+    private BookService bookService;
+
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
@@ -29,38 +31,36 @@ public class CreateBookController implements BaseController {
         } else if (e.getSource() == cancelButton) {
             clearFields();
         } else if (e.getSource() == saveButton) {
-            System.out.println("click button save");
-            Book book = new Book(
-                    Integer.valueOf(bookISBNTextField.getText()),
-                    bookNameTextField.getText(),
-                    bookAuthorTextField.getText(),
-                    bookDescriptionTextArea.getText(),
-                    bookCategoryTextField.getText(),
-                    bookPublisherTextField.getText(),
-                    Integer.valueOf(bookQuantityTextField.getText()),
-                    Integer.valueOf(bookQuantityTextField.getText()),
-                    ""
-            );
-            bookService.handleSaveBook(book);
+            bookService.handleSaveBook(getBook());
+            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         }
+    }
+
+    private Book getBook() {
+        Book book = new Book(
+                Integer.valueOf(bookISBNTextField.getText()),
+                bookNameTextField.getText(),
+                bookAuthorTextField.getText(),
+                bookDescriptionTextArea.getText(),
+                bookCategoryTextField.getText(),
+                bookPublisherTextField.getText(),
+                Integer.valueOf(bookQuantityTextField.getText()),
+                Integer.valueOf(bookQuantityTextField.getText()),
+                "");
+
+        return book;
     }
 
     @FXML
     private void clearFields() {
-        // Xóa nội dung của các TextField
         bookISBNTextField.clear();
         bookNameTextField.clear();
         bookAuthorTextField.clear();
         bookQuantityTextField.clear();
         bookPublisherTextField.clear();
         bookCategoryTextField.clear();
-
-        // Xóa nội dung của TextArea
         bookDescriptionTextArea.clear();
     }
-
-
-    private BookService bookService;
 
     @Override
     public void initialize() {
