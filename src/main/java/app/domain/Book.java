@@ -27,6 +27,16 @@ public class Book {
         this.imagePath = new SimpleStringProperty(imagePath);
     }
 
+    public Book(String id, String name, String author, String description, String category, String bookPublisher) {
+        // Chỗ này sau sửa id vì id lấy từ api là string...
+        this.id = new SimpleIntegerProperty(Integer.valueOf(id.substring(7)));
+        this.name = new SimpleStringProperty(name);
+        this.author = new SimpleStringProperty(author);
+        this.description = new SimpleStringProperty(description);
+        this.category = new SimpleStringProperty(category);
+        this.bookPublisher = new SimpleStringProperty(bookPublisher);
+    }
+
     public int getId() {
         return id.get();
     }

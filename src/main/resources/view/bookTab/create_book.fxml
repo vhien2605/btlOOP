@@ -10,7 +10,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.CreateBookController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.BookTab.CreateBookController">
    <children>
       <fx:include source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="200.0" prefWidth="950.0">
@@ -74,7 +76,7 @@
                         <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="233.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Quantity" />
                         <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="184.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Publisher" />
                         <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="283.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Category" />
-                        <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="331.0" prefHeight="54.0" prefWidth="350.0" promptText="Book Description" />
+                        <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="331.0" prefHeight="54.0" prefWidth="350.0" promptText="Book Description" wrapText="true"/>
                         <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0">
                            <graphic>
                               <FontAwesomeIconView glyphName="ARROW_LEFT" />
