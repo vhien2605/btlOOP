@@ -42,7 +42,6 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
-     *
      * @param viewName resources fileName/viewName
      * @return Superclass Object of Javafx 's component
      */
@@ -54,13 +53,12 @@ public class FXMLResolver implements Resolver {
             return loaderObject.load();
         } catch (IOException e) {
             System.out.println("can't find view " + viewName);
-            // System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
             return null;
         }
     }
 
     /**
-     *
      * @param path        Path to resources file
      * @param stage       JavaFX 's stage
      * @param sceneWidth  sceneWidth when rendering in stage
@@ -75,7 +73,6 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
-     *
      * @param viewName resources fileName/viewName
      */
     @Override
@@ -86,7 +83,6 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
-     * 
      * @return Javafx Stage
      */
     public Stage getStage() {

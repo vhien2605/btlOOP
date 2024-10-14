@@ -11,7 +11,7 @@ import java.util.Optional;
 public class BookRepository implements CrudRepository<Book, Integer> {
     /**
      * this function will get all books document in database
-     * 
+     *
      * @return return list of all books in database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
@@ -48,7 +48,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * Find book by id
-     * 
+     *
      * @param Id book's id want to query(primary key in database)
      * @return return Optional wrapper of Book
      * @throws SQLException if there are any error when excute query or
@@ -85,7 +85,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to delete one book by id in database
-     * 
+     *
      * @param Id Book's id want to delete from database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
@@ -107,7 +107,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to save Book object in database
-     * 
+     *
      * @param entity Book object you want to save in Book table in database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
@@ -116,18 +116,20 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     public void save(Book entity) {
         Connection connection = null;
         PreparedStatement statement = null;
-        String query = "INSERT INTO book(name,author,bookPublisher,bookQuantity,bookRemaining) VALUES(?,?,?,?,?)";
+        String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) " +
+                "VALUES(?,?,?,?,?,?,?,?,?)";
         try {
             connection = DbConfig.getInstance().getConnection();
             statement = connection.prepareStatement(query);
-            statement.setString(1, entity.getName());
-            statement.setString(2, entity.getAuthor());
-            statement.setString(3, entity.getDescription());
-            statement.setString(4, entity.getCategory());
-            statement.setString(5, entity.getBookPublisher());
-            statement.setInt(6, entity.getBookQuantity());
-            statement.setInt(7, entity.getBookRemaining());
-            statement.setString(8, entity.getImagePath());
+            statement.setInt(1, entity.getId());
+            statement.setString(2, entity.getName());
+            statement.setString(3, entity.getAuthor());
+            statement.setString(4, entity.getDescription());
+            statement.setString(5, entity.getCategory());
+            statement.setString(6, entity.getBookPublisher());
+            statement.setInt(7, entity.getBookQuantity());
+            statement.setInt(8, entity.getBookRemaining());
+            statement.setString(9, entity.getImagePath());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error in save function in Book repo");
@@ -137,7 +139,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
     /**
      * This function is used to count the num of document in Book database
-     * 
+     *
      * @return the num of document in Book database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection

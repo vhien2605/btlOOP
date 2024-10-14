@@ -2,6 +2,9 @@ package app.controller.BookTab;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.domain.Book;
+import app.repository.BookRepository;
+import app.service.BookService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,6 +30,18 @@ public class CreateBookController implements BaseController {
             clearFields();
         } else if (e.getSource() == saveButton) {
             System.out.println("click button save");
+            Book book = new Book(
+                    Integer.valueOf(bookISBNTextField.getText()),
+                    bookNameTextField.getText(),
+                    bookAuthorTextField.getText(),
+                    bookDescriptionTextArea.getText(),
+                    bookCategoryTextField.getText(),
+                    bookPublisherTextField.getText(),
+                    Integer.valueOf(bookQuantityTextField.getText()),
+                    Integer.valueOf(bookQuantityTextField.getText()),
+                    ""
+            );
+            bookService.handleSaveBook(book);
         }
     }
 
@@ -44,8 +59,11 @@ public class CreateBookController implements BaseController {
         bookDescriptionTextArea.clear();
     }
 
+
+    private BookService bookService;
+
     @Override
     public void initialize() {
-
+        bookService = new BookService(new BookRepository());
     }
 }

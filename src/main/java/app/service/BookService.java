@@ -5,6 +5,7 @@ import app.repository.BookRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.io.File;
 import java.util.List;
 
 public class BookService {
@@ -15,7 +16,11 @@ public class BookService {
     }
 
     public ObservableList<Book> getAllBooks() {
-        List<Book> listOfBooks = bookRepository.findAll();
+        List<Book> listOfBooks = this.bookRepository.findAll();
         return FXCollections.observableList(listOfBooks);
+    }
+
+    public void handleSaveBook(Book book) {
+        this.bookRepository.save(book);
     }
 }
