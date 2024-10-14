@@ -39,7 +39,7 @@ public class MainStudentController implements BaseController {
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == cencelButton) {
-            System.out.println("click button cencel");
+            System.out.println("click button cancel");
         } else if (e.getSource() == insertButton) {
             System.out.println("click button insert");
         } else if (e.getSource() == updateButton) {
