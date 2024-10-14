@@ -28,9 +28,9 @@
                               <Font size="35.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="searchStudentTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Student" />
+                        <TextField fx:id="searchStudentTextField" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Student" />
                         <FontAwesomeIconView fill="#313ec7" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
-                        <Button fx:id="importDataButton" layoutX="776.0" layoutY="10.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="30.0" prefWidth="112.0" text="    Import data">
+                        <Button fx:id="importDataButton" layoutX="776.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="112.0" text="    Import data">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -63,15 +63,15 @@
                         <Label layoutX="33.0" layoutY="211.0" text="Phone Number:" textFill="#112f9c" />
                         <Label layoutX="33.0" layoutY="267.0" text="Email:" textFill="#112f9c" />
                         <Label layoutX="33.0" layoutY="326.0" text="Address:" textFill="#112f9c" />
-                        <TextField fx:id="studentIdTextFiled" layoutX="33.0" layoutY="101.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Id" />
-                        <TextField fx:id="studentNameTextFiled" layoutX="33.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Name" />
-                        <TextField fx:id="phoneNumberTextFiled" layoutX="33.0" layoutY="228.0" prefHeight="25.0" prefWidth="225.0" promptText="Phone Number" />
-                        <TextField fx:id="studentEmailTextFiled" layoutX="33.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Email" />
-                        <TextField fx:id="studentAddressTextFiled" layoutX="33.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Address" />
-                        <Button fx:id="cencelButton" layoutX="22.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Cancel" />
-                        <Button fx:id="insertButton" layoutX="93.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="52.0" text="Insert" />
-                        <Button fx:id="updateButton" layoutX="163.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Update" />
-                        <Button fx:id="deleteButton" layoutX="234.0" layoutY="397.0" mnemonicParsing="false" onAction="#handdleButtonAction" text="Delete" />
+                        <TextField fx:id="studentIdTextField" layoutX="33.0" layoutY="101.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Id" />
+                        <TextField fx:id="studentNameTextField" layoutX="33.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Name" />
+                        <TextField fx:id="phoneNumberTextField" layoutX="33.0" layoutY="228.0" prefHeight="25.0" prefWidth="225.0" promptText="Phone Number" />
+                        <TextField fx:id="studentEmailTextField" layoutX="33.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Email" />
+                        <TextField fx:id="studentAddressTextField" layoutX="33.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Address" />
+                        <Button fx:id="cencelButton" layoutX="22.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Cancel" />
+                        <Button fx:id="insertButton" layoutX="93.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="52.0" text="Insert" />
+                        <Button fx:id="updateButton" layoutX="163.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />
+                        <Button fx:id="deleteButton" layoutX="234.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Delete" />
                      </children>
                   </Pane>
                </right>

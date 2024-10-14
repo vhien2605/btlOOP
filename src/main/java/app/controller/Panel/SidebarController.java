@@ -30,7 +30,7 @@ public class SidebarController implements BaseController {
      * Click button event
      */
     @FXML
-    private void handdleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == homeButton) {
             new ChangeTabController().homeTab();
         } else if (e.getSource() == booksButton) {

@@ -68,20 +68,20 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="bookISBNTextFiled" layoutX="235.0" layoutY="70.0" prefHeight="25.0" prefWidth="350.0" promptText="Book ISBN" />
-                        <TextField fx:id="bookNameTextFiled" layoutX="235.0" layoutY="122.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Name" />
-                        <TextField fx:id="bookAuthorTextFiled" layoutX="235.0" layoutY="169.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Author" />
-                        <TextField fx:id="bookQuantityTextFiled" layoutX="235.0" layoutY="274.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Quantity" />
-                        <TextField fx:id="bookPublisherTextFiled" layoutX="235.0" layoutY="219.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Publisher" />
-                        <TextField fx:id="bookCategoryTextFiled" layoutX="235.0" layoutY="326.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Category" />
+                        <TextField fx:id="bookISBNTextField" layoutX="235.0" layoutY="70.0" prefHeight="25.0" prefWidth="350.0" promptText="Book ISBN" />
+                        <TextField fx:id="bookNameTextField" layoutX="235.0" layoutY="122.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Name" />
+                        <TextField fx:id="bookAuthorTextField" layoutX="235.0" layoutY="169.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Author" />
+                        <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="274.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Quantity" />
+                        <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="219.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Publisher" />
+                        <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="326.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Category" />
                         <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="381.0" prefHeight="58.0" prefWidth="350.0" promptText="Book Description" />
-                        <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="31.0" prefWidth="37.0">
+                        <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0">
                            <graphic>
                               <FontAwesomeIconView glyphName="ARROW_LEFT" />
                            </graphic>
                         </Button>
-                        <Button fx:id="cancelButton" layoutX="423.0" layoutY="479.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="61.0" text="Cancel" />
-                        <Button fx:id="saveButton" layoutX="520.0" layoutY="479.0" mnemonicParsing="false" onAction="#handdleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Save" />
+                        <Button fx:id="cancelButton" layoutX="423.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="61.0" text="Cancel" />
+                        <Button fx:id="saveButton" layoutX="520.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Save" />
                      </children>
                   </Pane>
                </center>

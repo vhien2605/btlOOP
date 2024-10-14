@@ -15,7 +15,7 @@ public class HeaderController implements BaseController {
     private Button minimizeProgramButton;
 
     @FXML
-    private void handdleButtonAction(ActionEvent e) {
+    private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == closeProgramButton) {
             System.out.println("click button close program");
             Platform.exit();
