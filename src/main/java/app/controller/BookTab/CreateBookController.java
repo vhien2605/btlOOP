@@ -1,5 +1,7 @@
 package app.controller.BookTab;
 
+import java.util.List;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
@@ -11,15 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 public class CreateBookController implements BaseController {
     @FXML
@@ -34,7 +27,6 @@ public class CreateBookController implements BaseController {
 
     private BookService bookService;
     private GoogleApiService googleApiService;
-    private static String API_KEY;
 
     @FXML
     private void handleButtonAction(ActionEvent e) {
@@ -46,48 +38,28 @@ public class CreateBookController implements BaseController {
             bookService.handleSaveBook(getBook());
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == findDocomentButton) {
-            searchBooks();
+            addDataBook();
         } else if (e.getSource() == uploadFileButton) {
             System.out.println("Click button uploadFileButton");
         }
     }
 
-    private void searchBooks() {
+    private void addDataBook() {
         String query = bookISBNTextField.getText();
         if (query.isEmpty()) {
             return;
         }
+        List<Book> books = googleApiService.searchBooks(query);
 
-        String formattedQuery = query.trim().replace(" ", "+");
+        if (books.isEmpty()) {
+            System.out.println("khong tim thay ban ghi");
+            // làm cái hiện thông báo...
+            return;
+        }
 
-        // API URL với từ khóa tìm kiếm và API Key
-        String url = "https://www.googleapis.com/books/v1/volumes?q=" + formattedQuery + "&maxResults=1&key=" + API_KEY;
-
-        // Sử dụng HttpClient để gửi yêu cầu
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .build();
-
-        client.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenApply(googleApiService::parseBookInfo)
-                .thenAccept(books -> {
-                    if (books == null) {
-                        System.out.println("khong tim thay ban ghi");
-                        // làm cái hiện thông báo...
-                        return;
-                    }
-
-                    for (Book book : books) {
-                        setTextFields(book);
-                    }
-                })
-                .exceptionally(e -> {
-                    e.printStackTrace();
-                    // sau làm hiện thông báo bị lỗi...
-                    return null;
-                });
+        for (Book book : books) {
+            setTextFields(book);
+        }
     }
 
     private Book getBook() {
@@ -125,27 +97,9 @@ public class CreateBookController implements BaseController {
         bookDescriptionTextArea.clear();
     }
 
-    private void getAPI_KEY() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties")) {
-            Properties prop = new Properties();
-            if (input == null) {
-                System.out.println("Sorry, unable to find database.properties");
-                return;
-            }
-
-            prop.load(input);
-
-            API_KEY = prop.getProperty("API_KEY");
-
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
         googleApiService = new GoogleApiService();
-        getAPI_KEY();
     }
 }
