@@ -1,0 +1,25 @@
+Pane {
+    -fx-background-color: #6ba4dd;
+}
+
+.button {
+    -fx-background-color: #6ba4dd;
+    -fx-text-fill: #ECF0F1;
+    -fx-border-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: #1ABC9C;
+}
+
+.button:pressed {
+    -fx-background-color: #16A085;
+}
+
+.label {
+    -fx-text-fill: #ECF0F1;
+}
+
+.fontawesome-icon {
+    -fx-fill: #ECF0F1;
+}

@@ -1,0 +1,58 @@
+.HBox {
+    -fx-background-color: #f5f7fa;
+    -fx-padding: 20px;
+}
+
+
+/* Định dạng TextField trong BorderPane */
+.border-pane .text-field {
+    -fx-background-color: #f3f4f6;
+    -fx-border-color: #9ca3af;
+    -fx-border-width: 1.5px;
+    -fx-padding: 5px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.border-pane .text-field:focused {
+    -fx-border-color: #3351a2;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 2px;
+}
+
+.right-pane .label {
+    -fx-font-size: 13;
+    -fx-text-fill: #167dc2;
+}
+
+/* Định dạng Button trong BorderPane */
+.border-pane .button {
+    -fx-background-color: #167dc2;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+}
+
+.border-pane .button:hover {
+    -fx-background-color: #3b82f6;
+}
+
+.border-pane .button:pressed {
+    -fx-background-color: #1b9cb3;
+}
+
+/* Định dạng phần tiêu đề (top pane) */
+.top-pane .label {
+    -fx-font-size: 35px;
+    -fx-text-fill: #167dc2;
+}
+
+/* Định dạng SearchField trong BorderPane */
+.border-pane .search-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #6b7280;
+    -fx-border-width: 1.5px;
+    -fx-border-radius: 6px;
+    -fx-padding: 8px;
+}
