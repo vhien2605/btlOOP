@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository" />
+    <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/DeleteFileService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/GoogleApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/GoogleApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/UploadFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/FileService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hienonichan" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -56,7 +64,8 @@
   "keyToString": {
     "Application.App.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "hienonichan",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/learning_code/OOP_learning/bai",
     "settings.editor.selected.configurable": "actions.on.save"

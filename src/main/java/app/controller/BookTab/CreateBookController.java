@@ -1,5 +1,6 @@
 package app.controller.BookTab;
 
+import java.io.File;
 import java.util.List;
 
 import app.config.ViewConfig.FXMLResolver;
@@ -7,12 +8,15 @@ import app.controller.BaseController;
 import app.domain.Book;
 import app.repository.BookRepository;
 import app.service.BookService;
+import app.service.FileService;
 import app.service.GoogleApiService;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 
 public class CreateBookController implements BaseController {
     @FXML
@@ -27,6 +31,9 @@ public class CreateBookController implements BaseController {
 
     private BookService bookService;
     private GoogleApiService googleApiService;
+    private FileService fileService;
+
+    private File selectedFile;
 
     @FXML
     private void handleButtonAction(ActionEvent e) {
@@ -35,12 +42,30 @@ public class CreateBookController implements BaseController {
         } else if (e.getSource() == cancelButton) {
             clearFields();
         } else if (e.getSource() == saveButton) {
-            bookService.handleSaveBook(getBook());
+            Book book = getBook();
+            book.setImagePath(new SimpleStringProperty(selectedFile.getName()));
+            fileService.handleSaveImage(selectedFile, "book");
+            bookService.handleSaveBook(book);
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == findDocomentButton) {
             addDataBook();
         } else if (e.getSource() == uploadFileButton) {
-            System.out.println("Click button uploadFileButton");
+            RenderFileDialog();
+        }
+    }
+
+
+    private void RenderFileDialog() {
+        System.out.println("Click button uploadFileButton");
+        FileChooser fileChooser = new FileChooser();
+        // filter file
+        FileChooser.ExtensionFilter extFilter =
+                new FileChooser.ExtensionFilter("TEXT files (*.png,*.jpeg,*.jpg)",
+                        "*.png", "*.jpeg", "jpg");
+        fileChooser.getExtensionFilters().add(extFilter);
+        selectedFile = fileChooser.showOpenDialog(FXMLResolver.getInstance().getStage());
+        if (selectedFile != null) {
+            fileSeletedTextField.setText(selectedFile.getName());
         }
     }
 
@@ -50,13 +75,11 @@ public class CreateBookController implements BaseController {
             return;
         }
         List<Book> books = googleApiService.searchBooks(query);
-
         if (books.isEmpty()) {
             System.out.println("khong tim thay ban ghi");
             // làm cái hiện thông báo...
             return;
         }
-
         for (Book book : books) {
             setTextFields(book);
         }
@@ -101,5 +124,6 @@ public class CreateBookController implements BaseController {
     public void initialize() {
         bookService = new BookService(new BookRepository());
         googleApiService = new GoogleApiService();
+        fileService = new FileService();
     }
 }
