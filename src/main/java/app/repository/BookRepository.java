@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public class BookRepository implements CrudRepository<Book, Integer> {
     /**
-     * this function will get all books document in database
+     * this function will get all {@link Book} in database
      *
-     * @return return list of all books in database
+     * @return return list of all {@link Book} in database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
      */
@@ -50,7 +50,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
      * Find book by id
      *
      * @param Id book's id want to query(primary key in database)
-     * @return return Optional wrapper of Book
+     * @return return {@code Optional} wrapper of Book
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
      */
@@ -84,7 +84,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to delete one book by id in database
+     * This function is used to delete one {@link Book} by id in database
      *
      * @param Id Book's id want to delete from database
      * @throws SQLException if there are any error when excute query or
@@ -106,9 +106,9 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to save Book object in database
+     * This function is used to save {@link Book} object in database
      *
-     * @param entity Book object you want to save in Book table in database
+     * @param entity {@link Book} object you want to save in Book table in database
      * @throws SQLException if there are any error when excute query or
      *                      getConnection
      */
@@ -138,7 +138,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to count the num of document in Book database
+     * This function is used to count the num of {@link Book} in database
      *
      * @return the num of document in Book database
      * @throws SQLException if there are any error when excute query or

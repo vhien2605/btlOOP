@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class StudentRepository implements CrudRepository<Student,Integer>{
+public class StudentRepository implements CrudRepository<Student, Integer> {
     /**
-     * Find all Student documents in database
+     * Find all {@link Student} in database
      *
-     * @return Collection of all students in database
+     * @return Collection of all {@link Student} in database
      */
     @Override
     public List<Student> findAll() {
@@ -41,10 +41,10 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
     }
 
     /**
-     * Find the Student entity which have ID input in database
+     * Find the {@link Student} entity which have {@code Id} input in database
      *
-     * @param Id Document's id want to query from database
-     * @return Optional wrapper of Student object. Avoid null pointer access error
+     * @param Id Document's {@code Id} want to query from database
+     * @return {@code Optional<Student>} wrapper of {@link Student} object. Avoid null pointer access error
      */
     @Override
     public Optional findById(Integer Id) {
@@ -73,9 +73,9 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
 
 
     /**
-     * Delete document which have ID input from database
+     * Delete document which have {@code Id} input from database
      *
-     * @param Id Document's ID want to delete from T table in database
+     * @param Id {@link Student}'s {@code Id} want to delete from {@link Student}
      */
     @Override
     public void deleteById(Integer Id) {
@@ -93,7 +93,7 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
     }
 
     /**
-     * Save the Student object mapping to entity in database
+     * Save the {@link Student} object mapping to entity in database
      *
      * @param student Object want to save to database (mapping to T type table)
      */
@@ -117,9 +117,9 @@ public class StudentRepository implements CrudRepository<Student,Integer>{
     }
 
     /**
-     * Count all Student document in database
+     * Count all {@link Student} document in database
      *
-     * @return the num of Student's document in database
+     * @return the num of {@link Student}'s document in database
      */
     @Override
     public int count() {

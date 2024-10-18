@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/DeleteFileService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/GoogleApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/GoogleApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/UploadFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/ViewConfig/FXMLResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/ViewConfig/FXMLResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/ViewConfig/Resolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/ViewConfig/Resolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/Panel/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/Panel/HeaderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/CrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,17 +64,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "hienonichan",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/learning_code/OOP_learning/bai",
-    "settings.editor.selected.configurable": "actions.on.save"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hienonichan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/learning_code/OOP_learning/bai&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />

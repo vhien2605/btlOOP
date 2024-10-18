@@ -1,5 +1,8 @@
 package app.config;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -8,16 +11,39 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
- * DBConfig class to access to database for excute query
+ * {@link DbConfig} class to access to database for excute query
  * use Singleton design pattern to only use one database connection instance in application
+ * <p>
+ * Example for singleton
+ * </p>
+ * <pre>{@code
+ * private static DbConfig dbConfig;
+ *
+ * private DbConfig() {
+ *     // Private constructor to prevent form create new instance
+ * }
+ * public static DbConfig getInstance() {
+ *     if (dbConfig == null) {
+ *         dbConfig = new DbConfig();
+ *     }
+ *     return dbConfig;
+ * }
+ * }</pre>
  */
 public class DbConfig {
-    private Connection connection;
     private static DbConfig dbConfig;
-    private static String DB_URL;
-    private static String USER_NAME;
-    private static String PASSWORD;
+    private HikariConfig config;
+    private HikariDataSource ds;
 
+    /**
+     * Create {@link HikariConfig} and {@link HikariDataSource}
+     * <p>
+     * {@link HikariConfig} : stores the properties to get connection pool to database
+     * <br>
+     * {@link HikariDataSource} : represent for the database in Java, help us to get Connection, reuse
+     * old Connection by the Object Pool design pattern
+     * </p>
+     */
     private DbConfig() {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties")) {
             Properties prop = new Properties();
@@ -25,32 +51,31 @@ public class DbConfig {
                 System.out.println("Sorry, unable to find database.properties");
                 return;
             }
-          
             prop.load(input);
-
-            DB_URL = prop.getProperty("DB_URL");
-            USER_NAME = prop.getProperty("USER_NAME");
-            PASSWORD = prop.getProperty("PASSWORD");
-
+            config = new HikariConfig();
+            config.setJdbcUrl(prop.getProperty("DB_URL"));
+            config.setUsername(prop.getProperty("USER_NAME"));
+            config.setPassword(prop.getProperty("PASSWORD"));
+            ds = new HikariDataSource(config);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
 
-
     /**
-     * JDBC Connection getter
+     * Get {@link  Connection} from Hikari Connection pool
      *
-     * @return JavaFx Connection instance for connecting to database
+     * @return instance of {@link Connection} in pool
+     * @throws SQLException when can't get Connection from pool
      */
-    public Connection getConnection() {
-        return connection;
+    public Connection getConnection() throws SQLException {
+        return ds.getConnection();
     }
 
     /**
      * getInstance function for singleton design pattern
      *
-     * @return current DBConfig instance or new instance
+     * @return current {@link DbConfig} instance or new instance
      */
     public static DbConfig getInstance() {
         if (dbConfig == null) {
@@ -61,18 +86,9 @@ public class DbConfig {
     }
 
     /**
-     * Create JDBC Connection instance
+     * Close connection pool
      */
-    public void initializeConnection() {
-        try {
-            if (connection == null) {
-                connection = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
-                System.out.println("Connect database successfully");
-            }
-        } catch (SQLException e) {
-            System.out.println("connect database failed");
-            System.out.println(e.getMessage());
-            connection = null;
-        }
+    public void close() {
+        ds.close();
     }
 }
