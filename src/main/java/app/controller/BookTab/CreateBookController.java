@@ -43,7 +43,11 @@ public class CreateBookController implements BaseController {
             clearFields();
         } else if (e.getSource() == saveButton) {
             Book book = getBook();
-            book.setImagePath(new SimpleStringProperty(selectedFile.getName()));
+            String image = "";
+            if (selectedFile != null) {
+                image = selectedFile.getName();
+            }
+            book.setImagePath(new SimpleStringProperty(image));
             fileService.handleSaveImage(selectedFile, "book");
             bookService.handleSaveBook(book);
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
@@ -93,8 +97,8 @@ public class CreateBookController implements BaseController {
                 bookDescriptionTextArea.getText(),
                 bookCategoryTextField.getText(),
                 bookPublisherTextField.getText(),
-                Integer.valueOf(bookQuantityTextField.getText()),
-                Integer.valueOf(bookQuantityTextField.getText()),
+                Integer.parseInt(bookQuantityTextField.getText()),
+                Integer.parseInt(bookQuantityTextField.getText()),
                 "");
 
         return book;

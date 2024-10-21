@@ -58,7 +58,7 @@ public class DbConfig {
             config.setPassword(prop.getProperty("PASSWORD"));
             ds = new HikariDataSource(config);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 

@@ -8,25 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * {@link BookRepository} for doing all accessData logic in table Book mapping to
+ * {@link Book} class in Java application
+ */
 public class BookRepository implements CrudRepository<Book, Integer> {
     /**
-     * this function will get all {@link Book} in database
+     * this method will get all {@link Book} in database
      *
      * @return return list of all {@link Book} in database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
      */
     @Override
     public List<Book> findAll() {
         List<Book> list = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM book";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
                 list.add(new Book(
                         resultSet.getString("id"),
@@ -39,9 +38,9 @@ public class BookRepository implements CrudRepository<Book, Integer> {
                         resultSet.getInt("bookRemaining"),
                         resultSet.getString("imagePath")));
             }
-            resultSet.close();
         } catch (SQLException e) {
             System.out.println("error in findAll function in Book repo");
+            e.printStackTrace();
         }
         return list;
     }
@@ -51,21 +50,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
      *
      * @param Id book's id want to query(primary key in database)
      * @return return {@code Optional} wrapper of Book
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
      */
     @Override
     public Optional<Book> findById(Integer Id) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM book WHERE id = ?";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, Id);
-            resultSet = statement.executeQuery();
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+
             resultSet.next();
+            statement.setInt(1, Id);
             Book book = new Book(
                     resultSet.getString("id"),
                     resultSet.getString("name"),
@@ -79,6 +73,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             return Optional.of(book);
         } catch (SQLException e) {
             System.out.println("error in findById function in Book repo");
+            e.printStackTrace();
         }
         return Optional.empty();
     }
@@ -87,17 +82,12 @@ public class BookRepository implements CrudRepository<Book, Integer> {
      * This function is used to delete one {@link Book} by id in database
      *
      * @param Id Book's id want to delete from database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
      */
     @Override
     public void deleteById(Integer Id) {
-        Connection connection = null;
-        PreparedStatement statement = null;
         String query = "DELETE FROM book WHERE id = ?";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
@@ -109,18 +99,13 @@ public class BookRepository implements CrudRepository<Book, Integer> {
      * This function is used to save {@link Book} object in database
      *
      * @param entity {@link Book} object you want to save in Book table in database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
      */
     @Override
     public void save(Book entity) {
-        Connection connection = null;
-        PreparedStatement statement = null;
         String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, entity.getId());
             statement.setString(2, entity.getName());
             statement.setString(3, entity.getAuthor());
@@ -140,20 +125,14 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     /**
      * This function is used to count the num of {@link Book} in database
      *
-     * @return the num of document in Book database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
+     * @return the num of document {@link Book} database
      */
     @Override
     public int count() {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet rs = null;
         String query = "SELECT COUNT (*) FROM book";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(query)) {
             // resultSet default doesn't ref to any value. must rs.next to ref first value
             if (rs.next()) {
                 return rs.getInt(1);

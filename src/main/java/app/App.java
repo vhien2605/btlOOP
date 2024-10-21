@@ -1,6 +1,5 @@
 package app;
 
-import app.config.DbConfig;
 import app.config.ViewConfig.FXMLResolver;
 import javafx.application.Application;
 import javafx.stage.Stage;

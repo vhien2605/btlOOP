@@ -43,7 +43,7 @@ public class GoogleApiService {
         JSONArray items = jsonObject.optJSONArray("items");
         List<Book> books = new ArrayList<>();
 
-        if (items == null || items.length() == 0) {
+        if (items == null || items.isEmpty()) {
             return books; // Trả về danh sách rỗng
         }
 
@@ -73,10 +73,10 @@ public class GoogleApiService {
      * Searches for books from the Google Books API based on the provided search
      * query.
      *
-     * @param query The search keyword for books, which can be a title, author,
-     *              ISBN, or any related information.
+     * @param query The search keyword for {@link Book}, which can be a {@code title}, {@code author},
+     *              {@code ISBN}, or any related information.
      * @return List<Book> A list of Book objects found from the Google Books API.
-     * Returns null if no books are found or if an error occurs.
+     * Returns {@code null} if no books are found or if an error occurs.
      * @throws IOException          If an error occurs during the HTTP request.
      * @throws InterruptedException If the HTTP request is interrupted.
      */
@@ -100,17 +100,17 @@ public class GoogleApiService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             List<Book> books = parseBookInfo(response.body());
             return books;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
             // làm hiện thông báo ....
             return null;
         }
     }
 
     /**
-     * getApiKey function
+     * getApiKey method to access Google Api
      * <p>
-     * Load ApiKey form project properties file
+     * Load ApiKey from server properties
      * </p>
      */
     private void getAPI_KEY() {
@@ -123,7 +123,7 @@ public class GoogleApiService {
             prop.load(input);
             API_KEY = prop.getProperty("API_KEY");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 }
