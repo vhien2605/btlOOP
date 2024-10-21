@@ -4,30 +4,38 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Student {
-    private SimpleIntegerProperty id;
+    private SimpleStringProperty id;
     private SimpleStringProperty name;
     private SimpleStringProperty address;
     private SimpleStringProperty email;
     private SimpleStringProperty phoneNumber;
 
-    public Student(int id, String name, String address, String email, String phoneNumber) {
-        this.id = new SimpleIntegerProperty(id);
+    public Student(String id, String name, String address, String email, String phoneNumber) {
+        this.id = new SimpleStringProperty(id);
         this.name = new SimpleStringProperty(name);
         this.address = new SimpleStringProperty(address);
         this.email = new SimpleStringProperty(email);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
     }
 
-    public int getId() {
+    public String getId() {
         return id.get();
     }
 
-    public void setId(int id) {
-        this.id = new SimpleIntegerProperty(id);
+    public SimpleStringProperty getIdProperty() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = new SimpleStringProperty(id);
     }
 
     public String getName() {
         return name.get();
+    }
+
+    public SimpleStringProperty getNameProperty() {
+        return name;
     }
 
     public void setName(String name) {
@@ -38,6 +46,10 @@ public class Student {
         return address.get();
     }
 
+    public SimpleStringProperty getAddressProperty() {
+        return address;
+    }
+
     public void setAddress(String address) {
         this.address = new SimpleStringProperty(address);
     }
@@ -46,12 +58,20 @@ public class Student {
         return email.get();
     }
 
+    public SimpleStringProperty getEmailProperty() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = new SimpleStringProperty(email);
     }
 
     public String getPhoneNumber() {
         return phoneNumber.get();
+    }
+
+    public SimpleStringProperty getPhoneNumberProperty() {
+        return phoneNumber;
     }
 
     public void setPhoneNumber(String phoneNumber) {
@@ -64,5 +84,4 @@ public class Student {
                 + email.get() + ", phoneNumber="
                 + phoneNumber.get() + "]";
     }
-
 }

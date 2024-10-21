@@ -1,4 +1,4 @@
-package app.service.multiTask;
+package app.service.multiTaskService;
 
 
 /**

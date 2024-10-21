@@ -1,9 +1,7 @@
 package app.controller.Panel;
 
 import app.config.DbConfig;
-import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
-import app.service.multiTask.MultiTaskService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +24,7 @@ public class HeaderController implements BaseController {
             System.out.println("click button minimize program");
         }
     }
-    
+
     @Override
     public void initialize() {
 

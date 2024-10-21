@@ -57,9 +57,8 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
-
-            resultSet.next();
             statement.setInt(1, Id);
+            resultSet.next();
             Book book = new Book(
                     resultSet.getString("id"),
                     resultSet.getString("name"),
@@ -142,4 +141,40 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
         return 0;
     }
+
+
+    /**
+     * Searching {@link Book} by category method
+     *
+     * @param keywordCategory category keyword for searching
+     * @return List of {@link Book} which have category include input keyword
+     */
+    public List<Book> findByCategory(String keywordCategory) {
+        List<Book> list = new ArrayList<>();
+        String query = "SELECT * FROM book WHERE category LIKE %?%";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery();
+        ) {
+            statement.setString(1, keywordCategory);
+            while (resultSet.next()) {
+                list.add(new Book(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("author"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
+                        resultSet.getString("bookPublisher"),
+                        resultSet.getInt("bookQuantity"),
+                        resultSet.getInt("bookRemaining"),
+                        resultSet.getString("imagePath")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
+
+

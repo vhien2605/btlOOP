@@ -7,9 +7,9 @@ import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.repository.BookRepository;
-import app.service.BookService;
-import app.service.FileService;
-import app.service.GoogleApiService;
+import app.service.mainService.BookService;
+import app.service.subService.FileService;
+import app.service.subService.GoogleApiService;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +47,7 @@ public class CreateBookController implements BaseController {
             if (selectedFile != null) {
                 image = selectedFile.getName();
             }
-            book.setImagePath(new SimpleStringProperty(image));
+            book.setImagePath(image);
             fileService.handleSaveImage(selectedFile, "book");
             bookService.handleSaveBook(book);
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");

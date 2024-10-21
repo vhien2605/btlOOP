@@ -1,4 +1,4 @@
-package app.service;
+package app.service.subService;
 
 import app.domain.Book;
 
@@ -77,8 +77,6 @@ public class GoogleApiService {
      *              {@code ISBN}, or any related information.
      * @return List<Book> A list of Book objects found from the Google Books API.
      * Returns {@code null} if no books are found or if an error occurs.
-     * @throws IOException          If an error occurs during the HTTP request.
-     * @throws InterruptedException If the HTTP request is interrupted.
      */
     public List<Book> searchBooks(String query) {
         if (query.isEmpty()) {

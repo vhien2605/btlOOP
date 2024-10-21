@@ -1,9 +1,5 @@
 package app.controller.BookTab;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -13,10 +9,9 @@ import java.util.concurrent.Future;
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
-import app.service.BookService;
-import app.service.multiTask.MultiTaskService;
-import app.service.multiTask.ResultTask;
-import javafx.collections.FXCollections;
+import app.service.mainService.BookService;
+import app.service.multiTaskService.MultiTaskService;
+import app.service.multiTaskService.ResultTask;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

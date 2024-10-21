@@ -29,7 +29,7 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
-                list.add(new Student(resultSet.getInt("id"),
+                list.add(new Student(resultSet.getString("id"),
                         resultSet.getString("name"),
                         resultSet.getString("address"),
                         resultSet.getString("email"),
@@ -49,7 +49,7 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
      * @return {@code Optional<Student>} wrapper of {@link Student} object. Avoid null pointer access error
      */
     @Override
-    public Optional findById(Integer Id) {
+    public Optional<Student> findById(Integer Id) {
         String query = "SELECT * FROM student WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
@@ -58,7 +58,7 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
             statement.setInt(1, Id);
             resultSet.next();
             Student student = new Student(
-                    resultSet.getInt("id"),
+                    resultSet.getString("id"),
                     resultSet.getString("name"),
                     resultSet.getString("address"),
                     resultSet.getString("email"),
@@ -98,13 +98,14 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
      */
     @Override
     public void save(Student student) {
-        String query = "INSERT INTO book(name,address,email,phoneNumber) VALUES(?,?,?,?)";
+        String query = "INSERT INTO book(id,name,address,email,phoneNumber) VALUES(?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, student.getName());
-            statement.setString(2, student.getAddress());
-            statement.setString(3, student.getEmail());
-            statement.setString(4, student.getPhoneNumber());
+            statement.setString(1, student.getId());
+            statement.setString(2, student.getName());
+            statement.setString(3, student.getAddress());
+            statement.setString(4, student.getEmail());
+            statement.setString(5, student.getPhoneNumber());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error in save function in Student repo");

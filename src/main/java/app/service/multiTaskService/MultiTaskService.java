@@ -1,4 +1,4 @@
-package app.service.multiTask;
+package app.service.multiTaskService;
 
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -8,7 +8,7 @@ import java.util.concurrent.Future;
 
 public class MultiTaskService {
     private final ExecutorService threadPool;
-    
+
     public MultiTaskService(int maxThreadNum) {
         threadPool = Executors.newFixedThreadPool(maxThreadNum);
     }
