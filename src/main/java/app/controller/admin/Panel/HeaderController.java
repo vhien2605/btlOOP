@@ -2,10 +2,12 @@ package app.controller.admin.Panel;
 
 import app.config.DbConfig;
 import app.controller.BaseController;
+import app.service.authService.SessionService;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class HeaderController implements BaseController {
     @FXML
@@ -22,6 +24,8 @@ public class HeaderController implements BaseController {
             Platform.exit();
         } else if (e.getSource() == minimizeProgramButton) {
             System.out.println("click button minimize program");
+            Stage stage = (Stage) minimizeProgramButton.getScene().getWindow();
+            stage.setIconified(true);
         }
     }
 

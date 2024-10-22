@@ -24,8 +24,6 @@ public class SidebarController implements BaseController {
     @FXML
     private Button settingsButton;
 
-    private Button focused_button = null;
-
     /**
      * Click button event
      */
