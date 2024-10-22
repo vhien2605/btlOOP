@@ -1,4 +1,4 @@
-package app.service;
+package app.service.subService;
 
 import app.domain.Book;
 
@@ -31,12 +31,11 @@ public class GoogleApiService {
     /**
      * Parses the JSON response from the Google Books API and converts it into a
      * list of Book objects.
-     * 
+     *
      * @param responseBody The JSON response string from the Google Books API
      *                     containing book information.
      * @return List<Book> A list of Book objects created from the response.
-     *         Returns an empty list if no books are found in the response.
-     * 
+     * Returns an empty list if no books are found in the response.
      * @throws JSONException If the response JSON is improperly formatted.
      */
     public List<Book> parseBookInfo(String responseBody) {
@@ -44,7 +43,7 @@ public class GoogleApiService {
         JSONArray items = jsonObject.optJSONArray("items");
         List<Book> books = new ArrayList<>();
 
-        if (items == null || items.length() == 0) {
+        if (items == null || items.isEmpty()) {
             return books; // Trả về danh sách rỗng
         }
 
@@ -73,14 +72,11 @@ public class GoogleApiService {
     /**
      * Searches for books from the Google Books API based on the provided search
      * query.
-     * 
-     * @param query The search keyword for books, which can be a title, author,
-     *              ISBN, or any related information.
+     *
+     * @param query The search keyword for {@link Book}, which can be a {@code title}, {@code author},
+     *              {@code ISBN}, or any related information.
      * @return List<Book> A list of Book objects found from the Google Books API.
-     *         Returns null if no books are found or if an error occurs.
-     * 
-     * @throws IOException          If an error occurs during the HTTP request.
-     * @throws InterruptedException If the HTTP request is interrupted.
+     * Returns {@code null} if no books are found or if an error occurs.
      */
     public List<Book> searchBooks(String query) {
         if (query.isEmpty()) {
@@ -90,27 +86,31 @@ public class GoogleApiService {
         String formattedQuery = query.trim().replace(" ", "+");
 
         // API URL với từ khóa tìm kiếm và API Key
-        String url = "https://www.googleapis.com/books/v1/volumes?q=" + formattedQuery + "&maxResults=1&key=" + API_KEY;
+        String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + query + "&maxResults=1&key=" + API_KEY;
 
         // Sử dụng HttpClient để gửi yêu cầu
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .build();
-
         try {
             // Gửi yêu cầu và chặn cho đến khi có phản hồi
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             List<Book> books = parseBookInfo(response.body());
-
             return books;
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (IOException | InterruptedException e) {
+            System.out.println(e.getMessage());
             // làm hiện thông báo ....
             return null;
         }
     }
 
+    /**
+     * getApiKey method to access Google Api
+     * <p>
+     * Load ApiKey from server properties
+     * </p>
+     */
     private void getAPI_KEY() {
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties")) {
             Properties prop = new Properties();
@@ -118,13 +118,10 @@ public class GoogleApiService {
                 System.out.println("Sorry, unable to find database.properties");
                 return;
             }
-
             prop.load(input);
-
             API_KEY = prop.getProperty("API_KEY");
-
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
     }
 }

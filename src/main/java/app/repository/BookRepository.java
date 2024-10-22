@@ -8,25 +8,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class BookRepository implements CrudRepository<Book, Integer> {
+
+/**
+ * {@link BookRepository} for doing all accessData logic in table Book mapping to
+ * {@link Book} class in Java application
+ */
+public class BookRepository implements CrudRepository<Book, String> {
     /**
-     * this function will get all books document in database
+     * this method will get all {@link Book} in database.
      *
-     * @return return list of all books in database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
+     * @return return list of all {@link Book} in database
      */
     @Override
     public List<Book> findAll() {
         List<Book> list = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
         String query = "SELECT * FROM book";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
                 list.add(new Book(
                         resultSet.getString("id"),
@@ -39,32 +38,26 @@ public class BookRepository implements CrudRepository<Book, Integer> {
                         resultSet.getInt("bookRemaining"),
                         resultSet.getString("imagePath")));
             }
-            resultSet.close();
         } catch (SQLException e) {
             System.out.println("error in findAll function in Book repo");
+            e.printStackTrace();
         }
         return list;
     }
 
     /**
-     * Find book by id
+     * Find book by id.
      *
      * @param Id book's id want to query(primary key in database)
-     * @return return Optional wrapper of Book
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
+     * @return return {@code Optional} wrapper of Book
      */
     @Override
-    public Optional<Book> findById(Integer Id) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+    public Optional<Book> findById(String Id) {
         String query = "SELECT * FROM book WHERE id = ?";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, Id);
-            resultSet = statement.executeQuery();
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            statement.setString(1, Id);
             resultSet.next();
             Book book = new Book(
                     resultSet.getString("id"),
@@ -79,26 +72,22 @@ public class BookRepository implements CrudRepository<Book, Integer> {
             return Optional.of(book);
         } catch (SQLException e) {
             System.out.println("error in findById function in Book repo");
+            e.printStackTrace();
         }
         return Optional.empty();
     }
 
     /**
-     * This function is used to delete one book by id in database
+     * This function is used to delete one {@link Book} by id in database.
      *
      * @param Id Book's id want to delete from database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
      */
     @Override
-    public void deleteById(Integer Id) {
-        Connection connection = null;
-        PreparedStatement statement = null;
+    public void deleteById(String Id) {
         String query = "DELETE FROM book WHERE id = ?";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
-            statement.setInt(1, Id);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error in deleteById function in Book repo");
@@ -106,21 +95,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to save Book object in database
+     * This function is used to save {@link Book} object in database.
      *
-     * @param entity Book object you want to save in Book table in database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
+     * @param entity {@link Book} object you want to save in Book table in database
      */
     @Override
     public void save(Book entity) {
-        Connection connection = null;
-        PreparedStatement statement = null;
         String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.prepareStatement(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, entity.getId());
             statement.setString(2, entity.getName());
             statement.setString(3, entity.getAuthor());
@@ -138,22 +122,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to count the num of document in Book database
+     * This function is used to count the num of {@link Book} in database.
      *
-     * @return the num of document in Book database
-     * @throws SQLException if there are any error when excute query or
-     *                      getConnection
+     * @return the num of document {@link Book} database
      */
     @Override
     public int count() {
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet rs = null;
         String query = "SELECT COUNT (*) FROM book";
-        try {
-            connection = DbConfig.getInstance().getConnection();
-            statement = connection.createStatement();
-            rs = statement.executeQuery(query);
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet rs = statement.executeQuery(query)) {
             // resultSet default doesn't ref to any value. must rs.next to ref first value
             if (rs.next()) {
                 return rs.getInt(1);
@@ -163,4 +141,40 @@ public class BookRepository implements CrudRepository<Book, Integer> {
         }
         return 0;
     }
+
+
+    /**
+     * Searching {@link Book} by category method.
+     *
+     * @param keywordCategory category keyword for searching
+     * @return List of {@link Book} which have category include input keyword
+     */
+    public List<Book> findByCategory(String keywordCategory) {
+        List<Book> list = new ArrayList<>();
+        String query = "SELECT * FROM book WHERE category LIKE %?%";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery();
+        ) {
+            statement.setString(1, keywordCategory);
+            while (resultSet.next()) {
+                list.add(new Book(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("author"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
+                        resultSet.getString("bookPublisher"),
+                        resultSet.getInt("bookQuantity"),
+                        resultSet.getInt("bookRemaining"),
+                        resultSet.getString("imagePath")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
+
+

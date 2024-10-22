@@ -1,7 +1,7 @@
 package app.controller.StudentTab;
 
 import app.controller.BaseController;
-import app.domain.Student;
+import app.domain.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,22 +12,22 @@ import javafx.scene.control.TextField;
 public class MainStudentController implements BaseController {
 
     @FXML
-    TableView<Student> studentTableView;
+    TableView<User> studentTableView;
 
     @FXML
-    TableColumn<Student, Integer> studentIdCol;
+    TableColumn<User, Integer> studentIdCol;
 
     @FXML
-    TableColumn<Student, String> studentNameCol;
+    TableColumn<User, String> studentNameCol;
 
     @FXML
-    TableColumn<Student, String> phoneNumberCol;
+    TableColumn<User, String> phoneNumberCol;
 
     @FXML
-    TableColumn<Student, String> studentEmailCol;
+    TableColumn<User, String> studentEmailCol;
 
     @FXML
-    TableColumn<Student, String> studentAddressCol;
+    TableColumn<User, String> studentAddressCol;
 
     @FXML
     TextField studentIdTextField, studentNameTextField, phoneNumberTextField, studentEmailTextField,

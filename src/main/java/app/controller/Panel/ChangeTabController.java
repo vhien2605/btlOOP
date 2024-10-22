@@ -1,8 +1,9 @@
 package app.controller.Panel;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.controller.BaseController;
 
-public class ChangeTabController {
+public class ChangeTabController implements BaseController {
     public void homeTab() {
         FXMLResolver.getInstance().renderScene("home_tab");
     }
@@ -27,4 +28,8 @@ public class ChangeTabController {
         FXMLResolver.getInstance().renderScene("setting_tab");
     }
 
+    @Override
+    public void initialize() {
+        
+    }
 }

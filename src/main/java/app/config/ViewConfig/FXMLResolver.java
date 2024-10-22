@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * FXMlResolver used for rendering FXML resources
+ * {@link FXMLResolver} implements interface {@link Resolver} used for rendering FXML resources
  * Use Singleton design pattern for one stage which can switch many scenes
  */
 public class FXMLResolver implements Resolver {
@@ -29,10 +29,9 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
-     * getInstance function get the current instance for singleton or create new
-     * instance
+     * get current instance of {@link FXMLResolver} or create new instance
      *
-     * @return Instance of FXMLResolver
+     * @return Instance of {@link FXMLResolver}
      */
     public static FXMLResolver getInstance() {
         if (fxmlResolver == null) {
@@ -59,6 +58,8 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
+     * setup starting properties for instance of {@link FXMLResolver}
+     *
      * @param path        Path to resources file
      * @param stage       JavaFX 's stage
      * @param sceneWidth  sceneWidth when rendering in stage
@@ -73,6 +74,9 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
+     * Get viewName from input , create {@link Scene} and
+     * set to {@link Stage}
+     *
      * @param viewName resources fileName/viewName
      */
     @Override
@@ -83,7 +87,7 @@ public class FXMLResolver implements Resolver {
     }
 
     /**
-     * @return Javafx Stage
+     * @return Javafx {@link Stage}
      */
     public Stage getStage() {
         return this.primaryStage;

@@ -1,26 +1,34 @@
 package app;
 
-import app.config.DbConfig;
 import app.config.ViewConfig.FXMLResolver;
-import app.service.UploadFileService;
+import app.service.authService.AuthUser;
+import app.service.authService.SessionService;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.io.File;
-
 /**
  * JavaFX App
  */
-public class App extends Application {
+public class
+App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * The starter method in JavaFx application
+     *
+     * @param stage the primary stage for this application, onto which
+     *              the application scene can be set.
+     *              Applications may create other stages, if needed, but they will not be
+     *              primary stages.
+     */
     @Override
     public void start(Stage stage) {
-        DbConfig.getInstance().initializeConnection();
         stage.initStyle(StageStyle.UNDECORATED);
+        SessionService sessionService = new SessionService();
+        sessionService.createSession("23020064", "USER");
         FXMLResolver.getInstance().setUp("/view", stage, 1100, 650);
         FXMLResolver.getInstance().renderScene("home_tab");
     }

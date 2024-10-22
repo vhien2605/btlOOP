@@ -1,15 +1,17 @@
 package app.controller.BookTab;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
-import app.service.BookService;
-import javafx.collections.FXCollections;
+import app.service.mainService.BookService;
+import app.service.multiTaskService.MultiTaskService;
+import app.service.multiTaskService.ResultTask;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,27 +68,62 @@ public class MainBookController implements BaseController {
     }
 
     private BookService bookService;
+    private MultiTaskService multiTaskService;
 
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
+        multiTaskService = new MultiTaskService(2);
         showBooks();
     }
 
     public void showBooks() {
-        ObservableList<Book> list = bookService.getAllBooks();
-        // Thiết lập các cột cho TableView
-        colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
-        colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
-        colBookAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
-        colBookDescription.setCellValueFactory(new PropertyValueFactory<Book, String>("description"));
-        colBookCategory.setCellValueFactory(new PropertyValueFactory<Book, String>("category"));
-        colBookPublisher.setCellValueFactory(new PropertyValueFactory<Book, String>("bookPublisher"));
-        colBookQuantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookQuantity"));
-        colBookRemaining.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookRemaining"));
+        List<Callable<ResultTask<?>>> listTasks = new ArrayList<>();
+        listTasks.add(() -> {
+            ObservableList<Book> listBooks = bookService.getAllBooks();
+            return new ResultTask<>("Observable", listBooks);
+        });
 
-        // Đặt danh sách vào TableView
-        tableViewBook.setItems(list);
+        listTasks.add(() -> {
+            return new ResultTask<>("int", 2);
+        });
+
+        try {
+            List<Future<ResultTask<?>>> results = multiTaskService.handleTasks(listTasks);
+            ObservableList<Book> list = (ObservableList<Book>) results.get(0).get().getData();
+            int number = (int) results.get(1).get().getData();
+            System.out.println(number);
+            // Thiết lập các cột cho TableView
+            colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
+            colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
+            colBookAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
+            colBookDescription.setCellValueFactory(new PropertyValueFactory<Book, String>("description"));
+            colBookCategory.setCellValueFactory(new PropertyValueFactory<Book, String>("category"));
+            colBookPublisher.setCellValueFactory(new PropertyValueFactory<Book, String>("bookPublisher"));
+            colBookQuantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookQuantity"));
+            colBookRemaining.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookRemaining"));
+
+            // Đặt danh sách vào TableView
+            tableViewBook.setItems(list);
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            multiTaskService.shutdown();
+        }
+
+//        ObservableList<Book> list = bookService.getAllBooks();
+//        // Thiết lập các cột cho TableView
+//        colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
+//        colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
+//        colBookAuthor.setCellValueFactory(new PropertyValueFactory<Book, String>("author"));
+//        colBookDescription.setCellValueFactory(new PropertyValueFactory<Book, String>("description"));
+//        colBookCategory.setCellValueFactory(new PropertyValueFactory<Book, String>("category"));
+//        colBookPublisher.setCellValueFactory(new PropertyValueFactory<Book, String>("bookPublisher"));
+//        colBookQuantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookQuantity"));
+//        colBookRemaining.setCellValueFactory(new PropertyValueFactory<Book, Integer>("bookRemaining"));
+//
+//        // Đặt danh sách vào TableView
+//        tableViewBook.setItems(list);
     }
 
 }
