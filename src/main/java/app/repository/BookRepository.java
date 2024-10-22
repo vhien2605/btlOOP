@@ -13,9 +13,9 @@ import java.util.Optional;
  * {@link BookRepository} for doing all accessData logic in table Book mapping to
  * {@link Book} class in Java application
  */
-public class BookRepository implements CrudRepository<Book, Integer> {
+public class BookRepository implements CrudRepository<Book, String> {
     /**
-     * this method will get all {@link Book} in database
+     * this method will get all {@link Book} in database.
      *
      * @return return list of all {@link Book} in database
      */
@@ -46,18 +46,18 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * Find book by id
+     * Find book by id.
      *
      * @param Id book's id want to query(primary key in database)
      * @return return {@code Optional} wrapper of Book
      */
     @Override
-    public Optional<Book> findById(Integer Id) {
+    public Optional<Book> findById(String Id) {
         String query = "SELECT * FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
-            statement.setInt(1, Id);
+            statement.setString(1, Id);
             resultSet.next();
             Book book = new Book(
                     resultSet.getString("id"),
@@ -78,16 +78,16 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to delete one {@link Book} by id in database
+     * This function is used to delete one {@link Book} by id in database.
      *
      * @param Id Book's id want to delete from database
      */
     @Override
-    public void deleteById(Integer Id) {
+    public void deleteById(String Id) {
         String query = "DELETE FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, Id);
+            statement.setString(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("error in deleteById function in Book repo");
@@ -95,7 +95,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to save {@link Book} object in database
+     * This function is used to save {@link Book} object in database.
      *
      * @param entity {@link Book} object you want to save in Book table in database
      */
@@ -122,7 +122,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
     }
 
     /**
-     * This function is used to count the num of {@link Book} in database
+     * This function is used to count the num of {@link Book} in database.
      *
      * @return the num of document {@link Book} database
      */
@@ -144,7 +144,7 @@ public class BookRepository implements CrudRepository<Book, Integer> {
 
 
     /**
-     * Searching {@link Book} by category method
+     * Searching {@link Book} by category method.
      *
      * @param keywordCategory category keyword for searching
      * @return List of {@link Book} which have category include input keyword

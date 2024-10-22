@@ -5,24 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/domain/BorrowReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/domain/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/StudentService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/session.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/CreateBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/MainBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/BookTab/MainBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/Panel/ChangeTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/Panel/ChangeTabController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/Panel/HeaderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/Panel/HeaderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/domain/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/domain/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/domain/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/StudentTab/MainStudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/StudentTab/MainStudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/domain/Comment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/domain/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/StudentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/BookService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/GoogleApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/GoogleApiService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/multiTask/MultiTaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/multiTaskService/MultiTaskService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/multiTask/ResultTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/multiTaskService/ResultTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/CrudRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -6,13 +6,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
+ * Class for all {@link Book} logic.
+ * <p>
  * {@link BookService } for doing all logic business with {@link Book} entity
  */
 public class BookService {
     private final BookRepository bookRepository;
 
     /**
-     * inject Repository instance by constructor by Dependency Injection design pattern
+     * inject Repository instance by constructor by Dependency Injection design pattern.
      *
      * @param bookRepository {@link Book} accessData logic
      */
@@ -22,7 +24,7 @@ public class BookService {
 
 
     /**
-     * Get all book method, call to {@code BookRepository}
+     * Get all book method, call to {@code BookRepository}.
      *
      * @return {@code ObservableList<Book>} send to front-end
      */
@@ -31,6 +33,8 @@ public class BookService {
     }
 
     /**
+     * Handle save {@link Book} logic.
+     *
      * @param book {@link  Book} entity want to save to database
      */
     public void handleSaveBook(Book book) {
@@ -38,6 +42,8 @@ public class BookService {
     }
 
     /**
+     * Service find by category.
+     *
      * @param keyword keyword for searching in category
      * @return {@code ObservableList<Book>} using for front-end layer
      */

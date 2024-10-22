@@ -1,17 +1,22 @@
 package app.domain;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class Student {
+public class User {
     private SimpleStringProperty id;
+    private SimpleStringProperty username;
+    private SimpleStringProperty password;
+    private SimpleStringProperty role;
     private SimpleStringProperty name;
     private SimpleStringProperty address;
     private SimpleStringProperty email;
     private SimpleStringProperty phoneNumber;
 
-    public Student(String id, String name, String address, String email, String phoneNumber) {
+    public User(String id, String username, String password, String role, String name, String address, String email, String phoneNumber) {
         this.id = new SimpleStringProperty(id);
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
+        this.role = new SimpleStringProperty(role);
         this.name = new SimpleStringProperty(name);
         this.address = new SimpleStringProperty(address);
         this.email = new SimpleStringProperty(email);
@@ -28,6 +33,42 @@ public class Student {
 
     public void setId(String id) {
         this.id = new SimpleStringProperty(id);
+    }
+
+    public String getUsername() {
+        return username.get();
+    }
+
+    public SimpleStringProperty getUsernameProperty() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = new SimpleStringProperty(username);
+    }
+
+    public String getPassword() {
+        return password.get();
+    }
+
+    public SimpleStringProperty getPasswordProperty() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = new SimpleStringProperty(password);
+    }
+
+    public String getRole() {
+        return role.get();
+    }
+
+    public SimpleStringProperty getRoleProperty() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = new SimpleStringProperty(role);
     }
 
     public String getName() {
@@ -77,6 +118,7 @@ public class Student {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
     }
+
 
     @Override
     public String toString() {

@@ -1,8 +1,7 @@
 package app.repository;
 
 import app.config.DbConfig;
-import app.domain.Book;
-import app.domain.Student;
+import app.domain.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,61 +10,66 @@ import java.util.Optional;
 
 
 /**
- * {@link StudentRepository}
+ * {@link UserRepository}
  * Doing all accessData logics in table Student mapping to
- * {@link Student} object in Java application
+ * {@link User} object in Java application
  */
-public class StudentRepository implements CrudRepository<Student, Integer> {
+public class UserRepository implements CrudRepository<User, String> {
     /**
-     * Find all {@link Student} in database
+     * Find all {@link User} in database.
      *
-     * @return Collection of all {@link Student} in database
+     * @return Collection of all {@link User} in database
      */
     @Override
-    public List<Student> findAll() {
-        List<Student> list = new ArrayList<>();
-        String query = "SELECT * FROM student";
+    public List<User> findAll() {
+        List<User> list = new ArrayList<>();
+        String query = "SELECT * FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
             while (resultSet.next()) {
-                list.add(new Student(resultSet.getString("id"),
+                list.add(new User(resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
                         resultSet.getString("name"),
                         resultSet.getString("address"),
                         resultSet.getString("email"),
                         resultSet.getString("phoneNumber")));
             }
         } catch (SQLException e) {
-            System.out.println("error in findAll function in Student repo");
+            System.out.println("error in count function in User repo");
             System.out.println(e.getMessage());
         }
         return list;
     }
 
     /**
-     * Find the {@link Student} entity which have {@code Id} input in database
+     * Find the {@link User} entity which have {@code Id} input in database.
      *
      * @param Id Document's {@code Id} want to query from database
-     * @return {@code Optional<Student>} wrapper of {@link Student} object. Avoid null pointer access error
+     * @return {@code Optional<Student>} wrapper of {@link User} object. Avoid null pointer access error
      */
     @Override
-    public Optional<Student> findById(Integer Id) {
-        String query = "SELECT * FROM student WHERE id = ?";
+    public Optional<User> findById(String Id) {
+        String query = "SELECT * FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
              ResultSet resultSet = statement.executeQuery()) {
-
-            statement.setInt(1, Id);
+            statement.setString(1, Id);
             resultSet.next();
-            Student student = new Student(
+            User student = new User(
                     resultSet.getString("id"),
+                    resultSet.getString("username"),
+                    resultSet.getString("password"),
+                    resultSet.getString("role"),
                     resultSet.getString("name"),
                     resultSet.getString("address"),
                     resultSet.getString("email"),
                     resultSet.getString("phoneNumber"));
             return Optional.of(student);
         } catch (SQLException e) {
-            System.out.println("error in findById function in Student repo");
+            System.out.println("error in count function in User repo");
             System.out.println(e.getMessage());
         }
         return Optional.empty();
@@ -73,54 +77,58 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
 
 
     /**
-     * Delete document which have {@code Id} input from database
+     * Delete document which have {@code Id} input from database.
      *
-     * @param Id {@link Student}'s {@code Id} want to delete from {@link Student}
+     * @param Id {@link User}'s {@code Id} want to delete from {@link User}
      */
     @Override
-    public void deleteById(Integer Id) {
-        String query = "DELETE FROM student WHERE id = ?";
+    public void deleteById(String Id) {
+        String query = "DELETE FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setInt(1, Id);
+            statement.setString(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in deleteById function in Student repo");
+            System.out.println("error in count function in User repo");
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
     /**
-     * Save the {@link Student} object mapping to entity in database
+     * Method handle save {@link User}.
      *
-     * @param student Object want to save to database (mapping to T type table)
+     * @param user Object want to save to database (mapping to {@code T} type table)
      */
     @Override
-    public void save(Student student) {
-        String query = "INSERT INTO book(id,name,address,email,phoneNumber) VALUES(?,?,?,?,?)";
+    public void save(User user) {
+        String query = "INSERT INTO user(id,username,password,role,name,address,email,phoneNumber)" +
+                " VALUES(?,?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, student.getId());
-            statement.setString(2, student.getName());
-            statement.setString(3, student.getAddress());
-            statement.setString(4, student.getEmail());
-            statement.setString(5, student.getPhoneNumber());
+            statement.setString(1, user.getId());
+            statement.setString(3, user.getUsername());
+            statement.setString(4, user.getPassword());
+            statement.setString(5, user.getRole());
+            statement.setString(6, user.getName());
+            statement.setString(7, user.getAddress());
+            statement.setString(8, user.getEmail());
+            statement.setString(9, user.getPhoneNumber());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in save function in Student repo");
+            System.out.println("error in count function in User repo");
             System.out.println(e.getMessage());
         }
     }
 
     /**
-     * Count all {@link Student} document in database
+     * Count all {@link User} document in database.
      *
-     * @return the num of {@link Student}'s document in database
+     * @return the num of {@link User}'s document in database
      */
     @Override
     public int count() {
-        String query = "SELECT COUNT (*) FROM student";
+        String query = "SELECT COUNT (*) FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
              Statement statement = connection.createStatement();
              ResultSet rs = statement.executeQuery(query)) {
@@ -128,7 +136,7 @@ public class StudentRepository implements CrudRepository<Student, Integer> {
                 return rs.getInt(1);
             }
         } catch (SQLException e) {
-            System.out.println("error in count function in Student repo");
+            System.out.println("error in count function in User repo");
             System.out.println(e.getMessage());
         }
         return 0;

@@ -54,6 +54,7 @@ public class Comment {
         return information;
     }
 
+    
     public void setInformation(String information) {
         this.information = new SimpleStringProperty(information);
     }
