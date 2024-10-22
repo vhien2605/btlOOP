@@ -25,7 +25,7 @@ public class UserService {
         List<User> students = this.userRepository.findAll();
         return FXCollections.observableList(students);
     }
-
+    
     public User findById(String studentID) {
         Optional<User> wrapperResult = this.userRepository.findById(studentID);
         return wrapperResult.orElse(null);

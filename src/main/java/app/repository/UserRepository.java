@@ -25,8 +25,8 @@ public class UserRepository implements CrudRepository<User, String> {
         List<User> list = new ArrayList<>();
         String query = "SELECT * FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new User(resultSet.getString("id"),
                         resultSet.getString("username"),
@@ -37,8 +37,9 @@ public class UserRepository implements CrudRepository<User, String> {
                         resultSet.getString("email"),
                         resultSet.getString("phoneNumber")));
             }
+            resultSet.close();
         } catch (SQLException e) {
-            System.out.println("error in count function in User repo");
+            System.out.println("error in findAll function in User repo");
             System.out.println(e.getMessage());
         }
         return list;
@@ -54,22 +55,24 @@ public class UserRepository implements CrudRepository<User, String> {
     public Optional<User> findById(String Id) {
         String query = "SELECT * FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
-            resultSet.next();
-            User student = new User(
-                    resultSet.getString("id"),
-                    resultSet.getString("username"),
-                    resultSet.getString("password"),
-                    resultSet.getString("role"),
-                    resultSet.getString("name"),
-                    resultSet.getString("address"),
-                    resultSet.getString("email"),
-                    resultSet.getString("phoneNumber"));
-            return Optional.of(student);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                User student = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber"));
+                resultSet.close();
+                return Optional.of(student);
+            }
         } catch (SQLException e) {
-            System.out.println("error in count function in User repo");
+            System.out.println("error in findById function in User repo");
             System.out.println(e.getMessage());
         }
         return Optional.empty();
@@ -89,7 +92,7 @@ public class UserRepository implements CrudRepository<User, String> {
             statement.setString(1, Id);
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in count function in User repo");
+            System.out.println("error in delete function in User repo");
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -116,7 +119,7 @@ public class UserRepository implements CrudRepository<User, String> {
             statement.setString(9, user.getPhoneNumber());
             int count = statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("error in count function in User repo");
+            System.out.println("error in save function in User repo");
             System.out.println(e.getMessage());
         }
     }
@@ -130,10 +133,12 @@ public class UserRepository implements CrudRepository<User, String> {
     public int count() {
         String query = "SELECT COUNT (*) FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(query)) {
+             Statement statement = connection.createStatement()) {
+            ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
-                return rs.getInt(1);
+                int result = rs.getInt(1);
+                rs.close();
+                return result;
             }
         } catch (SQLException e) {
             System.out.println("error in count function in User repo");

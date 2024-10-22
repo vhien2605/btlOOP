@@ -5,12 +5,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import app.domain.User;
+
 public class SessionService {
+    /**
+     * Create session method.
+     * <p>
+     * After checking username and password, server will create
+     * an user session to keep the interacting
+     * </p>
+     *
+     * @param id   {@link User}'s id
+     * @param role Attribute role for authorization
+     */
     public void createSession(String id, String role) {
         Properties properties = new Properties();
         properties.setProperty("ID", id);
         properties.setProperty("ROLE", role);
-        AuthUser.getInstance().createCurrentUser(id);
+        AuthUser.getInstance().findCurrentUser(id);
         try (FileOutputStream writter = new FileOutputStream("./src/main/resources/session.properties")) {
             properties.store(writter, null);
         } catch (IOException e) {
@@ -19,6 +31,12 @@ public class SessionService {
         }
     }
 
+    /**
+     * Clear session method.
+     * <p>
+     * Clear session when user logout or the application shutdown
+     * </p>
+     */
     public void clear() {
         String rootPath = System.getProperty("user.dir");
         String finalPath = rootPath + File.separator + "src" + File.separator + "main"
