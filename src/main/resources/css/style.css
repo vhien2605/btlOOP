@@ -1,9 +1,0 @@
-Button {
-    background-color: rgb(18, 134, 222);
-    -fx-background-color: rgb(18, 134, 222);
-}
-
-Button:hover {
-    background-color: green;
-    -fx-background-color: green;
-}

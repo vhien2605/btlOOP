@@ -8,13 +8,13 @@ module app {
     requires org.slf4j;
 
     opens app.controller to javafx.fxml;
-    opens app.controller.Panel to javafx.fxml;
-    opens app.controller.BookTab to javafx.fxml;
-    opens app.controller.HomeTab to javafx.fxml;
-    opens app.controller.IssueBookTab to javafx.fxml;
-    opens app.controller.ReturnBookTab to javafx.fxml;
-    opens app.controller.SettingTab to javafx.fxml;
-    opens app.controller.StudentTab to javafx.fxml;
+    opens app.controller.admin.Panel to javafx.fxml;
+    opens app.controller.admin.BookTab to javafx.fxml;
+    opens app.controller.admin.HomeTab to javafx.fxml;
+    opens app.controller.admin.IssueBookTab to javafx.fxml;
+    opens app.controller.admin.ReturnBookTab to javafx.fxml;
+    opens app.controller.admin.SettingTab to javafx.fxml;
+    opens app.controller.admin.UserTab to javafx.fxml;
     opens app.domain to javafx.base;
 
     exports app;

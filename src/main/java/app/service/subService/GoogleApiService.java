@@ -35,7 +35,7 @@ public class GoogleApiService {
      * @param responseBody The JSON response string from the Google Books API
      *                     containing book information.
      * @return List<Book> A list of Book objects created from the response.
-     * Returns an empty list if no books are found in the response.
+     *         Returns an empty list if no books are found in the response.
      * @throws JSONException If the response JSON is improperly formatted.
      */
     public List<Book> parseBookInfo(String responseBody) {
@@ -73,17 +73,16 @@ public class GoogleApiService {
      * Searches for books from the Google Books API based on the provided search
      * query.
      *
-     * @param query The search keyword for {@link Book}, which can be a {@code title}, {@code author},
+     * @param query The search keyword for {@link Book}, which can be a
+     *              {@code title}, {@code author},
      *              {@code ISBN}, or any related information.
      * @return List<Book> A list of Book objects found from the Google Books API.
-     * Returns {@code null} if no books are found or if an error occurs.
+     *         Returns {@code null} if no books are found or if an error occurs.
      */
     public List<Book> searchBooks(String query) {
         if (query.isEmpty()) {
             return null;
         }
-
-        String formattedQuery = query.trim().replace(" ", "+");
 
         // API URL với từ khóa tìm kiếm và API Key
         String url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + query + "&maxResults=1&key=" + API_KEY;
