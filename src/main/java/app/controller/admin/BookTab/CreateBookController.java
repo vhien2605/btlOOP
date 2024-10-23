@@ -41,20 +41,24 @@ public class CreateBookController implements BaseController {
         } else if (e.getSource() == cancelButton) {
             clearFields();
         } else if (e.getSource() == saveButton) {
-            Book book = getBook();
-            String image = "";
-            if (selectedFile != null) {
-                image = selectedFile.getName();
-            }
-            book.setImagePath(image);
-            fileService.handleSaveImage(selectedFile, "book");
-            bookService.handleSaveBook(book);
+            saveBook();
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == findDocomentButton) {
             addDataBook();
         } else if (e.getSource() == uploadFileButton) {
             RenderFileDialog();
         }
+    }
+
+    private void saveBook() {
+        Book book = getBook();
+        String image = "";
+        if (selectedFile != null) {
+            image = selectedFile.getName();
+        }
+        book.setImagePath(image);
+        fileService.handleSaveImage(selectedFile, "book");
+        bookService.handleSaveBook(book);
     }
 
     private void RenderFileDialog() {
