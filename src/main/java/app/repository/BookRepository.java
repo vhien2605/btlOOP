@@ -24,8 +24,8 @@ public class BookRepository implements CrudRepository<Book, String> {
         List<Book> list = new ArrayList<>();
         String query = "SELECT * FROM book";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new Book(
                         resultSet.getString("id"),
@@ -38,6 +38,7 @@ public class BookRepository implements CrudRepository<Book, String> {
                         resultSet.getInt("bookRemaining"),
                         resultSet.getString("imagePath")));
             }
+            resultSet.close();
         } catch (SQLException e) {
             System.out.println("error in findAll function in Book repo");
             e.printStackTrace();
@@ -55,21 +56,23 @@ public class BookRepository implements CrudRepository<Book, String> {
     public Optional<Book> findById(String Id) {
         String query = "SELECT * FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
-            resultSet.next();
-            Book book = new Book(
-                    resultSet.getString("id"),
-                    resultSet.getString("name"),
-                    resultSet.getString("author"),
-                    resultSet.getString("description"),
-                    resultSet.getString("category"),
-                    resultSet.getString("bookPublisher"),
-                    resultSet.getInt("bookQuantity"),
-                    resultSet.getInt("bookRemaining"),
-                    resultSet.getString("imagePath"));
-            return Optional.of(book);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                Book book = new Book(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("author"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
+                        resultSet.getString("bookPublisher"),
+                        resultSet.getInt("bookQuantity"),
+                        resultSet.getInt("bookRemaining"),
+                        resultSet.getString("imagePath"));
+                resultSet.close();
+                return Optional.of(book);
+            }
         } catch (SQLException e) {
             System.out.println("error in findById function in Book repo");
             e.printStackTrace();
@@ -130,11 +133,13 @@ public class BookRepository implements CrudRepository<Book, String> {
     public int count() {
         String query = "SELECT COUNT (*) FROM book";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet rs = statement.executeQuery(query)) {
+             Statement statement = connection.createStatement()) {
+            ResultSet rs = statement.executeQuery(query);
             // resultSet default doesn't ref to any value. must rs.next to ref first value
             if (rs.next()) {
-                return rs.getInt(1);
+                int result = rs.getInt(1);
+                rs.close();
+                return result;
             }
         } catch (SQLException e) {
             System.out.println("error in count function in Book repo");
@@ -153,10 +158,9 @@ public class BookRepository implements CrudRepository<Book, String> {
         List<Book> list = new ArrayList<>();
         String query = "SELECT * FROM book WHERE category LIKE %?%";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery();
-        ) {
+             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, keywordCategory);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 list.add(new Book(
                         resultSet.getString("id"),
@@ -169,6 +173,7 @@ public class BookRepository implements CrudRepository<Book, String> {
                         resultSet.getInt("bookRemaining"),
                         resultSet.getString("imagePath")));
             }
+            resultSet.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

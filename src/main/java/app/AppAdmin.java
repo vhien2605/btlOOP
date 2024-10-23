@@ -27,8 +27,6 @@ public class AppAdmin extends Application {
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
-        // SessionService sessionService = new SessionService();
-        // sessionService.createSession("23020064", "USER");
         FXMLResolver.getInstance().setUp("/view/admin", stage, 1100, 650);
         FXMLResolver.getInstance().renderScene("homeTab/home_tab");
     }
