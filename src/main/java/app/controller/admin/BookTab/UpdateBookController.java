@@ -1,59 +1,32 @@
 package app.controller.admin.BookTab;
 
-import java.util.List;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-public class CreateBookController extends HandleBook {
+public class UpdateBookController extends HandleBook {
     @FXML
-    private Button findDocomentButton, cancelButton, uploadFileButton;
+    protected TextField bookRemainingTextField;
+
+    public void renderDataBook(Book book) {
+        setTextFields(book);
+    }
 
     @Override
     protected void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
-        } else if (e.getSource() == cancelButton) {
-            clearFields();
         } else if (e.getSource() == saveButton) {
             saveBook();
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
-        } else if (e.getSource() == findDocomentButton) {
-            addDataBook();
-        } else if (e.getSource() == uploadFileButton) {
-            RenderFileDialog();
         }
     }
 
     @Override
     protected void saveBook() {
-        Book book = getBook();
-        String image = "";
-        if (selectedFile != null) {
-            image = selectedFile.getName();
-        }
-        book.setImagePath(image);
-        fileService.handleSaveImage(selectedFile, "book");
-        bookService.handleSaveBook(book);
-    }
 
-    private void addDataBook() {
-        String query = bookISBNTextField.getText();
-        if (query.isEmpty()) {
-            return;
-        }
-        List<Book> books = googleApiService.searchBooks(query);
-        if (books.isEmpty()) {
-            System.out.println("khong tim thay ban ghi");
-            // làm cái hiện thông báo...
-            return;
-        }
-        for (Book book : books) {
-            setTextFields(book);
-        }
     }
 
     @Override
@@ -80,16 +53,13 @@ public class CreateBookController extends HandleBook {
         bookPublisherTextField.setText(book.getBookPublisher());
         bookCategoryTextField.setText(book.getCategory());
         bookDescriptionTextArea.setText(book.getDescription());
+        bookQuantityTextField.setText("" + book.getBookQuantity());
+        bookRemainingTextField.setText("" + book.getBookRemaining());
+        imagePathTextField.setText(book.getImagePath());
     }
 
-    private void clearFields() {
-        bookISBNTextField.clear();
-        bookNameTextField.clear();
-        bookAuthorTextField.clear();
-        bookQuantityTextField.clear();
-        bookPublisherTextField.clear();
-        bookCategoryTextField.clear();
-        bookDescriptionTextArea.clear();
-    }
+    @Override
+    public void initialize() {
 
+    }
 }
