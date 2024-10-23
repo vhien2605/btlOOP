@@ -8,10 +8,13 @@ import javafx.scene.control.TextField;
 
 public class UpdateBookController extends HandleBook {
     @FXML
-    protected TextField bookRemainingTextField;
+    private TextField bookRemainingTextField;
+
+    protected Book oldValueBook;
 
     public void renderDataBook(Book book) {
-        setTextFields(book);
+        this.oldValueBook = book;
+        this.setTextFields(book);
     }
 
     @Override
@@ -21,12 +24,25 @@ public class UpdateBookController extends HandleBook {
         } else if (e.getSource() == saveButton) {
             saveBook();
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+        } else if (e.getSource() == uploadFileButton) {
+            RenderFileDialog();
         }
     }
 
     @Override
     protected void saveBook() {
+        Book newValueBook = getBook();
+        String image = "";
+        if (selectedFile != null) {
+            System.out.println("path: " + oldValueBook.getImagePath());
+            if (oldValueBook.getImagePath() != null) {
+                fileService.handleDeleteImage(oldValueBook.getImagePath(), "book");
+            }
 
+            image = fileService.handleSaveImage(selectedFile, "book");
+            newValueBook.setImagePath(image);
+        }
+        bookService.handleUpdateOne(newValueBook);
     }
 
     @Override
@@ -45,8 +61,7 @@ public class UpdateBookController extends HandleBook {
         return book;
     }
 
-    @Override
-    protected void setTextFields(Book book) {
+    private void setTextFields(Book book) {
         bookISBNTextField.setText(book.getId());
         bookNameTextField.setText(book.getName());
         bookAuthorTextField.setText(book.getAuthor());
@@ -58,8 +73,4 @@ public class UpdateBookController extends HandleBook {
         imagePathTextField.setText(book.getImagePath());
     }
 
-    @Override
-    public void initialize() {
-
-    }
 }

@@ -10,7 +10,7 @@ import javafx.scene.control.Button;
 
 public class CreateBookController extends HandleBook {
     @FXML
-    private Button findDocomentButton, cancelButton, uploadFileButton;
+    private Button findDocomentButton, cancelButton;
 
     @Override
     protected void handleButtonAction(ActionEvent e) {
@@ -33,10 +33,9 @@ public class CreateBookController extends HandleBook {
         Book book = getBook();
         String image = "";
         if (selectedFile != null) {
-            image = selectedFile.getName();
+            image = fileService.handleSaveImage(selectedFile, "book");
+            book.setImagePath(image);
         }
-        book.setImagePath(image);
-        fileService.handleSaveImage(selectedFile, "book");
         bookService.handleSaveBook(book);
     }
 
@@ -67,13 +66,12 @@ public class CreateBookController extends HandleBook {
                 bookPublisherTextField.getText(),
                 Integer.parseInt(bookQuantityTextField.getText()),
                 Integer.parseInt(bookQuantityTextField.getText()),
-                imagePathTextField.getText());
+                null);
 
         return book;
     }
 
-    @Override
-    protected void setTextFields(Book book) {
+    private void setTextFields(Book book) {
         bookISBNTextField.setText(book.getId());
         bookNameTextField.setText(book.getName());
         bookAuthorTextField.setText(book.getAuthor());

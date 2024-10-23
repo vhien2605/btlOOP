@@ -26,7 +26,7 @@ public abstract class HandleBook implements BaseController {
     protected TextArea bookDescriptionTextArea;
 
     @FXML
-    protected Button comeBackButton, saveButton;
+    protected Button comeBackButton, saveButton, uploadFileButton;
 
     protected BookService bookService;
     protected GoogleApiService googleApiService;
@@ -40,8 +40,6 @@ public abstract class HandleBook implements BaseController {
     protected abstract void saveBook();
 
     protected abstract Book getBook();
-
-    protected abstract void setTextFields(Book book);
 
     protected void RenderFileDialog() {
         System.out.println("Click button uploadFileButton");

@@ -93,13 +93,13 @@
                               <FontAwesomeIconView glyphName="UPLOAD" />
                            </graphic>
                         </Button>
-                        <TextField fx:id="imagePathTextField" layoutX="326.0" layoutY="407.0" prefHeight="25.0" prefWidth="257.0" promptText="No files selected" />
+                        <TextField fx:id="imagePathTextField" layoutX="326.0" layoutY="407.0" prefHeight="25.0" prefWidth="257.0" promptText="No files selected" editable="false" />
                         <Label layoutX="110.0" layoutY="240.0" text="Book Remaining:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="bookRemainingTextField" layoutX="236.0" layoutY="240.0" prefHeight="25.0" prefWidth="349.0" promptText="Book Remaining" editable="false"/>
+                        <TextField fx:id="bookRemainingTextField" layoutX="236.0" layoutY="240.0" prefHeight="25.0" prefWidth="349.0" promptText="Book Remaining"/>
                      </children>
                   </Pane>
                </bottom>
