@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.IssueBookTab.MainIssueController">
+   <children>
+      <fx:include source="../staticLayout/sidebar.fxml" />
+      <BorderPane prefHeight="650.0" prefWidth="950.0">
+         <top>
+            <fx:include source="../staticLayout/header.fxml" />
+         </top>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="28.0" text="Issue Books" textFill="#1d3ec4">
+                           <font>
+                              <Font size="35.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </top>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </children>
+</HBox>

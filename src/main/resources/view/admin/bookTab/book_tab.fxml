@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.MainBookController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <fx:include source="../staticLayout/sidebar.fxml" />
+         </children>
+      </VBox>
+      <BorderPane prefHeight="650.0" prefWidth="950.0">
+         <top>
+            <fx:include source="../staticLayout/header.fxml" />
+         </top>
+         <center>
+            <BorderPane prefHeight="630.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+               <top>
+                  <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label layoutX="25.0" text="Books" textFill="#1037b7">
+                           <font>
+                              <Font size="35.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="searchBookTextField" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Book" />
+                        <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
+                        <Button fx:id="buttonAddBook" layoutX="784.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="112.0" text="    Add book">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <FontAwesomeIconView glyphName="BOOK" layoutX="793.0" layoutY="31.0" size="1.4em" text="" />
+                     </children>
+                  </Pane>
+               </top>
+               <bottom>
+                  <Pane prefHeight="35.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="buttonDelete" layoutX="77.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="84.0" text=" Delete" />
+                        <FontAwesomeIconView fill="#bf0d0d" glyphName="TRASH" layoutX="84.0" layoutY="22.0" text="" />
+                        <Button fx:id="buttonUpdate" layoutX="198.0" layoutY="5.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="79.0" text="    Update" />
+                        <FontAwesomeIconView fill="#c91010" glyphName="RETWEET" layoutX="205.0" layoutY="22.0" text="" />
+                     </children>
+                  </Pane>
+               </bottom>
+               <right>
+                  <TableView fx:id="tableViewBook" prefHeight="535.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                     <columns>
+                        <TableColumn fx:id="colBookISBN" prefWidth="76.79998624324799" text="Book ISBN" />
+                        <TableColumn fx:id="colBookName" prefWidth="171.20001983642578" text="Book Name" />
+                        <TableColumn fx:id="colBookAuthor" prefWidth="148.79998779296875" text="Book Author" />
+                        <TableColumn fx:id="colBookDescription" minWidth="0.0" prefWidth="144.0" text="Description" />
+                        <TableColumn fx:id="colBookCategory" prefWidth="127.199951171875" text="Category" />
+                        <TableColumn fx:id="colBookPublisher" prefWidth="133.60000610351562" text="Book Publisher" />
+                        <TableColumn fx:id="colBookQuantity" minWidth="0.0" prefWidth="75.199951171875" text="Quantity" />
+                        <TableColumn fx:id="colBookRemaining" minWidth="0.0" prefWidth="76.0" text="Remaining" />
+                     </columns>
+                  </TableView>
+               </right>
+            </BorderPane>
+         </center>
+      </BorderPane>
+
+   </children>
+</HBox>
