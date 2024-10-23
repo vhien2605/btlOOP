@@ -85,16 +85,18 @@ public class UserRepository implements CrudRepository<User, String> {
      * @param Id {@link User}'s {@code Id} want to delete from {@link User}
      */
     @Override
-    public void deleteById(String Id) {
+    public boolean deleteById(String Id) {
         String query = "DELETE FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             int count = statement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("error in delete function in User repo");
             System.out.println(e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
 
@@ -131,7 +133,7 @@ public class UserRepository implements CrudRepository<User, String> {
      */
     @Override
     public int count() {
-        String query = "SELECT COUNT (*) FROM user";
+        String query = "SELECT COUNT(*) FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
@@ -145,5 +147,37 @@ public class UserRepository implements CrudRepository<User, String> {
             System.out.println(e.getMessage());
         }
         return 0;
+    }
+
+    /**
+     * Update one {@link User}.
+     * <p>
+     * The document of {@link User} always one because of the unique id(primary key)
+     * </p>
+     *
+     * @param user the {@link User} want to update
+     * @return {@code boolean} when update successfully or failed
+     */
+    public boolean updateOne(User user) {
+        String query = "UPDATE user SET username=?,password=?,role=?,name=?,address=?" +
+                ",email=?,phoneNumber=? WHERE id=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole());
+            preparedStatement.setString(4, user.getName());
+            preparedStatement.setString(5, user.getAddress());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getPhoneNumber());
+            preparedStatement.setString(8, user.getId());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 }

@@ -18,4 +18,6 @@ module app {
     opens app.domain to javafx.base;
 
     exports app;
+    exports app.repository;
+    exports app.domain;
 }
