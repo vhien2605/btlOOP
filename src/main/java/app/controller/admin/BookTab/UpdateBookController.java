@@ -1,28 +1,29 @@
 package app.controller.admin.BookTab;
 
-import java.util.List;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
-public class CreateBookController extends HandleBook {
+public class UpdateBookController extends HandleBook {
     @FXML
-    private Button findDocomentButton, cancelButton;
+    private TextField bookRemainingTextField;
+
+    protected Book oldValueBook;
+
+    public void renderDataBook(Book book) {
+        this.oldValueBook = book;
+        this.setTextFields(book);
+    }
 
     @Override
     protected void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
-        } else if (e.getSource() == cancelButton) {
-            clearFields();
         } else if (e.getSource() == saveButton) {
             saveBook();
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
-        } else if (e.getSource() == findDocomentButton) {
-            addDataBook();
         } else if (e.getSource() == uploadFileButton) {
             RenderFileDialog();
         }
@@ -30,29 +31,18 @@ public class CreateBookController extends HandleBook {
 
     @Override
     protected void saveBook() {
-        Book book = getBook();
+        Book newValueBook = getBook();
         String image = "";
         if (selectedFile != null) {
-            image = fileService.handleSaveImage(selectedFile, "book");
-            book.setImagePath(image);
-        }
-        bookService.handleSaveBook(book);
-    }
+            System.out.println("path: " + oldValueBook.getImagePath());
+            if (oldValueBook.getImagePath() != null) {
+                fileService.handleDeleteImage(oldValueBook.getImagePath(), "book");
+            }
 
-    private void addDataBook() {
-        String query = bookISBNTextField.getText();
-        if (query.isEmpty()) {
-            return;
+            image = fileService.handleSaveImage(selectedFile, "book");
+            newValueBook.setImagePath(image);
         }
-        List<Book> books = googleApiService.searchBooks(query);
-        if (books.isEmpty()) {
-            System.out.println("khong tim thay ban ghi");
-            // làm cái hiện thông báo...
-            return;
-        }
-        for (Book book : books) {
-            setTextFields(book);
-        }
+        bookService.handleUpdateOne(newValueBook);
     }
 
     @Override
@@ -66,7 +56,7 @@ public class CreateBookController extends HandleBook {
                 bookPublisherTextField.getText(),
                 Integer.parseInt(bookQuantityTextField.getText()),
                 Integer.parseInt(bookQuantityTextField.getText()),
-                null);
+                imagePathTextField.getText());
 
         return book;
     }
@@ -78,16 +68,9 @@ public class CreateBookController extends HandleBook {
         bookPublisherTextField.setText(book.getBookPublisher());
         bookCategoryTextField.setText(book.getCategory());
         bookDescriptionTextArea.setText(book.getDescription());
-    }
-
-    private void clearFields() {
-        bookISBNTextField.clear();
-        bookNameTextField.clear();
-        bookAuthorTextField.clear();
-        bookQuantityTextField.clear();
-        bookPublisherTextField.clear();
-        bookCategoryTextField.clear();
-        bookDescriptionTextArea.clear();
+        bookQuantityTextField.setText("" + book.getBookQuantity());
+        bookRemainingTextField.setText("" + book.getBookRemaining());
+        imagePathTextField.setText(book.getImagePath());
     }
 
 }
