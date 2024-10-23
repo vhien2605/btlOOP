@@ -52,12 +52,21 @@ public class BookService {
     }
 
     /**
+     * handle update book service.
+     *
+     * @param book new {@link Book} to replace the current {@link Book}
+     * @return {@code boolean} if update in repo success or failed
+     */
+    public boolean handleUpdateOne(Book book) {
+        return this.bookRepository.updateOne(book);
+    }
+    
+    /**
      * Delete book by id
-     * 
+     *
      * @param id id of book selected from table to delete
      */
-    public void deleteBook(String id) {
-        this.bookRepository.deleteById(id);
+    public boolean deleteBook(String id) {
+        return this.bookRepository.deleteById(id);
     }
-
 }
