@@ -1,17 +1,9 @@
 package app.controller.admin.BookTab;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.service.mainService.BookService;
-import app.service.multiTaskService.MultiTaskService;
-import app.service.multiTaskService.ResultTask;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,6 +48,8 @@ public class MainBookController implements BaseController {
     @FXML
     private TableColumn<Book, Integer> colBookRemaining;
 
+    ObservableList<Book> list;
+
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == buttonAddBook) {
@@ -63,22 +57,20 @@ public class MainBookController implements BaseController {
         } else if (e.getSource() == buttonUpdate) {
             System.out.println("click button update");
         } else if (e.getSource() == buttonDelete) {
-            System.out.println("click button delete");
+            deleteBook();
         }
     }
 
     private BookService bookService;
-    private MultiTaskService multiTaskService;
 
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
-        multiTaskService = new MultiTaskService(2);
         showBooks();
     }
 
-    public void showBooks() {
-        ObservableList<Book> list = bookService.getAllBooks();
+    private void showBooks() {
+        list = bookService.getAllBooks();
         // Thiết lập các cột cho TableView
         colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
         colBookName.setCellValueFactory(new PropertyValueFactory<Book, String>("name"));
@@ -93,4 +85,19 @@ public class MainBookController implements BaseController {
         tableViewBook.setItems(list);
     }
 
+    private void deleteBook() {
+        Book selectedBook = tableViewBook.getSelectionModel().getSelectedItem();
+        if (selectedBook != null) {
+            String selectedId = selectedBook.getId();
+            bookService.deleteBook(selectedId);
+            for (int i = 0; i < list.size(); i++) {
+                if (list.get(i).getId().equals(selectedId)) {
+                    list.remove(i);
+                    break;
+                }
+            }
+        } else {
+            System.out.println("No book selected");
+        }
+    }
 }
