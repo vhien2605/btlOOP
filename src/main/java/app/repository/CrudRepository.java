@@ -31,12 +31,13 @@ public interface CrudRepository<T, ID> {
      *
      * @param id Object's ID you want to delete from {@link T} entity.
      */
-    void deleteById(ID id);
+    boolean deleteById(ID id);
 
     /**
      * Save the {@link T} object to the database.
      *
      * @param entity Object want to save to database (mapping to {@link T} type table)
+     * @return {@code boolean} when updated or not
      */
     void save(T entity);
 

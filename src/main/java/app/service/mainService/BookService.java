@@ -50,4 +50,14 @@ public class BookService {
     public ObservableList<Book> findByCategory(String keyword) {
         return FXCollections.observableList(this.bookRepository.findByCategory(keyword));
     }
+
+    /**
+     * handle update book service.
+     *
+     * @param book new {@link Book} to replace the current {@link Book}
+     * @return {@code boolean} if update in repo success or failed
+     */
+    public boolean handleUpdateOne(Book book) {
+        return this.bookRepository.updateOne(book);
+    }
 }

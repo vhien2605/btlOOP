@@ -86,14 +86,16 @@ public class BookRepository implements CrudRepository<Book, String> {
      * @param Id Book's id want to delete from database
      */
     @Override
-    public void deleteById(String Id) {
+    public boolean deleteById(String Id) {
         String query = "DELETE FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             int count = statement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("error in deleteById function in Book repo");
+            return false;
         }
     }
 
@@ -131,11 +133,10 @@ public class BookRepository implements CrudRepository<Book, String> {
      */
     @Override
     public int count() {
-        String query = "SELECT COUNT (*) FROM book";
+        String query = "SELECT COUNT(*) FROM book";
         try (Connection connection = DbConfig.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
-            // resultSet default doesn't ref to any value. must rs.next to ref first value
             if (rs.next()) {
                 int result = rs.getInt(1);
                 rs.close();
@@ -143,6 +144,7 @@ public class BookRepository implements CrudRepository<Book, String> {
             }
         } catch (SQLException e) {
             System.out.println("error in count function in Book repo");
+            e.printStackTrace();
         }
         return 0;
     }
@@ -156,10 +158,10 @@ public class BookRepository implements CrudRepository<Book, String> {
      */
     public List<Book> findByCategory(String keywordCategory) {
         List<Book> list = new ArrayList<>();
-        String query = "SELECT * FROM book WHERE category LIKE %?%";
+        String query = "SELECT * FROM book WHERE category LIKE ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
-            statement.setString(1, keywordCategory);
+            statement.setString(1, "%" + keywordCategory + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 list.add(new Book(
@@ -179,6 +181,41 @@ public class BookRepository implements CrudRepository<Book, String> {
             e.printStackTrace();
         }
         return list;
+    }
+
+    /**
+     * Update One {@link Book}.
+     * <p>
+     * This method only update one book because of unique id
+     * </p>
+     *
+     * @param book the new {@link Book} entity want to replace the current {@link Book}
+     */
+    public boolean updateOne(Book book) {
+        String query = "UPDATE book SET name=?,author=?,description=?,category=?,bookPublisher=?" +
+                ",bookQuantity=?,bookRemaining=?,imagePath=?" +
+                "WHERE id=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, book.getName());
+            preparedStatement.setString(2, book.getAuthor());
+            preparedStatement.setString(3, book.getDescription());
+            preparedStatement.setString(4, book.getCategory());
+            preparedStatement.setString(5, book.getBookPublisher());
+            preparedStatement.setInt(6, book.getBookQuantity());
+            preparedStatement.setInt(7, book.getBookRemaining());
+            preparedStatement.setString(8, book.getImagePath());
+            preparedStatement.setString(9, book.getId());
+
+            preparedStatement.executeUpdate();
+
+            return true;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
     }
 }
 

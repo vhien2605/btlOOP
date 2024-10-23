@@ -150,9 +150,12 @@ public class Book {
                 "id=" + id.get() +
                 ", name=" + name.get() +
                 ", author=" + author.get() +
+                ", description=" + description.get() +
+                ", category=" + category.get() +
                 ", bookPublisher=" + bookPublisher.get() +
                 ", bookQuantity=" + bookQuantity.get() +
                 ", bookRemaining=" + bookRemaining.get() +
+                ", imagePath=" + imagePath.get() +
                 '}';
     }
 }
