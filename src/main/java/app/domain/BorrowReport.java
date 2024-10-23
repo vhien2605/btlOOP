@@ -9,6 +9,7 @@ public class BorrowReport {
     private SimpleStringProperty bookId;
     private SimpleStringProperty borrowDate;
     private SimpleStringProperty returnDate;
+    private SimpleStringProperty expectedReturnDate;
     private SimpleStringProperty status;
 
     public int getId() {
@@ -71,6 +72,18 @@ public class BorrowReport {
         this.returnDate = new SimpleStringProperty(date);
     }
 
+    public String getExpectedReturnDate() {
+        return expectedReturnDate.get();
+    }
+
+    public SimpleStringProperty getExpectedReturnDateProperty() {
+        return expectedReturnDate;
+    }
+
+    public void setExpectedReturnDate(String date) {
+        this.expectedReturnDate = new SimpleStringProperty(date);
+    }
+
     public String getStatus() {
         return status.get();
     }
@@ -90,6 +103,7 @@ public class BorrowReport {
                 ", studentId=" + studentId.get() +
                 ", bookId=" + bookId.get() +
                 ", borrowDate=" + borrowDate.get() +
+                ", expectedReturnDate=" + expectedReturnDate.get() +
                 ", returnDate=" + returnDate.get() +
                 ", status=" + status.get() +
                 '}';

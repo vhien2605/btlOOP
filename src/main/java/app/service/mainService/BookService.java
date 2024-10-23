@@ -14,14 +14,14 @@ public class BookService {
     private final BookRepository bookRepository;
 
     /**
-     * inject Repository instance by constructor by Dependency Injection design pattern.
+     * inject Repository instance by constructor by Dependency Injection design
+     * pattern.
      *
      * @param bookRepository {@link Book} accessData logic
      */
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
     }
-
 
     /**
      * Get all book method, call to {@code BookRepository}.
@@ -35,7 +35,7 @@ public class BookService {
     /**
      * Handle save {@link Book} logic.
      *
-     * @param book {@link  Book} entity want to save to database
+     * @param book {@link Book} entity want to save to database
      */
     public void handleSaveBook(Book book) {
         this.bookRepository.save(book);
