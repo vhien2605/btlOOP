@@ -12,6 +12,18 @@ public class BorrowReport {
     private SimpleStringProperty expectedReturnDate;
     private SimpleStringProperty status;
 
+    public BorrowReport(int id, String studentId, String bookId, String borrowDate
+            , String returnDate, String expectedReturnDate, String status
+    ) {
+        this.id = new SimpleIntegerProperty(id);
+        this.studentId = new SimpleStringProperty(studentId);
+        this.bookId = new SimpleStringProperty(bookId);
+        this.borrowDate = new SimpleStringProperty(borrowDate);
+        this.returnDate = new SimpleStringProperty(returnDate);
+        this.expectedReturnDate = new SimpleStringProperty(expectedReturnDate);
+        this.status = new SimpleStringProperty(status);
+    }
+
     public int getId() {
         return id.get();
     }

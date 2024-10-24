@@ -37,7 +37,6 @@ public interface CrudRepository<T, ID> {
      * Save the {@link T} object to the database.
      *
      * @param entity Object want to save to database (mapping to {@link T} type table)
-     * @return {@code boolean} when updated or not
      */
     void save(T entity);
 
