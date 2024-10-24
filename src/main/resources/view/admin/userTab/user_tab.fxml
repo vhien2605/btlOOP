@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.UserTab.MainUserController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.UserTab.MainUserController">
    <children>
       <fx:include source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -25,12 +23,12 @@
                <top>
                   <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="25.0" prefHeight="47.0" prefWidth="136.0" text="Students" textFill="#1d3ec4">
+                        <Label layoutX="25.0" prefHeight="47.0" prefWidth="136.0" text="Users" textFill="#1d3ec4">
                            <font>
                               <Font size="35.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="searchStudentTextField" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search Student" />
+                        <TextField fx:id="searchUserTextField" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search User" />
                         <FontAwesomeIconView fill="#313ec7" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
                         <Button fx:id="importDataButton" layoutX="776.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="112.0" text="    Import data">
                            <font>
@@ -42,34 +40,34 @@
                   </Pane>
                </top>
                <center>
-                  <TableView fx:id="studentTableView" prefHeight="535.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="userTableView" prefHeight="535.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                      <columns>
-                        <TableColumn fx:id="studentIdCol" prefWidth="67.99996793270111" text="Student Id" />
-                        <TableColumn fx:id="studentNameCol" prefWidth="115.2000503540039" text="Student Name" />
-                        <TableColumn fx:id="phoneNumberCol" prefWidth="103.19998168945312" text="Phone Number" />
-                        <TableColumn fx:id="studentEmailCol" prefWidth="180.0" text="Student Email" />
-                        <TableColumn fx:id="studentAddressCol" prefWidth="184.79995727539062" text="Student Address" />
+                        <TableColumn fx:id="userIdCol" prefWidth="67.99996793270111" text="User Id" />
+                        <TableColumn fx:id="fullNameCol" prefWidth="146.4000015258789" text="Fulll Name" />
+                        <TableColumn fx:id="phoneNumberCol" prefWidth="108.79998779296875" text="Phone Number" />
+                        <TableColumn fx:id="emailCol" prefWidth="153.60003662109375" text=" Email" />
+                        <TableColumn fx:id="addressCol" prefWidth="176.79995727539062" text="Address" />
                      </columns>
                   </TableView>
                </center>
                <right>
                   <Pane prefHeight="535.0" prefWidth="300.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="33.0" layoutY="21.0" text="Student Information" textFill="#112f9c">
+                        <Label layoutX="33.0" layoutY="21.0" text="User Information" textFill="#112f9c">
                            <font>
                               <Font size="22.0" />
                            </font>
                         </Label>
-                        <Label layoutX="33.0" layoutY="84.0" text="Student Id:" textFill="#112f9c" />
-                        <Label layoutX="33.0" layoutY="146.0" text="Student Name:" textFill="#112f9c" />
+                        <Label layoutX="33.0" layoutY="84.0" text="User Id:" textFill="#112f9c" />
+                        <Label layoutX="33.0" layoutY="146.0" text="Full Name:" textFill="#112f9c" />
                         <Label layoutX="33.0" layoutY="211.0" text="Phone Number:" textFill="#112f9c" />
                         <Label layoutX="33.0" layoutY="267.0" text="Email:" textFill="#112f9c" />
                         <Label layoutX="33.0" layoutY="326.0" text="Address:" textFill="#112f9c" />
-                        <TextField fx:id="studentIdTextField" layoutX="33.0" layoutY="101.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Id" />
-                        <TextField fx:id="studentNameTextField" layoutX="33.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Name" />
+                        <TextField fx:id="userIdTextField" layoutX="33.0" layoutY="101.0" prefHeight="25.0" prefWidth="225.0" promptText="User Id" />
+                        <TextField fx:id="fullNameTextField" layoutX="33.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" promptText="Full Name" />
                         <TextField fx:id="phoneNumberTextField" layoutX="33.0" layoutY="228.0" prefHeight="25.0" prefWidth="225.0" promptText="Phone Number" />
-                        <TextField fx:id="studentEmailTextField" layoutX="33.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Email" />
-                        <TextField fx:id="studentAddressTextField" layoutX="33.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Student Address" />
+                        <TextField fx:id="emailTextField" layoutX="33.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Email" />
+                        <TextField fx:id="addressTextField" layoutX="33.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Address" />
                         <Button fx:id="cencelButton" layoutX="22.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Cancel" />
                         <Button fx:id="insertButton" layoutX="93.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="52.0" text="Insert" />
                         <Button fx:id="updateButton" layoutX="163.0" layoutY="397.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Update" />

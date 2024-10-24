@@ -6,6 +6,7 @@ module app {
     requires com.zaxxer.hikari;
     requires java.sql;
     requires org.slf4j;
+    requires javafx.base;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;

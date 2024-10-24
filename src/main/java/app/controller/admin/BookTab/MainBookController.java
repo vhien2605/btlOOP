@@ -116,10 +116,6 @@ public class MainBookController implements BaseController {
     }
 
     public Book getSelectedBook() {
-        Book selectedBook = tableViewBook.getSelectionModel().getSelectedItem();
-        if (selectedBook != null) {
-            return selectedBook;
-        }
-        return null;
+        return tableViewBook.getSelectionModel().getSelectedItem();
     }
 }
