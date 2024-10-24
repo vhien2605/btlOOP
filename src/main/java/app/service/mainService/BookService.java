@@ -60,11 +60,12 @@ public class BookService {
     public boolean handleUpdateOne(Book book) {
         return this.bookRepository.updateOne(book);
     }
-    
+
     /**
-     * Delete book by id
+     * Delete {@link Book} method
      *
-     * @param id id of book selected from table to delete
+     * @param id {@link Book} id want to delete
+     * @return {@code true/false} when delete success or failed
      */
     public boolean deleteBook(String id) {
         return this.bookRepository.deleteById(id);
