@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * {@link FXMLResolver} implements interface {@link Resolver} used for rendering FXML resources
+ * {@link FXMLResolver} implements interface {@link Resolver} used for rendering
+ * FXML resources
  * Use Singleton design pattern for one stage which can switch many scenes
  */
 public class FXMLResolver implements Resolver {
@@ -20,6 +21,7 @@ public class FXMLResolver implements Resolver {
     private static FXMLResolver fxmlResolver;
     private Stage primaryStage;
     private Scene scene;
+    private FXMLLoader loaderObject;
 
     /**
      * private Constructor for Singleton design pattern
@@ -48,7 +50,7 @@ public class FXMLResolver implements Resolver {
         try {
             String pathLoader = rootPath + "/" + viewName + "." + type;
             System.out.println(pathLoader);
-            FXMLLoader loaderObject = new FXMLLoader(getClass().getResource(pathLoader));
+            loaderObject = new FXMLLoader(getClass().getResource(pathLoader));
             return loaderObject.load();
         } catch (IOException e) {
             System.out.println("can't find view " + viewName);
@@ -91,5 +93,12 @@ public class FXMLResolver implements Resolver {
      */
     public Stage getStage() {
         return this.primaryStage;
+    }
+
+    /**
+     * @return Javafx {@link FXMLLoader}
+     */
+    public FXMLLoader getLoader() {
+        return loaderObject;
     }
 }

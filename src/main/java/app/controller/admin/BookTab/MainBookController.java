@@ -7,6 +7,7 @@ import app.service.mainService.BookService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -55,7 +56,7 @@ public class MainBookController implements BaseController {
         if (e.getSource() == buttonAddBook) {
             FXMLResolver.getInstance().renderScene("bookTab/create_book");
         } else if (e.getSource() == buttonUpdate) {
-            System.out.println("click button update");
+            updateBook();
         } else if (e.getSource() == buttonDelete) {
             deleteBook();
         }
@@ -86,7 +87,7 @@ public class MainBookController implements BaseController {
     }
 
     private void deleteBook() {
-        Book selectedBook = tableViewBook.getSelectionModel().getSelectedItem();
+        Book selectedBook = getSelectedBook();
         if (selectedBook != null) {
             String selectedId = selectedBook.getId();
             bookService.deleteBook(selectedId);
@@ -99,5 +100,26 @@ public class MainBookController implements BaseController {
         } else {
             System.out.println("No book selected");
         }
+    }
+
+    private void updateBook() {
+        Book selectedBook = getSelectedBook();
+        if (selectedBook == null) {
+            System.out.println("No Book Selected!");
+        } else {
+            FXMLResolver resolver = FXMLResolver.getInstance();
+            resolver.renderScene("bookTab/update_book");
+
+            UpdateBookController updateBookController = resolver.getLoader().getController();
+            updateBookController.renderDataBook(selectedBook);
+        }
+    }
+
+    public Book getSelectedBook() {
+        Book selectedBook = tableViewBook.getSelectionModel().getSelectedItem();
+        if (selectedBook != null) {
+            return selectedBook;
+        }
+        return null;
     }
 }

@@ -12,7 +12,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
    xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.CreateBookController">
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.UpdateBookController">
    <children>
       <fx:include source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="200.0" prefWidth="950.0">
@@ -24,7 +24,7 @@
                <top>
                   <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="25.0" text="Create new book" textFill="#1037d7">
+                        <Label layoutX="25.0" text="Update book" textFill="#1037d7">
                            <font>
                               <Font size="35.0" />
                            </font>
@@ -40,49 +40,48 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="90.0" text="Book Name:">
+                        <Label layoutX="110.0" layoutY="80.0" text="Book Name:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="140.0" text="Book Author:">
+                        <Label layoutX="110.0" layoutY="120.0" text="Book Author:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="340.0" text="Description:">
+                        <Label layoutX="110.0" layoutY="320.0" text="Description:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="190.0" text="Book Publisher:">
+                        <Label layoutX="110.0" layoutY="160.0" text="Book Publisher:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="240.0" text="Book Quantity:">
+                        <Label layoutX="110.0" layoutY="200.0" text="Book Quantity:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="110.0" layoutY="290.0" text="Book Category:">
+                        <Label layoutX="110.0" layoutY="280.0" text="Book Category:">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <TextField fx:id="bookISBNTextField" layoutX="235.0" layoutY="40.0" prefHeight="25.0" prefWidth="350.0" promptText="Book ISBN" />
-                        <TextField fx:id="bookNameTextField" layoutX="235.0" layoutY="84.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Name" />
-                        <TextField fx:id="bookAuthorTextField" layoutX="235.0" layoutY="131.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Author" />
-                        <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="233.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Quantity" />
-                        <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="184.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Publisher" />
-                        <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="283.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Category" />
-                        <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="331.0" prefHeight="54.0" prefWidth="350.0" promptText="Book Description" wrapText="true" />
+                        <TextField fx:id="bookNameTextField" layoutX="235.0" layoutY="80.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Name" />
+                        <TextField fx:id="bookAuthorTextField" layoutX="235.0" layoutY="120.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Author" />
+                        <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="200.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Quantity" />
+                        <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="160.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Publisher" />
+                        <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="280.0" prefHeight="25.0" prefWidth="350.0" promptText="Book Category" />
+                        <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="320.0" prefHeight="61.0" prefWidth="350.0" promptText="Book Description" wrapText="true" />
                         <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0">
                            <graphic>
                               <FontAwesomeIconView glyphName="ARROW_LEFT" />
                            </graphic>
                         </Button>
-                        <Button fx:id="cancelButton" layoutX="424.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="61.0" text="Cancel" />
                         <Button fx:id="saveButton" layoutX="518.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Save" />
                         <Label layoutX="110.0" layoutY="410.0" text="Upload Image:">
                            <font>
@@ -94,12 +93,13 @@
                               <FontAwesomeIconView glyphName="UPLOAD" />
                            </graphic>
                         </Button>
-                        <Button fx:id="findDocomentButton" layoutX="272.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Find Docoument">
-                           <graphic>
-                              <FontAwesomeIconView glyphName="CLOUD_UPLOAD" />
-                           </graphic>
-                        </Button>
-                        <TextField fx:id="imagePathTextField" layoutX="326.0" layoutY="407.0" prefHeight="25.0" prefWidth="257.0" promptText="No files selected" editable="false"/>
+                        <TextField fx:id="imagePathTextField" layoutX="326.0" layoutY="407.0" prefHeight="25.0" prefWidth="257.0" promptText="No files selected" editable="false" />
+                        <Label layoutX="110.0" layoutY="240.0" text="Book Remaining:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="bookRemainingTextField" layoutX="236.0" layoutY="240.0" prefHeight="25.0" prefWidth="349.0" promptText="Book Remaining"/>
                      </children>
                   </Pane>
                </bottom>
