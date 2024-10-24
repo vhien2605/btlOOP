@@ -38,7 +38,7 @@ public interface CrudRepository<T, ID> {
      *
      * @param entity Object want to save to database (mapping to {@link T} type table)
      */
-    void save(T entity);
+    boolean save(T entity);
 
     /**
      * Count document in table of {@link T} object in database.

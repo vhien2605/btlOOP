@@ -106,23 +106,25 @@ public class UserRepository implements CrudRepository<User, String> {
      * @param user Object want to save to database (mapping to {@code T} type table)
      */
     @Override
-    public void save(User user) {
+    public boolean save(User user) {
         String query = "INSERT INTO user(id,username,password,role,name,address,email,phoneNumber)" +
                 " VALUES(?,?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getId());
-            statement.setString(3, user.getUsername());
-            statement.setString(4, user.getPassword());
-            statement.setString(5, user.getRole());
-            statement.setString(6, user.getName());
-            statement.setString(7, user.getAddress());
-            statement.setString(8, user.getEmail());
-            statement.setString(9, user.getPhoneNumber());
+            statement.setString(2, user.getUsername());
+            statement.setString(3, user.getPassword());
+            statement.setString(4, user.getRole());
+            statement.setString(5, user.getName());
+            statement.setString(6, user.getAddress());
+            statement.setString(7, user.getEmail());
+            statement.setString(8, user.getPhoneNumber());
             int count = statement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("error in save function in User repo");
             System.out.println(e.getMessage());
+            return false;
         }
     }
 

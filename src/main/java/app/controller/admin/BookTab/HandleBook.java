@@ -6,6 +6,7 @@ import java.util.List;
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
+import app.helper.ShowAlert;
 import app.repository.BookRepository;
 import app.service.mainService.BookService;
 import app.service.subService.FileService;
@@ -34,12 +35,16 @@ public abstract class HandleBook implements BaseController {
 
     protected File selectedFile;
 
+    protected ShowAlert showAlert;
+
     @FXML
     protected abstract void handleButtonAction(ActionEvent e);
 
     protected abstract void saveBook();
 
     protected abstract Book getBook();
+
+    protected abstract boolean validateFields();
 
     protected void RenderFileDialog() {
         System.out.println("Click button uploadFileButton");
@@ -59,5 +64,6 @@ public abstract class HandleBook implements BaseController {
         bookService = new BookService(new BookRepository());
         googleApiService = new GoogleApiService();
         fileService = new FileService();
+        showAlert = new ShowAlert();
     }
 }

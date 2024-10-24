@@ -1,6 +1,5 @@
 package app.service.mainService;
 
-import app.domain.Book;
 import app.domain.User;
 import app.repository.UserRepository;
 import javafx.collections.FXCollections;
@@ -27,9 +26,9 @@ public class UserService {
      *
      * @return {@code ObservableList<User>} to the front-end layer
      */
-    public ObservableList<User> getAllStudents() {
-        List<User> students = this.userRepository.findAll();
-        return FXCollections.observableList(students);
+    public ObservableList<User> getAllUsers() {
+        List<User> user = this.userRepository.findAll();
+        return FXCollections.observableList(user);
     }
 
     /**
@@ -51,5 +50,24 @@ public class UserService {
      */
     public boolean handleUpdateOne(User user) {
         return this.userRepository.updateOne(user);
+    }
+
+     /**
+     * Handle save {@link User} logic.
+     *
+     * @param user {@link User} entity want to save to database
+     */
+    public boolean handleSaveUser(User user) {
+        return this.userRepository.save(user);
+    }
+
+    /**
+     * Delete {@link User} method
+     *
+     * @param id {@link User} id want to delete
+     * @return {@code true/false} when delete success or failed
+     */
+    public boolean deleteUser(String id) {
+        return this.userRepository.deleteById(id);
     }
 }
