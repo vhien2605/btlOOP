@@ -107,7 +107,7 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
      * @param entity Object want to save to database (mapping to {@code T} type table)
      */
     @Override
-    public void save(BorrowReport entity) {
+    public boolean save(BorrowReport entity) {
         String query = "INSERT INTO borrow_report(studentId,bookId,borrowDate,returnDate,expectedReturnDate,status" +
                 ") VALUES (?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
@@ -120,9 +120,11 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             preparedStatement.setString(5, entity.getExpectedReturnDate());
             preparedStatement.setString(6, entity.getStatus());
             int count = preparedStatement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
+            return false;
         }
     }
 

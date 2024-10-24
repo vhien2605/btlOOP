@@ -2,6 +2,7 @@ package app.controller.admin.UserTab;
 
 import app.controller.BaseController;
 import app.domain.User;
+import app.helper.ShowAlert;
 import app.repository.UserRepository;
 import app.service.mainService.UserService;
 import javafx.beans.value.ChangeListener;
@@ -40,17 +41,24 @@ public class MainUserController implements BaseController {
             addressTextField, searchUserTextField;
 
     @FXML
-    Button cencelButton, insertButton, updateButton, deleteButton, importDataButton;
+    Button cancelButton, insertButton, updateButton, deleteButton, importDataButton;
 
     private UserService userService;
 
+    private ShowAlert showAlert;
+
     ObservableList<User> listUser;
+
+    private static final int ADD_NEW = 1;
+    private static final int UPDATE_AND_DELETE = 2;
 
     @Override
     public void initialize() {
         userService = new UserService(new UserRepository());
+        showAlert = new ShowAlert();
         showUsers();
         getSelectedUser();
+        setCanClickButton(ADD_NEW);
     }
 
     private void getSelectedUser() {
@@ -66,7 +74,7 @@ public class MainUserController implements BaseController {
 
     @FXML
     private void handleButtonAction(ActionEvent e) {
-        if (e.getSource() == cencelButton) {
+        if (e.getSource() == cancelButton) {
             clearTextFields();
         } else if (e.getSource() == insertButton) {
             addNewUser();
@@ -79,23 +87,86 @@ public class MainUserController implements BaseController {
         }
     }
 
+    private void setCanClickButton(int type) {
+        cancelButton.setStyle("-fx-background-color: lightblue;");
+        if (type == 1) {
+            insertButton.setDisable(false);
+            insertButton.setStyle("-fx-background-color: lightblue;");
+            updateButton.setDisable(true);
+            updateButton.setStyle("-fx-background-color: lightgray;");
+            deleteButton.setDisable(true);
+            deleteButton.setStyle("-fx-background-color: lightgray;");
+        } else if (type == 2) {
+            insertButton.setDisable(true);
+            insertButton.setStyle("-fx-background-color: lightgray;");
+            updateButton.setDisable(false);
+            updateButton.setStyle("-fx-background-color: lightblue;");
+            deleteButton.setDisable(false);
+            deleteButton.setStyle("-fx-background-color: lightblue;");
+        }
+    }
+
     private void addNewUser() {
         User user = getUser();
-        // userService.handleAddNewUser(user);
-        clearTextFields();
-        showUsers();
+
+        if (user == null) {
+            return;
+        }
+
+        if (userService.handleSaveUser(user)) {
+            clearTextFields();
+            listUser.add(user);
+            showAlert.showAlert("Add new user successed!", "success");
+        } else {
+            showAlert.showAlert("Add new user failed!", "error");
+        }
+
     }
 
     private void updateUser() {
         User user = getUser();
+
+        if (user == null) {
+            return;
+        }
+
+        if (userService.handleUpdateOne(user)) {
+            for (int i = 0; i < listUser.size(); i++) {
+                if (listUser.get(i).getId().equals(user.getId())) {
+                    listUser.set(i, user);
+                    break;
+                }
+            }
+            showAlert.showAlert("Update user successed!", "success");
+        } else {
+            showAlert.showAlert("Update user failed!", "error");
+        }
     }
 
     private void deleteUser() {
         User user = getUser();
+
+        if (user == null) {
+            return;
+        }
+
+        String id = user.getId();
+        if (userService.deleteUser(id)) {
+            for (int i = 0; i < listUser.size(); i++) {
+                if (listUser.get(i).getId().equals(id)) {
+                    listUser.remove(i);
+                    break;
+                }
+            }
+            clearTextFields();
+            showAlert.showAlert("Delete user successed!", "success");
+        } else {
+            showAlert.showAlert("Delete user failed!", "error");
+        }
     }
 
     private void showUsers() {
-        // listUser = userService.getAllUsers();
+        listUser = userService.getAllUsers();
         // Thiết lập các cột cho TableView
         userIdCol.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
         fullNameCol.setCellValueFactory(new PropertyValueFactory<User, String>("name"));
@@ -108,6 +179,10 @@ public class MainUserController implements BaseController {
     }
 
     private User getUser() {
+        if (!validateFields()) {
+            return null;
+        }
+
         return new User(userIdTextField.getText(),
                 userIdTextField.getText(),
                 userIdTextField.getText(),
@@ -124,6 +199,7 @@ public class MainUserController implements BaseController {
         addressTextField.clear();
         emailTextField.clear();
         phoneNumberTextField.clear();
+        setCanClickButton(ADD_NEW);
     }
 
     private void setTextFields(User user) {
@@ -132,5 +208,43 @@ public class MainUserController implements BaseController {
         addressTextField.setText(user.getAddress());
         emailTextField.setText(user.getEmail());
         phoneNumberTextField.setText(user.getPhoneNumber());
+        setCanClickButton(UPDATE_AND_DELETE);
     }
+
+    private boolean validateFields() {
+        // Check userId
+        if (userIdTextField.getText().isEmpty()) {
+            showAlert.showAlert("User ID không được để trống!", "error");
+            return false;
+        }
+
+        // Check fullName
+        if (fullNameTextField.getText().isEmpty()) {
+            showAlert.showAlert("Họ tên không được để trống!", "error");
+            return false;
+        }
+
+        // Check phoneNumber
+        String phoneNumber = phoneNumberTextField.getText();
+        if (phoneNumber.isEmpty() || !phoneNumber.matches("\\d{10}")) {
+            showAlert.showAlert("Số điện thoại không hợp lệ!", "error");
+            return false;
+        }
+
+        // Check email
+        String email = emailTextField.getText();
+        if (email.isEmpty() || !email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            showAlert.showAlert("Địa chỉ email không hợp lệ!", "error");
+            return false;
+        }
+
+        // Check address
+        if (addressTextField.getText().isEmpty()) {
+            showAlert.showAlert("Địa chỉ không được để trống!", "error");
+            return false;
+        }
+
+        return true;
+    }
+
 }

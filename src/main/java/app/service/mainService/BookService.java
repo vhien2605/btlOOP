@@ -37,8 +37,8 @@ public class BookService {
      *
      * @param book {@link Book} entity want to save to database
      */
-    public void handleSaveBook(Book book) {
-        this.bookRepository.save(book);
+    public boolean handleSaveBook(Book book) {
+        return this.bookRepository.save(book);
     }
 
     /**
