@@ -3,6 +3,7 @@ package app.controller.admin.BookTab;
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
+import app.helper.ShowAlert;
 import app.service.mainService.BookService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -51,6 +52,8 @@ public class MainBookController implements BaseController {
 
     ObservableList<Book> list;
 
+    private ShowAlert showAlert;
+
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == buttonAddBook) {
@@ -67,6 +70,7 @@ public class MainBookController implements BaseController {
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
+        showAlert = new ShowAlert();
         showBooks();
     }
 
@@ -88,24 +92,28 @@ public class MainBookController implements BaseController {
 
     private void deleteBook() {
         Book selectedBook = getSelectedBook();
-        if (selectedBook != null) {
-            String selectedId = selectedBook.getId();
-            bookService.deleteBook(selectedId);
+        if (selectedBook == null) {
+            showAlert.showAlert("No book selected!", "error");
+            return;
+        }
+        String selectedId = selectedBook.getId();
+        if (bookService.deleteBook(selectedId)) {
             for (int i = 0; i < list.size(); i++) {
                 if (list.get(i).getId().equals(selectedId)) {
                     list.remove(i);
                     break;
                 }
             }
+            showAlert.showAlert("Delete book successed!", "success");
         } else {
-            System.out.println("No book selected");
+            showAlert.showAlert("Delete book failed!", "error");
         }
     }
 
     private void updateBook() {
         Book selectedBook = getSelectedBook();
         if (selectedBook == null) {
-            System.out.println("No Book Selected!");
+            showAlert.showAlert("No book selected!", "error");
         } else {
             FXMLResolver resolver = FXMLResolver.getInstance();
             resolver.renderScene("bookTab/update_book");

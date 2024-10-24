@@ -105,7 +105,7 @@ public class BookRepository implements CrudRepository<Book, String> {
      * @param entity {@link Book} object you want to save in Book table in database
      */
     @Override
-    public void save(Book entity) {
+    public boolean save(Book entity) {
         String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
@@ -120,9 +120,11 @@ public class BookRepository implements CrudRepository<Book, String> {
             statement.setInt(8, entity.getBookRemaining());
             statement.setString(9, entity.getImagePath());
             int count = statement.executeUpdate();
+            return true;
         } catch (SQLException e) {
             System.out.println("error in save function in Book repo");
             System.out.println(e.getMessage());
+            return false;
         }
     }
 

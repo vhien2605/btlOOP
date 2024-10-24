@@ -20,7 +20,6 @@ public class CreateBookController extends HandleBook {
             clearFields();
         } else if (e.getSource() == saveButton) {
             saveBook();
-            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == findDocomentButton) {
             addDataBook();
         } else if (e.getSource() == uploadFileButton) {
@@ -31,12 +30,17 @@ public class CreateBookController extends HandleBook {
     @Override
     protected void saveBook() {
         Book book = getBook();
+        if (book == null) {
+            return;
+        }
+
         String image = "";
         if (selectedFile != null) {
             image = fileService.handleSaveImage(selectedFile, "book");
             book.setImagePath(image);
         }
         bookService.handleSaveBook(book);
+        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
     }
 
     private void addDataBook() {
@@ -46,8 +50,7 @@ public class CreateBookController extends HandleBook {
         }
         List<Book> books = googleApiService.searchBooks(query);
         if (books.isEmpty()) {
-            System.out.println("khong tim thay ban ghi");
-            // làm cái hiện thông báo...
+            showAlert.showAlert("Book not found!", "error");
             return;
         }
         for (Book book : books) {
@@ -57,6 +60,10 @@ public class CreateBookController extends HandleBook {
 
     @Override
     protected Book getBook() {
+        if (!validateFields()) {
+            return null;
+        }
+
         Book book = new Book(
                 bookISBNTextField.getText(),
                 bookNameTextField.getText(),
@@ -88,6 +95,42 @@ public class CreateBookController extends HandleBook {
         bookPublisherTextField.clear();
         bookCategoryTextField.clear();
         bookDescriptionTextArea.clear();
+    }
+
+    @Override
+    protected boolean validateFields() {
+        // Check book ISBN
+        if (bookISBNTextField.getText().isEmpty()) {
+            showAlert.showAlert("Book ISBN không được để trống!", "error");
+            return false;
+        }
+
+        // Check book name
+        if (bookNameTextField.getText().isEmpty()) {
+            showAlert.showAlert("Tên sách không được để trống!", "error");
+            return false;
+        }
+
+        // Check author
+        if (bookAuthorTextField.getText().isEmpty()) {
+            showAlert.showAlert("Tác giả không được để trống!", "error");
+            return false;
+        }
+
+        // Check book quantity
+        String quantity = bookQuantityTextField.getText();
+        try {
+            int bookQuantity = Integer.parseInt(quantity);
+            if (bookQuantity <= 0) {
+                showAlert.showAlert("Số lượng sách phải lớn hơn 0!", "error");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showAlert.showAlert("Số lượng sách không hợp lệ!", "error");
+            return false;
+        }
+
+        return true;
     }
 
 }

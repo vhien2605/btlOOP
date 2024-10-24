@@ -23,7 +23,6 @@ public class UpdateBookController extends HandleBook {
             FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == saveButton) {
             saveBook();
-            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
         } else if (e.getSource() == uploadFileButton) {
             RenderFileDialog();
         }
@@ -32,6 +31,11 @@ public class UpdateBookController extends HandleBook {
     @Override
     protected void saveBook() {
         Book newValueBook = getBook();
+
+        if (newValueBook == null) {
+            return;
+        }
+
         String image = "";
         if (selectedFile != null) {
             System.out.println("path: " + oldValueBook.getImagePath());
@@ -43,10 +47,15 @@ public class UpdateBookController extends HandleBook {
             newValueBook.setImagePath(image);
         }
         bookService.handleUpdateOne(newValueBook);
+        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
     }
 
     @Override
     protected Book getBook() {
+        if (!validateFields()) {
+            return null;
+        }
+        System.out.println("ok");
         Book book = new Book(
                 bookISBNTextField.getText(),
                 bookNameTextField.getText(),
@@ -71,6 +80,60 @@ public class UpdateBookController extends HandleBook {
         bookQuantityTextField.setText("" + book.getBookQuantity());
         bookRemainingTextField.setText("" + book.getBookRemaining());
         imagePathTextField.setText(book.getImagePath());
+    }
+
+    @Override
+    protected boolean validateFields() {
+        // Check book ISBN
+        if (bookISBNTextField.getText().isEmpty()) {
+            showAlert.showAlert("Book ISBN không được để trống!", "error");
+            return false;
+        }
+
+        // Check book name
+        if (bookNameTextField.getText().isEmpty()) {
+            showAlert.showAlert("Tên sách không được để trống!", "error");
+            return false;
+        }
+
+        // Check author
+        if (bookAuthorTextField.getText().isEmpty()) {
+            showAlert.showAlert("Tác giả không được để trống!", "error");
+            return false;
+        }
+
+        // Check book quantity
+        String quantity = bookQuantityTextField.getText();
+        try {
+            int bookQuantity = Integer.parseInt(quantity);
+            if (bookQuantity <= 0) {
+                showAlert.showAlert("Số lượng sách phải lớn hơn 0!", "error");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showAlert.showAlert("Số lượng sách không hợp lệ!", "error");
+            return false;
+        }
+
+        // Check book remaining
+        String remaining = bookRemainingTextField.getText();
+        try {
+            int bookRemaining = Integer.parseInt(remaining);
+            int bookQuantity = Integer.parseInt(quantity);
+            if (bookRemaining <= 0) {
+                showAlert.showAlert("Số lượng sách còn lại phải lớn hơn 0!", "error");
+                return false;
+            }
+            if (bookRemaining > bookQuantity) {
+                showAlert.showAlert("Số lượng sách còn lại đang lớn hơn tổng số sách!", "error");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showAlert.showAlert("Số lượng sách còn lại không hợp lệ!", "error");
+            return false;
+        }
+
+        return true;
     }
 
 }
