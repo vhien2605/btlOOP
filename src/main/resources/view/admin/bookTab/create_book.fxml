@@ -12,7 +12,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
    xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.CreateBookController">
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.CreateBookTab.CreateBookController">
    <children>
       <fx:include source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="200.0" prefWidth="950.0">
