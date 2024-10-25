@@ -31,7 +31,7 @@ public class UpdateBookController extends HandleBook {
     @Override
     protected void saveBook() {
         Book newValueBook = getBook();
-
+        System.out.println(newValueBook);
         if (newValueBook == null) {
             return;
         }
@@ -46,7 +46,8 @@ public class UpdateBookController extends HandleBook {
             image = fileService.handleSaveImage(selectedFile, "book");
             newValueBook.setImagePath(image);
         }
-        bookService.handleUpdateOne(newValueBook);
+        boolean check = bookService.handleUpdateOne(newValueBook);
+        System.out.println(check);
         FXMLResolver.getInstance().renderScene("bookTab/book_tab");
     }
 
@@ -55,7 +56,7 @@ public class UpdateBookController extends HandleBook {
         if (!validateFields()) {
             return null;
         }
-        System.out.println("ok");
+        
         Book book = new Book(
                 bookISBNTextField.getText(),
                 bookNameTextField.getText(),

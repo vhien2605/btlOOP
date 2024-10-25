@@ -18,63 +18,53 @@ import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
     @FXML
-    private TextField searchBookTextField;
+    TextField searchBookTextField;
 
     @FXML
-    private Button buttonUpdate, buttonDelete, buttonAddBook;
+    Button buttonUpdate, buttonDelete, buttonAddBook;
 
     @FXML
-    private TableView<Book> tableViewBook;
+    TableView<Book> tableViewBook;
 
     @FXML
-    private TableColumn<Book, String> colBookISBN;
+    TableColumn<Book, String> colBookISBN;
 
     @FXML
-    private TableColumn<Book, String> colBookName;
+    TableColumn<Book, String> colBookName;
 
     @FXML
-    private TableColumn<Book, String> colBookAuthor;
+    TableColumn<Book, String> colBookAuthor;
 
     @FXML
-    private TableColumn<Book, String> colBookDescription;
+    TableColumn<Book, String> colBookDescription;
 
     @FXML
-    private TableColumn<Book, String> colBookCategory;
+    TableColumn<Book, String> colBookCategory;
 
     @FXML
-    private TableColumn<Book, String> colBookPublisher;
+    TableColumn<Book, String> colBookPublisher;
 
     @FXML
-    private TableColumn<Book, Integer> colBookQuantity;
+    TableColumn<Book, Integer> colBookQuantity;
 
     @FXML
-    private TableColumn<Book, Integer> colBookRemaining;
+    TableColumn<Book, Integer> colBookRemaining;
 
     ObservableList<Book> list;
 
-    private ShowAlert showAlert;
+    ShowAlert showAlert;
 
-    @FXML
-    private void handleButtonAction(ActionEvent e) {
-        if (e.getSource() == buttonAddBook) {
-            FXMLResolver.getInstance().renderScene("bookTab/create_book");
-        } else if (e.getSource() == buttonUpdate) {
-            updateBook();
-        } else if (e.getSource() == buttonDelete) {
-            deleteBook();
-        }
-    }
-
-    private BookService bookService;
+    BookService bookService;
 
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
         showAlert = new ShowAlert();
         showBooks();
+        new AllSetUp().init_function(this);
     }
 
-    private void showBooks() {
+    void showBooks() {
         list = bookService.getAllBooks();
         // Thiết lập các cột cho TableView
         colBookISBN.setCellValueFactory(new PropertyValueFactory<Book, String>("id"));
@@ -90,40 +80,7 @@ public class MainBookController implements BaseController {
         tableViewBook.setItems(list);
     }
 
-    private void deleteBook() {
-        Book selectedBook = getSelectedBook();
-        if (selectedBook == null) {
-            showAlert.showAlert("No book selected!", "error");
-            return;
-        }
-        String selectedId = selectedBook.getId();
-        if (bookService.deleteBook(selectedId)) {
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i).getId().equals(selectedId)) {
-                    list.remove(i);
-                    break;
-                }
-            }
-            showAlert.showAlert("Delete book successed!", "success");
-        } else {
-            showAlert.showAlert("Delete book failed!", "error");
-        }
-    }
-
-    private void updateBook() {
-        Book selectedBook = getSelectedBook();
-        if (selectedBook == null) {
-            showAlert.showAlert("No book selected!", "error");
-        } else {
-            FXMLResolver resolver = FXMLResolver.getInstance();
-            resolver.renderScene("bookTab/update_book");
-
-            UpdateBookController updateBookController = resolver.getLoader().getController();
-            updateBookController.renderDataBook(selectedBook);
-        }
-    }
-
-    public Book getSelectedBook() {
+    Book getSelectedBook() {
         return tableViewBook.getSelectionModel().getSelectedItem();
     }
 }
