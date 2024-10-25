@@ -195,8 +195,7 @@ public class BookRepository implements CrudRepository<Book, String> {
      */
     public boolean updateOne(Book book) {
         String query = "UPDATE book SET name=?,author=?,description=?,category=?,bookPublisher=?" +
-                ",bookQuantity=?,bookRemaining=?,imagePath=?" +
-                "WHERE id=?";
+                ",bookQuantity=?,bookRemaining=?,imagePath=? WHERE id=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
         ) {
