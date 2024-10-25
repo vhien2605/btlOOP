@@ -1,8 +1,9 @@
-package app.controller.admin.BookTab;
+package app.controller.admin.BookTab.CreateBookTab;
 
 import java.util.List;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.controller.admin.BookTab.HandleBook;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

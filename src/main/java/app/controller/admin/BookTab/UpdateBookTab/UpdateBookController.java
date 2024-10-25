@@ -1,6 +1,7 @@
-package app.controller.admin.BookTab;
+package app.controller.admin.BookTab.UpdateBookTab;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.controller.admin.BookTab.HandleBook;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,9 +9,9 @@ import javafx.scene.control.TextField;
 
 public class UpdateBookController extends HandleBook {
     @FXML
-    private TextField bookRemainingTextField;
+    TextField bookRemainingTextField;
 
-    protected Book oldValueBook;
+    Book oldValueBook;
 
     public void renderDataBook(Book book) {
         this.oldValueBook = book;
@@ -47,7 +48,6 @@ public class UpdateBookController extends HandleBook {
             newValueBook.setImagePath(image);
         }
         boolean check = bookService.handleUpdateOne(newValueBook);
-        System.out.println(check);
         FXMLResolver.getInstance().renderScene("bookTab/book_tab");
     }
 
@@ -56,7 +56,7 @@ public class UpdateBookController extends HandleBook {
         if (!validateFields()) {
             return null;
         }
-        
+
         Book book = new Book(
                 bookISBNTextField.getText(),
                 bookNameTextField.getText(),
@@ -71,7 +71,7 @@ public class UpdateBookController extends HandleBook {
         return book;
     }
 
-    private void setTextFields(Book book) {
+    void setTextFields(Book book) {
         bookISBNTextField.setText(book.getId());
         bookNameTextField.setText(book.getName());
         bookAuthorTextField.setText(book.getAuthor());

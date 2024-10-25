@@ -11,6 +11,8 @@ module app {
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;
     opens app.controller.admin.BookTab to javafx.fxml;
+    opens app.controller.admin.BookTab.CreateBookTab to javafx.fxml;
+    opens app.controller.admin.BookTab.UpdateBookTab to javafx.fxml;
     opens app.controller.admin.HomeTab to javafx.fxml;
     opens app.controller.admin.IssueBookTab to javafx.fxml;
     opens app.controller.admin.ReturnBookTab to javafx.fxml;

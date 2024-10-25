@@ -1,6 +1,7 @@
 package app.controller.admin.BookTab;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.controller.admin.BookTab.UpdateBookTab.UpdateBookController;
 import app.domain.Book;
 
 public class UpdateBookButtonCtrl {

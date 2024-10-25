@@ -76,6 +76,7 @@ public class MainUserController implements BaseController {
         cancelButton.setStyle("-fx-background-color: lightblue;");
         if (type == 1) {
             insertButton.setDisable(false);
+            userIdTextField.setEditable(false);
             insertButton.setStyle("-fx-background-color: lightblue;");
             updateButton.setDisable(true);
             updateButton.setStyle("-fx-background-color: lightgray;");
@@ -83,6 +84,7 @@ public class MainUserController implements BaseController {
             deleteButton.setStyle("-fx-background-color: lightgray;");
         } else if (type == 2) {
             insertButton.setDisable(true);
+            userIdTextField.setEditable(false);
             insertButton.setStyle("-fx-background-color: lightgray;");
             updateButton.setDisable(false);
             updateButton.setStyle("-fx-background-color: lightblue;");
