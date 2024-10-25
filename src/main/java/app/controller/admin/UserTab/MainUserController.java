@@ -8,7 +8,6 @@ import app.service.mainService.UserService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -43,14 +42,14 @@ public class MainUserController implements BaseController {
     @FXML
     Button cancelButton, insertButton, updateButton, deleteButton, importDataButton;
 
-    private UserService userService;
+    UserService userService;
 
-    private ShowAlert showAlert;
+    ShowAlert showAlert;
 
     ObservableList<User> listUser;
 
-    private static final int ADD_NEW = 1;
-    private static final int UPDATE_AND_DELETE = 2;
+    static final int ADD_NEW = 1;
+    static final int UPDATE_AND_DELETE = 2;
 
     @Override
     public void initialize() {
@@ -59,9 +58,10 @@ public class MainUserController implements BaseController {
         showUsers();
         getSelectedUser();
         setCanClickButton(ADD_NEW);
+        new AllSetUp().init_function(this);
     }
 
-    private void getSelectedUser() {
+    void getSelectedUser() {
         userTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<User>() {
             @Override
             public void changed(ObservableValue<? extends User> observable, User oldValue, User newValue) {
@@ -72,22 +72,7 @@ public class MainUserController implements BaseController {
         });
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent e) {
-        if (e.getSource() == cancelButton) {
-            clearTextFields();
-        } else if (e.getSource() == insertButton) {
-            addNewUser();
-        } else if (e.getSource() == updateButton) {
-            updateUser();
-        } else if (e.getSource() == deleteButton) {
-            deleteUser();
-        } else if (e.getSource() == importDataButton) {
-            System.out.println("click button import data");
-        }
-    }
-
-    private void setCanClickButton(int type) {
+    void setCanClickButton(int type) {
         cancelButton.setStyle("-fx-background-color: lightblue;");
         if (type == 1) {
             insertButton.setDisable(false);
@@ -106,66 +91,7 @@ public class MainUserController implements BaseController {
         }
     }
 
-    private void addNewUser() {
-        User user = getUser();
-
-        if (user == null) {
-            return;
-        }
-
-        if (userService.handleSaveUser(user)) {
-            clearTextFields();
-            listUser.add(user);
-            showAlert.showAlert("Add new user successed!", "success");
-        } else {
-            showAlert.showAlert("Add new user failed!", "error");
-        }
-
-    }
-
-    private void updateUser() {
-        User user = getUser();
-
-        if (user == null) {
-            return;
-        }
-
-        if (userService.handleUpdateOne(user)) {
-            for (int i = 0; i < listUser.size(); i++) {
-                if (listUser.get(i).getId().equals(user.getId())) {
-                    listUser.set(i, user);
-                    break;
-                }
-            }
-            showAlert.showAlert("Update user successed!", "success");
-        } else {
-            showAlert.showAlert("Update user failed!", "error");
-        }
-    }
-
-    private void deleteUser() {
-        User user = getUser();
-
-        if (user == null) {
-            return;
-        }
-
-        String id = user.getId();
-        if (userService.deleteUser(id)) {
-            for (int i = 0; i < listUser.size(); i++) {
-                if (listUser.get(i).getId().equals(id)) {
-                    listUser.remove(i);
-                    break;
-                }
-            }
-            clearTextFields();
-            showAlert.showAlert("Delete user successed!", "success");
-        } else {
-            showAlert.showAlert("Delete user failed!", "error");
-        }
-    }
-
-    private void showUsers() {
+    void showUsers() {
         listUser = userService.getAllUsers();
         // Thiết lập các cột cho TableView
         userIdCol.setCellValueFactory(new PropertyValueFactory<User, String>("id"));
@@ -178,7 +104,7 @@ public class MainUserController implements BaseController {
         userTableView.setItems(listUser);
     }
 
-    private User getUser() {
+    User getUser() {
         if (!validateFields()) {
             return null;
         }
@@ -193,7 +119,7 @@ public class MainUserController implements BaseController {
                 phoneNumberTextField.getText());
     }
 
-    private void clearTextFields() {
+    void clearTextFields() {
         userIdTextField.clear();
         fullNameTextField.clear();
         addressTextField.clear();
@@ -202,7 +128,7 @@ public class MainUserController implements BaseController {
         setCanClickButton(ADD_NEW);
     }
 
-    private void setTextFields(User user) {
+    void setTextFields(User user) {
         userIdTextField.setText(user.getId());
         fullNameTextField.setText(user.getName());
         addressTextField.setText(user.getAddress());
@@ -211,7 +137,7 @@ public class MainUserController implements BaseController {
         setCanClickButton(UPDATE_AND_DELETE);
     }
 
-    private boolean validateFields() {
+    boolean validateFields() {
         // Check userId
         if (userIdTextField.getText().isEmpty()) {
             showAlert.showAlert("User ID không được để trống!", "error");
