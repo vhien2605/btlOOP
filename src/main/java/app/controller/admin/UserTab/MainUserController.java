@@ -1,8 +1,8 @@
 package app.controller.admin.UserTab;
 
 import app.controller.BaseController;
+import app.controller.helper.ShowAlert;
 import app.domain.User;
-import app.helper.ShowAlert;
 import app.repository.UserRepository;
 import app.service.mainService.UserService;
 import javafx.beans.value.ChangeListener;
@@ -76,7 +76,7 @@ public class MainUserController implements BaseController {
         cancelButton.setStyle("-fx-background-color: lightblue;");
         if (type == 1) {
             insertButton.setDisable(false);
-            userIdTextField.setEditable(false);
+            userIdTextField.setEditable(true);
             insertButton.setStyle("-fx-background-color: lightblue;");
             updateButton.setDisable(true);
             updateButton.setStyle("-fx-background-color: lightgray;");
