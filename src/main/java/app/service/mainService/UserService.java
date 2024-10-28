@@ -52,7 +52,7 @@ public class UserService {
         return this.userRepository.updateOne(user);
     }
 
-     /**
+    /**
      * Handle save {@link User} logic.
      *
      * @param user {@link User} entity want to save to database
@@ -69,5 +69,17 @@ public class UserService {
      */
     public boolean deleteUser(String id) {
         return this.userRepository.deleteById(id);
+    }
+
+    /**
+     * find {@link User} with username and password.
+     *
+     * @param username username
+     * @param password password
+     * @return User with mapping username and password
+     */
+    public User findByUsernameAndPassword(String username, String password) {
+        Optional<User> wrapperResult = this.userRepository.findByUsernameAndPassword(username, password);
+        return wrapperResult.orElse(null);
     }
 }
