@@ -13,6 +13,8 @@ import java.util.Optional;
  * {@link UserRepository}
  * Doing all accessData logics in table Student mapping to
  * {@link User} object in Java application
+ *
+ * @author hienonichan
  */
 public class UserRepository implements CrudRepository<User, String> {
     /**
@@ -181,5 +183,41 @@ public class UserRepository implements CrudRepository<User, String> {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    /**
+     * Find user by username and password for authentication.
+     *
+     * @param username username login
+     * @param password password login
+     * @return {@code Optional<User>} wrapper checking for user
+     */
+    public Optional<User> findByUsernameAndPassword(String username, String password) {
+        String query = "SELECT * FROM user WHERE username=? AND password=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User student = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber"));
+                resultSet.close();
+                return Optional.of(student);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return Optional.empty();
     }
 }

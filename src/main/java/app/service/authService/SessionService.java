@@ -7,6 +7,12 @@ import java.util.Properties;
 
 import app.domain.User;
 
+/**
+ * {@link SessionService} for handling authorization after authentication
+ * Create session to get Role for {@link User}
+ *
+ * @author hienonichan
+ */
 public class SessionService {
     /**
      * Create session method.
@@ -22,7 +28,6 @@ public class SessionService {
         Properties properties = new Properties();
         properties.setProperty("ID", id);
         properties.setProperty("ROLE", role);
-        AuthUser.getInstance().findCurrentUser(id);
         try (FileOutputStream writter = new FileOutputStream("./src/main/resources/session.properties")) {
             properties.store(writter, null);
         } catch (IOException e) {

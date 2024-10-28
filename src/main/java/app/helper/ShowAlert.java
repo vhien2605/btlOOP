@@ -21,6 +21,5 @@ public class ShowAlert {
             alert.setContentText(message);
             alert.showAndWait();
         }
-
     }
 }
