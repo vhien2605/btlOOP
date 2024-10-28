@@ -14,7 +14,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
     /**
      * Find all Report method.
      *
-     * @return List of {@link BorrowReport} to manage the document in librarys
+     * @return List of {@link BorrowReport} to manage the document in library
+     * @author hienonichan
      */
     @Override
     public List<BorrowReport> findAll() {

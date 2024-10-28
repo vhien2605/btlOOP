@@ -12,6 +12,8 @@ import java.util.Optional;
 /**
  * {@link BookRepository} for doing all accessData logic in table Book mapping to
  * {@link Book} class in Java application
+ *
+ * @author hienonichan
  */
 public class BookRepository implements CrudRepository<Book, String> {
     /**

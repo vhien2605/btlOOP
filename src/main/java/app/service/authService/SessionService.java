@@ -7,6 +7,12 @@ import java.util.Properties;
 
 import app.domain.User;
 
+/**
+ * {@link SessionService} for handling authorization after authentication
+ * Create session to get Role for {@link User}
+ *
+ * @author hienonichan
+ */
 public class SessionService {
     /**
      * Create session method.

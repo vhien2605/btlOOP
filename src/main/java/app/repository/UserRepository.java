@@ -13,6 +13,8 @@ import java.util.Optional;
  * {@link UserRepository}
  * Doing all accessData logics in table Student mapping to
  * {@link User} object in Java application
+ *
+ * @author hienonichan
  */
 public class UserRepository implements CrudRepository<User, String> {
     /**
