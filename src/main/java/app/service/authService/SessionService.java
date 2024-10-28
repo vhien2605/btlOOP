@@ -28,7 +28,6 @@ public class SessionService {
         Properties properties = new Properties();
         properties.setProperty("ID", id);
         properties.setProperty("ROLE", role);
-        AuthUser.getInstance().findCurrentUser(id);
         try (FileOutputStream writter = new FileOutputStream("./src/main/resources/session.properties")) {
             properties.store(writter, null);
         } catch (IOException e) {
