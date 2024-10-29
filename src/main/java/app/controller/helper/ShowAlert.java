@@ -1,4 +1,4 @@
-package app.helper;
+package app.controller.helper;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -21,6 +21,5 @@ public class ShowAlert {
             alert.setContentText(message);
             alert.showAndWait();
         }
-
     }
 }
