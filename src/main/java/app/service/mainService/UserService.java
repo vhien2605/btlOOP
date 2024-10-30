@@ -82,4 +82,15 @@ public class UserService {
         Optional<User> wrapperResult = this.userRepository.findByUsernameAndPassword(username, password);
         return wrapperResult.orElse(null);
     }
+
+    /**
+     * Find {@link User} by username service.
+     *
+     * @param username username
+     * @return User with the mapping username or null if not exists
+     */
+    public User findByUsername(String username) {
+        Optional<User> wrapperResult = this.userRepository.findByUsername(username);
+        return wrapperResult.orElse(null);
+    }
 }

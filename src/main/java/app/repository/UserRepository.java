@@ -220,4 +220,38 @@ public class UserRepository implements CrudRepository<User, String> {
         }
         return Optional.empty();
     }
+
+
+    /**
+     * Access data method find user by username.
+     *
+     * @param username username of the user want to find in database
+     * @return {@code Optional<User>}
+     */
+    public Optional<User> findByUsername(String username) {
+        String query = "SELECT * FROM user WHERE username=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User student = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber"));
+                resultSet.close();
+                return Optional.of(student);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return Optional.empty();
+    }
 }
