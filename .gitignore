@@ -35,6 +35,6 @@ build/
 ### VS Code ###
 .vscode/
 **/src/main/resources/database.properties
-**/src/main/resources/session.properties
+**/src/main/resources/localSession.properties
 ### Mac OS ###
 .DS_Store

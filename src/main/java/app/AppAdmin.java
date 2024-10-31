@@ -1,6 +1,7 @@
 package app;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.service.authService.SessionService;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;

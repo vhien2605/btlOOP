@@ -9,7 +9,8 @@ import java.nio.file.StandardCopyOption;
  */
 public class FileService {
     /**
-     * Method receive {@code File} from Front-end and save to server
+     * Method receive {@code File} from Front-end and save to server.
+     * The root path is image .
      *
      * @param imageFile    imageFile from client
      * @param targetFolder targetFolder

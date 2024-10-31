@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/UserVerifyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
