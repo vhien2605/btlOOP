@@ -1,10 +1,14 @@
 package app;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.service.authService.SessionService;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * JavaFX App
+ */
 public class AppUser extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -25,5 +29,4 @@ public class AppUser extends Application {
         FXMLResolver.getInstance().setUp("/view/user", stage, 1100, 650);
         FXMLResolver.getInstance().renderScene("homeTab/home_tab");
     }
-    
 }
