@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="950.0"
+    xmlns="http://javafx.com/javafx/23"
+    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.HeaderController">
+    <children>
+        <Label layoutX="292.0" layoutY="-2.0" prefHeight="34.0" prefWidth="306.0" text="Library Menagement System" textFill="#848080">
+            <font>
+                <Font size="23.0"/>
+            </font>
+        </Label>
+        <Button fx:id="closeProgramButton" layoutX="899.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="50.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="12.0" fitWidth="13.0">
+                    <image>
+                        <Image url="@../../../image/black_close.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+        <Button fx:id="minimizeProgramButton" layoutX="851.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="50.0">
+            <font>
+                <Font size="10.0"/>
+            </font>
+            <graphic>
+                <ImageView fitHeight="13.0" fitWidth="13.0">
+                    <image>
+                        <Image url="@../../../image/minimize-sign.png"/>
+                    </image>
+                </ImageView>
+            </graphic>
+        </Button>
+    </children>
+</Pane>
