@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +81,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookRepositoryTest">
+  <component name="RunManager">
     <configuration name="BookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <option name="PACKAGE_NAME" value="repository" />
