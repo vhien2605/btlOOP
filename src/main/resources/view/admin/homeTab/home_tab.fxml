@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.chart.StackedBarChart?>
@@ -35,7 +36,7 @@
                     <center>
                         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <StackedBarChart fx:id="categoryChart" layoutX="35.0" layoutY="50.0" prefHeight="250.0"
+                                <StackedBarChart fx:id="categoryChart" layoutX="37.0" layoutY="25.0" prefHeight="250.0"
                                                  prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
@@ -44,7 +45,7 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <StackedBarChart fx:id="bookBorrowChart" layoutX="456.0" layoutY="50.0"
+                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="14.0"
                                                  prefHeight="250.0" prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
@@ -53,8 +54,17 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <PieChart fx:id="issueBookChart" layoutX="256.0" layoutY="318.0" prefHeight="250.0"
+                                <PieChart fx:id="issueBookChart" layoutX="53.0" layoutY="289.0" prefHeight="250.0"
                                           prefWidth="400.0"/>
+                                <LineChart fx:id="userChart" layoutX="475.0" layoutY="289.0" prefHeight="250.0"
+                                           prefWidth="400.0">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </LineChart>
                             </children>
                         </Pane>
                     </center>

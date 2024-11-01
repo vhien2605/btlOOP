@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
@@ -30,6 +31,9 @@ public class MainHomeController implements BaseController {
     @FXML
     PieChart issueBookChart;
 
+    @FXML
+    LineChart userChart;
+
     private BookService bookService;
 
     @Override
@@ -38,6 +42,7 @@ public class MainHomeController implements BaseController {
         addDataToCategoryChart();
         addDataToBookBorrowChart();
         addDataToIssueBookChart();
+        addDataToUserChart();
     }
 
     private void addDataToCategoryChart() {
@@ -75,5 +80,14 @@ public class MainHomeController implements BaseController {
                 new PieChart.Data("Books are borrowed and out of require date", 10)
         );
         issueBookChart.setData(pieChartData);
+    }
+
+    private void addDataToUserChart() {
+        XYChart.Series<String, Number> userSeries = new XYChart.Series<>();
+        userSeries.setName("User address chart");
+        userSeries.getData().add(new XYChart.Data<>("Cau Giay", 500));
+        userSeries.getData().add(new XYChart.Data<>("Ba Dinh", 200));
+        userSeries.getData().add(new XYChart.Data<>("Thanh Xuan", 260));
+        userChart.getData().add(userSeries);
     }
 }
