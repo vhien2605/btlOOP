@@ -31,6 +31,10 @@ public class AuthenticationService {
         return this.userService.findByUsername(username) != null;
     }
 
+    public boolean isEmailExist(String email) {
+        return this.userService.findByEmail(email) != null;
+    }
+
     public boolean isUsernameAndPasswordMapping(String username, String password) {
         User user = this.userService.findByUsernameAndPassword(username, password);
         if (user == null) {

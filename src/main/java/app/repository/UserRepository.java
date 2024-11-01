@@ -254,4 +254,37 @@ public class UserRepository implements CrudRepository<User, String> {
         }
         return Optional.empty();
     }
+
+    /**
+     * Find {@link User} by email field method.
+     *
+     * @param email email's student want to search in DB
+     * @return {@code Optional<User>} wrapper handling null pointer
+     */
+    public Optional<User> findByEmail(String email) {
+        String query = "SELECT * FROM user WHERE email=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User student = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber"));
+                resultSet.close();
+                return Optional.of(student);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return Optional.empty();
+    }
 }
