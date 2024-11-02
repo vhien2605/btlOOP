@@ -1,9 +1,18 @@
 package app.controller.admin.IssueBookTab;
 
+import app.domain.Book;
+import app.domain.BorrowReport;
+import app.domain.User;
 import app.repository.BookRepository;
+import app.repository.ReportRepository;
 import app.repository.UserRepository;
 import app.service.mainService.BookService;
+import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+
+import java.time.format.DateTimeFormatter;
+
+import app.controller.helper.ShowAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -12,32 +21,38 @@ import javafx.scene.control.TextField;
 public class MainIssueController {
 
     @FXML
-    private TextField bookISBNTextFiled, userIdTextFiled, bookNameTextFiled,
+    TextField bookISBNTextFiled, userIdTextFiled, bookNameTextFiled,
             bookAuthorTextFiled, bookPublisherTextFiled, bookCategoryTextFiled,
             fullNameTextFiled, phoneNumberTextFiled, emailTextFiled, addressTextFiled;
 
     @FXML
-    private DatePicker borrowDateTextFiled, dueDateTextFIled;
+    DatePicker borrowDateTextFiled, dueDateTextFIled;
 
     @FXML
-    private Button findBookButton, findUserButton, cancelButton, issueBookButton;
+    Button findBookButton, findUserButton, cancelButton, issueBookButton;
 
     BookService bookService;
 
     UserService userService;
 
+    ReportService reportService;
+
+    ShowAlert showAlert;
+
+    public static final String PENDING_APPROVAL = "pending appproval";
+    public static final String BORROWED = "borrowed";
+    public static final String RETURNED = "returned";
+
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
+        reportService = new ReportService(new ReportRepository());
+        showAlert = new ShowAlert();
+        new AllSetUp().init_function(this);
     }
 
     @FXML
-    private void handleCancel() {
-        clearFields();
-    }
-
-    @FXML
-    private void clearFields() {
+    public void clearFields() {
         bookISBNTextFiled.clear();
         userIdTextFiled.clear();
         bookNameTextFiled.clear();
@@ -51,6 +66,78 @@ public class MainIssueController {
 
         borrowDateTextFiled.setValue(null);
         dueDateTextFIled.setValue(null);
+    }
+
+    public String getBookISBN() {
+        return bookISBNTextFiled.getText();
+    }
+
+    public String getUserId() {
+        return userIdTextFiled.getText();
+    }
+
+    public void setBookInfo(Book book) {
+        bookNameTextFiled.setText(book.getName());
+        bookAuthorTextFiled.setText(book.getAuthor());
+        bookPublisherTextFiled.setText(book.getBookPublisher());
+        bookCategoryTextFiled.setText(book.getCategory());
+    }
+
+    public void setUserInfo(User user) {
+        fullNameTextFiled.setText(user.getName());
+        phoneNumberTextFiled.setText(user.getPhoneNumber());
+        emailTextFiled.setText(user.getEmail());
+        addressTextFiled.setText(user.getAddress());
+    }
+
+    BorrowReport getData() {
+        if (!validateFields()) {
+            return null;
+        }
+
+        return new BorrowReport(0,
+                userIdTextFiled.getText(),
+                bookISBNTextFiled.getText(),
+                borrowDateTextFiled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                "",
+                BORROWED);
+    }
+
+    boolean validateFields() {
+        // Kiểm tra Book ISBN
+        String bookISBN = getBookISBN();
+        if (bookISBN.isEmpty()) {
+            showAlert.showAlert("Book ISBN cannot be empty!", "error");
+            return false;
+        }
+
+        // Kiểm tra User ID
+        String userId = getUserId();
+        if (userId.isEmpty()) {
+            showAlert.showAlert("User ID cannot be empty!", "error");
+            return false;
+        }
+
+        // Kiểm tra Borrow Date
+        if (borrowDateTextFiled.getValue() == null) {
+            showAlert.showAlert("Borrow Date must be selected!", "error");
+            return false;
+        }
+
+        // Kiểm tra Due Date
+        if (dueDateTextFIled.getValue() == null) {
+            showAlert.showAlert("Due Date must be selected!", "error");
+            return false;
+        }
+
+        // Kiểm tra xem Due Date có sau Borrow Date không
+        if (borrowDateTextFiled.getValue().isAfter(dueDateTextFIled.getValue())) {
+            showAlert.showAlert("Due Date must be after Borrow Date!", "error");
+            return false;
+        }
+
+        return true;
     }
 
 }
