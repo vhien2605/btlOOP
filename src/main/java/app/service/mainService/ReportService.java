@@ -1,6 +1,5 @@
 package app.service.mainService;
 
-
 import app.domain.BorrowReport;
 import app.repository.ReportRepository;
 import javafx.collections.FXCollections;
@@ -18,5 +17,9 @@ public class ReportService {
 
     public ObservableList<BorrowReport> getAllReports() {
         return FXCollections.observableList(this.reportRepository.findAll());
+    }
+
+    public boolean handleSave(BorrowReport data) {
+        return this.reportRepository.save(data);
     }
 }

@@ -2,10 +2,10 @@ package app.controller.admin.BookTab;
 
 import app.domain.Book;
 
-public class DeleteBookButtonCtrl {
+public class DeleteBookController {
     final MainBookController mainBookCtrl;
 
-    public DeleteBookButtonCtrl(MainBookController mainBookCtrl) {
+    public DeleteBookController(MainBookController mainBookCtrl) {
         this.mainBookCtrl = mainBookCtrl;
     }
 

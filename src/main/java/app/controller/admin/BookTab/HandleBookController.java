@@ -1,12 +1,11 @@
 package app.controller.admin.BookTab;
 
 import java.io.File;
-import java.util.List;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.ShowAlert;
 import app.domain.Book;
-import app.helper.ShowAlert;
 import app.repository.BookRepository;
 import app.service.mainService.BookService;
 import app.service.subService.FileService;
@@ -18,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-public abstract class HandleBook implements BaseController {
+public abstract class HandleBookController implements BaseController {
     @FXML
     protected TextField bookISBNTextField, bookNameTextField, bookAuthorTextField, bookQuantityTextField,
             bookPublisherTextField, bookCategoryTextField, imagePathTextField;

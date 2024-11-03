@@ -1,9 +1,9 @@
 package app.controller.admin.UserTab;
 
-public class CancelButtonCtrl {
+public class CancelDataController {
     final MainUserController mainUserCtrl;
 
-    public CancelButtonCtrl(MainUserController mainUserCtrl) {
+    public CancelDataController(MainUserController mainUserCtrl) {
         this.mainUserCtrl = mainUserCtrl;
     }
 

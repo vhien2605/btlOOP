@@ -16,8 +16,8 @@ public class ChangeTabController implements BaseController {
         FXMLResolver.getInstance().renderScene("issueBookTab/issuebook_tab");
     }
 
-    public void returnBookTab() {
-        FXMLResolver.getInstance().renderScene("returnBookTab/returnbook_tab");
+    public void allIssueBookTab() {
+        FXMLResolver.getInstance().renderScene("allIssueBookTab/all_issuebook_tab");
     }
 
     public void userTab() {
