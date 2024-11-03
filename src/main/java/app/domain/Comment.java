@@ -5,7 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Comment {
     private SimpleIntegerProperty id;
-    private SimpleStringProperty studentId;
+    private SimpleStringProperty userId;
     private SimpleStringProperty bookId;
     private SimpleStringProperty information;
     private SimpleStringProperty date;
@@ -23,15 +23,15 @@ public class Comment {
     }
 
     public String getStudentId() {
-        return studentId.get();
+        return userId.get();
     }
 
     public SimpleStringProperty getStudentIdProperty() {
-        return studentId;
+        return userId;
     }
 
     public void setStudentId(String id) {
-        studentId = new SimpleStringProperty(id);
+        userId = new SimpleStringProperty(id);
     }
 
     public String getBookId() {
@@ -54,7 +54,7 @@ public class Comment {
         return information;
     }
 
-    
+
     public void setInformation(String information) {
         this.information = new SimpleStringProperty(information);
     }

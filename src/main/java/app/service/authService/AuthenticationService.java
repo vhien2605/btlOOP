@@ -17,7 +17,7 @@ public class AuthenticationService {
         this.userService = userService;
     }
 
-    public String verify(String username, String password) {
+    public String verifyLogin(String username, String password) {
         if (!isUsernameExists(username)) {
             return "Username is not found";
         }
@@ -27,8 +27,21 @@ public class AuthenticationService {
         return "Authentication successfully";
     }
 
+    public String verifyRegister(User user) {
+        if (isUsernameExists(user.getUsername())) {
+            return "Existing username";
+        } else if (isEmailExists(user.getEmail())) {
+            return "Existing email";
+        }
+        return "Register validation successfully";
+    }
+
     public boolean isUsernameExists(String username) {
         return this.userService.findByUsername(username) != null;
+    }
+
+    public boolean isEmailExists(String email) {
+        return this.userService.findByEmail(email) != null;
     }
 
     public boolean isUsernameAndPasswordMapping(String username, String password) {

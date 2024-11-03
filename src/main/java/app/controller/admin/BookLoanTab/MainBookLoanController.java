@@ -63,7 +63,7 @@ public class MainBookLoanController {
     }
 
     void setData() {
-        User user = userService.findById(borrowReport.getStudentId());
+        User user = userService.findById(borrowReport.getUserId());
         setUserInfo(user);
 
         Book book = bookService.findByISBN(borrowReport.getBookId());
@@ -111,7 +111,7 @@ public class MainBookLoanController {
     }
 
     void setUserInfo(User user) {
-        userIdTextFiled.setText(borrowReport.getStudentId());
+        userIdTextFiled.setText(borrowReport.getUserId());
         fullNameTextFiled.setText(user.getName());
         phoneNumberTextFiled.setText(user.getPhoneNumber());
         emailTextFiled.setText(user.getEmail());
