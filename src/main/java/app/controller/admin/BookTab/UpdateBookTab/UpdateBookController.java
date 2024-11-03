@@ -1,13 +1,13 @@
 package app.controller.admin.BookTab.UpdateBookTab;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.controller.admin.BookTab.HandleBook;
+import app.controller.admin.BookTab.HandleBookController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
-public class UpdateBookController extends HandleBook {
+public class UpdateBookController extends HandleBookController {
     @FXML
     TextField bookRemainingTextField;
 

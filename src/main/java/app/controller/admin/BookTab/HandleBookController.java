@@ -17,7 +17,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 
-public abstract class HandleBook implements BaseController {
+public abstract class HandleBookController implements BaseController {
     @FXML
     protected TextField bookISBNTextField, bookNameTextField, bookAuthorTextField, bookQuantityTextField,
             bookPublisherTextField, bookCategoryTextField, imagePathTextField;
