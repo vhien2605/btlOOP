@@ -25,7 +25,7 @@
                <top>
                   <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="28.0" text="Issue Books" textFill="#1d3ec4">
+                        <Label layoutX="28.0" text="Issue Book" textFill="#1d3ec4">
                            <font>
                               <Font size="35.0" />
                            </font>
