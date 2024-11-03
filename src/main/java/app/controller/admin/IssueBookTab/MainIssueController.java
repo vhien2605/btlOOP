@@ -39,9 +39,9 @@ public class MainIssueController {
 
     ShowAlert showAlert;
 
-    public static final String PENDING_APPROVAL = "pending appproval";
-    public static final String BORROWED = "borrowed";
-    public static final String RETURNED = "returned";
+    public static final String PENDING_APPROVAL = "Pending appproval";
+    public static final String BORROWED = "Borrowed";
+    public static final String RETURNED = "Returned";
 
     public void initialize() {
         bookService = new BookService(new BookRepository());
@@ -99,8 +99,8 @@ public class MainIssueController {
                 userIdTextFiled.getText(),
                 bookISBNTextFiled.getText(),
                 borrowDateTextFiled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                null,
                 dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
-                "",
                 BORROWED);
     }
 
@@ -116,6 +116,18 @@ public class MainIssueController {
         String userId = getUserId();
         if (userId.isEmpty()) {
             showAlert.showAlert("User ID cannot be empty!", "error");
+            return false;
+        }
+
+        // Kiểm tra thông tin sách
+        if (bookNameTextFiled.getText().isEmpty()) {
+            showAlert.showAlert("Book information not found!", "error");
+            return false;
+        }
+
+        // Kiểm tra thông tin user
+        if (fullNameTextFiled.getText().isEmpty()) {
+            showAlert.showAlert("User information not found!", "error");
             return false;
         }
 

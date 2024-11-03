@@ -1,5 +1,7 @@
 package app.controller.admin.IssueBookTab;
 
+import app.config.ViewConfig.FXMLResolver;
+import app.controller.admin.BookLoanTab.MainBookLoanController;
 import app.domain.BorrowReport;
 
 public class CreateIssueController {
@@ -21,8 +23,13 @@ public class CreateIssueController {
         }
 
         if (mainIssueCtrl.reportService.handleSave(data)) {
+            FXMLResolver resolver = FXMLResolver.getInstance();
+            resolver.renderScene("bookLoanTab/bookloan_tab");
+
             mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
-            mainIssueCtrl.clearFields();
+
+            MainBookLoanController bookLoanController = resolver.getLoader().getController();
+            bookLoanController.renderData(data);
         } else {
             mainIssueCtrl.showAlert.showAlert("Create fail new borrow report !", "error");
         }
