@@ -1,9 +1,9 @@
 package app.controller.admin.UserTab;
 
-public class ImportDataButtonCtrl {
+public class ImportDataController {
     final MainUserController mainUserCtrl;
 
-    public ImportDataButtonCtrl(MainUserController mainUserCtrl) {
+    public ImportDataController(MainUserController mainUserCtrl) {
         this.mainUserCtrl = mainUserCtrl;
     }
 

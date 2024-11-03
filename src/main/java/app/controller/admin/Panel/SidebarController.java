@@ -19,10 +19,13 @@ public class SidebarController implements BaseController {
     private Button issueBooksButton;
 
     @FXML
-    private Button returnBooksButton;
+    private Button allIssueBooksButton;
 
     @FXML
     private Button settingsButton;
+
+    @FXML
+    private Button signOutButton;
 
     /**
      * Click button event
@@ -37,8 +40,8 @@ public class SidebarController implements BaseController {
             new ChangeTabController().userTab();
         } else if (e.getSource() == issueBooksButton) {
             new ChangeTabController().issueBookTab();
-        } else if (e.getSource() == returnBooksButton) {
-            new ChangeTabController().returnBookTab();
+        } else if (e.getSource() == allIssueBooksButton) {
+            new ChangeTabController().allIssueBookTab();
         } else if (e.getSource() == settingsButton) {
             new ChangeTabController().settingTab();
         }

@@ -2,10 +2,10 @@ package app.controller.admin.UserTab;
 
 import app.domain.User;
 
-public class UpdateButtonCtrl {
+public class UpdateUserController {
     final MainUserController mainUserCtrl;
 
-    public UpdateButtonCtrl(MainUserController mainUserCtrl) {
+    public UpdateUserController(MainUserController mainUserCtrl) {
         this.mainUserCtrl = mainUserCtrl;
     }
 

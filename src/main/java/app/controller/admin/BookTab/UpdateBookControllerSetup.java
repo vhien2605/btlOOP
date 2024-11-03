@@ -4,10 +4,10 @@ import app.config.ViewConfig.FXMLResolver;
 import app.controller.admin.BookTab.UpdateBookTab.UpdateBookController;
 import app.domain.Book;
 
-public class UpdateBookButtonCtrl {
+public class UpdateBookControllerSetup {
     final MainBookController mainBookCtrl;
 
-    public UpdateBookButtonCtrl(MainBookController mainBookCtrl) {
+    public UpdateBookControllerSetup(MainBookController mainBookCtrl) {
         this.mainBookCtrl = mainBookCtrl;
     }
 

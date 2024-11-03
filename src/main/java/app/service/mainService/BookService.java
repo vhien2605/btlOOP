@@ -1,5 +1,7 @@
 package app.service.mainService;
 
+import java.util.Optional;
+
 import app.domain.Book;
 import app.repository.BookRepository;
 import javafx.collections.FXCollections;
@@ -39,6 +41,17 @@ public class BookService {
      */
     public boolean handleSaveBook(Book book) {
         return this.bookRepository.save(book);
+    }
+
+    /**
+     * Service find by ISBN.
+     *
+     * @param bookISBN keyword for searching by ISBN
+     * @return {@link Book} which has input id
+     */
+    public Book findByISBN(String bookISBN) {
+        Optional<Book> wrapperResult = this.bookRepository.findById(bookISBN);
+        return wrapperResult.orElse(null);
     }
 
     /**

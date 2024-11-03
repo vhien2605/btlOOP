@@ -2,8 +2,8 @@ package app.controller.admin.BookTab;
 
 public class AllSetUp {
     void init_function(MainBookController bookCtrl) {
-        new DeleteBookButtonCtrl(bookCtrl).init();
-        new UpdateBookButtonCtrl(bookCtrl).init();
-        new CreateBookButtonCtrl(bookCtrl).init();
+        new DeleteBookController(bookCtrl).init();
+        new UpdateBookControllerSetup(bookCtrl).init();
+        new CreateBookControllerSetup(bookCtrl).init();
     }
 }

@@ -7,6 +7,7 @@ module app {
     requires java.sql;
     requires org.slf4j;
     requires javafx.base;
+    requires javafx.graphics;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;
@@ -15,9 +16,10 @@ module app {
     opens app.controller.admin.BookTab.UpdateBookTab to javafx.fxml;
     opens app.controller.admin.HomeTab to javafx.fxml;
     opens app.controller.admin.IssueBookTab to javafx.fxml;
-    opens app.controller.admin.ReturnBookTab to javafx.fxml;
+    opens app.controller.admin.AllIssueBookTab to javafx.fxml;
     opens app.controller.admin.SettingTab to javafx.fxml;
     opens app.controller.admin.UserTab to javafx.fxml;
+    opens app.controller.admin.BookLoanTab to javafx.fxml;
     opens app.domain to javafx.base;
 
     exports app;
