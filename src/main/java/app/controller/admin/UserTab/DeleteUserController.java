@@ -2,10 +2,10 @@ package app.controller.admin.UserTab;
 
 import app.domain.User;
 
-public class DeleteButtonCtrl {
+public class DeleteUserController {
     final MainUserController mainUserCtrl;
 
-    public DeleteButtonCtrl(MainUserController mainUserCtrl) {
+    public DeleteUserController(MainUserController mainUserCtrl) {
         this.mainUserCtrl = mainUserCtrl;
     }
 
