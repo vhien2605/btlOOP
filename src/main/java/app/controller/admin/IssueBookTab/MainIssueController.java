@@ -46,7 +46,8 @@ public class MainIssueController {
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
-        reportService = new ReportService(new ReportRepository());
+        reportService = new ReportService(new ReportRepository(),
+                new UserService(new UserRepository()), new BookService(new BookRepository()));
         showAlert = new ShowAlert();
         new AllSetUp().init_function(this);
     }
@@ -148,8 +149,6 @@ public class MainIssueController {
             showAlert.showAlert("Due Date must be after Borrow Date!", "error");
             return false;
         }
-
         return true;
     }
-
 }
