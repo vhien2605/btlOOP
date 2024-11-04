@@ -8,6 +8,7 @@ module app {
     requires org.slf4j;
     requires javafx.base;
     requires javafx.graphics;
+    requires java.compiler;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;

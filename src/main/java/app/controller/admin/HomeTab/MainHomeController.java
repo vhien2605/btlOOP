@@ -2,8 +2,17 @@ package app.controller.admin.HomeTab;
 
 import app.controller.BaseController;
 import app.domain.Book;
+import app.domain.BorrowReport;
+import app.domain.DTO.ReportDetail;
 import app.repository.BookRepository;
+import app.repository.ReportRepository;
+import app.repository.UserRepository;
 import app.service.mainService.BookService;
+import app.service.mainService.ReportService;
+import app.service.mainService.UserService;
+import app.service.subService.multiTaskService.MultiTaskService;
+import app.service.subService.multiTaskService.ResultTask;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,8 +26,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class MainHomeController implements BaseController {
 
@@ -35,20 +46,35 @@ public class MainHomeController implements BaseController {
     LineChart userChart;
 
     private BookService bookService;
+    private MultiTaskService multiTaskService;
+    private ReportService reportService;
 
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
-        addDataToCategoryChart();
-        addDataToBookBorrowChart();
-        addDataToIssueBookChart();
-        addDataToUserChart();
+        reportService = new ReportService(new ReportRepository(),
+                new UserService(new UserRepository()), new BookService(new BookRepository()));
+        multiTaskService = new MultiTaskService(5);
+        multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
+        multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
+        try {
+            List<ResultTask<?>> tasksResults = multiTaskService.handleTasks();
+            List<Book> listBook = (List<Book>) tasksResults.get(0).getData();
+            List<ReportDetail> listReport = ((List<ReportDetail>) tasksResults.get(1).getData());
+            Platform.runLater(() -> {
+                addDataToCategoryChart(listBook);
+                addDataToBookBorrowChart(listReport);
+                addDataToIssueBookChart();
+                addDataToUserChart();
+            });
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    private void addDataToCategoryChart() {
+    private void addDataToCategoryChart(List<Book> listBook) {
         XYChart.Series<String, Number> categorySeries = new XYChart.Series<>();
         categorySeries.setName("Category number");
-        List<Book> listBook = this.bookService.getAllBooks();
         HashMap<String, Integer> categoryQuantity = new HashMap<>();
         for (Book book : listBook) {
             categoryQuantity.put(book.getCategory()
@@ -60,15 +86,17 @@ public class MainHomeController implements BaseController {
         categoryChart.getData().add(categorySeries);
     }
 
-    private void addDataToBookBorrowChart() {
-        // thong ke ve so quyen sach muon theo user,category
+    private void addDataToBookBorrowChart(List<ReportDetail> listReport) {
         XYChart.Series<String, Number> borrowedSeries = new XYChart.Series<>();
-        borrowedSeries.setName("Books Borrowed quantity by month");
-        borrowedSeries.getData().add(new XYChart.Data<>("Month 1", 30));
-        borrowedSeries.getData().add(new XYChart.Data<>("Month 2", 50));
-        borrowedSeries.getData().add(new XYChart.Data<>("Month 3", 20));
-        borrowedSeries.getData().add(new XYChart.Data<>("Month 4", 70));
-        borrowedSeries.getData().add(new XYChart.Data<>("Month 5", 90));
+        borrowedSeries.setName("Borrowed Books quantity by book name");
+        HashMap<String, Integer> nameQuantity = new HashMap<>();
+        for (ReportDetail reportDetail : listReport) {
+            nameQuantity.put(reportDetail.getBookName()
+                    , nameQuantity.getOrDefault(reportDetail.getBookName(), 0) + 1);
+        }
+        for (String key : nameQuantity.keySet()) {
+            borrowedSeries.getData().add(new XYChart.Data<>(key, nameQuantity.get(key)));
+        }
         bookBorrowChart.getData().add(borrowedSeries);
     }
 
