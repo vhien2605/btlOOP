@@ -1,14 +1,13 @@
 package app.controller.admin.AllIssueBookTab;
 
 import app.controller.BaseController;
-import app.service.mainService.BookService;
+import app.domain.BorrowReport;
+import app.repository.ReportRepository;
 import app.service.mainService.ReportService;
-import app.service.mainService.UserService;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -29,21 +28,25 @@ public class MainAllIssueController implements BaseController {
 
     ReportService reportService;
 
-    UserService userService;
-
-    BookService bookService;
+    ObservableList<BorrowReport> listBorrowReport;
 
     @Override
     public void initialize() {
+        reportService = new ReportService(new ReportRepository());
         loadData();
     }
 
     private void loadData() {
-        for (int i = 1; i <= 20; i++) {
+        listBorrowReport = reportService.getAllReports();
+
+        for (BorrowReport data : listBorrowReport) {
             try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("/view/admin/allIssueBookTab/issued_row.fxml"));
+                String path = "/view/admin/allIssueBookTab/issued_row.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 Pane pane = loader.load();
+
+                MainIssuedRowController rowController = loader.getController();
+                rowController.loadData(data);
 
                 contentVBox.getChildren().add(pane);
             } catch (Exception e) {

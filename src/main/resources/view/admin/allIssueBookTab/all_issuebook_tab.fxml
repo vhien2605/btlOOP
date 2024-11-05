@@ -44,32 +44,32 @@
                      <children>
                         <Pane prefHeight="39.0" prefWidth="950.0" style="-fx-background-color: #d3d3d3;">
                            <children>
-                              <Label layoutX="75.0" layoutY="11.0" style="-fx-font-weight: 900;" text="User Id" textFill="#990000">
+                              <Label layoutX="61.0" layoutY="11.0" style="-fx-font-weight: 900;" text="User Id" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="169.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Book Id" textFill="#990000">
+                              <Label layoutX="139.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Book Id" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="7.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Id" textFill="#990000">
+                              <Label layoutX="16.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Id" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="264.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Borrow Date" textFill="#990000">
+                              <Label layoutX="237.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Borrow Date" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="395.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Due Date" textFill="#990000">
+                              <Label layoutX="366.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Due Date" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="504.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Return Date" textFill="#990000">
+                              <Label layoutX="495.0" layoutY="11.0" style="-fx-font-weight: 900;" text="Return Date" textFill="#990000">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
