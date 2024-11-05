@@ -43,6 +43,8 @@ public class MainBookLoanController {
 
     BorrowReport borrowReport;
 
+    String previousTabPath;
+
     public void initialize() {
         userService = new UserService(new UserRepository());
         bookService = new BookService(new BookRepository());
@@ -50,11 +52,12 @@ public class MainBookLoanController {
     }
 
     public void handleComeBackButton() {
-        FXMLResolver.getInstance().renderScene("issueBookTab/issuebook_tab");
+        FXMLResolver.getInstance().renderScene(previousTabPath);
     }
 
-    public void renderData(BorrowReport data) {
+    public void renderData(BorrowReport data, String previousTabPath) {
         this.borrowReport = data;
+        this.previousTabPath = previousTabPath;
         setData();
     }
 

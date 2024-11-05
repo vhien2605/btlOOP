@@ -33,7 +33,7 @@ public class MainIssuedRowController implements BaseController {
 
     @Override
     public void initialize() {
-
+        new AllSetUp().initMainIssueRowCtrl(this);
     }
 
     public void loadData(BorrowReport data) {
