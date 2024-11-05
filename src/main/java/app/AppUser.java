@@ -27,6 +27,6 @@ public class AppUser extends Application {
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
         FXMLResolver.getInstance().setUp("/view/user", stage, 1100, 650);
-        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+        FXMLResolver.getInstance().renderScene("homeTab/home");
     }
 }
