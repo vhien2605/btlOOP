@@ -42,8 +42,7 @@ public class MainIssueController {
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
-        reportService = new ReportService(new ReportRepository(),
-                new UserService(new UserRepository()), new BookService(new BookRepository()));
+        reportService = new ReportService(new ReportRepository(), userService, bookService);
         showAlert = new ShowAlert();
         new AllSetUp().init_function(this);
     }

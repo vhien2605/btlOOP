@@ -222,4 +222,32 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
         }
         return listOfReports;
     }
+
+    /**
+     * Update {@link BorrowReport} method.
+     *
+     * @param entity Object of BorrowReport to update in the database
+     * @return {@code boolean true/false} indicating whether the update was successful
+     */
+    public boolean updateOne(BorrowReport entity) {
+        String query = "UPDATE borrow_report SET userId = ?, bookId = ?, borrowDate = ?" 
+            + ", returnDate = ?, expectedReturnDate = ?, status = ? WHERE id = ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, entity.getUserId());
+            preparedStatement.setString(2, entity.getBookId());
+            preparedStatement.setString(3, entity.getBorrowDate());
+            preparedStatement.setString(4, entity.getReturnDate());
+            preparedStatement.setString(5, entity.getExpectedReturnDate());
+            preparedStatement.setString(6, entity.getStatus());
+            preparedStatement.setInt(7, entity.getId());
+            
+            int rowsAffected = preparedStatement.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

@@ -12,6 +12,7 @@ public class ActIssuedRowController {
 
     void init() {
         mainIssueRowCtrl.detailButton.setOnAction(e -> renderDetail());
+        mainIssueRowCtrl.updateButton.setOnAction(e -> updateIssue());
     }
 
     private void renderDetail() {
@@ -22,5 +23,17 @@ public class ActIssuedRowController {
 
         MainBookLoanController bookLoanController = resolver.getLoader().getController();
         bookLoanController.renderData(mainIssueRowCtrl.borrowReport, currentPath);
+    }
+
+    private void updateIssue() {
+        if (!mainIssueRowCtrl.updateDataBorrowReport()) {
+            return;
+        }
+
+        if (mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport)) {
+            mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
+        } else {
+            mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
+        }
     }
 }

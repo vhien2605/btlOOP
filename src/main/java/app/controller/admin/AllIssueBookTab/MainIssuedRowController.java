@@ -4,7 +4,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import app.controller.BaseController;
+import app.controller.helper.ShowAlert;
 import app.domain.BorrowReport;
+import app.repository.ReportRepository;
+import app.service.mainService.ReportService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -27,12 +30,18 @@ public class MainIssuedRowController implements BaseController {
 
     BorrowReport borrowReport;
 
+    ReportService reportService;
+
+    ShowAlert showAlert;
+
     public static final String PENDING_APPROVAL = "Pending appproval";
     public static final String BORROWED = "Borrowed";
     public static final String RETURNED = "Returned";
 
     @Override
     public void initialize() {
+        showAlert = new ShowAlert();
+        reportService = new ReportService(new ReportRepository(), null, null);
         new AllSetUp().initMainIssueRowCtrl(this);
     }
 
@@ -65,6 +74,52 @@ public class MainIssuedRowController implements BaseController {
 
         statusChoiceBox.getItems().addAll(PENDING_APPROVAL, BORROWED, RETURNED);
         statusChoiceBox.setValue(borrowReport.getStatus());
+    }
+
+    boolean updateDataBorrowReport() {
+        if (!validate()) {
+            return false;
+        }
+
+        LocalDate borrowDate = borrowDatePicker.getValue();
+        if (borrowDate != null) {
+            borrowReport.setBorrowDate(borrowDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+
+        LocalDate dueDate = dueDatePicker.getValue();
+        if (dueDate != null) {
+            borrowReport.setExpectedReturnDate(dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+
+        LocalDate returnDate = returnDatePicker.getValue();
+        if (returnDate != null) {
+            borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+
+        String status = statusChoiceBox.getValue();
+        borrowReport.setStatus(status);
+
+        return true;
+    }
+
+    boolean validate() {
+        String status = statusChoiceBox.getValue();
+
+        if (status.equals(BorrowReport.BORROWED)) {
+            if (borrowDatePicker.getValue() == null || dueDatePicker.getValue() == null) {
+                showAlert.showAlert("Borrow date and due date cannot be empty!", "error");
+                return false;
+            }
+        }
+
+        if (status.equals(BorrowReport.RETURNED)) {
+            if (returnDatePicker.getValue() == null) {
+                showAlert.showAlert("Invalid return date for status 'Returned'!", "error");
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

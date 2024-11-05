@@ -62,4 +62,8 @@ public class ReportService {
         }
         return DTOreports;
     }
+
+    public boolean handleUpdateOne(BorrowReport entity){
+        return this.reportRepository.updateOne(entity);
+    }
 }
