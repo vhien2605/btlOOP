@@ -64,10 +64,14 @@ public class MainBookLoanController {
 
     void setData() {
         User user = userService.findById(borrowReport.getUserId());
-        setUserInfo(user);
+        if (user != null) {
+            setUserInfo(user);
+        }
 
         Book book = bookService.findByISBN(borrowReport.getBookId());
-        setBookInfo(book);
+        if (book != null) {
+            setBookInfo(book);
+        }
 
         setDateAndStatus();
 
