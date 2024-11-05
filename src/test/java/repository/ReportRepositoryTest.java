@@ -25,6 +25,12 @@ public class ReportRepositoryTest {
     @Test
     public void findAllReportByUserNameTest() {
         List<BorrowReport> result = this.reportRepository.findReportByUsername("Vũ Minh Hiến");
-        Assertions.assertEquals(2, result.size());
+        Assertions.assertEquals(80, result.size());
+    }
+
+    @Test
+    public void findByStatusTest() {
+        List<BorrowReport> result = this.reportRepository.findByStatus("Borrowed");
+        Assertions.assertEquals(80, result.size());
     }
 }
