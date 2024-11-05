@@ -37,10 +37,6 @@ public class MainBookLoanController {
     @FXML
     Button updateButton, comeBackButton, exportButton;
 
-    public static final String PENDING_APPROVAL = "Pending appproval";
-    public static final String BORROWED = "Borrowed";
-    public static final String RETURNED = "Returned";
-
     UserService userService;
 
     BookService bookService;
@@ -96,7 +92,7 @@ public class MainBookLoanController {
             returnDateTextFiled.setValue(date);
         }
 
-        statusChoiceBox.getItems().addAll(PENDING_APPROVAL, BORROWED, RETURNED);
+        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
         statusChoiceBox.setValue(borrowReport.getStatus());
     }
 

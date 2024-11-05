@@ -39,10 +39,6 @@ public class MainIssueController {
 
     ShowAlert showAlert;
 
-    public static final String PENDING_APPROVAL = "Pending appproval";
-    public static final String BORROWED = "Borrowed";
-    public static final String RETURNED = "Returned";
-
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
@@ -102,7 +98,7 @@ public class MainIssueController {
                 borrowDateTextFiled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 null,
                 dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
-                BORROWED);
+                BorrowReport.BORROWED);
     }
 
     boolean validateFields() {

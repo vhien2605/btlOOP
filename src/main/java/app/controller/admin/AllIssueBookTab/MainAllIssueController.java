@@ -2,8 +2,12 @@ package app.controller.admin.AllIssueBookTab;
 
 import app.controller.BaseController;
 import app.domain.BorrowReport;
+import app.repository.BookRepository;
 import app.repository.ReportRepository;
+import app.repository.UserRepository;
+import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
+import app.service.mainService.UserService;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,11 +32,18 @@ public class MainAllIssueController implements BaseController {
 
     ReportService reportService;
 
+    UserService userService;
+
+    BookService bookService;
+
     ObservableList<BorrowReport> listBorrowReport;
 
     @Override
     public void initialize() {
-        reportService = new ReportService(new ReportRepository());
+        userService = new UserService(new UserRepository());
+        bookService = new BookService(new BookRepository());
+
+        reportService = new ReportService(new ReportRepository(), userService, bookService);
         loadData();
     }
 
