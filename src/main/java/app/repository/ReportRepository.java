@@ -188,4 +188,38 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
         }
         return listOfReports;
     }
+
+    /**
+     * Find {@link BorrowReport} by status method.
+     *
+     * @param status status
+     * @return {@code List<BorrowReport>}
+     */
+    public List<BorrowReport> findByStatus(String status) {
+        String query = "SELECT * FROM borrow_report WHERE status= ? ";
+        List<BorrowReport> listOfReports = new ArrayList<>();
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, status);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                BorrowReport report = new BorrowReport(
+                        resultSet.getInt("id"),
+                        resultSet.getString("userId"),
+                        resultSet.getString("bookId"),
+                        resultSet.getString("borrowDate"),
+                        resultSet.getString("returnDate"),
+                        resultSet.getString("expectedReturnDate"),
+                        resultSet.getString("status")
+                );
+                listOfReports.add(report);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listOfReports;
+    }
 }

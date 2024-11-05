@@ -287,4 +287,32 @@ public class UserRepository implements CrudRepository<User, String> {
         }
         return Optional.empty();
     }
+
+    /**
+     * Update {@link User} repository method.
+     *
+     * @param user new {@link User}
+     * @return boolean
+     */
+    public boolean update(User user) {
+        String query = "UPDATE user SET username=?, password=?, role=?, name=?" +
+                ", address=?, email=?, phoneNumber=? WHERE id=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole());
+            preparedStatement.setString(4, user.getName());
+            preparedStatement.setString(5, user.getAddress());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getPhoneNumber());
+            preparedStatement.setString(8, user.getId());
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error updating user: " + e.getMessage());
+            return false;
+        }
+    }
 }

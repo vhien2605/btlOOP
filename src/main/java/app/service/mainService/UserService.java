@@ -104,4 +104,14 @@ public class UserService {
         Optional<User> wrapperResult = this.userRepository.findByUsername(email);
         return wrapperResult.orElse(null);
     }
+
+    /**
+     * update {@link User} method.
+     *
+     * @param user new user
+     * @return boolean
+     */
+    public boolean updateOne(User user) {
+        return this.userRepository.update(user);
+    }
 }
