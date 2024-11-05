@@ -1,6 +1,9 @@
 package app.service.authService;
 
 
+import app.domain.DTO.PasswordChangeDTO;
+import app.domain.DTO.RegisterUserDTO;
+import app.domain.DTO.ReportDetail;
 import app.domain.User;
 import app.service.mainService.UserService;
 import javafx.application.Platform;
@@ -17,7 +20,7 @@ public class AuthenticationService {
         this.userService = userService;
     }
 
-    public String verify(String username, String password) {
+    public String verifyLogin(String username, String password) {
         if (!isUsernameExists(username)) {
             return "Username is not found";
         }
@@ -27,8 +30,35 @@ public class AuthenticationService {
         return "Authentication successfully";
     }
 
+    public String verifyRegister(RegisterUserDTO user) {
+        if (isUsernameExists(user.getUsername())) {
+            return "Existing username";
+        } else if (isEmailExists(user.getEmail())) {
+            return "Existing email";
+        } else if (!user.getPassword().equals(user.getConfirmPassword())) {
+            return "Confirm password is not mapping";
+        }
+        return "Register validation successfully";
+    }
+
+    public String verifyPasswordChangeRequest(PasswordChangeDTO user) {
+        if (this.userService.findByUsernameAndPassword(user.getUsername()
+                , user.getCurrentPassword()) == null) {
+            return "Current password is incorrect";
+        } else if (!user.getNewPassword().equals(user.getConfirmNewPassword())) {
+            return "Confirm password is not mapping";
+        } else if (user.getNewPassword().equals(user.getCurrentPassword())) {
+            return "New password shouldn't equal to current password";
+        }
+        return "Change password validation successfully";
+    }
+
     public boolean isUsernameExists(String username) {
         return this.userService.findByUsername(username) != null;
+    }
+
+    public boolean isEmailExists(String email) {
+        return this.userService.findByEmail(email) != null;
     }
 
     public boolean isUsernameAndPasswordMapping(String username, String password) {

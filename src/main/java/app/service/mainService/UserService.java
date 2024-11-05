@@ -93,4 +93,25 @@ public class UserService {
         Optional<User> wrapperResult = this.userRepository.findByUsername(username);
         return wrapperResult.orElse(null);
     }
+
+    /**
+     * Find {@link User} by email service.
+     *
+     * @param email email
+     * @return User with the mapping email or null if not exists
+     */
+    public User findByEmail(String email) {
+        Optional<User> wrapperResult = this.userRepository.findByUsername(email);
+        return wrapperResult.orElse(null);
+    }
+
+    /**
+     * update {@link User} method.
+     *
+     * @param user new user
+     * @return boolean
+     */
+    public boolean updateOne(User user) {
+        return this.userRepository.update(user);
+    }
 }

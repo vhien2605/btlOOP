@@ -21,7 +21,7 @@ public class BookRepositoryTest {
     @Test
     public void testFindAll() {
         List<Book> result = bookRepository.findAll();
-        Assertions.assertNotNull(result);
+        Assertions.assertNotEquals(0, result.size());
     }
 
     @Test

@@ -254,4 +254,65 @@ public class UserRepository implements CrudRepository<User, String> {
         }
         return Optional.empty();
     }
+
+    /**
+     * Find {@link User} by email field method.
+     *
+     * @param email email's student want to search in DB
+     * @return {@code Optional<User>} wrapper handling null pointer
+     */
+    public Optional<User> findByEmail(String email) {
+        String query = "SELECT * FROM user WHERE email=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ) {
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User student = new User(
+                        resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber"));
+                resultSet.close();
+                return Optional.of(student);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
+        return Optional.empty();
+    }
+
+    /**
+     * Update {@link User} repository method.
+     *
+     * @param user new {@link User}
+     * @return boolean
+     */
+    public boolean update(User user) {
+        String query = "UPDATE user SET username=?, password=?, role=?, name=?" +
+                ", address=?, email=?, phoneNumber=? WHERE id=?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole());
+            preparedStatement.setString(4, user.getName());
+            preparedStatement.setString(5, user.getAddress());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getPhoneNumber());
+            preparedStatement.setString(8, user.getId());
+            int rowsUpdated = preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Error updating user: " + e.getMessage());
+            return false;
+        }
+    }
 }

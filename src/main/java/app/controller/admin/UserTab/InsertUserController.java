@@ -2,10 +2,10 @@ package app.controller.admin.UserTab;
 
 import app.domain.User;
 
-public class InsertButtonCtrl {
+public class InsertUserController {
     final MainUserController mainUserCtrl;
 
-    public InsertButtonCtrl(MainUserController mainUserCtrl) {
+    public InsertUserController(MainUserController mainUserCtrl) {
         this.mainUserCtrl = mainUserCtrl;
     }
 

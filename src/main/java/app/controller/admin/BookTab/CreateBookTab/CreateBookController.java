@@ -3,13 +3,13 @@ package app.controller.admin.BookTab.CreateBookTab;
 import java.util.List;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.controller.admin.BookTab.HandleBook;
+import app.controller.admin.BookTab.HandleBookController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class CreateBookController extends HandleBook {
+public class CreateBookController extends HandleBookController {
     @FXML
     private Button findDocomentButton, cancelButton;
 

@@ -2,10 +2,10 @@ package app.controller.admin.BookTab;
 
 import app.config.ViewConfig.FXMLResolver;
 
-public class CreateBookButtonCtrl {
+public class CreateBookControllerSetup {
     final MainBookController mainBookCtrl;
 
-    public CreateBookButtonCtrl(MainBookController mainBookCtrl) {
+    public CreateBookControllerSetup(MainBookController mainBookCtrl) {
         this.mainBookCtrl = mainBookCtrl;
     }
 

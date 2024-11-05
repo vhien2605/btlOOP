@@ -4,19 +4,23 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class BorrowReport {
+    public static final String PENDING = "Pending";
+    public static final String BORROWED = "Borrowed";
+    public static final String RETURNED = "Returned";
+    
     private SimpleIntegerProperty id;
-    private SimpleStringProperty studentId;
+    private SimpleStringProperty userId;
     private SimpleStringProperty bookId;
     private SimpleStringProperty borrowDate;
     private SimpleStringProperty returnDate;
     private SimpleStringProperty expectedReturnDate;
     private SimpleStringProperty status;
 
-    public BorrowReport(int id, String studentId, String bookId, String borrowDate
+    public BorrowReport(int id, String userId, String bookId, String borrowDate
             , String returnDate, String expectedReturnDate, String status
     ) {
         this.id = new SimpleIntegerProperty(id);
-        this.studentId = new SimpleStringProperty(studentId);
+        this.userId = new SimpleStringProperty(userId);
         this.bookId = new SimpleStringProperty(bookId);
         this.borrowDate = new SimpleStringProperty(borrowDate);
         this.returnDate = new SimpleStringProperty(returnDate);
@@ -36,16 +40,16 @@ public class BorrowReport {
         this.id = new SimpleIntegerProperty(id);
     }
 
-    public String getStudentId() {
-        return studentId.get();
+    public String getUserId() {
+        return userId.get();
     }
 
-    public SimpleStringProperty getStudentIdProperty() {
-        return studentId;
+    public SimpleStringProperty getUserIdProperty() {
+        return userId;
     }
 
-    public void setStudentId(String id) {
-        this.studentId = new SimpleStringProperty(id);
+    public void setUserId(String id) {
+        this.userId = new SimpleStringProperty(id);
     }
 
     public String getBookId() {
@@ -112,7 +116,7 @@ public class BorrowReport {
     public String toString() {
         return "BorrowReport{" +
                 "id=" + id.get() +
-                ", studentId=" + studentId.get() +
+                ", userId=" + userId.get() +
                 ", bookId=" + bookId.get() +
                 ", borrowDate=" + borrowDate.get() +
                 ", expectedReturnDate=" + expectedReturnDate.get() +

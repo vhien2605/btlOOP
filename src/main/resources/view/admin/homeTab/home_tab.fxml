@@ -1,48 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.HomeTab.MainHomeController">
-   <children>
-      <fx:include source="../staticLayout/sidebar.fxml" />
-      <BorderPane prefHeight="650.0" prefWidth="950.0">
-         <top>
-            <fx:include source="../staticLayout/header.fxml" />
-         </top>
-         <center>
-            <BorderPane prefHeight="630.0" prefWidth="950.0" BorderPane.alignment="CENTER">
-               <top>
-                  <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <Label layoutX="25.0" text="Dashboard" textFill="#1d3ec4">
-                           <font>
-                              <Font size="35.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-               </top>
-               <center>
-                  <AreaChart BorderPane.alignment="CENTER">
-                     <xAxis>
-                        <CategoryAxis side="BOTTOM" />
-                     </xAxis>
-                     <yAxis>
-                        <NumberAxis side="LEFT" />
-                     </yAxis>
-                  </AreaChart>
-               </center>
-            </BorderPane>
-         </center>
-      </BorderPane>
-   </children>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
+      prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="app.controller.admin.HomeTab.MainHomeController">
+    <children>
+        <fx:include source="../staticLayout/sidebar.fxml"/>
+        <BorderPane prefHeight="650.0" prefWidth="950.0">
+            <top>
+                <fx:include source="../staticLayout/header.fxml"/>
+            </top>
+            <center>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <top>
+                        <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Label layoutX="28.0" text="Dash Board" textFill="#1d3ec4">
+                                    <font>
+                                        <Font size="35.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                    </top>
+                    <center>
+                        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <StackedBarChart fx:id="categoryChart" layoutX="37.0" layoutY="25.0" prefHeight="250.0"
+                                                 prefWidth="400.0">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </StackedBarChart>
+                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="14.0"
+                                                 prefHeight="250.0" prefWidth="400.0">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </StackedBarChart>
+                                <PieChart fx:id="issueBookChart" layoutX="53.0" layoutY="289.0" prefHeight="250.0"
+                                          prefWidth="400.0"/>
+                                <LineChart fx:id="userChart" layoutX="475.0" layoutY="289.0" prefHeight="250.0"
+                                           prefWidth="400.0">
+                                    <xAxis>
+                                        <CategoryAxis side="BOTTOM"/>
+                                    </xAxis>
+                                    <yAxis>
+                                        <NumberAxis side="LEFT"/>
+                                    </yAxis>
+                                </LineChart>
+                            </children>
+                        </Pane>
+                    </center>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </children>
 </HBox>
