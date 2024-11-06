@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Home">
@@ -106,9 +107,55 @@
                </content>
           </Tab>
           <Tab text="Your books">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
+               <content>
+                  <ScrollPane prefHeight="3000.0" prefWidth="1100.0">
+                     <content>
+                        <VBox prefHeight="3000.0" prefWidth="1100.0">
+                           <children>
+                              <Pane prefHeight="34.0" prefWidth="1100.0" />
+                              <VBox prefHeight="191.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Borrowing">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <TilePane prefHeight="54.0" prefWidth="1080.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </TilePane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="191.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Returned">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <TilePane prefHeight="54.0" prefWidth="1080.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </TilePane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
           </Tab>
         </tabs>
          <opaqueInsets>
