@@ -12,7 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/admin/all_issuebook_tab.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.AllIssueBookTab.MainAllIssueController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.AllIssueBookTab.MainAllIssueController">
    <children>
       <fx:include source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -32,10 +34,10 @@
                         <Separator layoutX="14.0" layoutY="49.0" prefHeight="3.0" prefWidth="922.0" />
                         <TextField fx:id="searchTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search" />
                         <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
-                        <Button id="allButton" fx:id="allButton" layoutX="38.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" styleClass="custom-button" text="All" />
-                        <Button id="pendingButton" fx:id="pendingButton" layoutX="109.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" styleClass="custom-button" text="Pending" />
-                        <Button id="borrowButton" fx:id="borowButton" layoutX="198.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" styleClass="custom-button" text="Borrowed" />
-                        <Button id="returnButton" fx:id="returnButton" layoutX="294.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" styleClass="custom-button" text="Returned" />
+                        <Button id="allButton" fx:id="allButton" layoutX="38.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="All" />
+                        <Button id="pendingButton" fx:id="pendingButton" layoutX="109.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Pending" />
+                        <Button id="borrowButton" fx:id="borrowedButton" layoutX="198.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" text="Borrowed" />
+                        <Button id="returnButton" fx:id="returnedButton" layoutX="294.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Returned" />
                      </children>
                   </Pane>
                </top>

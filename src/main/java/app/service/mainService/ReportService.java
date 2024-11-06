@@ -21,8 +21,8 @@ public class ReportService {
     private final BookService bookService;
 
     public ReportService(ReportRepository reportRepository,
-                         UserService userService,
-                         BookService bookService) {
+            UserService userService,
+            BookService bookService) {
         this.reportRepository = reportRepository;
         this.userService = userService;
         this.bookService = bookService;
@@ -57,9 +57,20 @@ public class ReportService {
                     borrowReport.getBorrowDate(),
                     borrowReport.getReturnDate(),
                     borrowReport.getExpectedReturnDate(),
-                    borrowReport.getStatus()
-            ));
+                    borrowReport.getStatus()));
         }
         return DTOreports;
+    }
+
+    public boolean handleUpdateOne(BorrowReport entity) {
+        return this.reportRepository.updateOne(entity);
+    }
+
+    public ObservableList<BorrowReport> findByStatus(String status) {
+        return FXCollections.observableList(this.reportRepository.findByStatus(status));
+    }
+
+    public boolean handleDeleteById(Integer id) {
+        return this.reportRepository.deleteById(id);
     }
 }

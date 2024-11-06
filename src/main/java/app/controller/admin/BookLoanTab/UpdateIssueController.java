@@ -12,6 +12,14 @@ public class UpdateIssueController {
     }
 
     void updateIssue() {
-        System.out.println("Click button update");
+        if (!mainBookLoanCtrl.updateDataBorrowReport()) {
+            return;
+        }
+
+        if (mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport)) {
+            mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
+        } else {
+            mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
+        }
     }
 }
