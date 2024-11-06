@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="card" prefHeight="275.0" prefWidth="166.0" styleClass="card" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Card">
+   <children>
+      <AnchorPane prefHeight="201.0" prefWidth="166.0">
+         <children>
+            <ImageView fx:id="imageURL" fitHeight="189.0" fitWidth="126.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

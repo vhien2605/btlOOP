@@ -23,13 +23,15 @@ public class CreateIssueController {
         }
 
         if (mainIssueCtrl.reportService.handleSave(data)) {
+            String currentPath = "issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
             resolver.renderScene("bookLoanTab/bookloan_tab");
 
             mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
 
             MainBookLoanController bookLoanController = resolver.getLoader().getController();
-            bookLoanController.renderData(data);
+            bookLoanController.setStateButton(3);
+            bookLoanController.renderData(data, currentPath);
         } else {
             mainIssueCtrl.showAlert.showAlert("Create fail new borrow report !", "error");
         }

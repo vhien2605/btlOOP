@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Home">
+    <top>
+      <fx:include source="../staticLayout/header.fxml" />
+   </top>
+   <center>
+      <TabPane fx:id="tabpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/user/home.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Discover">
+               <content>
+                  <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
+                     <content>
+                        <VBox prefHeight="5000.0" prefWidth="1100.0">
+                           <children>
+                              <AnchorPane prefHeight="41.0" prefWidth="1100.0">
+                                 <children>
+                                    <TextField fx:id="searchTextFiled" layoutX="387.0" layoutY="5.0" prefHeight="34.0" prefWidth="330.0" promptText="Search" />
+                                    <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="360.0" layoutY="26.0" size="1.7em" text="" />
+                                 </children>
+                              </AnchorPane>
+                              <Pane prefHeight="38.0" prefWidth="1100.0">
+                                 <children>
+                                    <Separator layoutX="18.0" prefHeight="17.0" prefWidth="1039.0" />
+                                 </children></Pane>
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Borrowing">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children></Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <HBox fx:id="bookSection" prefHeight="263.0" prefWidth="1100.0" spacing="10.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pane prefHeight="21.0" prefWidth="1100.0" />
+                                    <Pane prefHeight="38.0" prefWidth="1100.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Popular">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <HBox fx:id="bookSection1" prefHeight="263.0" prefWidth="1100.0" spacing="10.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pane prefHeight="21.0" prefWidth="1100.0" />
+                                    <Pane prefHeight="38.0" prefWidth="1100.0" />
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Featured">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <HBox fx:id="bookSection2" prefHeight="263.0" prefWidth="1100.0" spacing="10.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <Pane prefHeight="21.0" prefWidth="1100.0" />
+                                    <Pane prefHeight="38.0" prefWidth="1100.0" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+          </Tab>
+          <Tab text="Your books">
+               <content>
+                  <ScrollPane prefHeight="3000.0" prefWidth="1100.0">
+                     <content>
+                        <VBox prefHeight="3000.0" prefWidth="1100.0">
+                           <children>
+                              <Pane prefHeight="34.0" prefWidth="1100.0" />
+                              <VBox prefHeight="191.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Borrowing">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <TilePane prefHeight="54.0" prefWidth="1080.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </TilePane>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="191.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
+                                 <children>
+                                    <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+                                       <children>
+                                          <Label layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Returned">
+                                             <padding>
+                                                <Insets left="10.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </Pane>
+                                    <Pane prefHeight="20.0" prefWidth="200.0" />
+                                    <TilePane prefHeight="54.0" prefWidth="1080.0">
+                                       <VBox.margin>
+                                          <Insets left="20.0" />
+                                       </VBox.margin>
+                                    </TilePane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </content>
+          </Tab>
+        </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </TabPane>
+   </center>
+
+
+
+</BorderPane>

@@ -4,6 +4,10 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class BorrowReport {
+    public static final String PENDING = "Pending";
+    public static final String BORROWED = "Borrowed";
+    public static final String RETURNED = "Returned";
+    
     private SimpleIntegerProperty id;
     private SimpleStringProperty userId;
     private SimpleStringProperty bookId;

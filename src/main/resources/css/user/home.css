@@ -1,0 +1,36 @@
+.tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab {
+    -fx-padding: 13px 25px 20px 25px;
+    -fx-background-color: #f0ecec;
+    -fx-border-radius: 5px;
+}
+
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.tab:selected
+{
+    -fx-background-color: #1985f19d;
+    -fx-background-insets: 51 0 0 0;
+
+}
+
+.tab:focused {
+    -fx-focus-color: transparent;   /* No focus color */
+    -fx-faint-focus-color: transparent;  /* Remove faint focus effect */
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #110909;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+}
