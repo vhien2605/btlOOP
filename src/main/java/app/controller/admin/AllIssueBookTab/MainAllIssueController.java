@@ -3,6 +3,7 @@ package app.controller.admin.AllIssueBookTab;
 import java.util.List;
 
 import app.controller.BaseController;
+import app.controller.admin.Panel.SidebarController;
 import app.domain.BorrowReport;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -34,6 +35,9 @@ public class MainAllIssueController implements BaseController {
     @FXML
     private VBox contentVBox;
 
+    @FXML
+    Pane sidebar;
+
     ReportService reportService;
 
     UserService userService;
@@ -46,6 +50,8 @@ public class MainAllIssueController implements BaseController {
 
     @Override
     public void initialize() {
+        setStateButton();
+
         userService = new UserService(new UserRepository());
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(), userService, bookService);
@@ -131,4 +137,10 @@ public class MainAllIssueController implements BaseController {
         }
     }
 
+    void setStateButton() {
+        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
+        if (sidebarController != null) {
+            sidebarController.setStateButton(4);
+        }
+    }
 }

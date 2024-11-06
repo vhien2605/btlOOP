@@ -7,7 +7,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../../css/admin/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.SidebarController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../../css/admin/sidebar.css"
+   xmlns="http://javafx.com/javafx/23"
+   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.SidebarController" fx:id="root">
    <children>
       <Button fx:id="homeButton" layoutY="152.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Home">
          <font>
