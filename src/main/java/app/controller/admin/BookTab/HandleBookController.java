@@ -4,6 +4,7 @@ import java.io.File;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.repository.BookRepository;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
 
 public abstract class HandleBookController implements BaseController {
@@ -27,6 +29,9 @@ public abstract class HandleBookController implements BaseController {
 
     @FXML
     protected Button comeBackButton, saveButton, uploadFileButton;
+
+    @FXML
+    private Pane sidebar;
 
     protected BookService bookService;
     protected GoogleApiService googleApiService;
@@ -60,9 +65,18 @@ public abstract class HandleBookController implements BaseController {
 
     @Override
     public void initialize() {
+        setStateButton();
+
         bookService = new BookService(new BookRepository());
         googleApiService = new GoogleApiService();
         fileService = new FileService();
         showAlert = new ShowAlert();
+    }
+
+    void setStateButton() {
+        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
+        if (sidebarController != null) {
+            sidebarController.setStateButton(1);
+        }
     }
 }

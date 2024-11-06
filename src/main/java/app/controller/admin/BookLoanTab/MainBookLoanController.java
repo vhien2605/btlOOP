@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
+import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.domain.BorrowReport;
@@ -21,6 +22,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 public class MainBookLoanController {
     @FXML
@@ -40,6 +42,9 @@ public class MainBookLoanController {
     @FXML
     Button updateButton, comeBackButton, exportButton;
 
+    @FXML
+    Pane sidebar;
+
     BorrowReport borrowReport;
 
     UserService userService;
@@ -58,6 +63,13 @@ public class MainBookLoanController {
         showAlert = new ShowAlert();
         reportService = new ReportService(new ReportRepository(), userService, bookService);
         new AllSetup().init_function(this);
+    }
+
+    public void setStateButton(int index) {
+        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
+        if (sidebarController != null) {
+            sidebarController.setStateButton(index);
+        }
     }
 
     public void handleComeBackButton() {
@@ -148,6 +160,8 @@ public class MainBookLoanController {
         LocalDate returnDate = returnDateTextFiled.getValue();
         if (returnDate != null) {
             borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        } else {
+            borrowReport.setReturnDate(null);
         }
 
         String status = statusChoiceBox.getValue();

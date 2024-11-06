@@ -1,6 +1,7 @@
 package app.controller.admin.BookTab;
 
 import app.controller.BaseController;
+import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.service.mainService.BookService;
@@ -11,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
@@ -53,8 +55,13 @@ public class MainBookController implements BaseController {
 
     BookService bookService;
 
+    @FXML
+    private Pane sidebar;
+
     @Override
     public void initialize() {
+        setStateButton();
+
         bookService = new BookService(new BookRepository());
         showAlert = new ShowAlert();
         showBooks();
@@ -79,5 +86,12 @@ public class MainBookController implements BaseController {
 
     Book getSelectedBook() {
         return tableViewBook.getSelectionModel().getSelectedItem();
+    }
+
+    void setStateButton() {
+        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
+        if (sidebarController != null) {
+            sidebarController.setStateButton(1);
+        }
     }
 }

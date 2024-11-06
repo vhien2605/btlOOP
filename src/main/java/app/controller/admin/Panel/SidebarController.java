@@ -1,9 +1,12 @@
 package app.controller.admin.Panel;
 
+import java.util.List;
+
 import app.controller.BaseController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
 
 public class SidebarController implements BaseController {
     @FXML
@@ -27,6 +30,11 @@ public class SidebarController implements BaseController {
     @FXML
     private Button signOutButton;
 
+    @FXML
+    private Pane root;
+
+    List<Button> buttons;
+
     /**
      * Click button event
      */
@@ -47,8 +55,15 @@ public class SidebarController implements BaseController {
         }
     }
 
+    public void setStateButton(int indexButton) {
+        buttons.get(indexButton).getStyleClass().add("curr-button");
+    }
+
     @Override
     public void initialize() {
+        root.getProperties().put("controller", this);
 
+        buttons = List.of(homeButton, booksButton, usersButton,
+                issueBooksButton, allIssueBooksButton, settingsButton);
     }
 }

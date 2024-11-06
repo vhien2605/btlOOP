@@ -23,6 +23,7 @@ public class ActIssuedRowController {
         resolver.renderScene("bookLoanTab/bookloan_tab");
 
         MainBookLoanController bookLoanController = resolver.getLoader().getController();
+        bookLoanController.setStateButton(4);
         bookLoanController.renderData(mainIssueRowCtrl.borrowReport, currentPath);
     }
 

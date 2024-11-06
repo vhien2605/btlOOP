@@ -11,7 +11,7 @@
    xmlns="http://javafx.com/javafx/23"
    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.SettingTab.MainSettingController">
    <children>
-      <fx:include source="../staticLayout/sidebar.fxml" />
+      <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
          <top>
             <fx:include source="../staticLayout/header.fxml" />

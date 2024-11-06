@@ -96,6 +96,8 @@ public class MainIssuedRowController implements BaseController {
         LocalDate returnDate = returnDatePicker.getValue();
         if (returnDate != null) {
             borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        } else {
+            borrowReport.setReturnDate(null);
         }
 
         String status = statusChoiceBox.getValue();

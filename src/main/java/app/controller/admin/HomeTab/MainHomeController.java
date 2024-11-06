@@ -1,6 +1,7 @@
 package app.controller.admin.HomeTab;
 
 import app.controller.BaseController;
+import app.controller.admin.Panel.SidebarController;
 import app.domain.Book;
 import app.domain.BorrowReport;
 import app.domain.DTO.ReportDetail;
@@ -25,6 +26,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,12 +47,17 @@ public class MainHomeController implements BaseController {
     @FXML
     LineChart userChart;
 
+    @FXML
+    Pane sidebar;
+
     private BookService bookService;
     private MultiTaskService multiTaskService;
     private ReportService reportService;
 
     @Override
     public void initialize() {
+        setStateButton();
+
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
@@ -117,5 +124,12 @@ public class MainHomeController implements BaseController {
         userSeries.getData().add(new XYChart.Data<>("Ba Dinh", 200));
         userSeries.getData().add(new XYChart.Data<>("Thanh Xuan", 260));
         userChart.getData().add(userSeries);
+    }
+
+    void setStateButton() {
+        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
+        if (sidebarController != null) {
+            sidebarController.setStateButton(0);
+        }
     }
 }

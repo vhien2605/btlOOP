@@ -30,6 +30,7 @@ public class CreateIssueController {
             mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
 
             MainBookLoanController bookLoanController = resolver.getLoader().getController();
+            bookLoanController.setStateButton(3);
             bookLoanController.renderData(data, currentPath);
         } else {
             mainIssueCtrl.showAlert.showAlert("Create fail new borrow report !", "error");

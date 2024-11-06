@@ -9,11 +9,11 @@ Pane {
 }
 
 .button:hover {
-    -fx-background-color: #1ABC9C;
+    -fx-background-color: #0088b9;
 }
 
 .button:pressed {
-    -fx-background-color: #16A085;
+    -fx-background-color: #1ABC9C;
 }
 
 .label {
@@ -22,4 +22,8 @@ Pane {
 
 .fontawesome-icon {
     -fx-fill: #ECF0F1;
+}
+
+.curr-button {
+    -fx-background-color: #1ABC9C;
 }
