@@ -34,10 +34,6 @@ public class MainIssuedRowController implements BaseController {
 
     ShowAlert showAlert;
 
-    public static final String PENDING_APPROVAL = "Pending appproval";
-    public static final String BORROWED = "Borrowed";
-    public static final String RETURNED = "Returned";
-
     @Override
     public void initialize() {
         showAlert = new ShowAlert();
@@ -72,7 +68,7 @@ public class MainIssuedRowController implements BaseController {
         userIdLabel.setText(borrowReport.getUserId());
         bookIdLabel.setText(borrowReport.getBookId());
 
-        statusChoiceBox.getItems().addAll(PENDING_APPROVAL, BORROWED, RETURNED);
+        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
         statusChoiceBox.setValue(borrowReport.getStatus());
     }
 

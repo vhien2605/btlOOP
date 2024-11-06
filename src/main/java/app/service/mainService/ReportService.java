@@ -66,4 +66,8 @@ public class ReportService {
     public boolean handleUpdateOne(BorrowReport entity){
         return this.reportRepository.updateOne(entity);
     }
+
+    public ObservableList<BorrowReport> findByStatus(String status) {
+        return FXCollections.observableList(this.reportRepository.findByStatus(status));
+    }
 }

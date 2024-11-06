@@ -5,4 +5,7 @@ public class AllSetUp {
         new ActIssuedRowController(mainIssuedRowCtrl).init();
     }
 
+    void initMainAllIssuedCtrl(MainAllIssueController mainAllIssueCtrl) {
+        new FilterByStatusController(mainAllIssueCtrl).init();
+    }
 }
