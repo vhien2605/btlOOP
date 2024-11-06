@@ -42,6 +42,8 @@ public class MainAllIssueController implements BaseController {
 
     ObservableList<BorrowReport> listBorrowReport;
 
+    String currStatus;
+
     @Override
     public void initialize() {
         userService = new UserService(new UserRepository());
@@ -65,6 +67,7 @@ public class MainAllIssueController implements BaseController {
                 Pane pane = loader.load();
 
                 MainIssuedRowController rowController = loader.getController();
+                rowController.setMainAllIssueController(this);
                 rowController.loadData(data);
 
                 contentVBox.getChildren().add(pane);
@@ -89,27 +92,43 @@ public class MainAllIssueController implements BaseController {
     }
 
     void getAll() {
+        currStatus = "All";
         updateButtonStyle(0);
         listBorrowReport = reportService.getAllReports();
         loadData();
     }
 
     void getPending() {
+        currStatus = BorrowReport.PENDING;
         updateButtonStyle(1);
         listBorrowReport = reportService.findByStatus(BorrowReport.PENDING);
         loadData();
     }
 
     void getBorrowed() {
+        currStatus = BorrowReport.BORROWED;
         updateButtonStyle(2);
         listBorrowReport = reportService.findByStatus(BorrowReport.BORROWED);
         loadData();
     }
 
     void getReturned() {
+        currStatus = BorrowReport.RETURNED;
         updateButtonStyle(3);
         listBorrowReport = reportService.findByStatus(BorrowReport.RETURNED);
         loadData();
+    }
+
+    void resetData() {
+        if (currStatus == "All") {
+            getAll();
+        } else if (currStatus == BorrowReport.PENDING) {
+            getPending();
+        } else if (currStatus == BorrowReport.BORROWED) {
+            getBorrowed();
+        } else {
+            getReturned();
+        }
     }
 
 }

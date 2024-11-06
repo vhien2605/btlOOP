@@ -34,6 +34,12 @@ public class MainIssuedRowController implements BaseController {
 
     ShowAlert showAlert;
 
+    MainAllIssueController mainAllIssueCtrl;
+
+    void setMainAllIssueController(MainAllIssueController mainAllIssueCtrl) {
+        this.mainAllIssueCtrl = mainAllIssueCtrl;
+    }
+
     @Override
     public void initialize() {
         showAlert = new ShowAlert();

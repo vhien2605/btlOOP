@@ -13,6 +13,7 @@ public class ActIssuedRowController {
     void init() {
         mainIssueRowCtrl.detailButton.setOnAction(e -> renderDetail());
         mainIssueRowCtrl.updateButton.setOnAction(e -> updateIssue());
+        mainIssueRowCtrl.deleteButton.setOnAction(e -> deleteIssue());
     }
 
     private void renderDetail() {
@@ -32,8 +33,20 @@ public class ActIssuedRowController {
 
         if (mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport)) {
             mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
+            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
         } else {
             mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
+        }
+    }
+
+    void deleteIssue() {
+        int id = mainIssueRowCtrl.borrowReport.getId();
+
+        if (mainIssueRowCtrl.reportService.handleDeleteById(id)) {
+            mainIssueRowCtrl.showAlert.showAlert("Deleted successfully!", "success");
+            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
+        } else {
+            mainIssueRowCtrl.showAlert.showAlert("Delete failed!", "error");
         }
     }
 }
