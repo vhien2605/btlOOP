@@ -1,0 +1,25 @@
+.barsection {
+    -fx-background-color: #1985f19d;
+}
+
+.card {
+    -fx-background-color: rgb(241, 247, 249); 
+    -fx-border-color: rgb(207, 201, 201);     
+    -fx-border-width: 1px;     
+    -fx-border-radius: 10px;
+    -fx-background-radius: 15;
+}
+
+.textbar {
+    -fx-background-color: white; 
+    /* -fx-border-color: darkblue;       */
+    /* -fx-border-width: 1px; */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 7;
+
+    -fx-fill: #3071d2;
+    -fx-font-family: "Arial"; /* Font family */
+    -fx-font-size: 24px; /* Font size */
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, rgba(6, 9, 53, 0.616), 1, 0, 1, 1);
+}
