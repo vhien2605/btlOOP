@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,7 +19,7 @@
       <fx:include source="../staticLayout/header.fxml" />
    </top>
    <center>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+      <TabPane fx:id="tabpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/user/home.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
           <Tab text="Discover">
                <content>
@@ -24,13 +27,17 @@
                      <content>
                         <VBox prefHeight="5000.0" prefWidth="1100.0">
                            <children>
-                              <Pane fx:id="home_topSide" prefHeight="100.0" prefWidth="1100.0" stylesheets="@../../../css/user/home.css">
+                              <AnchorPane prefHeight="41.0" prefWidth="1100.0">
                                  <children>
-                                    <Label layoutX="317.0" layoutY="42.0" prefHeight="36.0" prefWidth="112.0" text="Here is search area" />
+                                    <TextField fx:id="searchTextFiled" layoutX="387.0" layoutY="5.0" prefHeight="34.0" prefWidth="330.0" promptText="Search" />
+                                    <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="360.0" layoutY="26.0" size="1.7em" text="" />
                                  </children>
-                              </Pane>
-                              <Pane prefHeight="38.0" prefWidth="1100.0" />
-                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/home.css">
+                              </AnchorPane>
+                              <Pane prefHeight="38.0" prefWidth="1100.0">
+                                 <children>
+                                    <Separator layoutX="18.0" prefHeight="17.0" prefWidth="1039.0" />
+                                 </children></Pane>
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
                                  <children>
                                     <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
                                        <children>
@@ -50,7 +57,7 @@
                                     <Pane prefHeight="38.0" prefWidth="1100.0" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/home.css">
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
                                  <children>
                                     <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
                                        <children>
@@ -71,7 +78,7 @@
                                     <Pane prefHeight="38.0" prefWidth="1100.0" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/home.css">
+                              <VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css">
                                  <children>
                                     <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
                                        <children>
@@ -98,12 +105,18 @@
                   </ScrollPane>
                </content>
           </Tab>
-          <Tab text="Untitled Tab 2">
+          <Tab text="Your books">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
             </content>
           </Tab>
         </tabs>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </TabPane>
    </center>
 

@@ -1,33 +1,36 @@
-.section {
-    /* -fx-background-color: #deedfc; */
+.tab-header-background {
+    -fx-opacity: 0;
 }
 
-.card {
-    -fx-background-color: rgb(241, 247, 249); /* Background color */
-    -fx-border-color: rgb(207, 201, 201);      /* Border color */
-    -fx-border-width: 1px;           /* Border width */
-    -fx-border-radius: 10px;
-    -fx-background-radius: 15;
+.tab {
+    -fx-padding: 13px 25px 20px 25px;
+    -fx-background-color: #f0ecec;
+    -fx-border-radius: 5px;
 }
 
-.textbar {
-    -fx-background-color: white; 
-    /* -fx-border-color: darkblue;       */
-    /* -fx-border-width: 1px; */
-    -fx-border-radius: 10px;
-    -fx-background-radius: 7;
-
-    -fx-fill: #3071d2;
-    -fx-font-family: "Arial"; /* Font family */
-    -fx-font-size: 24px; /* Font size */
-    /* -fx-font-weight: bold; */
-    -fx-effect: dropshadow(gaussian, rgba(6, 9, 53, 0.616), 1, 0, 1, 1); /* Text shadow */
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
 }
 
-.barsection {
+.tab:selected
+{
     -fx-background-color: #1985f19d;
+    -fx-background-insets: 51 0 0 0;
+
 }
 
-#home_topSide {
-    -fx-background-color: lightblue; 
+.tab:focused {
+    -fx-focus-color: transparent;   /* No focus color */
+    -fx-faint-focus-color: transparent;  /* Remove faint focus effect */
+}
+
+.tab .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #110909;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label { 
+    -fx-alignment: CENTER;
 }

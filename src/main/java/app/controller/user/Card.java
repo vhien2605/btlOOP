@@ -15,8 +15,6 @@ public class Card implements BaseController{
             System.out.println("dfgsfhdfghd1242345");
             return;
         }
-        // System.out.println("Image path :" + book.getImagePath());
-        // imageURL.setImage(new Image(book.getImagePath()));
         imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/what_the_dead_know.jpg")));
     }
 
