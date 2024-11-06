@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdescription.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Home">
+   <top>
+      <fx:include source="../staticLayout/header.fxml" />
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="42.0" prefHeight="71.0" prefWidth="336.0" text="Book description" textFill="#1037b7">
+               <font>
+                  <Font size="35.0" />
+               </font>
+            </Label>
+            <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
+            <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="495.0" prefWidth="330.0">
+               <children>
+                  <ImageView fx:id="imgview" fitHeight="495.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
