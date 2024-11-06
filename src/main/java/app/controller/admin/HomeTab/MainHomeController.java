@@ -17,10 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.StackedBarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,7 +40,7 @@ public class MainHomeController implements BaseController {
     PieChart issueBookChart;
 
     @FXML
-    LineChart userChart;
+    StackedAreaChart<Integer, Integer> userChart;
 
     private BookService bookService;
     private MultiTaskService multiTaskService;
@@ -111,11 +108,19 @@ public class MainHomeController implements BaseController {
     }
 
     private void addDataToUserChart() {
-        XYChart.Series<String, Number> userSeries = new XYChart.Series<>();
-        userSeries.setName("User address chart");
-        userSeries.getData().add(new XYChart.Data<>("Cau Giay", 500));
-        userSeries.getData().add(new XYChart.Data<>("Ba Dinh", 200));
-        userSeries.getData().add(new XYChart.Data<>("Thanh Xuan", 260));
-        userChart.getData().add(userSeries);
+        XYChart.Series<Integer, Integer> series1 = new XYChart.Series<>();
+        series1.setName("Data Series 1");
+        series1.getData().add(new XYChart.Data<>(1, 5));
+        series1.getData().add(new XYChart.Data<>(2, 10));
+        series1.getData().add(new XYChart.Data<>(3, 15));
+        series1.getData().add(new XYChart.Data<>(4, 20));
+        XYChart.Series<Integer, Integer> series2 = new XYChart.Series<>();
+        series2.setName("Data Series 2");
+        series2.getData().add(new XYChart.Data<>(1, 8));
+        series2.getData().add(new XYChart.Data<>(2, 12));
+        series2.getData().add(new XYChart.Data<>(3, 18));
+        series2.getData().add(new XYChart.Data<>(4, 22));
+        userChart.getData().add(series1);
+        userChart.getData().add(series2);
     }
 }

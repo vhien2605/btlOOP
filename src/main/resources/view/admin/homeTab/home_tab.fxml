@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
@@ -45,7 +45,7 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="14.0"
+                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="25.0"
                                                  prefHeight="250.0" prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
@@ -54,17 +54,17 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <PieChart fx:id="issueBookChart" layoutX="53.0" layoutY="289.0" prefHeight="250.0"
-                                          prefWidth="400.0"/>
-                                <LineChart fx:id="userChart" layoutX="475.0" layoutY="289.0" prefHeight="250.0"
-                                           prefWidth="400.0">
+                                <StackedAreaChart fx:id="userChart" layoutX="475.0" layoutY="310.0" prefHeight="250.0"
+                                                  prefWidth="400.0">
                                     <xAxis>
-                                        <CategoryAxis side="BOTTOM"/>
+                                        <NumberAxis side="BOTTOM"/>
                                     </xAxis>
                                     <yAxis>
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
-                                </LineChart>
+                                </StackedAreaChart>
+                                <PieChart fx:id="issueBookChart" layoutX="64.0" layoutY="310.0" prefHeight="250.0"
+                                          prefWidth="400.0"/>
                             </children>
                         </Pane>
                     </center>
