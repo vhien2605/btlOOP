@@ -26,7 +26,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
-        FXMLResolver.getInstance().setUp("/view/user", stage, 1100, 650);
-        FXMLResolver.getInstance().renderScene("homeTab/home");
+        FXMLResolver.getInstance().setUp("/view", stage, 1100, 650);
+        FXMLResolver.getInstance().renderScene("auth/login");
     }
 }
