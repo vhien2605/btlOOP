@@ -23,6 +23,7 @@ module app {
     opens app.controller.user to javafx.fxml;
     opens app.controller.admin.BookLoanTab to javafx.fxml;
     opens app.domain to javafx.base;
+    opens app.controller.auth to javafx.fxml;
 
     exports app;
     exports app.repository;
