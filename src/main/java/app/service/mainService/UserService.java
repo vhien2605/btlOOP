@@ -1,5 +1,6 @@
 package app.service.mainService;
 
+import app.domain.DTO.RegisterUserDTO;
 import app.domain.User;
 import app.repository.UserRepository;
 import javafx.collections.FXCollections;
@@ -59,6 +60,24 @@ public class UserService {
      */
     public boolean handleSaveUser(User user) {
         return this.userRepository.save(user);
+    }
+
+    /**
+     * Handle save {@link User} method.
+     *
+     * @param user userDTO from front-end
+     * @return {@code true or false}
+     */
+    public boolean handleSaveUser(RegisterUserDTO user) {
+        return handleSaveUser(new User(user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                "USER",
+                user.getName(),
+                "",
+                user.getEmail(),
+                ""
+        ));
     }
 
     /**
