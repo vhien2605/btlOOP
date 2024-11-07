@@ -26,7 +26,7 @@ public class AppAdmin extends Application {
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
-        FXMLResolver.getInstance().setUp("/view/admin", stage, 1100, 650);
-        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+        FXMLResolver.getInstance().setUp("/view", stage, 1100, 650);
+        FXMLResolver.getInstance().renderScene("auth/login");
     }
 }
