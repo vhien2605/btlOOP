@@ -9,7 +9,7 @@ import javafx.stage.StageStyle;
 /**
  * JavaFX App
  */
-public class AppAdmin extends Application {
+public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -26,7 +26,7 @@ public class AppAdmin extends Application {
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
-        FXMLResolver.getInstance().setUp("/view/admin", stage, 1100, 650);
-        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+        FXMLResolver.getInstance().setUp("/view/user", stage, 1100, 650);
+        FXMLResolver.getInstance().renderScene("homeTab/home");
     }
 }

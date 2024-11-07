@@ -45,9 +45,12 @@ public class RegisterController {
 
     AuthenticationService authService;
 
+    UserService userService;
+
     public void initialize() {
         showAlert = new ShowAlert();
         authService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
+        userService = new UserService(new UserRepository());
     }
 
     @FXML
@@ -80,7 +83,12 @@ public class RegisterController {
             return;
         }
 
-        showAlert.showAlert("Registration successful!\nSign in to continue!", "success");
+        if (userService.handleSaveUser(data)) {
+            showAlert.showAlert("Registration successful!\nSign in to continue!", "success");
+        } else {
+            showAlert.showAlert("registration failed!", "error");
+        }
+
         clearField();
     }
 
