@@ -1,0 +1,11 @@
+.vbox-background-center {
+    -fx-background-image: url("../../image/other/pic1.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.vbox-background-right {
+    -fx-background-image: url("../../image/other/pic2.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}

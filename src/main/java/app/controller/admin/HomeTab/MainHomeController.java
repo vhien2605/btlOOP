@@ -42,7 +42,7 @@ public class MainHomeController implements BaseController {
     PieChart issueBookChart;
 
     @FXML
-    StackedAreaChart<Integer, Integer> userChart;
+    StackedAreaChart<String, Number> userChart;
 
     @FXML
     Pane sidebar;
@@ -115,18 +115,20 @@ public class MainHomeController implements BaseController {
     }
 
     private void addDataToUserChart() {
-        XYChart.Series<Integer, Integer> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
         series1.setName("Data Series 1");
-        series1.getData().add(new XYChart.Data<>(1, 5));
-        series1.getData().add(new XYChart.Data<>(2, 10));
-        series1.getData().add(new XYChart.Data<>(3, 15));
-        series1.getData().add(new XYChart.Data<>(4, 20));
-        XYChart.Series<Integer, Integer> series2 = new XYChart.Series<>();
+        series1.getData().add(new XYChart.Data<>("Hien", 5));
+        series1.getData().add(new XYChart.Data<>("Hau", 10));
+        series1.getData().add(new XYChart.Data<>("Hieu", 15));
+        series1.getData().add(new XYChart.Data<>("Hai", 20));
+        series1.getData().add(new XYChart.Data<>("Huy", 20));
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
         series2.setName("Data Series 2");
-        series2.getData().add(new XYChart.Data<>(1, 8));
-        series2.getData().add(new XYChart.Data<>(2, 12));
-        series2.getData().add(new XYChart.Data<>(3, 18));
-        series2.getData().add(new XYChart.Data<>(4, 22));
+        series2.getData().add(new XYChart.Data<>("Hien", 5));
+        series2.getData().add(new XYChart.Data<>("Hau", 10));
+        series2.getData().add(new XYChart.Data<>("Hieu", 15));
+        series2.getData().add(new XYChart.Data<>("Hai", 20));
+        series2.getData().add(new XYChart.Data<>("Huy", 20));
         userChart.getData().add(series1);
         userChart.getData().add(series2);
     }

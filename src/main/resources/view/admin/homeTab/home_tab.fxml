@@ -11,9 +11,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-    xmlns="http://javafx.com/javafx/23"
-    xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.HomeTab.MainHomeController">
+<?import javafx.scene.chart.StackedAreaChart?>
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
+      prefWidth="1100.0"
+      xmlns="http://javafx.com/javafx/23"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.HomeTab.MainHomeController">
     <children>
         <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml"/>
         <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -36,7 +38,8 @@
                     <center>
                         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <children>
-                                <StackedBarChart fx:id="categoryChart" layoutX="37.0" layoutY="25.0" prefHeight="250.0" prefWidth="400.0">
+                                <StackedBarChart fx:id="categoryChart" layoutX="37.0" layoutY="25.0" prefHeight="250.0"
+                                                 prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
                                     </xAxis>
@@ -44,7 +47,8 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="14.0" prefHeight="250.0" prefWidth="400.0">
+                                <StackedBarChart fx:id="bookBorrowChart" layoutX="475.0" layoutY="14.0"
+                                                 prefHeight="250.0" prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
                                     </xAxis>
@@ -52,15 +56,17 @@
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
                                 </StackedBarChart>
-                                <PieChart fx:id="issueBookChart" layoutX="53.0" layoutY="289.0" prefHeight="250.0" prefWidth="400.0"/>
-                                <LineChart fx:id="userChart" layoutX="475.0" layoutY="289.0" prefHeight="250.0" prefWidth="400.0">
+                                <PieChart fx:id="issueBookChart" layoutX="53.0" layoutY="289.0" prefHeight="250.0"
+                                          prefWidth="400.0"/>
+                                <StackedAreaChart fx:id="userChart" layoutX="475.0" layoutY="289.0" prefHeight="250.0"
+                                                  prefWidth="400.0">
                                     <xAxis>
                                         <CategoryAxis side="BOTTOM"/>
                                     </xAxis>
                                     <yAxis>
                                         <NumberAxis side="LEFT"/>
                                     </yAxis>
-                                </LineChart>
+                                </StackedAreaChart>
                             </children>
                         </Pane>
                     </center>
