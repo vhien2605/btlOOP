@@ -1,12 +1,10 @@
 package app.controller.auth;
 
-import app.config.DbConfig;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import app.controller.helper.ShowAlert;
 
 public class RegisterController {
     @FXML
@@ -36,8 +34,10 @@ public class RegisterController {
     @FXML
     TextField emailField;
 
-    public void initialize() {
+    ShowAlert showAlert;
 
+    public void initialize() {
+        showAlert = new ShowAlert();
     }
 
     @FXML

@@ -30,6 +30,10 @@ public class FXMLResolver implements Resolver {
 
     }
 
+    public void setRootPath(String rootPath) {
+        this.rootPath = rootPath;
+    }
+
     /**
      * get current instance of {@link FXMLResolver} or create new instance
      *
