@@ -9,6 +9,7 @@ import app.service.mainService.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
@@ -25,7 +26,7 @@ public class LoginController {
     TextField usernameField;
 
     @FXML
-    TextField passwordField;
+    PasswordField passwordField;
 
     ShowAlert showAlert;
 
@@ -50,7 +51,7 @@ public class LoginController {
         }
     }
 
-    void submitLogin() {
+    private void submitLogin() {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -72,6 +73,10 @@ public class LoginController {
             return;
         }
 
+        appRedirection();
+    }
+
+    private void appRedirection() {
         // Check render app admin or user
         String sessionData = sessionService.verifySession();
 
@@ -86,15 +91,14 @@ public class LoginController {
         } else {
             showAlert.showAlert(sessionData, "error");
         }
-
     }
 
-    void setUpAppAdmin() {
+    private void setUpAppAdmin() {
         FXMLResolver.getInstance().setRootPath("/view/admin");
         FXMLResolver.getInstance().renderScene("homeTab/home_tab");
     }
 
-    void setUpAppUser() {
+    private void setUpAppUser() {
         FXMLResolver.getInstance().setRootPath("/view/user");
         FXMLResolver.getInstance().renderScene("homeTab/home");
     }
