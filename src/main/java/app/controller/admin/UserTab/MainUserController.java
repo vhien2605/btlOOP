@@ -80,23 +80,23 @@ public class MainUserController implements BaseController {
     }
 
     void setCanClickButton(int type) {
-        cancelButton.setStyle("-fx-background-color: lightblue;");
+        cancelButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
         if (type == 1) {
             insertButton.setDisable(false);
             userIdTextField.setEditable(true);
-            insertButton.setStyle("-fx-background-color: lightblue;");
+            insertButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
             updateButton.setDisable(true);
-            updateButton.setStyle("-fx-background-color: lightgray;");
+            updateButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
             deleteButton.setDisable(true);
-            deleteButton.setStyle("-fx-background-color: lightgray;");
+            deleteButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
         } else if (type == 2) {
             insertButton.setDisable(true);
             userIdTextField.setEditable(false);
-            insertButton.setStyle("-fx-background-color: lightgray;");
+            insertButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
             updateButton.setDisable(false);
-            updateButton.setStyle("-fx-background-color: lightblue;");
+            updateButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
             deleteButton.setDisable(false);
-            deleteButton.setStyle("-fx-background-color: lightblue;");
+            deleteButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
         }
     }
 

@@ -1,0 +1,22 @@
+/* General Button Style */
+.button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #848080;
+    -fx-font-size: 10px;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    /* No rounded corners */
+    -fx-border-radius: 0;
+    /* No border radius */
+}
+
+.button:hover {
+    -fx-background-color: #fb2727;
+    -fx-text-fill: #333333;
+    -fx-background-radius: 0;
+    /* Maintain no rounded corners on hover */
+    -fx-border-radius: 0;
+    /* Maintain no border radius on hover */
+}

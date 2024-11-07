@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.IssueBookTab.MainIssueController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/admin/issuebook_tab.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.IssueBookTab.MainIssueController">
    <children>
       <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -36,7 +34,7 @@
                <center>
                   <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Pane layoutY="-3.0" prefHeight="34.0" prefWidth="950.0" style="-fx-background-color: #d3d3d3; -fx-border-color: #87cefa;">
+                        <Pane layoutY="-3.0" prefHeight="34.0" prefWidth="950.0" style="-fx-background-color: #d3d3d3;">
                            <children>
                               <Label layoutX="396.0" layoutY="4.0" text="Book Information">
                                  <font>
@@ -46,7 +44,7 @@
                               <FontAwesomeIconView glyphName="ADDRESS_BOOK" layoutX="374.0" layoutY="22.0" size="1.2em" text="" />
                            </children>
                         </Pane>
-                        <Pane layoutY="199.0" prefHeight="34.0" prefWidth="950.0" style="-fx-background-color: #d3d3d3; -fx-border-color: #87cefa;">
+                        <Pane layoutY="199.0" prefHeight="34.0" prefWidth="950.0" style="-fx-background-color: #d3d3d3;">
                            <children>
                               <Label layoutX="400.0" layoutY="3.0" text="User Information">
                                  <font>

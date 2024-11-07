@@ -89,10 +89,10 @@ public class MainAllIssueController implements BaseController {
         for (int i = 0; i < buttons.size(); i++) {
             if (i != ordinalNumber) {
                 buttons.get(i).setStyle(
-                        "-fx-background-color: white; -fx-text-fill: #0b9710; -fx-border-color: #0b9710;  -fx-border-radius: 3px;");
+                        "-fx-background-color: white; -fx-text-fill: #0b9710; -fx-border-color: #0b9710;  -fx-border-radius: 3px; -fx-cursor: hand;");
             } else {
                 buttons.get(i).setStyle(
-                        "-fx-background-color: #0b9710; -fx-text-fill: white; -fx-border-color: #0b9710;  -fx-border-radius: 3px;");
+                        "-fx-background-color: #0b9710; -fx-text-fill: white; -fx-border-color: #0b9710;  -fx-border-radius: 3px; -fx-cursor: hand;");
             }
         }
     }
