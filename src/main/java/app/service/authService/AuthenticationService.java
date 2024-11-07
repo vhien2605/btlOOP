@@ -6,6 +6,7 @@ import app.domain.DTO.RegisterUserDTO;
 import app.domain.DTO.ReportDetail;
 import app.domain.User;
 import app.service.mainService.UserService;
+import app.service.subService.multiTaskService.MultiTaskService;
 import javafx.application.Platform;
 
 /**
@@ -33,8 +34,8 @@ public class AuthenticationService {
     public String verifyRegister(RegisterUserDTO user) {
         if (isUsernameExists(user.getUsername())) {
             return "Existing username";
-        } else if (isEmailExists(user.getEmail())) {
-            return "Existing email";
+        } else if (isIdExists(user.getId())) {
+            return "Existing id";
         } else if (!user.getPassword().equals(user.getConfirmPassword())) {
             return "Confirm password is not mapping";
         }
@@ -57,8 +58,8 @@ public class AuthenticationService {
         return this.userService.findByUsername(username) != null;
     }
 
-    public boolean isEmailExists(String email) {
-        return this.userService.findByEmail(email) != null;
+    public boolean isIdExists(String id) {
+        return this.userService.findById(id) != null;
     }
 
     public boolean isUsernameAndPasswordMapping(String username, String password) {
