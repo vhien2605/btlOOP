@@ -18,10 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.LineChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.StackedBarChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -45,7 +42,7 @@ public class MainHomeController implements BaseController {
     PieChart issueBookChart;
 
     @FXML
-    LineChart userChart;
+    StackedAreaChart<String, Number> userChart;
 
     @FXML
     Pane sidebar;
@@ -118,12 +115,22 @@ public class MainHomeController implements BaseController {
     }
 
     private void addDataToUserChart() {
-        XYChart.Series<String, Number> userSeries = new XYChart.Series<>();
-        userSeries.setName("User address chart");
-        userSeries.getData().add(new XYChart.Data<>("Cau Giay", 500));
-        userSeries.getData().add(new XYChart.Data<>("Ba Dinh", 200));
-        userSeries.getData().add(new XYChart.Data<>("Thanh Xuan", 260));
-        userChart.getData().add(userSeries);
+        XYChart.Series<String, Number> series1 = new XYChart.Series<>();
+        series1.setName("Data Series 1");
+        series1.getData().add(new XYChart.Data<>("Hien", 5));
+        series1.getData().add(new XYChart.Data<>("Hau", 10));
+        series1.getData().add(new XYChart.Data<>("Hieu", 15));
+        series1.getData().add(new XYChart.Data<>("Hai", 20));
+        series1.getData().add(new XYChart.Data<>("Huy", 20));
+        XYChart.Series<String, Number> series2 = new XYChart.Series<>();
+        series2.setName("Data Series 2");
+        series2.getData().add(new XYChart.Data<>("Hien", 5));
+        series2.getData().add(new XYChart.Data<>("Hau", 10));
+        series2.getData().add(new XYChart.Data<>("Hieu", 15));
+        series2.getData().add(new XYChart.Data<>("Hai", 20));
+        series2.getData().add(new XYChart.Data<>("Huy", 20));
+        userChart.getData().add(series1);
+        userChart.getData().add(series2);
     }
 
     void setStateButton() {
