@@ -81,13 +81,13 @@ public class MainIssuedRowController implements BaseController {
             // Thay đổi màu sắc của ChoiceBox dựa trên lựa chọn của người dùng
             switch (selectedStatus) {
                 case BorrowReport.PENDING:
-                    statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
+                    statusChoiceBox.setStyle("-fx-background-color: #32e544; ");
                     break;
                 case BorrowReport.BORROWED:
                     statusChoiceBox.setStyle("-fx-background-color: #5bc0de; ");
                     break;
                 case BorrowReport.RETURNED:
-                    statusChoiceBox.setStyle("-fx-background-color: #ff5f6f; ");
+                    statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
                     break;
             }
         });
