@@ -1,0 +1,77 @@
+/* Định dạng cho TextField */
+.text-field {
+    -fx-border-color: #636a6e;
+    /* Màu viền xanh nhạt */
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 4 8;
+    -fx-font-size: 13px;
+}
+
+/* TextField ở chế độ readonly */
+.text-field:disabled {
+    -fx-opacity: 0.8;
+    -fx-background-color: #f0f0f0;
+}
+
+/* Định dạng cho nút Reload */
+#findBookButton,
+#findUserButton {
+    -fx-background-color: #f0f0f0;
+    /* Màu nền xám nhạt */
+    -fx-border-color: #87cefa;
+    -fx-border-radius: 30%;
+    /* Hình tròn */
+    -fx-background-radius: 30%;
+    -fx-cursor: hand;
+    -fx-padding: 5px;
+}
+
+#findBookButton:hover,
+#findUserButton:hover {
+    -fx-background-color: #e0f7fa;
+    /* Màu xanh nhạt khi hover */
+}
+
+#findBookButton:pressed,
+#findUserButton:pressed {
+    -fx-background-color: #b2ebf2;
+}
+
+/* Định dạng cho nút Cancel */
+#cancelButton {
+    -fx-background-color: #f44336;
+    /* Màu đỏ */
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#cancelButton:hover {
+    -fx-background-color: #e53935;
+}
+
+#cancelButton:pressed {
+    -fx-background-color: #d32f2f;
+}
+
+/* Định dạng cho nút Issue Book */
+#issueBookButton {
+    -fx-background-color: #2196f3;
+    /* Màu xanh lam */
+    -fx-text-fill: white;
+    -fx-background-radius: 5;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+#issueBookButton:hover {
+    -fx-background-color: #1e88e5;
+}
+
+#issueBookButton:pressed {
+    -fx-background-color: #1976d2;
+}

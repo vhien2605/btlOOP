@@ -50,6 +50,47 @@ public class MainIssuedRowController implements BaseController {
     public void loadData(BorrowReport data) {
         this.borrowReport = data;
         setUpdata();
+        setChoiceBoxStyle();
+    }
+
+    void setChoiceBoxStyle() {
+        // Thiết lập các giá trị cho ChoiceBox
+        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
+
+        // Xét giá trị ban đầu và thay đổi màu sắc ngay khi khởi tạo
+        String initialStatus = borrowReport.getStatus();
+        statusChoiceBox.setValue(initialStatus);
+
+        // Thay đổi màu sắc của ChoiceBox dựa trên giá trị ban đầu
+        switch (initialStatus) {
+            case BorrowReport.PENDING:
+                statusChoiceBox.setStyle("-fx-background-color: #32e544; ");
+                break;
+            case BorrowReport.BORROWED:
+                statusChoiceBox.setStyle("-fx-background-color: #5bc0de; ");
+                break;
+            case BorrowReport.RETURNED:
+                statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
+                break;
+        }
+
+        // Thêm sự kiện khi người dùng chọn giá trị trong ChoiceBox
+        statusChoiceBox.setOnAction(event -> {
+            String selectedStatus = statusChoiceBox.getValue();
+
+            // Thay đổi màu sắc của ChoiceBox dựa trên lựa chọn của người dùng
+            switch (selectedStatus) {
+                case BorrowReport.PENDING:
+                    statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
+                    break;
+                case BorrowReport.BORROWED:
+                    statusChoiceBox.setStyle("-fx-background-color: #5bc0de; ");
+                    break;
+                case BorrowReport.RETURNED:
+                    statusChoiceBox.setStyle("-fx-background-color: #ff5f6f; ");
+                    break;
+            }
+        });
     }
 
     void setUpdata() {
@@ -74,8 +115,6 @@ public class MainIssuedRowController implements BaseController {
         userIdLabel.setText(borrowReport.getUserId());
         bookIdLabel.setText(borrowReport.getBookId());
 
-        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
-        statusChoiceBox.setValue(borrowReport.getStatus());
     }
 
     boolean updateDataBorrowReport() {

@@ -1,26 +1,52 @@
-/* CSS for buttons */
+/* CSS cho các button */
 .button {
     -fx-background-color: transparent;
     -fx-font-size: 13px;
     -fx-background-radius: 5px;
+    -fx-cursor: hand;
 }
 
+/* Khi nút có focus */
+.button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Nút statusButton */
 #statusButton {
     -fx-background-color: #008125;
     -fx-text-fill: white;
 }
 
+#statusButton:hover {
+    -fx-background-color: #3bc55b;
+}
+
+/* Nút detailButton */
 #detailButton {
     -fx-background-color: #686868;
     -fx-text-fill: white;
 }
 
+#detailButton:hover {
+    -fx-background-color: #8b8b8b;
+}
+
+/* Nút deleteButton */
 #deleteButton {
     -fx-background-color: #d1192c;
     -fx-text-fill: white;
 }
 
+#deleteButton:hover {
+    -fx-background-color: #dc3647;
+}
+
+/* Nút updateButton */
 #updateButton {
     -fx-background-color: #e5b218;
     -fx-text-fill: rgb(26, 26, 26);
+}
+
+#updateButton:hover {
+    -fx-background-color: #d1b045;
 }

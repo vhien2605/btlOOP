@@ -11,9 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/admin/user_tab.css"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.UserTab.MainUserController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/admin/user_tab.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.UserTab.MainUserController">
    <children>
       <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml" />
       <BorderPane prefHeight="650.0" prefWidth="950.0">
@@ -67,12 +65,12 @@
                               <Label layoutX="25.0" layoutY="211.0" text="Phone Number:" textFill="#112f9c" />
                               <Label layoutX="25.0" layoutY="267.0" text="Email:" textFill="#112f9c" />
                               <Label layoutX="25.0" layoutY="326.0" text="Address:" textFill="#112f9c" />
-                              <TextField fx:id="userIdTextField" layoutX="25.0" layoutY="101.0" prefHeight="25.0" prefWidth="225.0" promptText="User Id" />
-                              <TextField fx:id="fullNameTextField" layoutX="25.0" layoutY="163.0" prefHeight="25.0" prefWidth="225.0" promptText="Full Name" />
-                              <TextField fx:id="phoneNumberTextField" layoutX="25.0" layoutY="228.0" prefHeight="25.0" prefWidth="225.0" promptText="Phone Number" />
-                              <TextField fx:id="emailTextField" layoutX="25.0" layoutY="284.0" prefHeight="25.0" prefWidth="225.0" promptText="Email" />
-                              <TextField fx:id="addressTextField" layoutX="25.0" layoutY="343.0" prefHeight="25.0" prefWidth="225.0" promptText="Address" />
-                              <Button fx:id="cancelButton" layoutX="14.0" layoutY="397.0" mnemonicParsing="false" text="Cancel" />
+                              <TextField fx:id="userIdTextField" layoutX="25.0" layoutY="101.0" prefHeight="25.0" prefWidth="240.0" promptText="User Id" />
+                              <TextField fx:id="fullNameTextField" layoutX="25.0" layoutY="163.0" prefHeight="25.0" prefWidth="240.0" promptText="Full Name" />
+                              <TextField fx:id="phoneNumberTextField" layoutX="25.0" layoutY="228.0" prefHeight="25.0" prefWidth="240.0" promptText="Phone Number" />
+                              <TextField fx:id="emailTextField" layoutX="25.0" layoutY="284.0" prefHeight="25.0" prefWidth="240.0" promptText="Email" />
+                              <TextField fx:id="addressTextField" layoutX="25.0" layoutY="343.0" prefHeight="25.0" prefWidth="240.0" promptText="Address" />
+                              <Button fx:id="cancelButton" layoutX="17.0" layoutY="397.0" mnemonicParsing="false" text="Cancel" />
                               <Button fx:id="insertButton" layoutX="84.0" layoutY="397.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Insert" />
                               <Button fx:id="updateButton" layoutX="153.0" layoutY="397.0" mnemonicParsing="false" text="Update" />
                               <Button fx:id="deleteButton" layoutX="224.0" layoutY="397.0" mnemonicParsing="false" text="Delete" />
