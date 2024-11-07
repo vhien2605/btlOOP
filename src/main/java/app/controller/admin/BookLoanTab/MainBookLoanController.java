@@ -42,9 +42,6 @@ public class MainBookLoanController {
     @FXML
     Button updateButton, comeBackButton, exportButton;
 
-    @FXML
-    Pane sidebar;
-
     BorrowReport borrowReport;
 
     UserService userService;
@@ -63,13 +60,6 @@ public class MainBookLoanController {
         showAlert = new ShowAlert();
         reportService = new ReportService(new ReportRepository(), userService, bookService);
         new AllSetup().init_function(this);
-    }
-
-    public void setStateButton(int index) {
-        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
-        if (sidebarController != null) {
-            sidebarController.setStateButton(index);
-        }
     }
 
     public void handleComeBackButton() {

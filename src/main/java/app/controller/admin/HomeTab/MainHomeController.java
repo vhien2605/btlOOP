@@ -3,7 +3,6 @@ package app.controller.admin.HomeTab;
 import app.controller.BaseController;
 import app.controller.admin.Panel.SidebarController;
 import app.domain.Book;
-import app.domain.BorrowReport;
 import app.domain.DTO.ReportDetail;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -16,16 +15,9 @@ import app.service.subService.multiTaskService.ResultTask;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -44,17 +36,12 @@ public class MainHomeController implements BaseController {
     @FXML
     StackedAreaChart<String, Number> userChart;
 
-    @FXML
-    Pane sidebar;
-
     private BookService bookService;
     private MultiTaskService multiTaskService;
     private ReportService reportService;
 
     @Override
     public void initialize() {
-        setStateButton();
-
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
@@ -81,8 +68,7 @@ public class MainHomeController implements BaseController {
         categorySeries.setName("Category number");
         HashMap<String, Integer> categoryQuantity = new HashMap<>();
         for (Book book : listBook) {
-            categoryQuantity.put(book.getCategory()
-                    , categoryQuantity.getOrDefault(book.getCategory(), 0) + 1);
+            categoryQuantity.put(book.getCategory(), categoryQuantity.getOrDefault(book.getCategory(), 0) + 1);
         }
         for (String key : categoryQuantity.keySet()) {
             categorySeries.getData().add(new XYChart.Data<>(key, categoryQuantity.get(key)));
@@ -95,8 +81,7 @@ public class MainHomeController implements BaseController {
         borrowedSeries.setName("Borrowed Books quantity by book name");
         HashMap<String, Integer> nameQuantity = new HashMap<>();
         for (ReportDetail reportDetail : listReport) {
-            nameQuantity.put(reportDetail.getBookName()
-                    , nameQuantity.getOrDefault(reportDetail.getBookName(), 0) + 1);
+            nameQuantity.put(reportDetail.getBookName(), nameQuantity.getOrDefault(reportDetail.getBookName(), 0) + 1);
         }
         for (String key : nameQuantity.keySet()) {
             borrowedSeries.getData().add(new XYChart.Data<>(key, nameQuantity.get(key)));
@@ -109,8 +94,7 @@ public class MainHomeController implements BaseController {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Books in stock", 60),
                 new PieChart.Data("Books are borrowed and in require date", 30),
-                new PieChart.Data("Books are borrowed and out of require date", 10)
-        );
+                new PieChart.Data("Books are borrowed and out of require date", 10));
         issueBookChart.setData(pieChartData);
     }
 
@@ -133,10 +117,4 @@ public class MainHomeController implements BaseController {
         userChart.getData().add(series2);
     }
 
-    void setStateButton() {
-        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
-        if (sidebarController != null) {
-            sidebarController.setStateButton(0);
-        }
-    }
 }

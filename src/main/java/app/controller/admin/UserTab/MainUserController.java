@@ -1,7 +1,6 @@
 package app.controller.admin.UserTab;
 
 import app.controller.BaseController;
-import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.User;
 import app.repository.UserRepository;
@@ -15,7 +14,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 
 public class MainUserController implements BaseController {
 
@@ -44,9 +42,6 @@ public class MainUserController implements BaseController {
     @FXML
     Button cancelButton, insertButton, updateButton, deleteButton, importDataButton;
 
-    @FXML
-    Pane sidebar;
-
     UserService userService;
 
     ShowAlert showAlert;
@@ -58,8 +53,6 @@ public class MainUserController implements BaseController {
 
     @Override
     public void initialize() {
-        setStateButton();
-
         userService = new UserService(new UserRepository());
         showAlert = new ShowAlert();
         showUsers();
@@ -144,13 +137,6 @@ public class MainUserController implements BaseController {
         emailTextField.setText(user.getEmail());
         phoneNumberTextField.setText(user.getPhoneNumber());
         setCanClickButton(UPDATE_AND_DELETE);
-    }
-
-    void setStateButton() {
-        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
-        if (sidebarController != null) {
-            sidebarController.setStateButton(2);
-        }
     }
 
     boolean validateFields() {

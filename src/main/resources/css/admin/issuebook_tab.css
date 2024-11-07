@@ -14,14 +14,22 @@
     -fx-background-color: #f0f0f0;
 }
 
+.text-field:focused {
+    -fx-border-color: #1d3ec4;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(29, 62, 196, 0.3), 5, 0, 0, 1);
+}
+
+.text-field:hover {
+    -fx-border-color: #3b82f6;
+}
+
 /* Định dạng cho nút Reload */
 #findBookButton,
 #findUserButton {
     -fx-background-color: #f0f0f0;
-    /* Màu nền xám nhạt */
     -fx-border-color: #87cefa;
     -fx-border-radius: 30%;
-    /* Hình tròn */
     -fx-background-radius: 30%;
     -fx-cursor: hand;
     -fx-padding: 5px;
@@ -30,7 +38,6 @@
 #findBookButton:hover,
 #findUserButton:hover {
     -fx-background-color: #e0f7fa;
-    /* Màu xanh nhạt khi hover */
 }
 
 #findBookButton:pressed,
@@ -41,7 +48,6 @@
 /* Định dạng cho nút Cancel */
 #cancelButton {
     -fx-background-color: #f44336;
-    /* Màu đỏ */
     -fx-text-fill: white;
     -fx-background-radius: 5;
     -fx-font-size: 14px;

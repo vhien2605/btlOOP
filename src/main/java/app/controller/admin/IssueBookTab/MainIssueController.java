@@ -9,16 +9,12 @@ import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
-
 import java.time.format.DateTimeFormatter;
-
-import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
 
 public class MainIssueController {
 
@@ -33,9 +29,6 @@ public class MainIssueController {
     @FXML
     Button findBookButton, findUserButton, cancelButton, issueBookButton;
 
-    @FXML
-    Pane sidebar;
-
     BookService bookService;
 
     UserService userService;
@@ -45,8 +38,6 @@ public class MainIssueController {
     ShowAlert showAlert;
 
     public void initialize() {
-        setStateButton();
-
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
         reportService = new ReportService(new ReportRepository(), userService, bookService);
@@ -105,13 +96,6 @@ public class MainIssueController {
                 null,
                 dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 BorrowReport.BORROWED);
-    }
-
-    void setStateButton() {
-        SidebarController sidebarController = (SidebarController) sidebar.getProperties().get("controller");
-        if (sidebarController != null) {
-            sidebarController.setStateButton(3);
-        }
     }
 
     boolean validateFields() {

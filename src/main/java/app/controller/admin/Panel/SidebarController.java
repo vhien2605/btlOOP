@@ -6,7 +6,6 @@ import app.controller.BaseController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
 
 public class SidebarController implements BaseController {
     @FXML
@@ -30,10 +29,9 @@ public class SidebarController implements BaseController {
     @FXML
     private Button signOutButton;
 
-    @FXML
-    private Pane root;
-
     List<Button> buttons;
+
+    private static int currButton = 0;
 
     /**
      * Click button event
@@ -41,29 +39,34 @@ public class SidebarController implements BaseController {
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == homeButton) {
+            currButton = 0;
             new ChangeTabController().homeTab();
         } else if (e.getSource() == booksButton) {
+            currButton = 1;
             new ChangeTabController().bookTab();
         } else if (e.getSource() == usersButton) {
+            currButton = 2;
             new ChangeTabController().userTab();
         } else if (e.getSource() == issueBooksButton) {
+            currButton = 3;
             new ChangeTabController().issueBookTab();
         } else if (e.getSource() == allIssueBooksButton) {
+            currButton = 4;
             new ChangeTabController().allIssueBookTab();
         } else if (e.getSource() == settingsButton) {
+            currButton = 5;
             new ChangeTabController().settingTab();
         }
     }
 
-    public void setStateButton(int indexButton) {
-        buttons.get(indexButton).getStyleClass().add("curr-button");
-    }
-
     @Override
     public void initialize() {
-        root.getProperties().put("controller", this);
-
         buttons = List.of(homeButton, booksButton, usersButton,
                 issueBooksButton, allIssueBooksButton, settingsButton);
+        setStateButton();
+    }
+
+    void setStateButton() {
+        buttons.get(currButton).getStyleClass().add("curr-button");
     }
 }
