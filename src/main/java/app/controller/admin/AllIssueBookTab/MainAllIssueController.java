@@ -80,14 +80,13 @@ public class MainAllIssueController implements BaseController {
     }
 
     void updateButtonStyle(int ordinalNumber) {
-
         for (int i = 0; i < buttons.size(); i++) {
             if (i != ordinalNumber) {
-                buttons.get(i).setStyle(
-                        "-fx-background-color: white; -fx-text-fill: #0b9710; -fx-border-color: #0b9710;  -fx-border-radius: 3px; -fx-cursor: hand;");
+                buttons.get(i).getStyleClass().removeAll("selected-button");
+                buttons.get(i).getStyleClass().add("unselected-button");
             } else {
-                buttons.get(i).setStyle(
-                        "-fx-background-color: #0b9710; -fx-text-fill: white; -fx-border-color: #0b9710;  -fx-border-radius: 3px; -fx-cursor: hand;");
+                buttons.get(i).getStyleClass().removeAll("unselected-button");
+                buttons.get(i).getStyleClass().add("selected-button");
             }
         }
     }

@@ -1,0 +1,21 @@
+.unselected-button {
+    -fx-background-color: white;
+    -fx-text-fill: #0b9710;
+    -fx-border-color: #0b9710;
+    -fx-border-radius: 3px;
+    -fx-cursor: hand;
+}
+
+.unselected-button:hover {
+    -fx-background-color: #a3e4a3;
+    /* Thay đổi màu nền khi hover */
+}
+
+/* CSS cho button được chọn */
+.selected-button {
+    -fx-background-color: #0b9710;
+    -fx-text-fill: white;
+    -fx-border-color: #0b9710;
+    -fx-border-radius: 3px;
+    -fx-cursor: hand;
+}
