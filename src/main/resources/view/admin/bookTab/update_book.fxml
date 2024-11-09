@@ -45,7 +45,7 @@
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="128.0" text="Book Author:">
+                                <Label layoutX="110.0" layoutY="136.0" text="Book Author:">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
