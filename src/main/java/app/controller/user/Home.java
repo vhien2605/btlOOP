@@ -6,73 +6,52 @@ import java.util.List;
 import java.util.ResourceBundle;
 import app.controller.BaseController;
 import app.domain.Book;
+import app.repository.BookRepository;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import app.service.mainService.BookService;
+
+
 public class Home implements BaseController{
     @FXML
-    public HBox bookSection;
+    private VBox mainPage;
 
-    List <Book> getBookList() {
-        return List.of(new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"),
+    private ObservableList<String> bookSectionTitleList;
 
-         new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"),
-         
-         new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"),
-         
-         new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"),
-         
-         new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"),
-         
-         new Book("Harry Potter", "Harry Potter", 
-        "J.K. Rowling","Harry Potter","Harry Potter",
-        "Harry Potter", 5, 5,
-         "src/main/resources/image/book/what_the_dead_know.jpg"));
+    private void getBookSectionList() {
+        bookSectionTitleList = FXCollections.observableArrayList();
+        bookSectionTitleList.addAll(
+            "Top Rated",
+            "History",
+            "Science",
+            "Fiction",
+            "Non-Fiction",
+            "Fantasy"
+        );
     }
 
     @Override
     public void initialize() {
-        List <Book> books = getBookList();
-        loadBooks(books);
-    }
-
-    private void loadBooks(List<Book> books) {
-        for (Book book : books) {
+        getBookSectionList();
+        for (String bookSectionTitle : bookSectionTitleList) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/card.fxml"));
-                VBox card = loader.load();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/booksection.fxml"));
+                VBox section = loader.load();
+                mainPage.getChildren().add(section);
 
-                Card controller = loader.getController();
-                controller.setImage(book);
-
-                // Card controller = loader.getController();
-                // controller.setBookData(book);
-
-                // booksContainer.getChildren().add(bookBlock);
-                bookSection.getChildren().add(card);
+                BookSection controller = loader.getController();
+                controller.InitBookSectionByTitle(bookSectionTitle);
+                
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
-    
-    
 }

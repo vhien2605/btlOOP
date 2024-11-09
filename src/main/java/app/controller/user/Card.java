@@ -5,17 +5,24 @@ import app.domain.Book;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.control.Label;
+
+
 
 public class Card implements BaseController{
     @FXML  
     private ImageView imageURL;
 
-    public void setImage(Book book) {
-        if (book == null) {
-            System.out.println("dfgsfhdfghd1242345");
-            return;
-        }
-        imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/what_the_dead_know.jpg")));
+    @FXML
+    private Label bookName;
+
+    @FXML
+    private Label authorName;
+
+    public void loadBook(Book book) {
+        bookName.setText(book.getName());
+        authorName.setText(book.getAuthor());
+        imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
     }
 
     @Override

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookSection">
+   <children>
+      <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
+         <children>
+            <Label fx:id="bookSectionTitle" layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Title here">
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </Pane>
+      <Pane prefHeight="20.0" prefWidth="200.0" />
+      <HBox fx:id="bookDisplaySection" prefHeight="263.0" prefWidth="1100.0" spacing="10.0">
+         <VBox.margin>
+            <Insets left="20.0" />
+         </VBox.margin>
+      </HBox>
+      <Pane prefHeight="21.0" prefWidth="1100.0" />
+      <Pane prefHeight="38.0" prefWidth="1100.0" />
+   </children>
+</VBox>
