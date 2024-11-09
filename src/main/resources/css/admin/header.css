@@ -20,3 +20,7 @@
     -fx-border-radius: 0;
     /* Maintain no border radius on hover */
 }
+
+.Pane{
+  -fx-background-color:  #d8feff;
+}
