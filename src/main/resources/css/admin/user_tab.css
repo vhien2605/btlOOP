@@ -8,27 +8,40 @@
     -fx-border-radius: 10px;
 }
 
-/* CSS cho các TextField chung */
-.text-field {
-    -fx-background-color: #f9f9f9;
-    -fx-background-radius: 8;
-    -fx-border-color: #636a6e;
-    -fx-border-radius: 8;
+.pane {
+    -fx-background-color: #f3e3e3;
 }
 
-/* Hiệu ứng khi người dùng nhấn vào TextField */
+.text-field {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-border-width: 2px;
+}
+
 .text-field:focused {
     -fx-border-color: #1d3ec4;
     -fx-background-color: #ffffff;
+    -fx-border-width: 2px;
     -fx-effect: dropshadow(gaussian, rgba(29, 62, 196, 0.3), 5, 0, 0, 1);
 }
 
-/* Placeholder (prompt text) cho TextField */
-.text-field .text {
-    -fx-fill: #6b7280;
-}
-
-/* TextField khi di chuột vào */
 .text-field:hover {
     -fx-border-color: #3b82f6;
+    -fx-border-width: 2px;
+}
+
+/* CSS cho button importDataButton */
+#importDataButton {
+    -fx-background-color: #06e186;
+    -fx-background-radius: 4px;
+    -fx-text-fill: #000000;
+    -fx-border-radius: 4;
+    -fx-border-color: #06e186;
+}
+
+#importDataButton:hover {
+    -fx-background-color: #45e5a3;
+    -fx-border-color: #45e5a3;
 }
