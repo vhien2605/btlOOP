@@ -8,10 +8,13 @@
     -fx-border-radius: 10px;
 }
 
+/* css cho màu nền */
 .pane {
-    -fx-background-color: #f3e3e3;
+    -fx-background-color: #d8feff;
 }
 
+
+/* css cho textfiled */
 .text-field {
     -fx-background-color: #f9f9f9;
     -fx-background-radius: 10;
@@ -32,6 +35,13 @@
     -fx-border-width: 2px;
 }
 
+/* TableView */
+.table-view {
+    -fx-background-color: #d8feff;
+    -fx-border-color: #23a9fa;
+    -fx-border-width: 2.5;
+}
+
 /* CSS cho button importDataButton */
 #importDataButton {
     -fx-background-color: #06e186;
@@ -44,4 +54,5 @@
 #importDataButton:hover {
     -fx-background-color: #45e5a3;
     -fx-border-color: #45e5a3;
+    -fx-cursor: hand;
 }

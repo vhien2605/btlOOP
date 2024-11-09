@@ -1,0 +1,115 @@
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
+/* CSS cho TextField */
+.text-field {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10px;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-padding: 5 10;
+    -fx-text-fill: #333333;
+}
+
+/* Hiệu ứng khi TextField được focus */
+.text-field:focused {
+    -fx-border-color: #1d3ec4;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(29, 62, 196, 0.3), 5, 0, 0, 1);
+}
+
+/* Hiệu ứng hover cho TextField */
+.text-field:hover {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2px;
+}
+
+/* Áp dụng cho TextArea */
+#bookDescriptionTextArea {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10px;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10px;
+    -fx-border-width: 2px;
+    -fx-text-fill: #333333;
+    -fx-padding: 1 2;
+}
+
+/* Hiệu ứng khi TextArea được focus */
+#bookDescriptionTextArea:focused {
+    -fx-border-color: #1d3ec4;
+    -fx-background-color: #ffffff;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(29, 62, 196, 0.3), 5, 0, 0, 1);
+}
+
+/* Hiệu ứng hover cho TextArea */
+#bookDescriptionTextArea:hover {
+    -fx-border-color: #3b82f6;
+    -fx-border-width: 2px;
+}
+
+/* Áp dụng bo góc cho nội dung của TextArea (văn bản) */
+#bookDescriptionTextArea .content {
+    -fx-background-radius: 10px;
+}
+
+/* Button mặc định */
+#comeBackButton {
+    -fx-background-color: #eebf06;
+}
+
+#cancelButton {
+    -fx-background-color: #ff6666;
+}
+
+#saveButton {
+    -fx-background-color: #66ccff;
+}
+
+#uploadFileButton {
+    -fx-background-color: #99ff99;
+}
+
+#findDocomentButton {
+    -fx-background-color: #cc99ff;
+}
+
+/* Hiệu ứng hover cho từng button */
+#comeBackButton:hover {
+    -fx-background-color: #ff9900;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+#cancelButton:hover {
+    -fx-background-color: #ff3333;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+#saveButton:hover {
+    -fx-background-color: #3399ff;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+#uploadFileButton:hover {
+    -fx-background-color: #2ff82f;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+#findDocomentButton:hover {
+    -fx-background-color: #9966ff;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}

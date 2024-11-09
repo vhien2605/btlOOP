@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.CreateBookTab.CreateBookController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/admin/create_book.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.BookTab.CreateBookTab.CreateBookController">
     <children>
         <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml" />
         <BorderPane prefHeight="200.0" prefWidth="950.0">
@@ -22,7 +22,7 @@
             <center>
                 <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                     <top>
-                        <Pane prefHeight="50.0" prefWidth="950.0" style="-fx-background-color: #d8feff;" BorderPane.alignment="CENTER">
+                        <Pane prefHeight="50.0" prefWidth="950.0" styleClass="pane" BorderPane.alignment="CENTER">
                             <children>
                                 <Label layoutX="25.0" layoutY="-2.0" prefHeight="53.0" prefWidth="311.0" text="Create new book" textFill="#1037d7">
                                     <font>
@@ -33,73 +33,85 @@
                         </Pane>
                     </top>
                     <bottom>
-                        <Pane prefHeight="570.0" prefWidth="950.0" style="-fx-background-color: #d8feff;" BorderPane.alignment="CENTER">
+                        <Pane prefHeight="570.0" prefWidth="950.0" styleClass="pane" BorderPane.alignment="CENTER">
                             <children>
-                                <Label layoutX="110.0" layoutY="48.0" text="Book ISBN:">
+                                <Label layoutX="110.0" layoutY="48.0" text="Book ISBN:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="92.0" text="Book Name:">
+                                <Label layoutX="110.0" layoutY="92.0" text="Book Name:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="139.0" text="Book Author:">
+                                <Label layoutX="110.0" layoutY="139.0" text="Book Author:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="340.0" text="Description:">
+                                <Label layoutX="110.0" layoutY="340.0" text="Description:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="192.0" text="Book Publisher:">
+                                <Label layoutX="110.0" layoutY="192.0" text="Book Publisher:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="240.0" text="Book Quantity:">
+                                <Label layoutX="110.0" layoutY="240.0" text="Book Quantity:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Label layoutX="110.0" layoutY="290.0" text="Book Category:">
+                                <Label layoutX="110.0" layoutY="290.0" text="Book Category:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="bookISBNTextField" layoutX="235.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" promptText="Book ISBN" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextField fx:id="bookNameTextField" layoutX="235.0" layoutY="84.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Name" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextField fx:id="bookAuthorTextField" layoutX="235.0" layoutY="131.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Author" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="233.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Quantity" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="184.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Publisher" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="283.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Category" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff;" />
-                                <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="331.0" prefHeight="54.0" prefWidth="250.0" promptText="Book Description" style="-fx-border-radius: 15; -fx-background-radius: 15; -fx-border-color: #5988ff; -fx-border-width: 2.5; -fx-background-color: #ffffff; -fx-padding: 2;" wrapText="true" />
-                                <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0" style="-fx-background-color: #bbf770;">
+                                <TextField fx:id="bookISBNTextField" layoutX="235.0" layoutY="40.0" prefHeight="35.0" prefWidth="250.0" promptText="Book ISBN" />
+                                <TextField fx:id="bookNameTextField" layoutX="235.0" layoutY="84.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Name" />
+                                <TextField fx:id="bookAuthorTextField" layoutX="235.0" layoutY="131.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Author" />
+                                <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="233.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Quantity" />
+                                <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="184.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Publisher" />
+                                <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="283.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Category" />
+                                <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="331.0" prefHeight="54.0" prefWidth="250.0" promptText="Book Description" wrapText="true" />
+                                <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="ARROW_LEFT" />
                                     </graphic>
                                 </Button>
-                                <Button fx:id="cancelButton" layoutX="424.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="61.0" style="-fx-background-radius: 5; -fx-background-color: #9bc0ee;" text="Cancel" />
-                                <Button fx:id="saveButton" layoutX="328.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" style="-fx-background-radius: 5; -fx-background-color: #9bc0ee;" text="Save" />
-                                <Label layoutX="110.0" layoutY="410.0" text="Upload Image:">
+                                <Button fx:id="cancelButton" layoutX="424.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="61.0" text="Cancel">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                                <Button fx:id="saveButton" layoutX="328.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="65.0" text="Save">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                                <Label layoutX="110.0" layoutY="410.0" text="Upload Image:" textFill="#1037d7">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="uploadFileButton" layoutX="235.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="92.0" style="-fx-background-radius: 5; -fx-background-color: #9bc0ee;" text="Upload File">
+                                <Button fx:id="uploadFileButton" layoutX="235.0" layoutY="407.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="92.0" text="Upload File">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="UPLOAD" />
                                     </graphic>
+                           <font>
+                              <Font name="System Italic" size="12.0" />
+                           </font>
                                 </Button>
-                                <Button fx:id="findDocomentButton" layoutX="235.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-radius: 5; -fx-background-color: #9bc0ee;" text="Find">
+                                <Button fx:id="findDocomentButton" layoutX="235.0" layoutY="466.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Find">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="CLOUD_UPLOAD" />
                                     </graphic>
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
                                 </Button>
-                                <TextField fx:id="imagePathTextField" editable="false" layoutX="326.0" layoutY="407.0" prefHeight="25.0" prefWidth="160.0" promptText="No files selected" style="-fx-background-radius: 5;" />
+                                <TextField fx:id="imagePathTextField" editable="false" layoutX="326.0" layoutY="404.0" prefHeight="25.0" prefWidth="160.0" promptText="No files selected" />
                                 <ImageView fitHeight="395.0" fitWidth="354.0" layoutX="545.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../../../image/other/create_book.png" />
