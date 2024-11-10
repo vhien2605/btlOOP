@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<Button fx:id="cardOuterButton" mnemonicParsing="false" stylesheets="@../../../css/user/card.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Card">
+<Button fx:id="cardButton" mnemonicParsing="false" onAction="#handleCardEvent" stylesheets="@../../../css/user/card.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.Card">
    <graphic>
       <VBox prefHeight="275.0" prefWidth="166.0" styleClass="card" stylesheets="@../../../css/user/booksection.css">
          <children>

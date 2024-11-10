@@ -1,4 +1,4 @@
-package app.controller.user;
+package app.controller.user.HomePage;
 
 import java.io.IOException;
 
@@ -6,7 +6,6 @@ import app.controller.BaseController;
 import app.domain.Book;
 import app.repository.BookRepository;
 import app.service.mainService.BookService;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,12 +14,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
+/**
+ * This class controls each BookSection
+ */
 
-public class BookSection implements BaseController {
+public class BookDiscoverSection implements BaseController {
+    /**
+     * The limit number of books that can be displayed in a single section.
+     */
     private static final int numberOfBooksInEachSection = 6;
 
     @FXML
-    private Label bookSectionTitle;
+    private Label bookDisplaySectionTitle;
 
     @FXML
     private HBox bookDisplaySection;
@@ -30,8 +35,7 @@ public class BookSection implements BaseController {
     private BookService bookService;
 
     public void InitBookSectionByTitle(String sectionName) {
-        this.bookSectionTitle.setText(sectionName);
-
+        this.bookDisplaySectionTitle.setText(sectionName);
         bookService = new BookService(new BookRepository());
         this.bookList = FXCollections.observableArrayList();
         ObservableList<Book> temporaryBookList = bookService.findByCategory(sectionName);
@@ -64,7 +68,7 @@ public class BookSection implements BaseController {
     }
 
     public String getBookSectionTitle() {
-        return bookSectionTitle.getText();
+        return bookDisplaySectionTitle.getText();
     }
 
     public void getBookListLimitBooksToSection(ObservableList<Book> initBookList) {
@@ -75,7 +79,7 @@ public class BookSection implements BaseController {
 
     @Override
     public void initialize() {
-        // TODO Auto-generated method stub
+
     }
     
 }
