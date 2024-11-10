@@ -2,6 +2,7 @@ package app.controller.user.HomePage;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.user.BookDetail.BookDetailController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -36,9 +37,14 @@ public class Card implements BaseController{
 
     public void handleCardEvent(ActionEvent e) {
         if (e.getSource() == cardButton) {
-            FXMLResolver.getInstance().renderScene("user/bookdetail/bookdetail");
-
+            loadBookDetail(book);
         }
+    }
+
+    private void loadBookDetail(Book book) {
+        FXMLResolver.getInstance().renderScene("user/bookdetail/bookdetail");
+        BookDetailController controller = FXMLResolver.getInstance().getLoader().getController();
+        controller.loadBook(book);
     }
 
     @Override
