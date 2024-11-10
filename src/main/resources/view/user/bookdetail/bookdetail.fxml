@@ -25,9 +25,9 @@
                </padding>
             </Label>
             <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
-            <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="495.0" prefWidth="330.0">
+            <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="330.0" prefWidth="220.0">
                <children>
-                  <ImageView fx:id="imgview" fitHeight="495.0" fitWidth="330.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>
