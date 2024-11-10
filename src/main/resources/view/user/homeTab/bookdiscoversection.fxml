@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookSection">
+<VBox prefHeight="360.0" prefWidth="1100.0" styleClass="section" stylesheets="@../../../css/user/booksection.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.BookDiscoverSection">
    <children>
       <Pane prefHeight="63.0" prefWidth="1100.0" styleClass="barsection">
          <children>
-            <Label fx:id="bookSectionTitle" layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Title here">
+            <Label fx:id="bookDisplaySectionTitle" layoutX="20.0" layoutY="8.0" prefHeight="39.0" prefWidth="1039.0" styleClass="textbar" text="Title here">
                <padding>
                   <Insets left="10.0" />
                </padding>

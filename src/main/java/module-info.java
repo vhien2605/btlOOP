@@ -20,7 +20,8 @@ module app {
     opens app.controller.admin.AllIssueBookTab to javafx.fxml;
     opens app.controller.admin.SettingTab to javafx.fxml;
     opens app.controller.admin.UserTab to javafx.fxml;
-    opens app.controller.user to javafx.fxml;
+    opens app.controller.user.HomePage to javafx.fxml;
+    opens app.controller.user.BookDetail to javafx.fxml;
     opens app.controller.admin.BookLoanTab to javafx.fxml;
     opens app.domain to javafx.base;
     opens app.controller.auth to javafx.fxml;

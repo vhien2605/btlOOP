@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdescription.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Home">
+<BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdescription.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookDetail.BookDetailController">
    <top>
       <fx:include source="../staticLayout/header.fxml" />
    </top>
@@ -19,6 +20,9 @@
                <font>
                   <Font size="35.0" />
                </font>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </Label>
             <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
             <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="495.0" prefWidth="330.0">

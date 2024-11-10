@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.Home">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.MainHomePageController">
     <top>
       <fx:include source="../staticLayout/header.fxml" />
    </top>
@@ -25,7 +25,7 @@
                <content>
                   <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
                      <content>
-                        <VBox fx:id="mainPage" prefHeight="5000.0" prefWidth="1100.0">
+                        <VBox fx:id="discoverMainPage" prefHeight="5000.0" prefWidth="1100.0">
                            <children>
                               <AnchorPane prefHeight="41.0" prefWidth="1100.0">
                                  <children>
