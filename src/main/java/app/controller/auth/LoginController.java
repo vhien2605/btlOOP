@@ -2,6 +2,9 @@ package app.controller.auth;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.helper.ShowAlert;
+import app.exception.auth.DuplicateException;
+import app.exception.auth.PasswordException;
+import app.exception.auth.SessionException;
 import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
@@ -59,37 +62,26 @@ public class LoginController {
             showAlert.showAlert("Username and password cannot be empty!", "error");
             return;
         }
-
         // Kiểm tra tính hợp lệ của tài khoản
-        String result = authService.verifyLogin(username, password);
-
-        if (result.equals("Username is not found")) {
-            showAlert.showAlert("Username is not found!", "error");
-            return;
+        try {
+            authService.verifyLogin(username, password);
+            appRedirection();
+        } catch (DuplicateException | PasswordException e) {
+            showAlert.showAlert(e.getMessage(), "error");
         }
-
-        if (result.equals("Password is incorrect")) {
-            showAlert.showAlert("Password is incorrect!", "error");
-            return;
-        }
-
-        appRedirection();
     }
 
     private void appRedirection() {
-        // Check render app admin or user
-        String sessionData = sessionService.verifySession();
-
-        if (!sessionData.equals("Session not found") ||
-                !sessionData.equals("Session is invalid")) {
+        try {
+            String sessionData = sessionService.verifySession();
             String role = sessionData.split(" ")[1];
             if (role.equals("ADMIN")) {
                 setUpAppAdmin();
             } else {
                 setUpAppUser();
             }
-        } else {
-            showAlert.showAlert(sessionData, "error");
+        } catch (SessionException e) {
+            showAlert.showAlert(e.getMessage(), "error");
         }
     }
 

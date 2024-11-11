@@ -3,11 +3,10 @@ package app.service.authService;
 
 import app.domain.DTO.PasswordChangeDTO;
 import app.domain.DTO.RegisterUserDTO;
-import app.domain.DTO.ReportDetail;
 import app.domain.User;
+import app.exception.auth.DuplicateException;
+import app.exception.auth.PasswordException;
 import app.service.mainService.UserService;
-import app.service.subService.multiTaskService.MultiTaskService;
-import javafx.application.Platform;
 
 /**
  * Authentication Service class
@@ -21,37 +20,34 @@ public class AuthenticationService {
         this.userService = userService;
     }
 
-    public String verifyLogin(String username, String password) {
+    public void verifyLogin(String username, String password) throws DuplicateException, PasswordException {
         if (!isUsernameExists(username)) {
-            return "Username is not found";
+            throw new DuplicateException("Username is not found!");
         }
         if (!isUsernameAndPasswordMapping(username, password)) {
-            return "Password is incorrect";
+            throw new PasswordException("Password is incorrect!");
         }
-        return "Authentication successfully";
     }
 
-    public String verifyRegister(RegisterUserDTO user) {
+    public void verifyRegister(RegisterUserDTO user) throws DuplicateException, PasswordException {
         if (isUsernameExists(user.getUsername())) {
-            return "Existing username";
+            throw new DuplicateException("Existing username!");
         } else if (isIdExists(user.getId())) {
-            return "Existing id";
+            throw new DuplicateException("Existing id!");
         } else if (!user.getPassword().equals(user.getConfirmPassword())) {
-            return "Confirm password is not mapping";
+            throw new PasswordException("Confirm password must equal to password , please try again!");
         }
-        return "Register validation successfully";
     }
 
-    public String verifyPasswordChangeRequest(PasswordChangeDTO user) {
+    public void verifyPasswordChangeRequest(PasswordChangeDTO user) throws PasswordException {
         if (this.userService.findByUsernameAndPassword(user.getUsername()
                 , user.getCurrentPassword()) == null) {
-            return "Current password is incorrect";
+            throw new PasswordException("Current password is incorrect!");
         } else if (!user.getNewPassword().equals(user.getConfirmNewPassword())) {
-            return "Confirm password is not mapping";
+            throw new PasswordException("Confirm password is not mapping!");
         } else if (user.getNewPassword().equals(user.getCurrentPassword())) {
-            return "New password shouldn't equal to current password";
+            throw new PasswordException("New password shouldn't equal to current password!");
         }
-        return "Change password validation successfully";
     }
 
     public boolean isUsernameExists(String username) {

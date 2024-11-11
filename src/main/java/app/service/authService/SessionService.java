@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.Properties;
 
 import app.domain.User;
+import app.exception.auth.SessionException;
 
 /**
  * {@link SessionService} for handling authorization after authentication
@@ -64,7 +65,7 @@ public class SessionService {
      * <br>
      * return String userId+role if mapping session successfully
      */
-    public String verifySession() {
+    public String verifySession() throws SessionException {
         Properties localProp = new Properties();
         Properties serverProp = new Properties();
         try (FileInputStream local = new FileInputStream("./src/main/resources/localSession.properties");
@@ -77,13 +78,11 @@ public class SessionService {
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Session not found");
-            ex.printStackTrace();
-            return "Session not found";
+            throw new SessionException("Session not found!");
         } catch (IOException e) {
             System.out.println(e.getMessage());
             System.out.println("Session is invalid");
-            e.printStackTrace();
-            return "Session is invalid";
+            throw new SessionException("Session is invalid!");
         }
     }
 }
