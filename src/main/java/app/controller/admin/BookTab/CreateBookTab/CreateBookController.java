@@ -47,6 +47,7 @@ public class CreateBookController extends HandleBookController {
     private void addDataBook() {
         String query = bookISBNTextField.getText();
         if (query.isEmpty()) {
+            showAlert.showAlert("Please enter book ISBN!", "error");
             return;
         }
         List<Book> books = googleApiService.searchBooks(query);

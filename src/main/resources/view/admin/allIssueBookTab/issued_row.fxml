@@ -30,8 +30,8 @@
       <Button fx:id="updateButton" layoutX="804.0" layoutY="16.0" mnemonicParsing="false" styleClass="button" text="Update" />
       <Separator layoutY="57.0" prefHeight="3.0" prefWidth="937.0" />
       <ChoiceBox fx:id="statusChoiceBox" layoutX="625.0" layoutY="17.0" prefHeight="25.0" prefWidth="87.0" />
-      <DatePicker fx:id="borrowDatePicker" layoutX="237.0" layoutY="18.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" />
-      <DatePicker fx:id="dueDatePicker" layoutX="366.0" layoutY="18.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" />
-      <DatePicker fx:id="returnDatePicker" layoutX="495.0" layoutY="17.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" />
+      <DatePicker fx:id="borrowDatePicker" layoutX="237.0" layoutY="18.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" styleClass="datepicker" />
+      <DatePicker fx:id="dueDatePicker" layoutX="366.0" layoutY="18.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" styleClass="datepicker" />
+      <DatePicker fx:id="returnDatePicker" layoutX="495.0" layoutY="17.0" prefHeight="25.0" prefWidth="103.0" promptText="No data" styleClass="datepicker" />
    </children>
 </Pane>

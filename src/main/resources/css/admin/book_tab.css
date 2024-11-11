@@ -1,0 +1,64 @@
+/* book_tab.css */
+
+/* Search TextField */
+#searchBookTextField {
+    -fx-background-color: #f9f9f9;
+    -fx-background-radius: 10;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-border-width: 2px;
+}
+
+
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
+/* Add Button */
+#buttonAddBook {
+    -fx-background-color: #51feb5;
+    -fx-font-size: 14px;
+}
+
+/* Add Book Button Hover */
+#buttonAddBook:hover {
+    -fx-background-color: #45e5a3;
+    -fx-cursor: hand;
+}
+
+/* Delete Button */
+#buttonDelete {
+    -fx-background-color: #f52323;
+    -fx-text-fill: #ffffff;
+}
+
+
+/* Delete Button Hover */
+#buttonDelete:hover {
+    -fx-background-color: #ed6666;
+    -fx-cursor: hand;
+}
+
+/* Update Button */
+#buttonUpdate {
+    -fx-background-color: #86e553;
+}
+
+/* Update Button Hover */
+#buttonUpdate:hover {
+    -fx-background-color: #a1e37e;
+    -fx-cursor: hand;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: #d8feff;
+    -fx-border-color: #23a9fa;
+    -fx-border-width: 2.5;
+}
+
+/* Table Columns */
+.table-column {
+    -fx-alignment: CENTER_LEFT;
+}
