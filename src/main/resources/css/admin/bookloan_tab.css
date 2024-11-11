@@ -29,8 +29,7 @@
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-padding: 4 8;
-    -fx-font-size: 13px;
-    -fx-border-width: 2px;
+
 }
 
 /* TextField ở chế độ readonly */
@@ -49,60 +48,48 @@
     -fx-border-color: #3b82f6;
 }
 
-/* Định dạng cho nút Reload */
-#findBookButton,
-#findUserButton {
-    -fx-background-color: #52f49d;
-    -fx-border-color: #1e78b0;
-    -fx-border-radius: 30%;
-    -fx-background-radius: 30%;
-    -fx-cursor: hand;
-    -fx-padding: 5px;
+/* Style cho các button */
+#updateButton {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
 }
 
-#findBookButton:hover,
-#findUserButton:hover {
-    -fx-background-color: #32e58f;
+#updateButton:hover {
+    -fx-background-color: #45a049;
 }
 
-#findBookButton:pressed,
-#findUserButton:pressed {
-    -fx-background-color: #b2ebf2;
-}
-
-/* Định dạng cho nút Cancel */
-#cancelButton {
+#comeBackButton {
     -fx-background-color: #f44336;
     -fx-text-fill: white;
-    -fx-background-radius: 5;
-    -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-cursor: hand;
+    -fx-background-radius: 5;
 }
 
-#cancelButton:hover {
+#comeBackButton:hover {
     -fx-background-color: #e53935;
 }
 
-#cancelButton:pressed {
-    -fx-background-color: #d32f2f;
-}
-
-/* Định dạng cho nút Issue Book */
-#issueBookButton {
-    -fx-background-color: #2196f3;
-    /* Màu xanh lam */
+#exportButton {
+    -fx-background-color: #3d85dc;
     -fx-text-fill: white;
-    -fx-background-radius: 5;
-    -fx-font-size: 14px;
     -fx-font-weight: bold;
-    -fx-cursor: hand;
+    -fx-background-radius: 5;
 }
 
-#issueBookButton:hover {
-    -fx-background-color: #1e88e5;
+#exportButton:hover {
+    -fx-background-color: #1d3ec4;
 }
 
-#issueBookButton:pressed {
-    -fx-background-color: #1976d2;
+/* Style cho ChoiceBox */
+.choice-box {
+    -fx-border-color: #f6b77c;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-background-color: #f6b77c;
+}
+
+.choice-box:hover {
+    -fx-border-color: #3b82f6;
 }

@@ -49,7 +49,7 @@
                     <right>
                         <Pane prefHeight="534.0" prefWidth="301.0" styleClass="pane" BorderPane.alignment="CENTER">
                             <children>
-                                <Pane layoutX="7.0" prefHeight="535.0" prefWidth="287.0" styleClass="user-info-pane">
+                                <Pane layoutX="7.0" prefHeight="534.0" prefWidth="287.0" styleClass="user-info-pane">
                                     <children>
                                         <Label layoutX="50.0" layoutY="23.0" prefHeight="32.0" prefWidth="184.0" text="User Information" textFill="#112f9c">
                                             <font>

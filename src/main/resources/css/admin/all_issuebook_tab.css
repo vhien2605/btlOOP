@@ -1,14 +1,19 @@
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
 .unselected-button {
     -fx-background-color: white;
     -fx-text-fill: #0b9710;
     -fx-border-color: #0b9710;
     -fx-border-radius: 3px;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
 }
 
 .unselected-button:hover {
     -fx-background-color: #a3e4a3;
-    /* Thay đổi màu nền khi hover */
 }
 
 /* CSS cho button được chọn */
@@ -17,5 +22,26 @@
     -fx-text-fill: white;
     -fx-border-color: #0b9710;
     -fx-border-radius: 3px;
+    -fx-font-weight: bold;
     -fx-cursor: hand;
+}
+
+/* Định dạng cho TextField */
+.search-text-field {
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 4 8;
+    -fx-border-width: 2px;
+
+}
+
+.search-text-field:focused {
+    -fx-border-color: #1d3ec4;
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(29, 62, 196, 0.3), 5, 0, 0, 1);
+}
+
+.search-text-field:hover {
+    -fx-border-color: #3b82f6;
 }
