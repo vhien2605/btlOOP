@@ -77,11 +77,9 @@ public class SessionService {
             return serverProp.getProperty(sessionId);
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
-            System.out.println("Session not found");
             throw new SessionException("Session not found!");
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            System.out.println("Session is invalid");
             throw new SessionException("Session is invalid!");
         }
     }

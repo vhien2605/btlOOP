@@ -10,6 +10,14 @@ public class Comment {
     private SimpleStringProperty information;
     private SimpleStringProperty date;
 
+    public Comment(int id, String userId, String bookId, String information, String date) {
+        this.id = new SimpleIntegerProperty(id);
+        this.userId = new SimpleStringProperty(userId);
+        this.bookId = new SimpleStringProperty(bookId);
+        this.information = new SimpleStringProperty(information);
+        this.date = new SimpleStringProperty(date);
+    }
+
     public int getId() {
         return id.get();
     }

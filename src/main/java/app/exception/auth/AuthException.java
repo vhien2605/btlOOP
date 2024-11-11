@@ -1,6 +1,6 @@
 package app.exception.auth;
 
-public class AuthException extends Exception {
+public abstract class AuthException extends Exception {
     public AuthException(String message) {
         super(message);
     }

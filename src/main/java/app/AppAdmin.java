@@ -2,6 +2,7 @@ package app;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.service.authService.SessionService;
+import app.service.subService.QRCodeService;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -26,7 +27,10 @@ public class AppAdmin extends Application {
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
-        FXMLResolver.getInstance().setUp("/view", stage, 1100, 650);
-        FXMLResolver.getInstance().renderScene("auth/login");
+//        FXMLResolver.getInstance().setUp("/view/admin", stage, 1100, 650);
+//        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+
+        QRCodeService qrCodeService = new QRCodeService();
+        qrCodeService.createQRImage("https://hentaivn.mom/the-loai/housewife/page/2/?m_orderby=alphabet", "QRcode");
     }
 }
