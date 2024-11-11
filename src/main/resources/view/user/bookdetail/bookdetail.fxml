@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -30,6 +31,7 @@
                   <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
+            <Button fx:id="backToHomeButton" layoutX="875.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="31.0" prefWidth="85.0" text="Home" />
          </children>
       </AnchorPane>
    </center>
