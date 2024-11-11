@@ -1,0 +1,11 @@
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
+.card_info {
+    /* -fx-background-color: #f1b1b1; */
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0.0, 0, 2);
+}

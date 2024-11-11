@@ -17,6 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import java.util.HashMap;
 import java.util.List;
@@ -36,9 +37,19 @@ public class MainHomeController implements BaseController {
     @FXML
     StackedAreaChart<String, Number> userChart;
 
+    @FXML
+    Label dataBookLabel, dataUserLabel, dataAllIssuedabel, dataBorrowedLabel;
+
     private BookService bookService;
     private MultiTaskService multiTaskService;
     private ReportService reportService;
+
+    private void setDataCard(String dataBook, String dataUser, String dataIssued, String dataBorrowed) {
+        dataBookLabel.setText(dataBook);
+        dataUserLabel.setText(dataUser);
+        dataAllIssuedabel.setText(dataIssued);
+        dataBorrowedLabel.setText(dataBorrowed);
+    }
 
     @Override
     public void initialize() {
