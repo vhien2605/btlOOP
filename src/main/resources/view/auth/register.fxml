@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -16,7 +19,7 @@
             <children>
                 <Pane prefHeight="673.0" prefWidth="500.0">
                     <children>
-                        <TextField fx:id="userNameField" layoutX="258.0" layoutY="153.0" prefHeight="50.0" prefWidth="172.0" promptText="Username" style="-fx-background-radius: 50;">
+                        <TextField fx:id="userNameField" layoutX="258.0" layoutY="153.0" prefHeight="50.0" prefWidth="172.0" promptText="Username" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
                             <font>
                                 <Font size="22.0" />
                             </font>
@@ -26,31 +29,36 @@
                                 <Font size="24.0" />
                             </font>
                         </Button>
-                        <TextField fx:id="emailField" layoutX="79.0" layoutY="290.0" prefHeight="53.0" prefWidth="351.0" promptText="Email" style="-fx-background-radius: 50;">
+                        <TextField fx:id="emailField" layoutX="79.0" layoutY="290.0" prefHeight="53.0" prefWidth="351.0" promptText="Email" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
                             <font>
                                 <Font size="22.0" />
                             </font>
                         </TextField>
-                  <TextField fx:id="idField" layoutX="78.0" layoutY="153.0" prefHeight="50.0" prefWidth="166.0" promptText="Id" style="-fx-background-radius: 50;">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </TextField>
-                  <TextField fx:id="fullNameFiled" layoutX="79.0" layoutY="220.0" prefHeight="50.0" prefWidth="352.0" promptText="Full Name" style="-fx-background-radius: 50;">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </TextField>
-                  <PasswordField fx:id="confirmPasswordField" layoutX="83.0" layoutY="431.0" prefHeight="53.0" prefWidth="350.0" promptText="Confirm password" style="-fx-background-radius: 50;">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </PasswordField>
-                  <PasswordField fx:id="passwordField" layoutX="80.0" layoutY="360.0" prefHeight="53.0" prefWidth="350.0" promptText="Password" style="-fx-background-radius: 50;">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </PasswordField>
+                        <TextField fx:id="idField" layoutX="78.0" layoutY="153.0" prefHeight="50.0" prefWidth="166.0" promptText="Id" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </TextField>
+                        <TextField fx:id="fullNameFiled" layoutX="79.0" layoutY="220.0" prefHeight="50.0" prefWidth="352.0" promptText="Full Name" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </TextField>
+                        <PasswordField fx:id="confirmPasswordField" layoutX="83.0" layoutY="431.0" prefHeight="53.0" prefWidth="350.0" promptText="Confirm password" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </PasswordField>
+                        <PasswordField fx:id="passwordField" layoutX="80.0" layoutY="360.0" prefHeight="53.0" prefWidth="350.0" promptText="Password" style="-fx-background-radius: 50; -fx-border-radius: 50; -fx-border-color: #f18c33; -fx-border-width: 2.5;">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </PasswordField>
+                  <ImageView fitHeight="120.0" fitWidth="200.0" layoutX="373.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../image/other/rb_2149323889.png" />
+                     </image>
+                  </ImageView>
                     </children>
                 </Pane>
             </children>
@@ -78,7 +86,7 @@
                         </Button>
                     </children>
                 </Pane>
-                <HBox alignment="CENTER" prefHeight="203.0" prefWidth="600.0">
+                <HBox alignment="CENTER" prefHeight="180.0" prefWidth="600.0">
                     <children>
                         <Label alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="205.0" text="Welcome" textAlignment="CENTER" textFill="#9a8888">
                             <font>
@@ -89,23 +97,31 @@
                             <font>
                                 <Font name="System Bold" size="45.0" />
                             </font>
+                            <padding>
+                                <Insets top="20.0" />
+                            </padding>
                         </Label>
                     </children>
                 </HBox>
-                <HBox alignment="TOP_CENTER" prefHeight="226.0" prefWidth="600.0">
+                <HBox alignment="TOP_CENTER" prefHeight="110.0" prefWidth="600.0">
                     <children>
                         <Label alignment="CENTER" prefHeight="73.0" prefWidth="175.0" text=" To The">
                             <font>
                                 <Font name="System Bold" size="45.0" />
                             </font>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="66.0" prefWidth="166.0" text="Library" textFill="#9f9999">
+                        <Label alignment="CENTER" prefHeight="110.0" prefWidth="166.0" text="Library" textFill="#9f9999">
                             <font>
                                 <Font name="System Bold" size="45.0" />
                             </font>
                         </Label>
                     </children>
                 </HBox>
+                <ImageView fitHeight="181.0" fitWidth="580.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../image/other/rb_2149342941.png" />
+                    </image>
+                </ImageView>
             </children>
         </VBox>
     </center>

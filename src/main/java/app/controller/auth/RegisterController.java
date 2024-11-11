@@ -1,5 +1,7 @@
 package app.controller.auth;
 
+import app.exception.auth.DuplicateException;
+import app.exception.auth.PasswordException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -70,26 +72,18 @@ public class RegisterController {
         if (data == null) {
             return;
         }
-
-        String result = authService.verifyRegister(data);
-
-        if (result.equals("Existing username")) {
-            showAlert.showAlert("Existing username!", "error");
-            return;
+        try {
+            authService.verifyRegister(data);
+            if (userService.handleSaveUser(data)) {
+                showAlert.showAlert("Registration successful!\nSign in to continue!", "success");
+            } else {
+                showAlert.showAlert("registration failed!", "error");
+            }
+        } catch (DuplicateException | PasswordException e) {
+            showAlert.showAlert(e.getMessage(), "error");
+        } finally {
+            clearField();
         }
-
-        if (result.equals("Existing id")) {
-            showAlert.showAlert("Existing id!", "error");
-            return;
-        }
-
-        if (userService.handleSaveUser(data)) {
-            showAlert.showAlert("Registration successful!\nSign in to continue!", "success");
-        } else {
-            showAlert.showAlert("registration failed!", "error");
-        }
-
-        clearField();
     }
 
     private RegisterUserDTO getData() {
@@ -123,20 +117,12 @@ public class RegisterController {
             showAlert.showAlert("Please fill in all information completely!", "error");
             return false;
         }
-
-        // Kiểm tra mật khẩu và xác nhận mật khẩu
-        if (!passwordField.getText().equals(confirmPasswordField.getText())) {
-            showAlert.showAlert("Password does not match!", "error");
-            return false;
-        }
-
         // Kiểm tra định dạng email
         String email = emailField.getText();
         if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
             showAlert.showAlert("Invalid email!", "error");
             return false;
         }
-
         return true;
     }
 
