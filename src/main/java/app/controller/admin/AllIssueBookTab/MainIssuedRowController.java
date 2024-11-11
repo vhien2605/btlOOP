@@ -67,7 +67,7 @@ public class MainIssuedRowController implements BaseController {
                 statusChoiceBox.setStyle("-fx-background-color: #32e544; ");
                 break;
             case BorrowReport.BORROWED:
-                statusChoiceBox.setStyle("-fx-background-color: #5bc0de; ");
+                statusChoiceBox.setStyle("-fx-background-color: #6fd1ef; ");
                 break;
             case BorrowReport.RETURNED:
                 statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
@@ -84,7 +84,7 @@ public class MainIssuedRowController implements BaseController {
                     statusChoiceBox.setStyle("-fx-background-color: #32e544; ");
                     break;
                 case BorrowReport.BORROWED:
-                    statusChoiceBox.setStyle("-fx-background-color: #5bc0de; ");
+                    statusChoiceBox.setStyle("-fx-background-color: #6fd1ef; ");
                     break;
                 case BorrowReport.RETURNED:
                     statusChoiceBox.setStyle("-fx-background-color: #f0ad4e; ");
