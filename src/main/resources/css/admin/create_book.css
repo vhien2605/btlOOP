@@ -72,7 +72,7 @@
 }
 
 #uploadFileButton {
-    -fx-background-color: #99ff99;
+    -fx-background-color: #40fa40;
 }
 
 #findDocomentButton {
@@ -102,7 +102,7 @@
 }
 
 #uploadFileButton:hover {
-    -fx-background-color: #2ff82f;
+    -fx-background-color: #0de20d;
     -fx-cursor: hand;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
 }

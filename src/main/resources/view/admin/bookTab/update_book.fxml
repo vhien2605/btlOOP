@@ -76,7 +76,7 @@
                                 <TextField fx:id="bookQuantityTextField" layoutX="235.0" layoutY="216.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Quantity" />
                                 <TextField fx:id="bookPublisherTextField" layoutX="235.0" layoutY="172.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Publisher" />
                                 <TextField fx:id="bookCategoryTextField" layoutX="235.0" layoutY="304.0" prefHeight="35.0" prefWidth="250.0" promptText="Book Category" />
-                                <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="348.0" prefHeight="45.0" prefWidth="250.0" promptText="Book Description" wrapText="true" />
+                                <TextArea fx:id="bookDescriptionTextArea" layoutX="235.0" layoutY="348.0" prefHeight="54.0" prefWidth="250.0" promptText="Book Description" wrapText="true" />
                                 <Button fx:id="comeBackButton" layoutX="32.0" layoutY="26.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="31.0" prefWidth="37.0">
                                     <graphic>
                                         <FontAwesomeIconView glyphName="ARROW_LEFT" />

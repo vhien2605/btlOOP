@@ -1,11 +1,27 @@
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
+.header_pane {
+    -fx-background-color: #ebd7d7;
+    -fx-border-color: #3d85dc;
+}
+
+.datepicker {
+    -fx-border-radius: 10 0 0 10;
+    -fx-background-radius: 10 0 0 10;
+    -fx-border-color: #1976d2;
+}
+
 /* Định dạng cho TextField */
 .text-field {
-    -fx-border-color: #636a6e;
-    /* Màu viền xanh nhạt */
-    -fx-border-radius: 4;
-    -fx-background-radius: 4;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
     -fx-padding: 4 8;
     -fx-font-size: 13px;
+    -fx-border-width: 2px;
 }
 
 /* TextField ở chế độ readonly */
@@ -27,8 +43,8 @@
 /* Định dạng cho nút Reload */
 #findBookButton,
 #findUserButton {
-    -fx-background-color: #f0f0f0;
-    -fx-border-color: #87cefa;
+    -fx-background-color: #52f49d;
+    -fx-border-color: #1e78b0;
     -fx-border-radius: 30%;
     -fx-background-radius: 30%;
     -fx-cursor: hand;
@@ -37,7 +53,7 @@
 
 #findBookButton:hover,
 #findUserButton:hover {
-    -fx-background-color: #e0f7fa;
+    -fx-background-color: #32e58f;
 }
 
 #findBookButton:pressed,
