@@ -9,7 +9,9 @@ import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+
 import java.time.format.DateTimeFormatter;
+
 import app.controller.helper.ShowAlert;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -95,7 +97,8 @@ public class MainIssueController {
                 borrowDateTextFiled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 null,
                 dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
-                BorrowReport.BORROWED);
+                BorrowReport.BORROWED,
+                "");
     }
 
     boolean validateFields() {

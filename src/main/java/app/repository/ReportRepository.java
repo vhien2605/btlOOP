@@ -33,7 +33,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
                         resultSet.getString("borrowDate"),
                         resultSet.getString("returnDate"),
                         resultSet.getString("expectedReturnDate"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
                 );
                 listOfReports.add(report);
             }
@@ -68,7 +69,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
                         resultSet.getString("borrowDate"),
                         resultSet.getString("returnDate"),
                         resultSet.getString("expectedReturnDate"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
                 );
                 resultSet.close();
                 return Optional.of(report);
@@ -110,8 +112,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
      */
     @Override
     public boolean save(BorrowReport entity) {
-        String query = "INSERT INTO borrow_report(userId,bookId,borrowDate,returnDate,expectedReturnDate,status" +
-                ") VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO borrow_report(userId,bookId,borrowDate,returnDate,expectedReturnDate,status," +
+                "qrcodeUrl) VALUES (?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
         ) {
@@ -121,6 +123,7 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             preparedStatement.setString(4, entity.getReturnDate());
             preparedStatement.setString(5, entity.getExpectedReturnDate());
             preparedStatement.setString(6, entity.getStatus());
+            preparedStatement.setString(7, entity.getQrcodeUrl());
             int count = preparedStatement.executeUpdate();
             return true;
         } catch (SQLException e) {
@@ -177,7 +180,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
                         resultSet.getString("borrowDate"),
                         resultSet.getString("returnDate"),
                         resultSet.getString("expectedReturnDate"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
                 );
                 listOfReports.add(report);
             }
@@ -211,7 +215,8 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
                         resultSet.getString("borrowDate"),
                         resultSet.getString("returnDate"),
                         resultSet.getString("expectedReturnDate"),
-                        resultSet.getString("status")
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
                 );
                 listOfReports.add(report);
             }
@@ -230,18 +235,17 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
      * @return {@code boolean true/false} indicating whether the update was successful
      */
     public boolean updateOne(BorrowReport entity) {
-        String query = "UPDATE borrow_report SET userId = ?, bookId = ?, borrowDate = ?" 
-            + ", returnDate = ?, expectedReturnDate = ?, status = ? WHERE id = ?";
+        String query = "UPDATE borrow_report SET bookId = ?, borrowDate = ?"
+                + ", returnDate = ?, expectedReturnDate = ?, status = ?, qrcodeUrl=? WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, entity.getUserId());
-            preparedStatement.setString(2, entity.getBookId());
-            preparedStatement.setString(3, entity.getBorrowDate());
-            preparedStatement.setString(4, entity.getReturnDate());
-            preparedStatement.setString(5, entity.getExpectedReturnDate());
-            preparedStatement.setString(6, entity.getStatus());
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, entity.getBookId());
+            preparedStatement.setString(2, entity.getBorrowDate());
+            preparedStatement.setString(3, entity.getReturnDate());
+            preparedStatement.setString(4, entity.getExpectedReturnDate());
+            preparedStatement.setString(5, entity.getStatus());
+            preparedStatement.setString(6, entity.getQrcodeUrl());
             preparedStatement.setInt(7, entity.getId());
-            
             int rowsAffected = preparedStatement.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {

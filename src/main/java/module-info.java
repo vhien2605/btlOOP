@@ -11,6 +11,7 @@ module app {
     requires java.compiler;
     requires com.google.zxing;
     requires com.google.zxing.javase;
+    requires java.desktop;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;
