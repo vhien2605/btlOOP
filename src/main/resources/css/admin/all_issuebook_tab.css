@@ -33,7 +33,6 @@
     -fx-background-radius: 10;
     -fx-padding: 4 8;
     -fx-border-width: 2px;
-
 }
 
 .search-text-field:focused {
