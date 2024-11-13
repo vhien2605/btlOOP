@@ -31,7 +31,14 @@ public class SidebarController implements BaseController {
 
     List<Button> buttons;
 
-    private static int currButton = 0;
+    private static int HOME_BUTTON = 0;
+    private static int BOOK_BUTTON = 1;
+    private static int USER_BUTTON = 2;
+    private static int ISSUEBOOK_BUTTON = 3;
+    private static int ALL_ISSUEBOOK_BUTTON = 4;
+    private static int SETTING_BUTTON = 5;
+
+    private static int currButton = HOME_BUTTON;
 
     /**
      * Click button event
@@ -39,22 +46,22 @@ public class SidebarController implements BaseController {
     @FXML
     private void handleButtonAction(ActionEvent e) {
         if (e.getSource() == homeButton) {
-            currButton = 0;
+            currButton = HOME_BUTTON;
             new ChangeTabController().homeTab();
         } else if (e.getSource() == booksButton) {
-            currButton = 1;
+            currButton = BOOK_BUTTON;
             new ChangeTabController().bookTab();
         } else if (e.getSource() == usersButton) {
-            currButton = 2;
+            currButton = USER_BUTTON;
             new ChangeTabController().userTab();
         } else if (e.getSource() == issueBooksButton) {
-            currButton = 3;
+            currButton = ISSUEBOOK_BUTTON;
             new ChangeTabController().issueBookTab();
         } else if (e.getSource() == allIssueBooksButton) {
-            currButton = 4;
+            currButton = ALL_ISSUEBOOK_BUTTON;
             new ChangeTabController().allIssueBookTab();
         } else if (e.getSource() == settingsButton) {
-            currButton = 5;
+            currButton = SETTING_BUTTON;
             new ChangeTabController().settingTab();
         }
     }

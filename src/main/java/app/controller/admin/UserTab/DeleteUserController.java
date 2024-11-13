@@ -14,13 +14,13 @@ public class DeleteUserController {
     }
 
     private void deleteUser() {
-        User user = mainUserCtrl.getUser();
+        String id = mainUserCtrl.userIdTextField.getText();
 
-        if (user == null) {
+        if (id.isEmpty()) {
+            mainUserCtrl.showAlert.showAlert("Thông tin user không hợp lệ!", "error");
             return;
         }
 
-        String id = user.getId();
         if (mainUserCtrl.userService.deleteUser(id)) {
             for (int i = 0; i < mainUserCtrl.listUser.size(); i++) {
                 if (mainUserCtrl.listUser.get(i).getId().equals(id)) {
