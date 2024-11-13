@@ -7,6 +7,7 @@
 <?import javafx.scene.chart.StackedAreaChart?>
 <?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -39,127 +40,131 @@
                         <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" BorderPane.alignment="CENTER">
                             <children>
                                 <Separator layoutX="19.0" prefHeight="2.0" prefWidth="915.0" />
-                                <Pane layoutY="3.0" prefHeight="970.0" prefWidth="950.0">
-                                    <children>
-                                        <Label layoutX="28.0" layoutY="14.0" text="Dashboard">
-                                            <font>
-                                                <Font name="System Bold" size="15.0" />
-                                            </font>
-                                        </Label>
-                                        <Pane layoutX="28.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #d2ebc0;" styleClass="card_info">
-                                            <children>
-                                                <Label layoutX="14.0" layoutY="14.0" text="Books">
-                                                    <font>
-                                                        <Font size="21.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="dataBookLabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                                    <font>
-                                                        <Font name="System Bold" size="36.0" />
-                                                    </font>
-                                                </Label>
-                                                <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../../image/other/card_book.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </children>
-                                        </Pane>
-                                        <Pane layoutX="259.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #e7c8ae;" styleClass="card_info">
-                                            <children>
-                                                <Label layoutX="14.0" layoutY="14.0" text="Users">
-                                                    <font>
-                                                        <Font size="21.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="dataUserLabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                                    <font>
-                                                        <Font name="System Bold" size="36.0" />
-                                                    </font>
-                                                </Label>
-                                                <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="105.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../../image/other/card_user.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </children>
-                                        </Pane>
-                                        <Pane layoutX="488.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #f3edae;" styleClass="card_info">
-                                            <children>
-                                                <Label layoutX="14.0" layoutY="14.0" text="All Issued">
-                                                    <font>
-                                                        <Font size="21.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="dataAllIssuedabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                                    <font>
-                                                        <Font name="System Bold" size="36.0" />
-                                                    </font>
-                                                </Label>
-                                                <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../../image/other/card_issue.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </children>
-                                        </Pane>
-                                        <Pane layoutX="720.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #f1b1b1;" styleClass="card_info">
-                                            <children>
-                                                <Label layoutX="14.0" layoutY="14.0" text="Borrowed">
-                                                    <font>
-                                                        <Font size="21.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="dataBorrowedLabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                                    <font>
-                                                        <Font name="System Bold" size="36.0" />
-                                                    </font>
-                                                </Label>
-                                                <ImageView fitHeight="54.0" fitWidth="84.0" layoutX="110.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                                    <image>
-                                                        <Image url="@../../../image/other/card_borrowed.png" />
-                                                    </image>
-                                                </ImageView>
-                                            </children>
-                                        </Pane>
-                                        <Label fx:id="clockLabel" layoutX="660.0" layoutY="35.0" prefHeight="87.0" prefWidth="243.0" stylesheets="@../../../css/admin/home_tab.css" text="Label">
-                                            <styleClass>
-                                                <String fx:value="clock-label" />
-                                                <String fx:value="root" />
-                                            </styleClass>
-                                        </Label>
-                                        <StackedBarChart fx:id="categoryChart" layoutX="28.0" layoutY="317.0" prefHeight="300.0" prefWidth="400.0">
-                                            <xAxis>
-                                                <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                                <NumberAxis side="LEFT" />
-                                            </yAxis>
-                                        </StackedBarChart>
-                                        <StackedBarChart fx:id="bookBorrowChart" layoutX="488.0" layoutY="317.0" prefHeight="300.0" prefWidth="400.0">
-                                            <xAxis>
-                                                <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                                <NumberAxis side="LEFT" />
-                                            </yAxis>
-                                        </StackedBarChart>
-                                        <PieChart fx:id="issueBookChart" layoutX="59.0" layoutY="636.0" prefHeight="300.0" prefWidth="400.0" />
-                                        <StackedAreaChart fx:id="userChart" layoutX="503.0" layoutY="646.0" prefHeight="300.0" prefWidth="400.0">
-                                            <xAxis>
-                                                <CategoryAxis side="BOTTOM" />
-                                            </xAxis>
-                                            <yAxis>
-                                                <NumberAxis side="LEFT" />
-                                            </yAxis>
-                                        </StackedAreaChart>
-                                        <Label layoutX="28.0" layoutY="35.0" prefHeight="94.0" prefWidth="373.0" text="Hello ! JavaFX Developer">
-                                            <font>
-                                                <Font name="System Bold" size="28.0" />
-                                            </font>
-                                        </Label>
-                                    </children>
-                                </Pane>
+                        <ScrollPane prefHeight="570.0" prefWidth="950.0">
+                           <content>
+                                      <Pane prefHeight="970.0" prefWidth="950.0">
+                                          <children>
+                                              <Label layoutX="28.0" layoutY="14.0" text="Dashboard">
+                                                  <font>
+                                                      <Font name="System Bold" size="15.0" />
+                                                  </font>
+                                              </Label>
+                                              <Pane layoutX="28.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #d2ebc0;" styleClass="card_info">
+                                                  <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="Books">
+                                                          <font>
+                                                              <Font size="21.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <Label fx:id="dataBookLabel" layoutX="44.0" layoutY="41.0" text="50 ">
+                                                          <font>
+                                                              <Font name="System Bold" size="36.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@../../../image/other/card_book.png" />
+                                                          </image>
+                                                      </ImageView>
+                                                  </children>
+                                              </Pane>
+                                              <Pane layoutX="259.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #e7c8ae;" styleClass="card_info">
+                                                  <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="Users">
+                                                          <font>
+                                                              <Font size="21.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <Label fx:id="dataUserLabel" layoutX="44.0" layoutY="41.0" text="50 ">
+                                                          <font>
+                                                              <Font name="System Bold" size="36.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="105.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@../../../image/other/card_user.png" />
+                                                          </image>
+                                                      </ImageView>
+                                                  </children>
+                                              </Pane>
+                                              <Pane layoutX="488.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #f3edae;" styleClass="card_info">
+                                                  <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="All Issued">
+                                                          <font>
+                                                              <Font size="21.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <Label fx:id="dataAllIssuedabel" layoutX="44.0" layoutY="41.0" text="50 ">
+                                                          <font>
+                                                              <Font name="System Bold" size="36.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@../../../image/other/card_issue.png" />
+                                                          </image>
+                                                      </ImageView>
+                                                  </children>
+                                              </Pane>
+                                              <Pane layoutX="720.0" layoutY="160.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #f1b1b1;" styleClass="card_info">
+                                                  <children>
+                                                      <Label layoutX="14.0" layoutY="14.0" text="Borrowed">
+                                                          <font>
+                                                              <Font size="21.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <Label fx:id="dataBorrowedLabel" layoutX="44.0" layoutY="41.0" text="50 ">
+                                                          <font>
+                                                              <Font name="System Bold" size="36.0" />
+                                                          </font>
+                                                      </Label>
+                                                      <ImageView fitHeight="54.0" fitWidth="84.0" layoutX="110.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                                          <image>
+                                                              <Image url="@../../../image/other/card_borrowed.png" />
+                                                          </image>
+                                                      </ImageView>
+                                                  </children>
+                                              </Pane>
+                                              <Label fx:id="clockLabel" layoutX="660.0" layoutY="35.0" prefHeight="87.0" prefWidth="243.0" stylesheets="@../../../css/admin/home_tab.css" text="Label">
+                                                  <styleClass>
+                                                      <String fx:value="clock-label" />
+                                                      <String fx:value="root" />
+                                                  </styleClass>
+                                              </Label>
+                                              <StackedBarChart fx:id="categoryChart" layoutX="28.0" layoutY="317.0" prefHeight="300.0" prefWidth="400.0">
+                                                  <xAxis>
+                                                      <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                      <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                              </StackedBarChart>
+                                              <StackedBarChart fx:id="bookBorrowChart" layoutX="488.0" layoutY="317.0" prefHeight="300.0" prefWidth="400.0">
+                                                  <xAxis>
+                                                      <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                      <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                              </StackedBarChart>
+                                              <PieChart fx:id="issueBookChart" layoutX="59.0" layoutY="636.0" prefHeight="300.0" prefWidth="400.0" />
+                                              <StackedAreaChart fx:id="userChart" layoutX="503.0" layoutY="646.0" prefHeight="300.0" prefWidth="400.0">
+                                                  <xAxis>
+                                                      <CategoryAxis side="BOTTOM" />
+                                                  </xAxis>
+                                                  <yAxis>
+                                                      <NumberAxis side="LEFT" />
+                                                  </yAxis>
+                                              </StackedAreaChart>
+                                              <Label layoutX="28.0" layoutY="35.0" prefHeight="94.0" prefWidth="373.0" text="Hello ! JavaFX Developer">
+                                                  <font>
+                                                      <Font name="System Bold" size="28.0" />
+                                                  </font>
+                                              </Label>
+                                          </children>
+                                      </Pane>
+                           </content>
+                        </ScrollPane>
                             </children>
                         </Pane>
                     </center>
