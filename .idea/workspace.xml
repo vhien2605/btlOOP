@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exception/auth/AuthException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exception/auth/DuplicateException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exception/auth/PasswordException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/exception/auth/SessionException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/auth/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/auth/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/auth/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/auth/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/auth/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/auth/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/auth/register.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/auth/register.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/QRCodeService.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +82,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BookRepositoryTest">
     <configuration name="BookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <option name="PACKAGE_NAME" value="repository" />

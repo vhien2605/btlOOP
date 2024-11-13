@@ -1,7 +1,5 @@
 package app.controller.user.BookDetail;
 
-import java.lang.classfile.BufWriter;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
@@ -11,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class BookDetailController implements BaseController{
+public class BookDetailController implements BaseController {
     @FXML
     private ImageView imageURL;
 
@@ -34,5 +32,5 @@ public class BookDetailController implements BaseController{
     public void initialize() {
         // TODO Auto-generated method stub
     }
-    
+
 }

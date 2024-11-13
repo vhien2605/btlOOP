@@ -33,4 +33,12 @@ public class ReportRepositoryTest {
         List<BorrowReport> result = this.reportRepository.findByStatus("Borrowed");
         Assertions.assertEquals(80, result.size());
     }
+
+    @Test
+    public void updateOneTest() {
+        BorrowReport reportTest = new BorrowReport(15, "23020064", "1974709930"
+                , "2024-11-01", "", "2024-12-01", "Borrowed", "vailon");
+        boolean check = this.reportRepository.updateOne(reportTest);
+        Assertions.assertTrue(check);
+    }
 }

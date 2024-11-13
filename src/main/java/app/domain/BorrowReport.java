@@ -7,7 +7,7 @@ public class BorrowReport {
     public static final String PENDING = "Pending";
     public static final String BORROWED = "Borrowed";
     public static final String RETURNED = "Returned";
-    
+
     private SimpleIntegerProperty id;
     private SimpleStringProperty userId;
     private SimpleStringProperty bookId;
@@ -15,9 +15,10 @@ public class BorrowReport {
     private SimpleStringProperty returnDate;
     private SimpleStringProperty expectedReturnDate;
     private SimpleStringProperty status;
+    private SimpleStringProperty qrcodeUrl;
 
     public BorrowReport(int id, String userId, String bookId, String borrowDate
-            , String returnDate, String expectedReturnDate, String status
+            , String returnDate, String expectedReturnDate, String status, String qrcodeUrl
     ) {
         this.id = new SimpleIntegerProperty(id);
         this.userId = new SimpleStringProperty(userId);
@@ -26,6 +27,7 @@ public class BorrowReport {
         this.returnDate = new SimpleStringProperty(returnDate);
         this.expectedReturnDate = new SimpleStringProperty(expectedReturnDate);
         this.status = new SimpleStringProperty(status);
+        this.qrcodeUrl = new SimpleStringProperty(qrcodeUrl);
     }
 
     public int getId() {
@@ -112,6 +114,18 @@ public class BorrowReport {
         this.status = new SimpleStringProperty(status);
     }
 
+    public String getQrcodeUrl() {
+        return qrcodeUrl.get();
+    }
+
+    public SimpleStringProperty getQrcodeUrlProperty() {
+        return qrcodeUrl;
+    }
+
+    public void setQrcodeUrl(String qr) {
+        this.status = new SimpleStringProperty(qr);
+    }
+
     @Override
     public String toString() {
         return "BorrowReport{" +
@@ -122,6 +136,7 @@ public class BorrowReport {
                 ", expectedReturnDate=" + expectedReturnDate.get() +
                 ", returnDate=" + returnDate.get() +
                 ", status=" + status.get() +
+                ", qrcodeUrl=" + qrcodeUrl.get() +
                 '}';
     }
 }

@@ -43,7 +43,6 @@ public class UpdateBookController extends HandleBookController {
             if (oldValueBook.getImagePath() != null) {
                 fileService.handleDeleteImage(oldValueBook.getImagePath(), "book");
             }
-
             image = fileService.handleSaveImage(selectedFile, "book");
             newValueBook.setImagePath(image);
         }
