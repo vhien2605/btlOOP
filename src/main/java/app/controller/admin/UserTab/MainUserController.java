@@ -74,7 +74,7 @@ public class MainUserController implements BaseController {
 
     void setCanClickButton(int type) {
         cancelButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
-        if (type == 1) {
+        if (type == ADD_NEW) {
             insertButton.setDisable(false);
             userIdTextField.setEditable(true);
             insertButton.setStyle("-fx-background-color: lightblue; -fx-cursor: hand;");
@@ -82,7 +82,7 @@ public class MainUserController implements BaseController {
             updateButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
             deleteButton.setDisable(true);
             deleteButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
-        } else if (type == 2) {
+        } else if (type == UPDATE_AND_DELETE) {
             insertButton.setDisable(true);
             userIdTextField.setEditable(false);
             insertButton.setStyle("-fx-background-color: lightgray; -fx-cursor: hand;");
