@@ -1,10 +1,12 @@
 package app.service.subService;
 
+import app.domain.BorrowReport;
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
+import org.json.JSONObject;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -47,20 +49,31 @@ public class FileService {
 
 
     /**
-     * generate qr code.
+     * create QR image method service.
      *
-     * @param value        value
-     * @param targetFolder target folder to store qr image
-     * @return String name
+     * @param report       report Object
+     * @param targetFolder target folder
+     * @return JSON String the report information
      */
-    public String createQRImage(String value, String targetFolder) {
+    public String createQRImage(BorrowReport report, String targetFolder) {
         String rootPath = System.getProperty("user.dir") + File.separator + "src"
                 + File.separator + "main" + File.separator + "resources"
                 + File.separator + "image";
         String fileName = System.currentTimeMillis() + "-" + "qr.jpg";
         String finalPath = rootPath + File.separator + targetFolder + File.separator + fileName;
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("id", report.getId());
+        jsonObject.put("userId", report.getUserId());
+        jsonObject.put("bookId", report.getBookId());
+        jsonObject.put("borrowDate", report.getBorrowDate());
+        jsonObject.put("returnDate", report.getReturnDate());
+        jsonObject.put("expectedReturnDate", report.getExpectedReturnDate());
+        jsonObject.put("status", report.getStatus());
+        jsonObject.put("qrcodeUrl", report.getQrcodeUrl());
+        System.out.println(jsonObject.toString());
         try {
-            BitMatrix matrix = new MultiFormatWriter().encode(value, BarcodeFormat.QR_CODE, 250, 250);
+            BitMatrix matrix = new MultiFormatWriter().encode(jsonObject.toString(), BarcodeFormat.QR_CODE, 250, 250);
             MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(finalPath));
             return fileName;
         } catch (WriterException e) {
@@ -77,9 +90,9 @@ public class FileService {
      * scanCode method.
      *
      * @param qrImageFile qrImageFile
-     * @return String
+     * @return {@link BorrowReport} object parse from qr code
      */
-    public String scanQRCode(File qrImageFile) {
+    public BorrowReport scanQRCode(File qrImageFile) {
         try {
             byte[] imageBytes = Files.readAllBytes(qrImageFile.toPath());
             ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(imageBytes);
@@ -87,12 +100,21 @@ public class FileService {
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(image)));
             MultiFormatReader reader = new MultiFormatReader();
             Result result = reader.decode(bitmap);
-            return result.getText();
+            JSONObject jsonObject = new JSONObject(result.getText());
+            return new BorrowReport(jsonObject.getInt("id"),
+                    jsonObject.getString("userId"),
+                    jsonObject.getString("bookId"),
+                    jsonObject.getString("borrowDate"),
+                    jsonObject.getString("returnDate"),
+                    jsonObject.getString("expectedReturnDate"),
+                    jsonObject.getString("status"),
+                    jsonObject.getString("qrcodeUrl"));
+
         } catch (IOException | NotFoundException e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-        return "";
+        return null;
     }
 
 

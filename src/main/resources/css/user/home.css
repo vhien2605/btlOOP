@@ -34,3 +34,12 @@
 .tab:selected .tab-label { 
     -fx-alignment: CENTER;
 }
+
+
+
+
+
+.clock-label:hover {
+    -fx-text-fill: #e74c3c;
+    -fx-background-color: #1abc9c;
+}

@@ -1,7 +1,6 @@
 package app.controller.admin.HomeTab;
 
 import app.controller.BaseController;
-import app.controller.admin.Panel.SidebarController;
 import app.domain.Book;
 import app.domain.DTO.ReportDetail;
 import app.repository.BookRepository;
@@ -18,10 +17,16 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
+
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class MainHomeController implements BaseController {
 
@@ -40,6 +45,9 @@ public class MainHomeController implements BaseController {
     @FXML
     Label dataBookLabel, dataUserLabel, dataAllIssuedabel, dataBorrowedLabel;
 
+    @FXML
+    Label clockLabel;
+
     private BookService bookService;
     private MultiTaskService multiTaskService;
     private ReportService reportService;
@@ -53,10 +61,12 @@ public class MainHomeController implements BaseController {
 
     @Override
     public void initialize() {
+        setupClock();
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
         multiTaskService = new MultiTaskService(5);
+
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
         try {
@@ -72,6 +82,18 @@ public class MainHomeController implements BaseController {
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+
+    private void setupClock() {
+        clockLabel.setText("00:00:00");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
+        scheduler.scheduleAtFixedRate(() -> {
+            Platform.runLater(() -> {
+                clockLabel.setText(LocalTime.now().format(formatter));
+            });
+        }, 0, 1, TimeUnit.SECONDS);
     }
 
     private void addDataToCategoryChart(List<Book> listBook) {
