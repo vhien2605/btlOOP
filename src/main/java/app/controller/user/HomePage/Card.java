@@ -42,7 +42,7 @@ public class Card implements BaseController{
     }
 
     private void loadBookDetail(Book book) {
-        FXMLResolver.getInstance().renderScene("user/bookdetail/bookdetail");
+        FXMLResolver.getInstance().renderScene("bookdetail/bookdetail");
         BookDetailController controller = FXMLResolver.getInstance().getLoader().getController();
         controller.loadBook(book);
     }

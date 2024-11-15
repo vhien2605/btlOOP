@@ -16,7 +16,7 @@
                   <ImageView fx:id="imageURL" fitHeight="189.0" fitWidth="126.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Label fx:id="bookName" alignment="CENTER" prefHeight="35.0" prefWidth="163.0" text="Bookname here">
+            <Label fx:id="bookName" alignment="CENTER" prefHeight="33.0" prefWidth="163.0" text="Bookname here">
                <VBox.margin>
                   <Insets top="2.0" />
                </VBox.margin>
