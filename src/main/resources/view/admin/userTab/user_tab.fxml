@@ -36,7 +36,7 @@
                         </Pane>
                     </top>
                     <center>
-                        <TableView fx:id="userTableView" prefHeight="535.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+                        <TableView fx:id="userTableView" prefHeight="535.0" prefWidth="650.0" stylesheets="@../../../css/admin/table-view.css" BorderPane.alignment="CENTER">
                             <columns>
                                 <TableColumn fx:id="userIdCol" prefWidth="67.99996793270111" text="User Id" />
                                 <TableColumn fx:id="fullNameCol" prefWidth="146.4000015258789" text="Full Name" />

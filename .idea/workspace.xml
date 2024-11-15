@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/admin/all_issuebook_tab.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/admin/all_issuebook_tab.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/admin/home_tab.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/admin/home_tab.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/user/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/user/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

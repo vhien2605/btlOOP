@@ -6,6 +6,7 @@ import app.domain.DTO.RegisterUserDTO;
 import app.domain.User;
 import app.exception.auth.DuplicateException;
 import app.exception.auth.PasswordException;
+import app.exception.auth.SessionException;
 import app.service.mainService.UserService;
 
 /**
@@ -65,5 +66,15 @@ public class AuthenticationService {
         }
         this.sessionService.createSession(user.getId(), user.getRole());
         return true;
+    }
+
+    /**
+     * Get login current {@link User}.
+     *
+     * @return {@link User}
+     */
+    public User getCurrentUser() throws SessionException {
+        String sessionValue = sessionService.verifySession();
+        return this.userService.findById(sessionValue.split(" ")[0]);
     }
 }

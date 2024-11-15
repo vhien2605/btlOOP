@@ -55,7 +55,7 @@
                   </Pane>
                </bottom>
                <right>
-                  <TableView fx:id="tableViewBook" prefHeight="535.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                  <TableView fx:id="tableViewBook" prefHeight="535.0" prefWidth="950.0" stylesheets="@../../../css/admin/table-view.css" BorderPane.alignment="CENTER">
                      <columns>
                         <TableColumn fx:id="colBookISBN" prefWidth="76.79998624324799" text="Book ISBN" />
                         <TableColumn fx:id="colBookName" prefWidth="124.6666259765625" text="Book Name" />

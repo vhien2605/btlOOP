@@ -3,9 +3,13 @@ package app.controller.admin.HomeTab;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.domain.DTO.ReportDetail;
+import app.domain.User;
+import app.exception.auth.SessionException;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
 import app.repository.UserRepository;
+import app.service.authService.AuthenticationService;
+import app.service.authService.SessionService;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
@@ -48,9 +52,13 @@ public class MainHomeController implements BaseController {
     @FXML
     Label clockLabel;
 
+    @FXML
+    Label helloLabel;
+
     private BookService bookService;
     private MultiTaskService multiTaskService;
     private ReportService reportService;
+    private AuthenticationService authenticationService;
 
     private void setDataCard(String dataBook, String dataUser, String dataIssued, String dataBorrowed) {
         dataBookLabel.setText(dataBook);
@@ -61,12 +69,15 @@ public class MainHomeController implements BaseController {
 
     @Override
     public void initialize() {
-        setupClock();
+
+        authenticationService = new AuthenticationService(new SessionService()
+                , new UserService(new UserRepository()));
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
         multiTaskService = new MultiTaskService(5);
-
+        setupClock();
+        setHelloLabel();
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
         try {
@@ -84,6 +95,13 @@ public class MainHomeController implements BaseController {
         }
     }
 
+    private void setHelloLabel() {
+        try {
+            helloLabel.setText("Welcome " + this.authenticationService.getCurrentUser().getName() + " !");
+        } catch (SessionException e) {
+            helloLabel.setText("Welcome Guest !");
+        }
+    }
 
     private void setupClock() {
         clockLabel.setText("00:00:00");

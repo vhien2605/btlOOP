@@ -156,7 +156,7 @@
                                                       <NumberAxis side="LEFT" />
                                                   </yAxis>
                                               </StackedAreaChart>
-                                              <Label layoutX="28.0" layoutY="35.0" prefHeight="94.0" prefWidth="373.0" text="Hello ! JavaFX Developer">
+                                              <Label fx:id="helloLabel" layoutX="28.0" layoutY="35.0" prefHeight="94.0" prefWidth="373.0" text="Hello ! JavaFX Developer">
                                                   <font>
                                                       <Font name="System Bold" size="28.0" />
                                                   </font>
