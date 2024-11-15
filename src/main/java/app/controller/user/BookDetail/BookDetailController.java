@@ -1,7 +1,5 @@
 package app.controller.user.BookDetail;
 
-import java.lang.classfile.BufWriter;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
@@ -25,8 +23,9 @@ public class BookDetailController implements BaseController{
 
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == backToHomeButton) {
-            FXMLResolver.getInstance().renderScene("user/homeTab/home");
-
+            FXMLResolver.getInstance().renderScene("homeTab/home");
+        } else {
+            
         }
     }
 
