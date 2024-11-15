@@ -2,6 +2,7 @@ package app.controller.auth;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.helper.ShowAlert;
+import app.controller.user.HomePage.MainHomePageController;
 import app.exception.auth.DuplicateException;
 import app.exception.auth.PasswordException;
 import app.exception.auth.SessionException;
@@ -91,6 +92,7 @@ public class LoginController {
     }
 
     private void setUpAppUser() {
+        MainHomePageController.getAuthService(authService);
         FXMLResolver.getInstance().setRootPath("/view/user");
         FXMLResolver.getInstance().renderScene("homeTab/home");
     }

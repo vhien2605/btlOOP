@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -16,33 +17,37 @@
       <fx:include source="../staticLayout/header.fxml" />
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="42.0" prefHeight="71.0" prefWidth="336.0" text="Book detail" textFill="#1037b7">
-               <font>
-                  <Font size="35.0" />
-               </font>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-            </Label>
-            <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
-            <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="330.0" prefWidth="220.0">
+      <ScrollPane prefHeight="2000.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane prefHeight="2000.0" prefWidth="1100.0">
                <children>
-                  <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label layoutX="42.0" prefHeight="71.0" prefWidth="336.0" text="Book detail" textFill="#1037b7">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </Label>
+                  <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
+                  <Pane fx:id="imgview" layoutX="42.0" layoutY="100.0" prefHeight="330.0" prefWidth="220.0">
+                     <children>
+                        <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="backToHomeButton" layoutX="875.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="31.0" prefWidth="85.0" text="Home" />
+                  <Label layoutX="332.0" layoutY="92.0" prefHeight="36.0" prefWidth="736.0" text="Book name here" />
+                  <Label layoutX="332.0" layoutY="132.0" prefHeight="32.0" prefWidth="737.0" text="Author name here" />
+                  <Label layoutX="42.0" layoutY="441.0" prefHeight="33.0" prefWidth="178.0" text="Borrow book request" />
+                  <Separator layoutX="42.0" layoutY="472.0" prefHeight="10.0" prefWidth="223.0" />
+                  <DatePicker fx:id="borrowDatePicker" layoutX="140.0" layoutY="493.0" prefHeight="25.0" prefWidth="123.0" />
+                  <DatePicker fx:id="expectedReturnDatePicker" layoutX="141.0" layoutY="530.0" prefHeight="25.0" prefWidth="123.0" />
+                  <Label layoutX="41.0" layoutY="497.0" text="Borrow date" />
+                  <Label layoutX="41.0" layoutY="516.0" prefHeight="52.0" prefWidth="83.0" text="Expected return date" wrapText="true" />
+                  <Button fx:id="sendBorrowBookRequestButton" layoutX="56.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleEvent" text="Send a borrow book request" />
                </children>
-            </Pane>
-            <Button fx:id="backToHomeButton" layoutX="875.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="31.0" prefWidth="85.0" text="Home" />
-            <Label layoutX="332.0" layoutY="92.0" prefHeight="36.0" prefWidth="736.0" text="Book name here" />
-            <Label layoutX="332.0" layoutY="132.0" prefHeight="32.0" prefWidth="737.0" text="Author name here" />
-            <Label layoutX="42.0" layoutY="441.0" prefHeight="33.0" prefWidth="178.0" text="Borrow book request" />
-            <Separator layoutX="42.0" layoutY="472.0" prefHeight="10.0" prefWidth="223.0" />
-            <DatePicker layoutX="140.0" layoutY="493.0" prefHeight="25.0" prefWidth="123.0" />
-            <DatePicker layoutX="141.0" layoutY="530.0" prefHeight="25.0" prefWidth="123.0" />
-            <Label layoutX="41.0" layoutY="497.0" text="Borrow date" />
-            <Label layoutX="41.0" layoutY="516.0" prefHeight="52.0" prefWidth="83.0" text="Expected return date" wrapText="true" />
-            <Button layoutX="56.0" layoutY="580.0" mnemonicParsing="false" text="Send a borrow book request" />
-         </children>
-      </AnchorPane>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>
