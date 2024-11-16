@@ -13,5 +13,6 @@ public class CancelDataController {
 
     void cancel() {
         mainUserCtrl.clearTextFields();
+        mainUserCtrl.userTableView.getSelectionModel().clearSelection();
     }
 }

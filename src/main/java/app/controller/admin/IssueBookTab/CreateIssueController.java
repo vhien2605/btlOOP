@@ -22,6 +22,11 @@ public class CreateIssueController {
             return;
         }
 
+        if (mainIssueCtrl.bookInfo.getBookRemaining() <= 0) {
+            mainIssueCtrl.showAlert.showAlert("The number of books left is not enough!", "error");
+            return;
+        }
+
         if (mainIssueCtrl.reportService.handleSave(data)) {
             String currentPath = "issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
