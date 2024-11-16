@@ -68,4 +68,11 @@ public class BookRepositoryTest {
                 "John Wiley & Sons", 120, 120, "");
         Assertions.assertTrue(this.bookRepository.updateOne(newBook));
     }
+
+
+    @Test
+    public void findByInputTest() {
+        List<Book> alls = this.bookRepository.findByInput("name", "Head First Java");
+        Assertions.assertEquals(1, alls.size());
+    }
 }

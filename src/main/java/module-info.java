@@ -12,6 +12,7 @@ module app {
     requires com.google.zxing;
     requires com.google.zxing.javase;
     requires java.desktop;
+    requires mysql.connector.java;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;

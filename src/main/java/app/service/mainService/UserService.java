@@ -133,4 +133,15 @@ public class UserService {
     public boolean updateOne(User user) {
         return this.userRepository.update(user);
     }
+
+    /**
+     * Find {@link User} by any col.
+     *
+     * @param col   col
+     * @param value col's value
+     * @return {@code ObservableList<User>}
+     */
+    public ObservableList<User> search(String col, String value) {
+        return FXCollections.observableList(this.userRepository.findByInput(col, value));
+    }
 }
