@@ -2,6 +2,7 @@
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
@@ -30,7 +31,17 @@
                            </font>
                         </Label>
                         <Separator layoutX="14.0" layoutY="49.0" prefHeight="3.0" prefWidth="922.0" />
-                        <TextField fx:id="searchTextFiled" layoutX="288.0" layoutY="11.0" prefHeight="31.0" prefWidth="300.0" promptText="Search" styleClass="search-text-field" />
+                        <Pane layoutX="293.0" layoutY="10.0" prefHeight="33.0" prefWidth="310.0" styleClass="search-block" stylesheets="@../../../css/admin/search_box.css">
+                           <children>
+                              <TextField fx:id="searchBookTextField" prefHeight="33.0" prefWidth="230.0" promptText="Search Book">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </TextField>
+                              <ChoiceBox fx:id="choiceBoxSearchFilter" layoutX="231.0" layoutY="3.0" prefHeight="27.0" prefWidth="74.0" />
+
+                           </children>
+                        </Pane>
                         <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="256.0" layoutY="33.0" size="1.7em" text="" />
                         <Button id="allButton" fx:id="allButton" layoutX="38.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="All" />
                         <Button id="pendingButton" fx:id="pendingButton" layoutX="109.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Pending" />

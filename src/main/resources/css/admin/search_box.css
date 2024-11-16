@@ -1,0 +1,33 @@
+/* book_tab.css */
+
+/* Search Block */
+.search-block {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-border-width: 2px;
+    -fx-padding: 5px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-radius: 10;
+}
+
+/* Search TextField */
+#searchBookTextField {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-padding: 5px;
+    -fx-background-radius: 5;
+}
+
+/* ChoiceBox inside Search */
+.choice-box {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+}
+
+/* General hover effect */
+.search-block:hover {
+    -fx-border-color: #1c93d8;
+    -fx-cursor: hand;
+}
