@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.Optional;
 
 public class UserRepositoryTest {
     private UserRepository userRepository;
@@ -26,5 +27,12 @@ public class UserRepositoryTest {
     public void findByInputTest() {
         List<User> users = this.userRepository.findByInput("role", "USER");
         Assertions.assertEquals(2, users.size());
+    }
+
+    @Test
+    public void findByUsernameTest() {
+        String username = "23020064";
+        Optional<User> user = this.userRepository.findByUsername(username);
+        Assertions.assertNotNull(user.get());
     }
 }

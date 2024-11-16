@@ -36,4 +36,13 @@ public class UserServiceTest {
         Assertions.assertEquals(result1.getName(), "Vu Minh Hien");
         Assertions.assertNull(result2);
     }
+
+    @Test
+    public void findByUsernameTest() {
+        Mockito.when(userRepository.findByUsername("23020064")).thenReturn(Optional.of(new User("23020064", "hvu6582"
+                , "hienhien123@", "ADMIN", "Vu Minh Hien", "Nam Dinh", "hvu6582@gmail.com"
+                , "0368379729")));
+        User user = this.userService.findByUsername("23020064");
+        Assertions.assertNotNull(user);
+    }
 }

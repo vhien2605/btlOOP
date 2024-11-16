@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/AuthServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,13 +67,18 @@
     "Application.App.executor": "Run",
     "Application.AppAdmin.executor": "Run",
     "Application.AppUser.executor": "Run",
+    "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
+    "JUnit.AuthServiceTest.executor": "Run",
+    "JUnit.AuthServiceTest.testHandleUpdatePassword.executor": "Run",
     "JUnit.BookRepositoryTest.executor": "Run",
     "JUnit.BookRepositoryTest.findByCategory.executor": "Run",
     "JUnit.BookRepositoryTest.testFindAll.executor": "Run",
     "JUnit.BookServiceTest.executor": "Run",
     "JUnit.ReportRepositoryTest.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findByUsernameTest.executor": "Run",
     "JUnit.UserServiceTest.executor": "Run",
+    "JUnit.UserServiceTest.findByUsernameTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "hienonichan",
@@ -84,16 +96,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="BookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.BookRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BookServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
@@ -102,28 +105,45 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.BookServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="service.AuthServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServiceTest.changePasswordServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.ReportRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.AuthServiceTest" />
+      <option name="METHOD_NAME" value="changePasswordServiceTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AuthServiceTest.testHandleUpdatePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.AuthServiceTest" />
+      <option name="METHOD_NAME" value="testHandleUpdatePassword" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.findByUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
@@ -133,12 +153,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="repository" />
       <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="findByUsernameTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.findByUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
@@ -148,18 +169,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="service" />
       <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="findByUsernameTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.BookRepositoryTest" />
-        <item itemvalue="JUnit.ReportRepositoryTest" />
-        <item itemvalue="JUnit.BookServiceTest" />
-        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.AuthServiceTest.testHandleUpdatePassword" />
+        <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
+        <item itemvalue="JUnit.UserServiceTest.findByUsernameTest" />
+        <item itemvalue="JUnit.AuthServiceTest.changePasswordServiceTest" />
+        <item itemvalue="JUnit.AuthServiceTest" />
       </list>
     </recent_temporary>
   </component>
