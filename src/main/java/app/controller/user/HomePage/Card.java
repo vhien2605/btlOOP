@@ -1,5 +1,7 @@
 package app.controller.user.HomePage;
 
+import java.io.InputStream;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.user.BookDetail.BookDetailController;
@@ -32,12 +34,17 @@ public class Card implements BaseController{
         this.book = book;
         bookName.setText(book.getName());
         authorName.setText(book.getAuthor());
-        try {
-            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
-        } catch (Exception e) {
-            e.printStackTrace();
+        loadImage(book);  
+    }
+
+     private void loadImage(Book book) {
+        InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
+        if (inputStream == null) {
             imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
-        }    
+        } else {
+            imageURL.setImage(new Image(inputStream));
+
+        }
     }
 
     public void handleCardEvent(ActionEvent e) {

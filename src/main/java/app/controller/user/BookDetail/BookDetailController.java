@@ -1,5 +1,6 @@
 package app.controller.user.BookDetail;
 
+import java.io.InputStream;
 import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
@@ -45,7 +46,17 @@ public class BookDetailController implements BaseController {
 
     public void loadBook(Book book) {
         this.book = book;
-        imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
+        loadImage(book);
+    }
+
+    private void loadImage(Book book) {
+        InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
+        if (inputStream == null) {
+            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
+        } else {
+            imageURL.setImage(new Image(inputStream));
+
+        }
     }
 
     public void handleEvent(ActionEvent e) {
