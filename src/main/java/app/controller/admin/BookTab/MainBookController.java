@@ -61,12 +61,12 @@ public class MainBookController implements BaseController {
 
     BookService bookService;
 
-    private static final String ISBN_VALUE = "ISBN";
-    private static final String TITLE_VALUE = "Title";
-    private static final String AUTHOR_VALUE = "Author";
-    private static final String CATEGORY_VALUE = "Category";
+    static final String ISBN_VALUE = "ISBN";
+    static final String TITLE_VALUE = "Title";
+    static final String AUTHOR_VALUE = "Author";
+    static final String CATEGORY_VALUE = "Category";
 
-    private static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+    static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
     static {
         DISPLAY_TO_VALUE_MAP.put(ISBN_VALUE, "id");
         DISPLAY_TO_VALUE_MAP.put(TITLE_VALUE, "name");
