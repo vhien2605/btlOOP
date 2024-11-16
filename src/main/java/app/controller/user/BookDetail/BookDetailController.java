@@ -45,7 +45,12 @@ public class BookDetailController implements BaseController {
 
     public void loadBook(Book book) {
         this.book = book;
-        imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
+        try {
+            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
+        } catch (Exception e) {
+            e.printStackTrace();
+            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
+        } 
     }
 
     public void handleEvent(ActionEvent e) {
