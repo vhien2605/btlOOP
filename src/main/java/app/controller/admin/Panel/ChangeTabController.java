@@ -5,27 +5,27 @@ import app.controller.BaseController;
 
 public class ChangeTabController implements BaseController {
     public void homeTab() {
-        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+        FXMLResolver.getInstance().renderScene("admin/homeTab/home_tab");
     }
 
     public void bookTab() {
-        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+        FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
     }
 
     public void issueBookTab() {
-        FXMLResolver.getInstance().renderScene("issueBookTab/issuebook_tab");
+        FXMLResolver.getInstance().renderScene("admin/issueBookTab/issuebook_tab");
     }
 
     public void allIssueBookTab() {
-        FXMLResolver.getInstance().renderScene("allIssueBookTab/all_issuebook_tab");
+        FXMLResolver.getInstance().renderScene("admin/allIssueBookTab/all_issuebook_tab");
     }
 
     public void userTab() {
-        FXMLResolver.getInstance().renderScene("userTab/user_tab");
+        FXMLResolver.getInstance().renderScene("admin/userTab/user_tab");
     }
 
     public void settingTab() {
-        FXMLResolver.getInstance().renderScene("settingTab/setting_tab");
+        FXMLResolver.getInstance().renderScene("admin/settingTab/setting_tab");
     }
 
     @Override

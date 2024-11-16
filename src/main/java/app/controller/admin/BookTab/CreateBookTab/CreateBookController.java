@@ -41,7 +41,7 @@ public class CreateBookController extends HandleBookController {
             book.setImagePath(image);
         }
         bookService.handleSaveBook(book);
-        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+        FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
     }
 
     private void addDataBook() {

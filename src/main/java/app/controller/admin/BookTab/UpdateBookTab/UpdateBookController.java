@@ -21,7 +21,7 @@ public class UpdateBookController extends HandleBookController {
     @Override
     protected void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
-            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+            FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
         } else if (e.getSource() == saveButton) {
             saveBook();
         } else if (e.getSource() == uploadFileButton) {
@@ -47,7 +47,7 @@ public class UpdateBookController extends HandleBookController {
             newValueBook.setImagePath(image);
         }
         boolean check = bookService.handleUpdateOne(newValueBook);
-        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+        FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
     }
 
     @Override
