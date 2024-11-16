@@ -17,7 +17,7 @@ public class ActIssuedRowController {
     }
 
     private void renderDetail() {
-        String currentPath = "allIssueBookTab/all_issuebook_tab";
+        String currentPath = "admin/allIssueBookTab/all_issuebook_tab";
 
         FXMLResolver resolver = FXMLResolver.getInstance();
         resolver.renderScene("admin/bookLoanTab/bookloan_tab");
