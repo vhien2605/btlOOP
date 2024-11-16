@@ -12,7 +12,7 @@
 }
 
 /* Search TextField */
-#searchBookTextField {
+#searchBoxTextField {
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-padding: 5px;

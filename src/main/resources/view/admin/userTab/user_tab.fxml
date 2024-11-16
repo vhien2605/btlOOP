@@ -31,7 +31,7 @@
                                 </Label>
                                 <Pane layoutX="293.0" layoutY="10.0" prefHeight="33.0" prefWidth="310.0" styleClass="search-block" stylesheets="@../../../css/admin/search_box.css">
                                     <children>
-                                        <TextField fx:id="searchBookTextField" prefHeight="33.0" prefWidth="213.0" promptText="Search Book">
+                                        <TextField fx:id="searchBoxTextField" prefHeight="33.0" prefWidth="213.0" promptText="Search User">
                                             <font>
                                                 <Font size="13.0" />
                                             </font>

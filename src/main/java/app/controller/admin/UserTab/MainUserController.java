@@ -42,7 +42,7 @@ public class MainUserController implements BaseController {
 
     @FXML
     TextField userIdTextField, fullNameTextField, phoneNumberTextField, emailTextField,
-            addressTextField, searchUserTextField;
+            addressTextField, searchBoxTextField;
 
     @FXML
     ChoiceBox<String> choiceBoxSearchFilter;
@@ -59,12 +59,12 @@ public class MainUserController implements BaseController {
     static final int ADD_NEW = 1;
     static final int UPDATE_AND_DELETE = 2;
 
-    private static final String USER_ID_VALUE = "User id";
-    private static final String NAME_VALUE = "Name";
-    private static final String EMAIL_VALUE = "Email";
-    private static final String USERNAME_VALUE = "Username";
+    static final String USER_ID_VALUE = "User id";
+    static final String NAME_VALUE = "Name";
+    static final String EMAIL_VALUE = "Email";
+    static final String USERNAME_VALUE = "Username";
 
-    private static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+    static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
     static {
         DISPLAY_TO_VALUE_MAP.put(USER_ID_VALUE, "id");
         DISPLAY_TO_VALUE_MAP.put(NAME_VALUE, "name");

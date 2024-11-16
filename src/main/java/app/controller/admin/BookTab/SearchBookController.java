@@ -10,7 +10,7 @@ public class SearchBookController {
     }
 
     void init() {
-        mainBookCtrl.searchBookTextField.setOnKeyPressed(event -> {
+        mainBookCtrl.searchBoxTextField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 searchBook();
             }
@@ -25,7 +25,7 @@ public class SearchBookController {
 
     private void searchBook() {
         String col = MainBookController.DISPLAY_TO_VALUE_MAP.get(mainBookCtrl.choiceBoxSearchFilter.getValue());
-        String value = mainBookCtrl.searchBookTextField.getText();
+        String value = mainBookCtrl.searchBoxTextField.getText();
 
         System.out.println(col + " LIKE %" + value + "%");
 

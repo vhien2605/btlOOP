@@ -20,7 +20,7 @@ import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
     @FXML
-    TextField searchBookTextField;
+    TextField searchBoxTextField;
 
     @FXML
     ChoiceBox<String> choiceBoxSearchFilter;

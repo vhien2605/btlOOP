@@ -319,10 +319,10 @@ public class UserRepository implements CrudRepository<User, String> {
 
     public List<User> findByInput(String col, String value) {
         List<User> list = new ArrayList<>();
-        String query = "SELECT * FROM user WHERE " + col + " = ?";
+        String query = "SELECT * FROM user WHERE " + col + " LIKE ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, value);
+            preparedStatement.setString(1, "%" + value +"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 list.add(new User(resultSet.getString("id"),
