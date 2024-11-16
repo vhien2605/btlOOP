@@ -1,5 +1,8 @@
 package app.controller.admin.UserTab;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
 import app.domain.User;
@@ -7,9 +10,11 @@ import app.repository.UserRepository;
 import app.service.mainService.UserService;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -40,6 +45,9 @@ public class MainUserController implements BaseController {
             addressTextField, searchUserTextField;
 
     @FXML
+    ChoiceBox<String> choiceBoxSearchFilter;
+
+    @FXML
     Button cancelButton, insertButton, updateButton, deleteButton, importDataButton;
 
     UserService userService;
@@ -51,6 +59,19 @@ public class MainUserController implements BaseController {
     static final int ADD_NEW = 1;
     static final int UPDATE_AND_DELETE = 2;
 
+    private static final String USER_ID_VALUE = "User id";
+    private static final String NAME_VALUE = "Name";
+    private static final String EMAIL_VALUE = "Email";
+    private static final String USERNAME_VALUE = "Username";
+
+    private static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+    static {
+        DISPLAY_TO_VALUE_MAP.put(USER_ID_VALUE, "id");
+        DISPLAY_TO_VALUE_MAP.put(NAME_VALUE, "name");
+        DISPLAY_TO_VALUE_MAP.put(EMAIL_VALUE, "email");
+        DISPLAY_TO_VALUE_MAP.put(USERNAME_VALUE, "username");
+    }
+
     @Override
     public void initialize() {
         userService = new UserService(new UserRepository());
@@ -59,6 +80,10 @@ public class MainUserController implements BaseController {
         getSelectedUser();
         setCanClickButton(ADD_NEW);
         new AllSetUp().init_function(this);
+
+        ObservableList<String> displayValues = FXCollections.observableArrayList(DISPLAY_TO_VALUE_MAP.keySet());
+        choiceBoxSearchFilter.setItems(displayValues);
+        choiceBoxSearchFilter.setValue(NAME_VALUE); // Thiết lập giá trị mặc định
     }
 
     void getSelectedUser() {
