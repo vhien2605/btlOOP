@@ -50,7 +50,7 @@ public class BookDetailController implements BaseController {
 
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == backToHomeButton) {
-            FXMLResolver.getInstance().renderScene("homeTab/home");
+            FXMLResolver.getInstance().renderScene("user/homeTab/home");
         } else if (e.getSource() == sendBorrowBookRequestButton) {
             sendBorrowBookRequest();
         }
@@ -107,7 +107,6 @@ public class BookDetailController implements BaseController {
         try {
             user = MainHomePageController.authService.getCurrentUser();
         } catch (SessionException exception) {
-            FXMLResolver.getInstance().setRootPath("/view");
             FXMLResolver.getInstance().renderScene("auth/login");
         }
     }

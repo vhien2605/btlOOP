@@ -20,7 +20,7 @@ public class ActIssuedRowController {
         String currentPath = "allIssueBookTab/all_issuebook_tab";
 
         FXMLResolver resolver = FXMLResolver.getInstance();
-        resolver.renderScene("bookLoanTab/bookloan_tab");
+        resolver.renderScene("admin/bookLoanTab/bookloan_tab");
 
         MainBookLoanController bookLoanController = resolver.getLoader().getController();
         bookLoanController.renderData(mainIssueRowCtrl.borrowReport, currentPath);
