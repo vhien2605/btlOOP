@@ -32,7 +32,12 @@ public class Card implements BaseController{
         this.book = book;
         bookName.setText(book.getName());
         authorName.setText(book.getAuthor());
-        imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
+        try {
+            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/" + book.getImagePath())));
+        } catch (Exception e) {
+            e.printStackTrace();
+            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
+        }    
     }
 
     public void handleCardEvent(ActionEvent e) {
