@@ -21,8 +21,8 @@ public class ReportService {
     private final BookService bookService;
 
     public ReportService(ReportRepository reportRepository,
-            UserService userService,
-            BookService bookService) {
+                         UserService userService,
+                         BookService bookService) {
         this.reportRepository = reportRepository;
         this.userService = userService;
         this.bookService = bookService;

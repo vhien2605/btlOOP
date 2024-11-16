@@ -1,5 +1,6 @@
 package app.service.mainService;
 
+import app.domain.DTO.PasswordChangeDTO;
 import app.domain.DTO.RegisterUserDTO;
 import app.domain.User;
 import app.repository.UserRepository;
@@ -132,5 +133,29 @@ public class UserService {
      */
     public boolean updateOne(User user) {
         return this.userRepository.update(user);
+    }
+
+    /**
+     * Find {@link User} by any col.
+     *
+     * @param col   col
+     * @param value col's value
+     * @return {@code ObservableList<User>}
+     */
+    public ObservableList<User> search(String col, String value) {
+        return FXCollections.observableList(this.userRepository.findByInput(col, value));
+    }
+
+    /**
+     * Handle update password method.
+     *
+     * @param userDTO userDTO
+     * @return {@code true/false}
+     */
+    public boolean handleUpdatePassword(PasswordChangeDTO userDTO) {
+        User user = this.findByUsername(userDTO.getUsername());
+        System.out.println(userDTO.getUsername());
+        user.setPassword(userDTO.getNewPassword());
+        return this.updateOne(user);
     }
 }
