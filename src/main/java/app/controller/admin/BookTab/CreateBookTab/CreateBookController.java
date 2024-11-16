@@ -16,7 +16,7 @@ public class CreateBookController extends HandleBookController {
     @Override
     protected void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
-            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+            FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
         } else if (e.getSource() == cancelButton) {
             clearFields();
         } else if (e.getSource() == saveButton) {
@@ -40,8 +40,14 @@ public class CreateBookController extends HandleBookController {
             image = fileService.handleSaveImage(selectedFile, "book");
             book.setImagePath(image);
         }
-        bookService.handleSaveBook(book);
-        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+
+        if (bookService.handleSaveBook(book)) {
+            showAlert.showAlert("Created successfully!", "success");
+            clearFields();
+        } else {
+            showAlert.showAlert("!created unsuccessfully!", "error");
+        }
+
     }
 
     private void addDataBook() {

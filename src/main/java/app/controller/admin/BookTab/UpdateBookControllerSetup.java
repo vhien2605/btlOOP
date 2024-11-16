@@ -21,7 +21,7 @@ public class UpdateBookControllerSetup {
             mainBookCtrl.showAlert.showAlert("No book selected!", "error");
         } else {
             FXMLResolver resolver = FXMLResolver.getInstance();
-            resolver.renderScene("bookTab/update_book");
+            resolver.renderScene("admin/bookTab/update_book");
 
             UpdateBookController updateBookController = resolver.getLoader().getController();
             updateBookController.renderDataBook(selectedBook);

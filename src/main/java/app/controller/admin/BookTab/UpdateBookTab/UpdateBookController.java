@@ -21,7 +21,7 @@ public class UpdateBookController extends HandleBookController {
     @Override
     protected void handleButtonAction(ActionEvent e) {
         if (e.getSource() == comeBackButton) {
-            FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+            FXMLResolver.getInstance().renderScene("admin/bookTab/book_tab");
         } else if (e.getSource() == saveButton) {
             saveBook();
         } else if (e.getSource() == uploadFileButton) {
@@ -39,15 +39,18 @@ public class UpdateBookController extends HandleBookController {
 
         String image = "";
         if (selectedFile != null) {
-            System.out.println("path: " + oldValueBook.getImagePath());
             if (oldValueBook.getImagePath() != null) {
                 fileService.handleDeleteImage(oldValueBook.getImagePath(), "book");
             }
             image = fileService.handleSaveImage(selectedFile, "book");
             newValueBook.setImagePath(image);
         }
-        boolean check = bookService.handleUpdateOne(newValueBook);
-        FXMLResolver.getInstance().renderScene("bookTab/book_tab");
+        if (bookService.handleUpdateOne(newValueBook)) {
+            showAlert.showAlert("Update successful!", "success");
+        } else {
+            showAlert.showAlert("Update failed!", "error");
+        }
+
     }
 
     @Override
@@ -64,7 +67,7 @@ public class UpdateBookController extends HandleBookController {
                 bookCategoryTextField.getText(),
                 bookPublisherTextField.getText(),
                 Integer.parseInt(bookQuantityTextField.getText()),
-                Integer.parseInt(bookQuantityTextField.getText()),
+                Integer.parseInt(bookRemainingTextField.getText()),
                 imagePathTextField.getText());
 
         return book;
@@ -120,10 +123,6 @@ public class UpdateBookController extends HandleBookController {
         try {
             int bookRemaining = Integer.parseInt(remaining);
             int bookQuantity = Integer.parseInt(quantity);
-            if (bookRemaining <= 0) {
-                showAlert.showAlert("Số lượng sách còn lại phải lớn hơn 0!", "error");
-                return false;
-            }
             if (bookRemaining > bookQuantity) {
                 showAlert.showAlert("Số lượng sách còn lại đang lớn hơn tổng số sách!", "error");
                 return false;

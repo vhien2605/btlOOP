@@ -39,6 +39,8 @@ public class MainIssueController {
 
     ShowAlert showAlert;
 
+    Book bookInfo;
+
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
@@ -73,6 +75,7 @@ public class MainIssueController {
     }
 
     public void setBookInfo(Book book) {
+        this.bookInfo = book;
         bookNameTextFiled.setText(book.getName());
         bookAuthorTextFiled.setText(book.getAuthor());
         bookPublisherTextFiled.setText(book.getBookPublisher());
