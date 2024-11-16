@@ -14,6 +14,6 @@ public class CreateBookControllerSetup {
     }
 
     void createBook() {
-        FXMLResolver.getInstance().renderScene("bookTab/create_book");
+        FXMLResolver.getInstance().renderScene("admin/bookTab/create_book");
     }
 }

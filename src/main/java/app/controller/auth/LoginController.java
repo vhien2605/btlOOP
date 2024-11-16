@@ -87,13 +87,11 @@ public class LoginController {
     }
 
     private void setUpAppAdmin() {
-        FXMLResolver.getInstance().setRootPath("/view/admin");
-        FXMLResolver.getInstance().renderScene("homeTab/home_tab");
+        FXMLResolver.getInstance().renderScene("admin/homeTab/home_tab");
     }
 
     private void setUpAppUser() {
         MainHomePageController.getAuthService(authService);
-        FXMLResolver.getInstance().setRootPath("/view/user");
-        FXMLResolver.getInstance().renderScene("homeTab/home");
+        FXMLResolver.getInstance().renderScene("user/homeTab/home");
     }
 }

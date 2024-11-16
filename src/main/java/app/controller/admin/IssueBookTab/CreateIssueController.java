@@ -25,7 +25,7 @@ public class CreateIssueController {
         if (mainIssueCtrl.reportService.handleSave(data)) {
             String currentPath = "issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
-            resolver.renderScene("bookLoanTab/bookloan_tab");
+            resolver.renderScene("admin/bookLoanTab/bookloan_tab");
 
             mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
 

@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/homeTab/home_tab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/AllIssueBookTab/ActIssuedRowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/AllIssueBookTab/ActIssuedRowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/CreateBookControllerSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/CreateBookControllerSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/CreateBookTab/CreateBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/CreateBookTab/CreateBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/UpdateBookControllerSetup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/UpdateBookControllerSetup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/UpdateBookTab/UpdateBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/UpdateBookTab/UpdateBookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/Panel/ChangeTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/Panel/ChangeTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/auth/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/auth/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
