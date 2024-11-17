@@ -9,6 +9,7 @@ import app.controller.helper.ShowAlert;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
 import app.domain.BorrowReport;
+import app.domain.DTO.SurfaceUserDTO;
 import app.domain.User;
 import app.exception.auth.SessionException;
 import app.repository.ReportRepository;
@@ -40,7 +41,7 @@ public class BookDetailController implements BaseController {
 
     private ReportService reportService;
 
-    private User user;
+    private SurfaceUserDTO user;
 
     private Book book;
 
@@ -72,14 +73,14 @@ public class BookDetailController implements BaseController {
             return;
         }
         BorrowReport borrowReport = new BorrowReport(
-            0,
-            user.getId(), 
-            book.getId(), 
-            borrowDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
-             null,
-            expectedReturnDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
-            BorrowReport.PENDING,
-            ""
+                0,
+                user.getId(),
+                book.getId(),
+                borrowDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                null,
+                expectedReturnDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
+                BorrowReport.PENDING,
+                ""
         );
         if (reportService.handleSave(borrowReport)) {
             showAlert.showAlert("Create new borrow book request successfully!", "success");
@@ -121,5 +122,4 @@ public class BookDetailController implements BaseController {
             FXMLResolver.getInstance().renderScene("auth/login");
         }
     }
-
 }
