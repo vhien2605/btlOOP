@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/test/java/service/AuthServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/CreateIssueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +17,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -62,34 +56,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.App.executor": "Run",
-    "Application.AppAdmin.executor": "Run",
-    "Application.AppUser.executor": "Run",
-    "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
-    "JUnit.AuthServiceTest.executor": "Run",
-    "JUnit.AuthServiceTest.testHandleUpdatePassword.executor": "Run",
-    "JUnit.BookRepositoryTest.executor": "Run",
-    "JUnit.BookRepositoryTest.findByCategory.executor": "Run",
-    "JUnit.BookRepositoryTest.testFindAll.executor": "Run",
-    "JUnit.BookServiceTest.executor": "Run",
-    "JUnit.ReportRepositoryTest.executor": "Run",
-    "JUnit.UserRepositoryTest.executor": "Run",
-    "JUnit.UserRepositoryTest.findByUsernameTest.executor": "Run",
-    "JUnit.UserServiceTest.executor": "Run",
-    "JUnit.UserServiceTest.findByUsernameTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "hienonichan",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Computer/Downloads/CA_Tools/CA_Tools",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "http.proxy"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.App.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppAdmin.executor&quot;: &quot;Run&quot;,
+    &quot;Application.AppUser.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthServiceTest.changePasswordServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthServiceTest.testHandleUpdatePassword.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookRepositoryTest.findByCategory.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookRepositoryTest.testFindAll.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.BookServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReportRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserRepositoryTest.findByUsernameTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserServiceTest.findByUsernameTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hienonichan&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Computer/Downloads/CA_Tools/CA_Tools&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
@@ -177,11 +171,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AuthServiceTest" />
         <item itemvalue="JUnit.AuthServiceTest.testHandleUpdatePassword" />
         <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
         <item itemvalue="JUnit.UserServiceTest.findByUsernameTest" />
         <item itemvalue="JUnit.AuthServiceTest.changePasswordServiceTest" />
-        <item itemvalue="JUnit.AuthServiceTest" />
       </list>
     </recent_temporary>
   </component>
