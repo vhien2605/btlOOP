@@ -1,6 +1,8 @@
 package app.controller.admin.AllIssueBookTab;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import app.controller.BaseController;
 import app.controller.admin.Panel.SidebarController;
@@ -11,10 +13,12 @@ import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -35,6 +39,9 @@ public class MainAllIssueController implements BaseController {
     @FXML
     private VBox contentVBox;
 
+    @FXML
+    ChoiceBox<String> choiceBoxSearchFilter;
+
     ReportService reportService;
 
     UserService userService;
@@ -44,6 +51,15 @@ public class MainAllIssueController implements BaseController {
     ObservableList<BorrowReport> listBorrowReport;
 
     String currStatus;
+
+    private static final String USER_ID_VALUE = "User id";
+    private static final String ID_VALUE = "Id issue";
+
+    private static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+    static {
+        DISPLAY_TO_VALUE_MAP.put(USER_ID_VALUE, "userId");
+        DISPLAY_TO_VALUE_MAP.put(ID_VALUE, "id");
+    }
 
     @Override
     public void initialize() {
@@ -56,6 +72,10 @@ public class MainAllIssueController implements BaseController {
         buttons = List.of(allButton, pendingButton, borrowedButton, returnedButton);
 
         getAll();
+
+        ObservableList<String> displayValues = FXCollections.observableArrayList(DISPLAY_TO_VALUE_MAP.keySet());
+        choiceBoxSearchFilter.setItems(displayValues);
+        choiceBoxSearchFilter.setValue(ID_VALUE); // Thiết lập giá trị mặc định
     }
 
     private void loadData() {

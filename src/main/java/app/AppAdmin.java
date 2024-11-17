@@ -1,8 +1,7 @@
 package app;
 
+import app.config.SetUpApp;
 import app.config.ViewConfig.FXMLResolver;
-import app.domain.BorrowReport;
-import app.service.subService.FileService;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -24,10 +23,12 @@ public class AppAdmin extends Application {
      *              not be
      *              primary stages.
      */
+    @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);
         FXMLResolver.getInstance().setUp("/view", stage, 1100, 650);
         FXMLResolver.getInstance().renderScene("auth/login");
+        // SetUpApp.setUpApp();
     }
 }

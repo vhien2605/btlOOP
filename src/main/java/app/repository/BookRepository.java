@@ -224,10 +224,10 @@ public class BookRepository implements CrudRepository<Book, String> {
 
     public List<Book> findByInput(String col, String value) {
         List<Book> list = new ArrayList<>();
-        String query = "SELECT * FROM book WHERE " + col + " = ?";
+        String query = "SELECT * FROM book WHERE " + col + " LIKE ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, value);
+            preparedStatement.setString(1, "%" + value +"%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 list.add(new Book(
