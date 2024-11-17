@@ -254,4 +254,40 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             return false;
         }
     }
+
+    /**
+     * Find records of search results
+     * 
+     * @param col Search column.
+     * @param value Search value.
+     * @param status Status issue.
+     * @return List of {@link BorrowReport} to manage the document in library
+     */
+    public List<BorrowReport> findByInput(String col, String value, String status) {
+        List<BorrowReport> list = new ArrayList<>();
+        String query = "SELECT * FROM borrow_report WHERE " + col + " LIKE ? AND status LIKE ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + value +"%");
+            preparedStatement.setString(2, "%" + status + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(new BorrowReport(
+                    resultSet.getInt("id"),
+                    resultSet.getString("userId"),
+                    resultSet.getString("bookId"),
+                    resultSet.getString("borrowDate"),
+                    resultSet.getString("returnDate"),
+                    resultSet.getString("expectedReturnDate"),
+                    resultSet.getString("status"),
+                    resultSet.getString("qrcodeUrl")
+            ));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -33,12 +33,12 @@
                         <Separator layoutX="14.0" layoutY="49.0" prefHeight="3.0" prefWidth="922.0" />
                         <Pane layoutX="293.0" layoutY="10.0" prefHeight="33.0" prefWidth="310.0" styleClass="search-block" stylesheets="@../../../css/admin/search_box.css">
                            <children>
-                              <TextField fx:id="searchBookTextField" prefHeight="33.0" prefWidth="230.0" promptText="Search Book">
+                              <TextField fx:id="searchBoxTextField" prefHeight="33.0" prefWidth="223.0" promptText="Search Book">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
                               </TextField>
-                              <ChoiceBox fx:id="choiceBoxSearchFilter" layoutX="231.0" layoutY="3.0" prefHeight="27.0" prefWidth="74.0" />
+                              <ChoiceBox fx:id="choiceBoxSearchFilter" layoutX="222.0" layoutY="3.0" prefHeight="27.0" prefWidth="83.0" />
 
                            </children>
                         </Pane>
