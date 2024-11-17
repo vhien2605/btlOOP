@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/Panel/SettingsSidebarController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/PasswordSettingController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/changePassword.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/profile.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/admin/staticLayout/setting_sidebar.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/setting_tab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/setting_tab.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
