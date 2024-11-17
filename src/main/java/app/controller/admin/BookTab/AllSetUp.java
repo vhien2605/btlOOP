@@ -5,5 +5,6 @@ public class AllSetUp {
         new DeleteBookController(bookCtrl).init();
         new UpdateBookControllerSetup(bookCtrl).init();
         new CreateBookControllerSetup(bookCtrl).init();
+        new SearchBookController(bookCtrl).init();
     }
 }

@@ -1,11 +1,10 @@
 package app.controller.auth;
 
+import app.config.SetUpApp;
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.helper.ShowAlert;
-import app.controller.user.HomePage.MainHomePageController;
 import app.exception.auth.DuplicateException;
 import app.exception.auth.PasswordException;
-import app.exception.auth.SessionException;
 import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
@@ -66,32 +65,9 @@ public class LoginController {
         // Kiểm tra tính hợp lệ của tài khoản
         try {
             authService.verifyLogin(username, password);
-            appRedirection();
+            SetUpApp.setUpApp();
         } catch (DuplicateException | PasswordException e) {
             showAlert.showAlert(e.getMessage(), "error");
         }
-    }
-
-    private void appRedirection() {
-        try {
-            String sessionData = sessionService.verifySession();
-            String role = sessionData.split(" ")[1];
-            if (role.equals("ADMIN")) {
-                setUpAppAdmin();
-            } else {
-                setUpAppUser();
-            }
-        } catch (SessionException e) {
-            showAlert.showAlert(e.getMessage(), "error");
-        }
-    }
-
-    private void setUpAppAdmin() {
-        FXMLResolver.getInstance().renderScene("admin/homeTab/home_tab");
-    }
-
-    private void setUpAppUser() {
-        MainHomePageController.getAuthService(authService);
-        FXMLResolver.getInstance().renderScene("user/homeTab/home");
     }
 }

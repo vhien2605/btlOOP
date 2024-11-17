@@ -7,5 +7,6 @@ public class AllSetUp {
         new InsertUserController(userCtrl).init();
         new UpdateUserController(userCtrl).init();
         new ImportDataController(userCtrl).init();
+        new SearchUserController(userCtrl).init();
     }
 }
