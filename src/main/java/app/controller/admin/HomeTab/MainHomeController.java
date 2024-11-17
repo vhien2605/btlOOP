@@ -3,7 +3,6 @@ package app.controller.admin.HomeTab;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.domain.DTO.ReportDetail;
-import app.domain.User;
 import app.exception.auth.SessionException;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -167,5 +166,4 @@ public class MainHomeController implements BaseController {
         userChart.getData().add(series1);
         userChart.getData().add(series2);
     }
-
 }
