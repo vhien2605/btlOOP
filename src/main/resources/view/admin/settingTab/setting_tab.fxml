@@ -6,31 +6,74 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.SettingTab.MainSettingController">
-   <children>
-      <fx:include fx:id="sidebar" source="../staticLayout/sidebar.fxml" />
-      <BorderPane prefHeight="650.0" prefWidth="950.0">
-         <top>
-            <fx:include source="../staticLayout/header.fxml" />
-         </top>
-         <center>
-            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <top>
-                  <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.SettingTab.MainSettingController">
+    <children>
+        <fx:include fx:id="sidebar" source="../staticLayout/setting_sidebar.fxml" />
+        <BorderPane prefHeight="650.0" prefWidth="950.0">
+            <top>
+                <fx:include source="../staticLayout/header.fxml" />
+            </top>
+            <center>
+                <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                    <top>
+                        <Pane prefHeight="50.0" prefWidth="950.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <Label layoutX="25.0" text="Profile Settings" textFill="#1d3ec4">
+                                    <font>
+                                        <Font name="System Bold" size="35.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </Pane>
+                    </top>
+               <center>
+                  <Pane prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/admin/settingCss/profile.css" BorderPane.alignment="CENTER">
                      <children>
-                        <Label layoutX="25.0" text="Settings" textFill="#1d3ec4">
+                        <Label id="profileDetail" layoutX="68.0" layoutY="35.0" text="Profile Detail">
                            <font>
-                              <Font size="35.0" />
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
+                        <Label id="ContactInfo" layoutX="69.0" layoutY="285.0" text="Contact info">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Label>
+                        <Label id="Address" layoutX="101.0" layoutY="182.0" text="Address">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="Name" layoutX="101.0" layoutY="97.0" text="Name">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="Username" layoutX="101.0" layoutY="139.0" text="Username">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="Email" layoutX="101.0" layoutY="377.0" text="Email">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="PhoneNumber" layoutX="101.0" layoutY="335.0" text="Phone number">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label id="textLabel" fx:id="nameField" layoutX="303.0" layoutY="102.0" text="Label" />
+                        <Label id="textLabel" fx:id="usernameField" layoutX="303.0" layoutY="144.0" text="Label" />
+                        <Label id="textLabel" fx:id="addressField" layoutX="303.0" layoutY="187.0" text="Label" />
+                        <Label id="textLabel" fx:id="phoneField" layoutX="303.0" layoutY="340.0" text="Label" />
+                        <Label id="textLabel" fx:id="emailField" layoutX="303.0" layoutY="382.0" text="Label" />
                      </children>
                   </Pane>
-               </top>
-            </BorderPane>
-         </center>
-      </BorderPane>
-   </children>
+               </center>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </children>
 </HBox>
