@@ -8,15 +8,15 @@ public class ShowAlert {
 
     public void showAlert(String message, String type) {
         Alert alert;
-        if (type == "error") {
+        if (type.equals("error")) {
             alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error message");
             alert.setHeaderText(null);
             alert.setContentText(message);
             alert.showAndWait();
-        } else if (type == "success") {
+        } else if (type.equals("success")) {
             alert = new Alert(AlertType.INFORMATION);
-            alert.setTitle("Succes message");
+            alert.setTitle("Success message");
             alert.setHeaderText(null);
             alert.setContentText(message);
             alert.showAndWait();

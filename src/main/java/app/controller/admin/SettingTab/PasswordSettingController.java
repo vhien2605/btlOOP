@@ -30,14 +30,17 @@ public class PasswordSettingController implements BaseController {
     public void handleSaveChangeButton() {
         if (currentPasswordField.getText().isEmpty()) {
             showAlert.showAlert("Current password can't be empty!", "error");
+            clearField();
             return;
         }
         if (newPasswordField.getText().isEmpty()) {
             showAlert.showAlert("New password can't be empty!", "error");
+            clearField();
             return;
         }
         if (confirmNewPasswordField.getText().isEmpty()) {
             showAlert.showAlert("Confirm password can't be empty!", "error");
+            clearField();
             return;
         }
         handleSubmitSave();
@@ -53,6 +56,8 @@ public class PasswordSettingController implements BaseController {
                         confirmNewPasswordField.getText());
                 authenticationService.verifyPasswordChangeRequest(userDTO);
                 userService.handleUpdatePassword(userDTO);
+                showAlert.showAlert("Confirm password can't be empty!", "success");
+                clearField();
             } catch (PasswordException e) {
                 showAlert.showAlert(e.getMessage(), "error");
             }
@@ -70,5 +75,12 @@ public class PasswordSettingController implements BaseController {
         authenticationService = new AuthenticationService(new SessionService(),
                 new UserService(new UserRepository()));
         userService = new UserService(new UserRepository());
+    }
+
+
+    private void clearField() {
+        currentPasswordField.clear();
+        newPasswordField.clear();
+        currentPasswordField.clear();
     }
 }

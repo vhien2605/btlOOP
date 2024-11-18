@@ -3,6 +3,7 @@ package app.controller.admin.HomeTab;
 import app.controller.BaseController;
 import app.domain.Book;
 import app.domain.DTO.ReportDetail;
+import app.domain.User;
 import app.exception.auth.SessionException;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -58,36 +59,41 @@ public class MainHomeController implements BaseController {
     private MultiTaskService multiTaskService;
     private ReportService reportService;
     private AuthenticationService authenticationService;
+    private UserService userService;
 
-    private void setDataCard(String dataBook, String dataUser, String dataIssued, String dataBorrowed) {
-        dataBookLabel.setText(dataBook);
-        dataUserLabel.setText(dataUser);
-        dataAllIssuedabel.setText(dataIssued);
-        dataBorrowedLabel.setText(dataBorrowed);
+    private void setDataCard(int dataBook, int dataUser, int dataIssued, int dataBorrowed) {
+        dataBookLabel.setText(String.valueOf(dataBook));
+        dataUserLabel.setText(String.valueOf(dataUser));
+        dataAllIssuedabel.setText(String.valueOf(dataIssued));
+        dataBorrowedLabel.setText(String.valueOf(dataBorrowed));
     }
 
     @Override
     public void initialize() {
-
         authenticationService = new AuthenticationService(new SessionService()
                 , new UserService(new UserRepository()));
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
+        userService = new UserService(new UserRepository());
         multiTaskService = new MultiTaskService(5);
         setupClock();
         setHelloLabel();
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
+        multiTaskService.addTasks(() -> new ResultTask<>("List", this.userService.getAllUsers()));
         try {
             List<ResultTask<?>> tasksResults = multiTaskService.handleTasks();
             List<Book> listBook = (List<Book>) tasksResults.get(0).getData();
             List<ReportDetail> listReport = ((List<ReportDetail>) tasksResults.get(1).getData());
+            List<User> users = (List<User>) tasksResults.get(2).getData();
             Platform.runLater(() -> {
                 addDataToCategoryChart(listBook);
                 addDataToBookBorrowChart(listReport);
                 addDataToIssueBookChart();
                 addDataToUserChart();
+                setDataCard(listBook.size()
+                        , users.size(), listReport.size(), 50);
             });
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e.getMessage());

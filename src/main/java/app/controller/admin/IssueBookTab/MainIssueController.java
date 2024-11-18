@@ -101,7 +101,7 @@ public class MainIssueController {
                 null,
                 dueDateTextFIled.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 BorrowReport.BORROWED,
-                "");
+                null);
     }
 
     boolean validateFields() {

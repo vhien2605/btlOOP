@@ -7,9 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../../css/admin/sidebar.css"
-   xmlns="http://javafx.com/javafx/23"
-   xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.SidebarController" fx:id="root">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../../css/admin/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.SidebarController">
    <children>
       <Button fx:id="homeButton" layoutY="152.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Home">
          <font>
@@ -54,7 +52,7 @@
       <FontAwesomeIconView glyphName="USER_CIRCLE" layoutX="14.0" layoutY="332.0" size="1.7em" text="" />
       <FontAwesomeIconView glyphName="LIST_UL" layoutX="14.0" layoutY="379.0" size="1.7em" textAlignment="RIGHT" />
       <FontAwesomeIconView glyphName="COG" layoutX="15.0" layoutY="429.0" size="1.7em" text="" />
-      <Button fx:id="signOutButton" layoutX="-1.0" layoutY="601.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="150.0" text="   Sign out">
+      <Button fx:id="signOutButton" layoutX="-1.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="49.0" prefWidth="150.0" text="   Sign out">
          <font>
             <Font size="16.0" />
          </font>
