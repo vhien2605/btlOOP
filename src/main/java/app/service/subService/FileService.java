@@ -61,7 +61,6 @@ public class FileService {
                 + File.separator + "image";
         String fileName = System.currentTimeMillis() + "-" + "qr.jpg";
         String finalPath = rootPath + File.separator + targetFolder + File.separator + fileName;
-
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", report.getId());
         jsonObject.put("userId", report.getUserId());
@@ -71,7 +70,6 @@ public class FileService {
         jsonObject.put("expectedReturnDate", report.getExpectedReturnDate());
         jsonObject.put("status", report.getStatus());
         jsonObject.put("qrcodeUrl", report.getQrcodeUrl());
-        System.out.println(jsonObject.toString());
         try {
             BitMatrix matrix = new MultiFormatWriter().encode(jsonObject.toString(), BarcodeFormat.QR_CODE, 250, 250);
             MatrixToImageWriter.writeToPath(matrix, "jpg", Paths.get(finalPath));
