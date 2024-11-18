@@ -6,6 +6,7 @@ import app.domain.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -115,7 +116,7 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
         String query = "INSERT INTO borrow_report(userId,bookId,borrowDate,returnDate,expectedReturnDate,status," +
                 "qrcodeUrl) VALUES (?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         ) {
             preparedStatement.setString(1, entity.getUserId());
             preparedStatement.setString(2, entity.getBookId());
@@ -124,7 +125,13 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             preparedStatement.setString(5, entity.getExpectedReturnDate());
             preparedStatement.setString(6, entity.getStatus());
             preparedStatement.setString(7, entity.getQrcodeUrl());
-            int count = preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+            try (ResultSet generatedKeys = preparedStatement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    entity.setId(generatedKeys.getInt(1));
+                    System.out.println(entity.getId());
+                }
+            }
             return true;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -253,5 +260,41 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             e.printStackTrace();
             return false;
         }
+    }
+
+    /**
+     * Find records of search results
+     *
+     * @param col    Search column.
+     * @param value  Search value.
+     * @param status Status issue.
+     * @return List of {@link BorrowReport} to manage the document in library
+     */
+    public List<BorrowReport> findByInput(String col, String value, String status) {
+        List<BorrowReport> list = new ArrayList<>();
+        String query = "SELECT * FROM borrow_report WHERE " + col + " LIKE ? AND status LIKE ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + value + "%");
+            preparedStatement.setString(2, "%" + status + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(new BorrowReport(
+                        resultSet.getInt("id"),
+                        resultSet.getString("userId"),
+                        resultSet.getString("bookId"),
+                        resultSet.getString("borrowDate"),
+                        resultSet.getString("returnDate"),
+                        resultSet.getString("expectedReturnDate"),
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
+                ));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
     }
 }

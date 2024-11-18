@@ -3,6 +3,7 @@ package app.service.authService;
 
 import app.domain.DTO.PasswordChangeDTO;
 import app.domain.DTO.RegisterUserDTO;
+import app.domain.DTO.SurfaceUserDTO;
 import app.domain.User;
 import app.exception.auth.DuplicateException;
 import app.exception.auth.PasswordException;
@@ -73,8 +74,10 @@ public class AuthenticationService {
      *
      * @return {@link User}
      */
-    public User getCurrentUser() throws SessionException {
+    public SurfaceUserDTO getCurrentUser() throws SessionException {
         String sessionValue = sessionService.verifySession();
-        return this.userService.findById(sessionValue.split(" ")[0]);
+        User user = this.userService.findById(sessionValue.split(" ")[0]);
+        return new SurfaceUserDTO(user.getId(), user.getName(), user.getUsername(), user.getRole(),
+                user.getEmail(), user.getAddress(), user.getPhoneNumber());
     }
 }

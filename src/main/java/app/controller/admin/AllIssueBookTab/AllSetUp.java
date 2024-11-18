@@ -7,5 +7,6 @@ public class AllSetUp {
 
     void initMainAllIssuedCtrl(MainAllIssueController mainAllIssueCtrl) {
         new FilterByStatusController(mainAllIssueCtrl).init();
+        new SearchIssueController(mainAllIssueCtrl).init();
     }
 }

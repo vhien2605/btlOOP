@@ -220,6 +220,33 @@ public class BookRepository implements CrudRepository<Book, String> {
             return false;
         }
     }
+
+
+    public List<Book> findByInput(String col, String value) {
+        List<Book> list = new ArrayList<>();
+        String query = "SELECT * FROM book WHERE " + col + " LIKE ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + value +"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(new Book(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("author"),
+                        resultSet.getString("description"),
+                        resultSet.getString("category"),
+                        resultSet.getString("bookPublisher"),
+                        resultSet.getInt("bookQuantity"),
+                        resultSet.getInt("bookRemaining"),
+                        resultSet.getString("imagePath")));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
 
 

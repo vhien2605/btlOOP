@@ -28,7 +28,7 @@ public class CreateIssueController {
         }
 
         if (mainIssueCtrl.reportService.handleSave(data)) {
-            String currentPath = "issueBookTab/issuebook_tab";
+            String currentPath = "admin/issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
             resolver.renderScene("admin/bookLoanTab/bookloan_tab");
 

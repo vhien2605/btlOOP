@@ -1,23 +1,29 @@
 package app.controller.admin.BookTab;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import app.controller.BaseController;
-import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.service.mainService.BookService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.Pane;
 import app.repository.BookRepository;
 
 public class MainBookController implements BaseController {
     @FXML
-    TextField searchBookTextField;
+    TextField searchBoxTextField;
+
+    @FXML
+    ChoiceBox<String> choiceBoxSearchFilter;
 
     @FXML
     Button buttonUpdate, buttonDelete, buttonAddBook;
@@ -55,12 +61,29 @@ public class MainBookController implements BaseController {
 
     BookService bookService;
 
+    static final String ISBN_VALUE = "ISBN";
+    static final String TITLE_VALUE = "Title";
+    static final String AUTHOR_VALUE = "Author";
+    static final String CATEGORY_VALUE = "Category";
+
+    static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+    static {
+        DISPLAY_TO_VALUE_MAP.put(ISBN_VALUE, "id");
+        DISPLAY_TO_VALUE_MAP.put(TITLE_VALUE, "name");
+        DISPLAY_TO_VALUE_MAP.put(AUTHOR_VALUE, "author");
+        DISPLAY_TO_VALUE_MAP.put(CATEGORY_VALUE, "category");
+    }
+
     @Override
     public void initialize() {
         bookService = new BookService(new BookRepository());
         showAlert = new ShowAlert();
         showBooks();
         new AllSetUp().init_function(this);
+
+        ObservableList<String> displayValues = FXCollections.observableArrayList(DISPLAY_TO_VALUE_MAP.keySet());
+        choiceBoxSearchFilter.setItems(displayValues);
+        choiceBoxSearchFilter.setValue(ISBN_VALUE); // Thiết lập giá trị mặc định
     }
 
     void showBooks() {

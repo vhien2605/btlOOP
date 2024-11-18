@@ -21,8 +21,8 @@ public class ReportService {
     private final BookService bookService;
 
     public ReportService(ReportRepository reportRepository,
-            UserService userService,
-            BookService bookService) {
+                         UserService userService,
+                         BookService bookService) {
         this.reportRepository = reportRepository;
         this.userService = userService;
         this.bookService = bookService;
@@ -72,5 +72,17 @@ public class ReportService {
 
     public boolean handleDeleteById(Integer id) {
         return this.reportRepository.deleteById(id);
+    }
+
+    /**
+     * Find {@link BorrowReport} .
+     * 
+     * @param col    Col.
+     * @param value  Col's value.
+     * @param status Status of the Report.
+     * @return {@code ObservableList<BorrowReport>}
+     */
+    public ObservableList<BorrowReport> findByInput(String col, String value, String status) {
+        return FXCollections.observableList(this.reportRepository.findByInput(col, value, status));
     }
 }

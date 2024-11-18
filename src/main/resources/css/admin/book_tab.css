@@ -1,15 +1,5 @@
 /* book_tab.css */
 
-/* Search TextField */
-#searchBookTextField {
-    -fx-background-color: #f9f9f9;
-    -fx-background-radius: 10;
-    -fx-border-color: #2dadf8;
-    -fx-border-radius: 10;
-    -fx-border-width: 2px;
-}
-
-
 /* css cho màu nền */
 .pane {
     -fx-background-color: #d8feff;

@@ -2,6 +2,7 @@ package app.repository;
 
 import app.config.DbConfig;
 import app.domain.User;
+import com.mysql.cj.jdbc.result.UpdatableResultSet;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -314,5 +315,30 @@ public class UserRepository implements CrudRepository<User, String> {
             System.out.println("Error updating user: " + e.getMessage());
             return false;
         }
+    }
+
+    public List<User> findByInput(String col, String value) {
+        List<User> list = new ArrayList<>();
+        String query = "SELECT * FROM user WHERE " + col + " LIKE ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, "%" + value +"%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(new User(resultSet.getString("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("password"),
+                        resultSet.getString("role"),
+                        resultSet.getString("name"),
+                        resultSet.getString("address"),
+                        resultSet.getString("email"),
+                        resultSet.getString("phoneNumber")));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println("error in findAll function in User repo");
+            System.out.println(e.getMessage());
+        }
+        return list;
     }
 }

@@ -2,7 +2,10 @@ package app.controller.admin.Panel;
 
 import java.util.List;
 
+import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.ShowAlert;
+import app.service.authService.SessionService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,8 +40,11 @@ public class SidebarController implements BaseController {
     private static int ISSUEBOOK_BUTTON = 3;
     private static int ALL_ISSUEBOOK_BUTTON = 4;
     private static int SETTING_BUTTON = 5;
-
+    private static int LOGOUT_BUTTON = 6;
     private static int currButton = HOME_BUTTON;
+
+    private ShowAlert showAlert;
+    private SessionService sessionService;
 
     /**
      * Click button event
@@ -63,6 +69,11 @@ public class SidebarController implements BaseController {
         } else if (e.getSource() == settingsButton) {
             currButton = SETTING_BUTTON;
             new ChangeTabController().settingTab();
+        } else if (e.getSource() == signOutButton) {
+            currButton = LOGOUT_BUTTON;
+            showAlert.showAlert("Log out successfully!", "success");
+            sessionService.clearWhenLogout();
+            FXMLResolver.getInstance().renderScene("auth/login");
         }
     }
 
@@ -70,6 +81,8 @@ public class SidebarController implements BaseController {
     public void initialize() {
         buttons = List.of(homeButton, booksButton, usersButton,
                 issueBooksButton, allIssueBooksButton, settingsButton);
+        showAlert = new ShowAlert();
+        sessionService = new SessionService();
         setStateButton();
     }
 

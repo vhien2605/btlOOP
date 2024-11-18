@@ -1,5 +1,6 @@
 package app.service.mainService;
 
+import java.util.List;
 import java.util.Optional;
 
 import app.domain.Book;
@@ -82,5 +83,9 @@ public class BookService {
      */
     public boolean deleteBook(String id) {
         return this.bookRepository.deleteById(id);
+    }
+    
+    public ObservableList<Book> search(String col, String value) {
+        return FXCollections.observableList(this.bookRepository.findByInput(col, value));
     }
 }
