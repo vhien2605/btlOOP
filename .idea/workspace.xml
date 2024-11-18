@@ -5,15 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/domain/DTO/SurfaceUserDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/MainSettingController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/Panel/SidebarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/Panel/SidebarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/PasswordSettingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/SettingTab/PasswordSettingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/BookDetail/BookDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/BookDetail/BookDetailController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/helper/ShowAlert.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/helper/ShowAlert.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/staticLayout/sidebar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/staticLayout/sidebar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -220,16 +219,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="complete BookRepository" />
     <option name="LAST_COMMIT_MESSAGE" value="complete BookRepository" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
