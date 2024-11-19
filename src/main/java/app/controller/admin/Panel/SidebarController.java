@@ -40,7 +40,6 @@ public class SidebarController implements BaseController {
     private static int ISSUEBOOK_BUTTON = 3;
     private static int ALL_ISSUEBOOK_BUTTON = 4;
     private static int SETTING_BUTTON = 5;
-    private static int LOGOUT_BUTTON = 6;
     private static int currButton = HOME_BUTTON;
 
     private ShowAlert showAlert;
@@ -70,7 +69,7 @@ public class SidebarController implements BaseController {
             currButton = SETTING_BUTTON;
             new ChangeTabController().settingTab();
         } else if (e.getSource() == signOutButton) {
-            currButton = LOGOUT_BUTTON;
+            currButton = HOME_BUTTON;
             showAlert.showAlert("Log out successfully!", "success");
             sessionService.clearWhenLogout();
             FXMLResolver.getInstance().renderScene("auth/login");
