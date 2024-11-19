@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.controller.admin.Panel.SidebarController;
 import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.domain.BorrowReport;
@@ -41,6 +40,9 @@ public class MainBookLoanController {
 
     @FXML
     Button updateButton, comeBackButton, exportButton;
+
+    @FXML
+    Pane pane_data;
 
     BorrowReport borrowReport;
 
