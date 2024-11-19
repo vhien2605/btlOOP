@@ -14,6 +14,11 @@ module app {
     requires java.desktop;
     requires mysql.connector.java;
 
+    requires kernel;
+    requires layout;
+    requires io;
+    requires javafx.swing;
+
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;
     opens app.controller.admin.BookTab to javafx.fxml;

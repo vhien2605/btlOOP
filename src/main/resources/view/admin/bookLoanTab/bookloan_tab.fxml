@@ -35,7 +35,7 @@
                   </Pane>
                </top>
                <center>
-                  <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" BorderPane.alignment="CENTER">
+                  <Pane fx:id="pane_data" prefHeight="200.0" prefWidth="200.0" styleClass="pane" BorderPane.alignment="CENTER">
                      <children>
                         <Pane layoutY="-3.0" prefHeight="34.0" prefWidth="950.0" styleClass="header_pane">
                            <children>
