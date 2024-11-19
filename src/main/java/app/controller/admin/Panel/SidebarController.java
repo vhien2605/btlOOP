@@ -66,7 +66,6 @@ public class SidebarController implements BaseController {
             currButton = ALL_ISSUEBOOK_BUTTON;
             new ChangeTabController().allIssueBookTab();
         } else if (e.getSource() == settingsButton) {
-            currButton = SETTING_BUTTON;
             new ChangeTabController().settingTab();
         } else if (e.getSource() == signOutButton) {
             currButton = HOME_BUTTON;
