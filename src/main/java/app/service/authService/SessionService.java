@@ -74,6 +74,9 @@ public class SessionService {
             localProp.load(local);
             serverProp.load(server);
             String sessionId = localProp.getProperty("sessionId");
+            if (sessionId == null) {
+                throw new SessionException("Session is not found!");
+            }
             String sessionValue = serverProp.getProperty(sessionId);
             if (sessionValue == null) {
                 throw new SessionException("Session is invalid!");
@@ -81,7 +84,7 @@ public class SessionService {
             return sessionValue;
         } catch (FileNotFoundException ex) {
             System.out.println(ex.getMessage());
-            throw new SessionException("Session not found!");
+            throw new SessionException("Session is not found!");
         } catch (IOException e) {
             System.out.println(e.getMessage());
             throw new SessionException("Session is invalid!");

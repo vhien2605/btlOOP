@@ -41,4 +41,10 @@ public class ReportRepositoryTest {
         boolean check = this.reportRepository.updateOne(reportTest);
         Assertions.assertTrue(check);
     }
+
+    @Test
+    public void findByOneColumnTest() {
+        List<BorrowReport> list = this.reportRepository.findByOneColumn("userId", "23020064");
+        Assertions.assertEquals(4, list.size());
+    }
 }

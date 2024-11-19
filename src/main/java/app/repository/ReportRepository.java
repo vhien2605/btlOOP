@@ -297,4 +297,38 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
         }
         return list;
     }
+
+    /**
+     * find by one column method.
+     *
+     * @param col   col
+     * @param value value
+     * @return {@code List<BorrowReport>}
+     */
+    public List<BorrowReport> findByOneColumn(String col, String value) {
+        List<BorrowReport> list = new ArrayList<>();
+        String query = "SELECT * FROM borrow_report WHERE " + col + " = ?";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+            preparedStatement.setString(1, value);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                list.add(new BorrowReport(
+                        resultSet.getInt("id"),
+                        resultSet.getString("userId"),
+                        resultSet.getString("bookId"),
+                        resultSet.getString("borrowDate"),
+                        resultSet.getString("returnDate"),
+                        resultSet.getString("expectedReturnDate"),
+                        resultSet.getString("status"),
+                        resultSet.getString("qrcodeUrl")
+                ));
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
+    }
 }

@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/MainIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/IssueBookTab/MainIssueController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/changePassword.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/changePassword.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +65,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.App.executor": "Run",
-    "Application.AppAdmin.executor": "Debug",
+    "Application.AppAdmin.executor": "Run",
     "Application.AppUser.executor": "Run",
     "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
     "JUnit.AuthServiceTest.executor": "Run",
@@ -74,6 +75,7 @@
     "JUnit.BookRepositoryTest.testFindAll.executor": "Run",
     "JUnit.BookServiceTest.executor": "Run",
     "JUnit.ReportRepositoryTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.findByOneColumnTest.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
     "JUnit.UserRepositoryTest.findByUsernameTest.executor": "Run",
     "JUnit.UserServiceTest.executor": "Run",
@@ -94,7 +96,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.ReportRepositoryTest.findByOneColumnTest">
     <configuration name="AuthServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
@@ -110,22 +112,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AuthServiceTest.changePasswordServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.AuthServiceTest" />
-      <option name="METHOD_NAME" value="changePasswordServiceTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="AuthServiceTest.testHandleUpdatePassword" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
@@ -137,6 +123,22 @@
       <option name="PACKAGE_NAME" value="service" />
       <option name="MAIN_CLASS_NAME" value="service.AuthServiceTest" />
       <option name="METHOD_NAME" value="testHandleUpdatePassword" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReportRepositoryTest.findByOneColumnTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repository" />
+      <option name="MAIN_CLASS_NAME" value="repository.ReportRepositoryTest" />
+      <option name="METHOD_NAME" value="findByOneColumnTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,11 +178,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReportRepositoryTest.findByOneColumnTest" />
         <item itemvalue="JUnit.AuthServiceTest" />
         <item itemvalue="JUnit.AuthServiceTest.testHandleUpdatePassword" />
         <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
         <item itemvalue="JUnit.UserServiceTest.findByUsernameTest" />
-        <item itemvalue="JUnit.AuthServiceTest.changePasswordServiceTest" />
       </list>
     </recent_temporary>
   </component>
