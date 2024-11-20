@@ -10,12 +10,12 @@
 
 <Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" stylesheets="@../../../css/admin/sidebar.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.SettingsSidebarController">
     <children>
-        <Button fx:id="profileButton" layoutY="238.0" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="49.0" prefWidth="150.0" text="Profile">
+        <Button fx:id="profileButton" layoutY="159.0" mnemonicParsing="false" onAction="#handleProfileButton" prefHeight="49.0" prefWidth="150.0" text="Profile">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <Button fx:id="passwordButton" layoutX="-1.0" layoutY="287.0" mnemonicParsing="false" onAction="#handlePasswordButton" prefHeight="49.0" prefWidth="150.0" text="Password">
+        <Button fx:id="passwordButton" layoutX="-1.0" layoutY="208.0" mnemonicParsing="false" onAction="#handlePasswordButton" prefHeight="49.0" prefWidth="150.0" text=" Password">
             <font>
                 <Font size="16.0" />
             </font>
@@ -26,15 +26,15 @@
             </font>
         </Label>
         <FontAwesomeIconView glyphName="USER" layoutX="48.0" layoutY="76.0" size="6em" text="" />
-        <Line endX="116.00003051757812" endY="-1.52587890625E-5" layoutX="32.0" layoutY="237.0" startX="-33.99999237060547" startY="-1.52587890625E-5" />
-        <FontAwesomeIconView glyphName="HOME" layoutX="14.0" layoutY="269.0" size="1.7em" text="" />
-        <FontAwesomeIconView glyphName="BOOK" layoutX="14.0" layoutY="319.0" size="1.7em" text="" wrappingWidth="18.942855834960938" />
+        <Line endX="116.00003051757812" endY="-1.52587890625E-5" layoutX="34.0" layoutY="159.0" startX="-33.99999237060547" startY="-1.52587890625E-5" />
+        <FontAwesomeIconView glyphName="INFO" layoutX="15.0" layoutY="190.0" size="1.7em" />
+        <FontAwesomeIconView glyphName="LOCK" layoutX="12.0" layoutY="239.0" size="1.7em" wrappingWidth="18.942855834960938" />
         <Button fx:id="backButton" layoutX="-1.0" layoutY="601.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="49.0" prefWidth="150.0" text="Back">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
-        <FontAwesomeIconView glyphName="SIGN_OUT" layoutX="14.0" layoutY="633.0" size="1.7em" />
+        <FontAwesomeIconView glyphName="REPLY_ALL" layoutX="14.0" layoutY="633.0" size="1.7em" />
         <GlyphsStack />
         <GlyphsStack />
     </children>

@@ -1,3 +1,8 @@
+/* css cho màu nền */
+.pane {
+    -fx-background-color: #d8feff;
+}
+
 /* General styling for labels */
 #profileDetail {
     -fx-font-size: 24px;
@@ -39,19 +44,15 @@
     -fx-padding: 20px;
 }
 
-/* Styling for the header */
-.top-pane {
-    -fx-background-color: #1d3ec4; /* Blue color */
+/* Styling for pane containing profile details */
+#pane_profile,#pane_contact_info  {
+    -fx-background-color: #fafafa; /* Nền sáng nhẹ */
+    -fx-border-color: #ef5f5f; /* Viền xanh nhạt */
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0.2, 3, 3);
     -fx-padding: 20px;
+    -fx-spacing: 15px;
 }
 
-.top-pane Label {
-    -fx-text-fill: white;
-    -fx-font-size: 30px;
-    -fx-font-weight: bold;
-}
-
-/* Styling the borderpane in the center */
-.center-borderpane {
-    -fx-background-color: #f0f4ff; /* Soft blue background */
-}

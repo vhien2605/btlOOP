@@ -76,7 +76,7 @@ public class ReportService {
 
     /**
      * Find {@link BorrowReport} .
-     * 
+     *
      * @param col    Col.
      * @param value  Col's value.
      * @param status Status of the Report.
@@ -84,5 +84,16 @@ public class ReportService {
      */
     public ObservableList<BorrowReport> findByInput(String col, String value, String status) {
         return FXCollections.observableList(this.reportRepository.findByInput(col, value, status));
+    }
+
+    /**
+     * find by one column service.
+     *
+     * @param col   col
+     * @param value value
+     * @return {@code ObservableList<BorrowReport>}
+     */
+    public ObservableList<BorrowReport> findByOneColumn(String col, String value) {
+        return FXCollections.observableList(this.reportRepository.findByOneColumn(col, value));
     }
 }
