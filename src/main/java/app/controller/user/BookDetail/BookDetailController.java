@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -37,11 +38,12 @@ public class BookDetailController implements BaseController {
     @FXML
     private DatePicker expectedReturnDatePicker;
 
+    @FXML
+    private Label bookNameLabel;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
-
-    private SurfaceUserDTO user;
 
     private Book book;
 
@@ -74,7 +76,7 @@ public class BookDetailController implements BaseController {
         }
         BorrowReport borrowReport = new BorrowReport(
                 0,
-                user.getId(),
+                MainHomePageController.user.getId(),
                 book.getId(),
                 borrowDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 null,
@@ -112,14 +114,7 @@ public class BookDetailController implements BaseController {
     public void initialize() {
         showAlert = new ShowAlert();
         reportService = new ReportService(new ReportRepository(), null, null);
-        getUserInfo();
     }
 
-    private void getUserInfo() {
-        try {
-            user = MainHomePageController.authService.getCurrentUser();
-        } catch (SessionException exception) {
-            FXMLResolver.getInstance().renderScene("auth/login");
-        }
-    }
+    
 }

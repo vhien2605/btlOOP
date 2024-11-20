@@ -53,8 +53,6 @@ public class SetUpApp {
      * It also sets up the authentication service for the user page.
      */
     private static void setUpAppUser() {
-        MainHomePageController
-                .getAuthService(new AuthenticationService(new SessionService(), new UserService(new UserRepository())));
         FXMLResolver.getInstance().renderScene("user/homeTab/home");
     }
 }
