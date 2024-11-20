@@ -25,47 +25,53 @@ import javafx.scene.layout.VBox;
 
 public class MainHomePageController implements BaseController{
     @FXML
-    protected VBox discoverMainPage;
+    public VBox discoverMainPage;
 
     @FXML
-    protected TilePane yourBooksMainPage;
+    public TilePane yourBooksMainPage;
 
     @FXML
-    protected Button allButtonYourBooks;
+    public Button allButtonYourBooks;
 
     @FXML
-    protected Button pendingButtonYourBooks;
+    public Button pendingButtonYourBooks;
 
     @FXML 
-    protected Button borrowingButtonYourBooks;
+    public Button borrowingButtonYourBooks;
 
     @FXML
-    protected Button returnedButtonYourBooks;
+    public Button returnedButtonYourBooks;
 
-    protected ObservableList<String> discoverBookSectionTitleList;
+    public ObservableList<String> discoverBookSectionTitleList;
 
-    public static ObservableList<BorrowReport> allBorrowReportToThisCurrentUser;
+    public ObservableList<BorrowReport> allBorrowReportToThisCurrentUser;
 
-    public static ObservableList<Book> allStatusBookList;
+    public ObservableList<Book> allStatusBookList;
 
-    public static ObservableList<Book> pendingBookList;
+    public ObservableList<Book> pendingBookList;
 
-    public static ObservableList<Book> borrowingBookList;
+    public ObservableList<Book> borrowingBookList;
 
-    public static ObservableList<Book> returnedBookList;
+    public ObservableList<Book> returnedBookList;
 
     public static SurfaceUserDTO user;
 
-    public static AuthenticationService authService;
+    public AuthenticationService authService;
 
-    public static ReportService reportService;
+    public ReportService reportService;
 
-    public static BookService bookService;
+    public BookService bookService;
 
+    private DiscoverTabController discoverTabController;
+
+    private YourBooksTabController yourBooksTabController;
 
     private void DivideToOtherControllers() {
-        new DiscoverTabController(this).initialize();
-        new YourBooksTabController(this).initialize();
+        discoverTabController = new DiscoverTabController(this);
+        discoverTabController.initialize();
+
+        yourBooksTabController = new YourBooksTabController(this);
+        yourBooksTabController.initialize();
     }
 
     @Override
@@ -81,13 +87,13 @@ public class MainHomePageController implements BaseController{
 
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == allButtonYourBooks) {
-            System.out.println("All button is clicked");
+            yourBooksTabController.handleAllButtonIsClicked();
         } else if (e.getSource() == pendingButtonYourBooks) {
-            System.out.println("Pending button is clicked");
+            yourBooksTabController.handlePendingButtonIsClicked();
         } else if (e.getSource() == borrowingButtonYourBooks) {
-            System.out.println("Borrowing button is clicked");
+            yourBooksTabController.handleBorrowingButtonIsClicked();
         } else if (e.getSource() == returnedButtonYourBooks) {
-            System.out.println("Returned button is clicked");
+            yourBooksTabController.handleReturnedButtonIsClicked();
         }
     }
 
@@ -99,11 +105,11 @@ public class MainHomePageController implements BaseController{
         for (BorrowReport borrowReport : allBorrowReportToThisCurrentUser) {
             Book book = bookService.findByISBN(borrowReport.getBookId());
             allStatusBookList.add(book);
-            if (borrowReport.getStatus() == BorrowReport.PENDING) {
+            if (borrowReport.getStatus().equals(BorrowReport.PENDING)) {
                 pendingBookList.add(book);
-            } else if (borrowReport.getStatus() == BorrowReport.BORROWED) {
+            } else if (borrowReport.getStatus().equals(BorrowReport.BORROWED)) {
                 borrowingBookList.add(book);
-            } else if (borrowReport.getStatus() == BorrowReport.RETURNED) {
+            } else if (borrowReport.getStatus().equals(BorrowReport.RETURNED)) {
                 returnedBookList.add(book);
             }
         }

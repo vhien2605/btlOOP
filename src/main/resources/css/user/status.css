@@ -1,0 +1,14 @@
+#pending {
+    -fx-font-weight: bold;
+    -fx-text-fill: purple;
+}
+
+#borrowing {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(16, 255, 8);
+}
+
+#returned {
+    -fx-font-weight: bold;
+    -fx-text-fill: rgb(16, 8, 255);
+}
