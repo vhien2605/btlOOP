@@ -1,5 +1,6 @@
 package app.controller.user.HomePage;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 import app.config.ViewConfig.FXMLResolver;
@@ -8,14 +9,17 @@ import app.controller.user.BookDetail.BookDetailController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
 
 public class Card implements BaseController{
+    
     @FXML
     private Button cardButton;
 
@@ -28,13 +32,37 @@ public class Card implements BaseController{
     @FXML
     private Label authorName;
 
+    @FXML
+    private VBox cardVBox;
+
     private Book book;
+
+    private String status;
+
+    private String previousPath;
 
     public void loadBook(Book book) {
         this.book = book;
+        this.status = "returned";
+        bookName.setText(book.getName());
+        authorName.setText(book.getAuthor());
+        loadImage(book);              
+    }
+
+    public void loadBookWithStatus(Book book, String status) {
+        this.book = book;
+        this.status = status;
         bookName.setText(book.getName());
         authorName.setText(book.getAuthor());
         loadImage(book);  
+        try {
+            FXMLLoader statusloader = new FXMLLoader(getClass().getResource("/view/user/status/" + status + ".fxml"));
+            Label statusLabel = statusloader.load();
+            cardVBox.getChildren().add(statusLabel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+                
     }
 
      private void loadImage(Book book) {
@@ -56,7 +84,7 @@ public class Card implements BaseController{
     private void loadBookDetail(Book book) {
         FXMLResolver.getInstance().renderScene("user/bookdetail/bookdetail");
         BookDetailController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.loadBook(book);
+        controller.loadBookWithStatus(book, status);
     }
 
     @Override

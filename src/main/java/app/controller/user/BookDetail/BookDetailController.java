@@ -47,8 +47,11 @@ public class BookDetailController implements BaseController {
 
     private Book book;
 
-    public void loadBook(Book book) {
+    private String status;
+
+    public void loadBookWithStatus(Book book, String status) {
         this.book = book;
+        this.status = status;
         loadImage(book);
     }
 
