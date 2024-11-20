@@ -5,14 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/GMailer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/SessionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/changePassword.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/admin/settingCss/changePassword.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/admin/settingTab/change_password.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +64,7 @@
     "Application.App.executor": "Run",
     "Application.AppAdmin.executor": "Run",
     "Application.AppUser.executor": "Run",
+    "Application.GMailer.executor": "Run",
     "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
     "JUnit.AuthServiceTest.executor": "Run",
     "JUnit.AuthServiceTest.testHandleUpdatePassword.executor": "Run",
@@ -96,7 +94,20 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReportRepositoryTest.findByOneColumnTest">
+  <component name="RunManager" selected="Application.GMailer">
+    <configuration name="GMailer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.service.subService.GMailer" />
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.service.subService.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AuthServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
@@ -160,29 +171,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserServiceTest.findByUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
-      <option name="METHOD_NAME" value="findByUsernameTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.GMailer" />
         <item itemvalue="JUnit.ReportRepositoryTest.findByOneColumnTest" />
         <item itemvalue="JUnit.AuthServiceTest" />
         <item itemvalue="JUnit.AuthServiceTest.testHandleUpdatePassword" />
         <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
-        <item itemvalue="JUnit.UserServiceTest.findByUsernameTest" />
       </list>
     </recent_temporary>
   </component>
