@@ -22,22 +22,24 @@ public class PdfExportService {
 
     /**
      * 
-     * @param pane       Container in javafx.
-     * @param outputPath User selected path to save the file.
+     * @param pane Container in javafx.
      * 
-     * @author minhhai205 <3 MNg.
+     * @author minhhai205MNgc.
      */
-    public static void exportPaneToPdf(Node pane, String outputPath) {
+    public static File exportPaneToPdf(Node pane) {
         // Take a photo from pane
         WritableImage snapshot = pane.snapshot(null, null);
 
         try {
             // Save temporary image to PNG file
-            File tempImageFile = new File("pane_snapshot.png");
+            File tempImageFile = File.createTempFile("pane_snapshot", ".png");
             ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", tempImageFile);
 
+            // Create temporary PDF file
+            File tempPdfFile = File.createTempFile("exported_pane", ".pdf");
+
             // Create PDF writer
-            PdfWriter writer = new PdfWriter(new FileOutputStream(outputPath));
+            PdfWriter writer = new PdfWriter(new FileOutputStream(tempPdfFile));
             PdfDocument pdfDocument = new PdfDocument(writer);
             Document document = new Document(pdfDocument);
 
@@ -51,12 +53,15 @@ public class PdfExportService {
 
             document.close();
 
-            System.out.println("Xuất PDF thành công: " + outputPath);
-
-            // Delete temporary image files
+            // Delete temporary image file
             tempImageFile.delete();
+
+            System.out.println("PDF exported successfully to temporary file: " + tempPdfFile.getAbsolutePath());
+
+            return tempPdfFile;
         } catch (IOException e) {
             e.printStackTrace();
+            return null;
         }
     }
 }
