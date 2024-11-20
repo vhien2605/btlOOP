@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 public class DiscoverTabController {
@@ -22,9 +23,8 @@ public class DiscoverTabController {
      * displays to mainPage
      */
     private void getBookSectionList() {
-        homeController.disCoverBookSectionTitleList = FXCollections.observableArrayList();
-        homeController.disCoverBookSectionTitleList.addAll(
-            "Top Rated",
+        homeController.discoverBookSectionTitleList = FXCollections.observableArrayList();
+        homeController.discoverBookSectionTitleList.addAll(
             "History",
             "Science",
             "Fiction",
@@ -39,10 +39,10 @@ public class DiscoverTabController {
     }
 
     private void loadSection() {
-        for (String bookSectionTitle : homeController.disCoverBookSectionTitleList) {
+        for (String bookSectionTitle : homeController.discoverBookSectionTitleList) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/bookdiscoversection.fxml"));
-                VBox section = loader.load();
+                AnchorPane section = loader.load();
                 homeController.discoverMainPage.getChildren().add(section);
                 BookDiscoverSection controller = loader.getController();
                 controller.InitBookSectionByTitle(bookSectionTitle);

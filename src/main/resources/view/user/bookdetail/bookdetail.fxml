@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdescription.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookDetail.BookDetailController">
+<BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdetail.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookDetail.BookDetailController">
    <top>
       <fx:include source="../staticLayout/header.fxml" />
    </top>
@@ -36,8 +36,8 @@
                      </children>
                   </Pane>
                   <Button fx:id="backToHomeButton" layoutX="875.0" layoutY="17.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="31.0" prefWidth="85.0" text="Home" />
-                  <Label layoutX="332.0" layoutY="92.0" prefHeight="36.0" prefWidth="736.0" text="Book name here" />
-                  <Label layoutX="332.0" layoutY="132.0" prefHeight="32.0" prefWidth="737.0" text="Author name here" />
+                  <Label layoutX="333.0" layoutY="100.0" prefHeight="36.0" prefWidth="736.0" text="Book name here" />
+                  <Label layoutX="386.0" layoutY="154.0" prefHeight="32.0" prefWidth="737.0" text="Author name here" />
                   <Label layoutX="42.0" layoutY="441.0" prefHeight="33.0" prefWidth="178.0" text="Borrow book request" />
                   <Separator layoutX="42.0" layoutY="472.0" prefHeight="10.0" prefWidth="223.0" />
                   <DatePicker fx:id="borrowDatePicker" layoutX="140.0" layoutY="493.0" prefHeight="25.0" prefWidth="123.0" />

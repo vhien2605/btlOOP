@@ -22,7 +22,7 @@ public class BookDiscoverSection implements BaseController {
     /**
      * The limit number of books that can be displayed in a single section.
      */
-    private static final int numberOfBooksInEachSection = 6;
+    private static final int numberOfBooksInEachSection = 5;
 
     @FXML
     private Label bookDisplaySectionTitle;

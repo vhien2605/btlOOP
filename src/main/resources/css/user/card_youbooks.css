@@ -1,0 +1,24 @@
+#cardButton {
+    -fx-padding: 0;
+    -fx-background-color: transparent; 
+    -fx-border-color: transparent;     
+    -fx-border-width: 0px;  
+    -fx-background-radius: 0;
+    
+}
+
+.card {
+    -fx-background-color: rgb(241, 247, 249); 
+    -fx-border-color: rgb(207, 201, 201);     
+    -fx-border-width: 1px;     
+    -fx-border-radius: 10px;
+    -fx-background-radius: 15;
+}
+
+#bookName {
+    -fx-font-weight: bold;
+}
+
+#authorName {
+    -fx-text-fill: rgba(47, 46, 46, 0.938);
+}
