@@ -13,6 +13,7 @@ import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+import app.service.subService.FileService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class MainAllIssueController implements BaseController {
     TextField searchBoxTextField;
 
     @FXML
-    Button allButton, pendingButton, borrowedButton, returnedButton;
+    Button allButton, pendingButton, borrowedButton, returnedButton, scanQRButton;
 
     List<Button> buttons;
 
@@ -47,6 +48,8 @@ public class MainAllIssueController implements BaseController {
     UserService userService;
 
     BookService bookService;
+
+    FileService fileService;
 
     ObservableList<BorrowReport> listBorrowReport;
 
@@ -70,6 +73,7 @@ public class MainAllIssueController implements BaseController {
         userService = new UserService(new UserRepository());
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(), userService, bookService);
+        fileService = new FileService();
 
         new AllSetUp().initMainAllIssuedCtrl(this);
 

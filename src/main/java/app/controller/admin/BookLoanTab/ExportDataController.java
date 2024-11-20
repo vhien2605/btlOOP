@@ -1,6 +1,8 @@
 package app.controller.admin.BookLoanTab;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.nio.file.Files;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.service.subService.PdfExportService;
@@ -19,26 +21,35 @@ public class ExportDataController {
 
     void exportData() {
         try {
-            FileChooser fileChooser = new FileChooser();
+            File tempPdfFile = PdfExportService.exportPaneToPdf(mainBookLoanCtrl.pane_data);
+            if (tempPdfFile == null) {
+                System.err.println("Không thể tạo file PDF tạm.");
+                return;
+            }
 
+            FileChooser fileChooser = new FileChooser();
             FileChooser.ExtensionFilter pdfFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)", "*.pdf");
             fileChooser.getExtensionFilters().add(pdfFilter);
-
             fileChooser.setInitialFileName("output.pdf");
 
-            File file = fileChooser.showSaveDialog(FXMLResolver.getInstance().getStage());
-
-            if (file != null) {
-                String filePath = file.getAbsolutePath();
-                if (!filePath.endsWith(".pdf")) {
-                    filePath += ".pdf";
+            File selectedFile = fileChooser.showSaveDialog(FXMLResolver.getInstance().getStage());
+            if (selectedFile != null) {
+                String targetPath = selectedFile.getAbsolutePath();
+                if (!targetPath.endsWith(".pdf")) {
+                    targetPath += ".pdf";
                 }
 
-                PdfExportService.exportPaneToPdf(mainBookLoanCtrl.pane_data, filePath);
+                File targetFile = new File(targetPath);
+                try (FileOutputStream outputStream = new FileOutputStream(targetFile)) {
+                    Files.copy(tempPdfFile.toPath(), outputStream);
+                    System.out.println("Xuất PDF thành công: " + targetPath);
+                }
+
+                tempPdfFile.delete();
             }
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Đã xảy ra lỗi khi xuất dữ liệu.");
+            System.err.println("Lỗi xuất dữ liệu");
         }
     }
 }
