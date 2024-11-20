@@ -44,3 +44,17 @@
 .search-text-field:hover {
     -fx-border-color: #3b82f6;
 }
+
+#scanQRButton {
+    -fx-background-color: #39c140;
+    -fx-text-fill: white;
+
+}
+
+/* Hiệu ứng hover cho từng button */
+#scanQRButton:hover {
+    -fx-background-color: #67a533;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}

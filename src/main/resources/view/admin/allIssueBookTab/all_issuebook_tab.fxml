@@ -47,6 +47,10 @@
                         <Button id="pendingButton" fx:id="pendingButton" layoutX="109.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Pending" />
                         <Button id="borrowButton" fx:id="borrowedButton" layoutX="198.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="82.0" text="Borrowed" />
                         <Button id="returnButton" fx:id="returnedButton" layoutX="294.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Returned" />
+                        <Button fx:id="scanQRButton" layoutX="708.0" layoutY="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Scan QR">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
                      </children>
                   </Pane>
                </top>
