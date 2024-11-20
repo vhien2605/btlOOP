@@ -30,10 +30,11 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.Message;
 
 public class GMailer {
-    private static final String TEST_EMAIL = "23020064@vnu.edu.vn";
+    private final String TEST_EMAIL;
     private final Gmail service;
 
-    public GMailer() throws Exception {
+    public GMailer(String targetEmail) throws Exception {
+        TEST_EMAIL = targetEmail;
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
         // Create the gmail API client
@@ -119,16 +120,5 @@ public class GMailer {
         LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
 
-    }
-
-    public static void main(String[] args) throws Exception {
-        new GMailer().sendMail("Bill mượn sách", "Xin chào quý khách hàng\n" +
-                        "\n" +
-                        "Cảm ơn bạn đã sử dụng dịch vụ thư viện online của 3HTeam chúng tôi\n" +
-                        "\n" +
-                        "Khi đến trả sách, vui lòng mang bill đến để scan thông tin\n" +
-                        "\n" +
-                        "Trân trọng cảm ơn! ",
-                new File("C:/tài liệu học kì 1 năm 2/kiến trúc máy tính/02.pdf"));
     }
 }
