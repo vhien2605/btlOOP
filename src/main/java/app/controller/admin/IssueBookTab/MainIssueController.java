@@ -41,6 +41,8 @@ public class MainIssueController {
 
     Book bookInfo;
 
+    User userInfo;
+
     public void initialize() {
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
@@ -83,6 +85,7 @@ public class MainIssueController {
     }
 
     public void setUserInfo(User user) {
+        this.userInfo = user;
         fullNameTextFiled.setText(user.getName());
         phoneNumberTextFiled.setText(user.getPhoneNumber());
         emailTextFiled.setText(user.getEmail());

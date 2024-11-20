@@ -64,6 +64,10 @@ public class MainBookLoanController {
         new AllSetup().init_function(this);
     }
 
+    public Pane getPaneData() {
+        return pane_data;
+    }
+
     public void handleComeBackButton() {
         FXMLResolver.getInstance().renderScene(previousTabPath);
     }

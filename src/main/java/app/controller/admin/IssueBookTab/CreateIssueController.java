@@ -1,8 +1,12 @@
 package app.controller.admin.IssueBookTab;
 
+import java.io.File;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.admin.BookLoanTab.MainBookLoanController;
 import app.domain.BorrowReport;
+import app.service.subService.GMailer;
+import app.service.subService.PdfExportService;
 
 public class CreateIssueController {
     final MainIssueController mainIssueCtrl;
@@ -36,8 +40,36 @@ public class CreateIssueController {
 
             MainBookLoanController bookLoanController = resolver.getLoader().getController();
             bookLoanController.renderData(data, currentPath);
+
+            sendMail(bookLoanController);
         } else {
             mainIssueCtrl.showAlert.showAlert("Create fail new borrow report !", "error");
+        }
+
+    }
+
+    void sendMail(MainBookLoanController bookLoanController) {
+        File tempPdfFile = PdfExportService.exportPaneToPdf(bookLoanController.getPaneData());
+
+        String email = mainIssueCtrl.userInfo.getEmail();
+
+        if (tempPdfFile != null) {
+            try {
+                new GMailer(email).sendMail("Bill mượn sách", "Xin chào quý khách hàng\n" +
+                        "\n" +
+                        "Cảm ơn bạn đã sử dụng dịch vụ thư viện online của 3HTeam chúng tôi\n" +
+                        "\n" +
+                        "Khi đến trả sách, vui lòng mang bill đến để scan thông tin\n" +
+                        "\n" +
+                        "Trân trọng cảm ơn! ",
+                        tempPdfFile);
+                System.out.println("ok");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            System.out.println("loi");
         }
 
     }

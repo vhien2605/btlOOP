@@ -62,8 +62,7 @@ public class GMailer {
         email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(TEST_EMAIL));
         email.setSubject(subject);
 
-
-        //create file in body email
+        // create file in body email
         // Create the message body part
         MimeBodyPart messageBodyPart = new MimeBodyPart();
         messageBodyPart.setText(message);
