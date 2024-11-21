@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Tab?>
@@ -19,91 +20,95 @@
       <fx:include source="../staticLayout/header.fxml" />
    </top>
    <center>
-      <TabPane fx:id="tabpane" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/user/home.css" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-            <Tab text="Dashboard">
-               <content>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
+      <AnchorPane prefHeight="620.0" prefWidth="1110.0" BorderPane.alignment="CENTER">
+         <children>
+            <TabPane fx:id="tabpane" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/home.css" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Dashboard">
                      <content>
-                        <VBox fx:id="discoverMainPage1" prefHeight="5000.0" prefWidth="1100.0">
-                           <children>
-                              <Pane fx:id="discoverBanner1" prefHeight="93.0" prefWidth="1100.0" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-               </content>
-            </Tab>
-          <Tab text="Discover">
-               <content>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
-                     <content>
-                        <VBox fx:id="discoverMainPage" prefHeight="5000.0" prefWidth="1100.0">
-                           <children>
-                              <Pane fx:id="discoverBanner" prefHeight="93.0" prefWidth="1100.0" />
-                           </children>
-                        </VBox>
-                     </content>
-                  </ScrollPane>
-               </content>
-          </Tab>
-            <Tab text="Search books">
-               <content>
-                  <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
-                     <content>
-                        <VBox prefHeight="5000.0" prefWidth="1100.0">
-                           <children>
-                              <AnchorPane prefHeight="41.0" prefWidth="1100.0">
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
+                           <content>
+                              <VBox fx:id="discoverMainPage1" prefHeight="5000.0" prefWidth="1100.0">
                                  <children>
-                                    <TextField fx:id="searchTextFiled1" layoutX="387.0" layoutY="5.0" prefHeight="34.0" prefWidth="330.0" promptText="Search" />
-                                    <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="360.0" layoutY="26.0" size="1.7em" text="" />
+                                    <Pane fx:id="discoverBanner1" prefHeight="93.0" prefWidth="1100.0" />
                                  </children>
-                              </AnchorPane>
-                              <Pane prefHeight="38.0" prefWidth="1100.0">
-                                 <children>
-                                    <Separator layoutX="18.0" prefHeight="17.0" prefWidth="1039.0" />
-                                 </children>
-                              </Pane>
-                           </children>
-                        </VBox>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
                      </content>
-                  </ScrollPane>
-               </content>
-            </Tab>
-          <Tab text="Your books">
-               <content>
-                  <ScrollPane prefHeight="3000.0" prefWidth="1100.0">
+                  </Tab>
+                  <Tab text="Discover">
                      <content>
-                        <VBox prefHeight="3000.0" prefWidth="1100.0">
-                           <children>
-                              <Pane prefHeight="70.0" prefWidth="1100.0">
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
+                           <content>
+                              <VBox fx:id="discoverMainPage" prefHeight="5000.0" prefWidth="1100.0">
                                  <children>
-                                    <Button fx:id="pendingButtonYourBooks" layoutX="148.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Pending" />
-                                    <Button fx:id="borrowingButtonYourBooks" layoutX="237.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Borrowing" />
-                                    <Button fx:id="returnedButtonYourBooks" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Returned" />
-                                    <Button fx:id="allButtonYourBooks" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="61.0" text="All" />
-                                 </children></Pane>
-                              <TilePane fx:id="yourBooksMainPage" hgap="30.0" prefHeight="2000.0" prefWidth="1100.0" vgap="50.0">
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                                 <padding>
-                                    <Insets left="65.0" right="55.0" top="30.0" />
-                                 </padding></TilePane>
-                           </children>
-                        </VBox>
+                                    <Pane fx:id="discoverBanner" prefHeight="93.0" prefWidth="1100.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
                      </content>
-                  </ScrollPane>
-               </content>
-          </Tab>
-        </tabs>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <BorderPane.margin>
-            <Insets />
-         </BorderPane.margin>
-      </TabPane>
+                  </Tab>
+                  <Tab text="Search books">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
+                           <content>
+                              <VBox prefHeight="5000.0" prefWidth="1100.0">
+                                 <children>
+                                    <AnchorPane prefHeight="41.0" prefWidth="1100.0">
+                                       <children>
+                                          <TextField fx:id="searchTextFiled1" layoutX="387.0" layoutY="5.0" prefHeight="34.0" prefWidth="330.0" promptText="Search" />
+                                          <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="360.0" layoutY="26.0" size="1.7em" text="" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Pane prefHeight="38.0" prefWidth="1100.0">
+                                       <children>
+                                          <Separator layoutX="18.0" prefHeight="17.0" prefWidth="1039.0" />
+                                       </children>
+                                    </Pane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Your books">
+                     <content>
+                        <ScrollPane hbarPolicy="NEVER" prefHeight="3000.0" prefWidth="1100.0">
+                           <content>
+                              <VBox prefHeight="3000.0" prefWidth="1100.0">
+                                 <children>
+                                    <Pane prefHeight="70.0" prefWidth="1100.0">
+                                       <children>
+                                          <Button fx:id="pendingButtonYourBooks" layoutX="148.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Pending" />
+                                          <Button fx:id="borrowingButtonYourBooks" layoutX="237.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Borrowing" />
+                                          <Button fx:id="returnedButtonYourBooks" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Returned" />
+                                          <Button fx:id="allButtonYourBooks" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="61.0" text="All" />
+                                       </children>
+                                    </Pane>
+                                    <TilePane fx:id="yourBooksMainPage" hgap="30.0" prefHeight="2000.0" prefWidth="1100.0" vgap="50.0">
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="65.0" right="55.0" top="30.0" />
+                                       </padding>
+                                    </TilePane>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </content>
+                  </Tab>
+               </tabs>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TabPane>
+            <ChoiceBox fx:id="userButton" layoutX="1020.0" layoutY="3.0" prefHeight="25.0" prefWidth="39.0" stylesheets="@../../../css/user/userbutton.css" />
+         </children>
+      </AnchorPane>
    </center>
 
 

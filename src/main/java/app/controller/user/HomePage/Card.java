@@ -19,7 +19,10 @@ import javafx.scene.control.Label;
 
 
 public class Card implements BaseController{
-    
+    public static final String PENDING_STATUS = "pending";
+    public static final String BORROWING_STATUS = "borrowing";
+    public static final String RETURNED_STATUS = "returned";
+
     @FXML
     private Button cardButton;
 

@@ -1,0 +1,11 @@
+#userButton {
+    -fx-background-radius: 50; /* Makes the background round */
+    -fx-min-width: 50px;       /* Minimum width */
+    -fx-min-height: 50px;      /* Minimum height */
+    -fx-max-width: 50px;       /* Maximum width */
+    -fx-max-height: 50px;      /* Maximum height */
+    -fx-background-color: #7ae371; /* Background color */
+    -fx-text-fill: white;      /* Text color */
+    -fx-font-weight: bold;     /* Makes the text bold */
+    -fx-cursor: hand; 
+}

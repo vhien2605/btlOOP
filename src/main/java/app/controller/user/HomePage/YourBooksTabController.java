@@ -41,27 +41,27 @@ public class YourBooksTabController {
     public void handleAllButtonIsClicked() {
         currentButtonClicked = allButton;
         clearYourBooksMainPage();
-        renderBookListByStatus(homeController.pendingBookList, "pending");
-        renderBookListByStatus(homeController.borrowingBookList, "borrowing");
-        renderBookListByStatus(homeController.returnedBookList, "returned");
+        renderBookListByStatus(homeController.pendingBookList, Card.PENDING_STATUS);
+        renderBookListByStatus(homeController.borrowingBookList, Card.BORROWING_STATUS);
+        renderBookListByStatus(homeController.returnedBookList, Card.RETURNED_STATUS);
     }
 
     public void handlePendingButtonIsClicked() {
         currentButtonClicked = pendingButton;
         clearYourBooksMainPage();
-        renderBookListByStatus(homeController.pendingBookList, "pending");
+        renderBookListByStatus(homeController.pendingBookList, Card.PENDING_STATUS);
     }
 
     public void handleBorrowingButtonIsClicked() {
         currentButtonClicked = borrowingButton;
         clearYourBooksMainPage();
-        renderBookListByStatus(homeController.borrowingBookList, "borrowing");
+        renderBookListByStatus(homeController.borrowingBookList, Card.BORROWING_STATUS);
     }
 
     public void handleReturnedButtonIsClicked() {
         currentButtonClicked = returnedButton;
         clearYourBooksMainPage();
-        renderBookListByStatus(homeController.returnedBookList, "returned");
+        renderBookListByStatus(homeController.returnedBookList, Card.RETURNED_STATUS);
     }
 
     private void renderBookListByStatus(ObservableList<Book> bookList, String status) {

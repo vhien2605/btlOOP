@@ -8,8 +8,8 @@
 }
 
 .card {
-    -fx-background-color: rgb(241, 247, 249); 
-    -fx-border-color: rgb(207, 201, 201);     
+    -fx-background-color: white; 
+    -fx-border-color: transparent;     
     -fx-border-width: 1px;     
     -fx-border-radius: 10px;
     -fx-background-radius: 15;

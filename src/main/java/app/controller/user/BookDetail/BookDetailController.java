@@ -3,9 +3,12 @@ package app.controller.user.BookDetail;
 import java.io.InputStream;
 import java.time.format.DateTimeFormatter;
 
+import com.itextpdf.kernel.colors.Lab;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
+import app.controller.user.HomePage.Card;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
 import app.domain.BorrowReport;
@@ -19,8 +22,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class BookDetailController implements BaseController {
     @FXML
@@ -41,6 +46,27 @@ public class BookDetailController implements BaseController {
     @FXML
     private Label bookNameLabel;
 
+    @FXML
+    private Label authorNameLabel;
+
+    @FXML
+    private Label categoryLabel;
+
+    @FXML
+    private Label publisherLabel;
+
+    @FXML
+    private TextArea descriptionArea;
+
+    @FXML
+    public AnchorPane borrowRequestBox;
+
+    @FXML
+    public AnchorPane pendingBox;
+
+    @FXML
+    public AnchorPane borrowingBox;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
@@ -52,10 +78,20 @@ public class BookDetailController implements BaseController {
     public void loadBookWithStatus(Book book, String status) {
         this.book = book;
         this.status = status;
-        loadImage(book);
+        loadImage();
+        loadData();
+        loadBox();
     }
 
-    private void loadImage(Book book) {
+    private void loadData() {
+        bookNameLabel.setText(book.getName());
+        authorNameLabel.setText(book.getAuthor());
+        categoryLabel.setText(book.getCategory());
+        publisherLabel.setText(book.getBookPublisher());
+        descriptionArea.setText(book.getDescription());
+    }
+
+    private void loadImage() {
         InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
         if (inputStream == null) {
             imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
@@ -106,10 +142,10 @@ public class BookDetailController implements BaseController {
             return false;
         }
 
-        /**
-         * // TO DO : Check borrowDate < expectedReturnDate
-         */
-
+        if (!expectedReturnDatePicker.getValue().isAfter(borrowDatePicker.getValue())) {
+            showAlert.showAlert("Expected return date must be after borrow date!", "error");
+            return false;
+        }
         return true;
     }
 
@@ -119,5 +155,16 @@ public class BookDetailController implements BaseController {
         reportService = new ReportService(new ReportRepository(), null, null);
     }
 
-    
+    private void loadBox() {
+        borrowRequestBox.setVisible(false);
+        pendingBox.setVisible(false);
+        borrowingBox.setVisible(false);
+        if (status.equals(Card.RETURNED_STATUS)) {
+            borrowRequestBox.setVisible(true);
+        } else if (status.equals(Card.PENDING_STATUS)) {
+            pendingBox.setVisible(true);
+        } else if (status.equals(Card.BORROWING_STATUS)) {
+            borrowingBox.setVisible(true);
+        }
+    }
 }
