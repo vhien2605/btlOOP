@@ -1,5 +1,7 @@
 package app.controller.user.HomePage;
 
+import com.itextpdf.layout.borders.OutsetBorder;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.domain.Book;
@@ -19,11 +21,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
+import javafx.stage.PopupWindow.AnchorLocation;
 
 public class MainHomePageController implements BaseController{
+    @FXML
+    public ChoiceBox<String> userButton;
+
     @FXML
     public VBox discoverMainPage;
 
@@ -66,12 +74,17 @@ public class MainHomePageController implements BaseController{
 
     private YourBooksTabController yourBooksTabController;
 
+    private UserButtonController userButtonController;
+
     private void DivideToOtherControllers() {
         discoverTabController = new DiscoverTabController(this);
         discoverTabController.initialize();
 
         yourBooksTabController = new YourBooksTabController(this);
         yourBooksTabController.initialize();
+
+        userButtonController = new UserButtonController(this);
+        userButtonController.initialize();
     }
 
     @Override
@@ -96,7 +109,7 @@ public class MainHomePageController implements BaseController{
             yourBooksTabController.handleReturnedButtonIsClicked();
         }
     }
-
+    
     private void TransferBorrowReportToBookLists() {
         allStatusBookList = FXCollections.observableArrayList();
         borrowingBookList = FXCollections.observableArrayList();
