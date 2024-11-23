@@ -2,12 +2,17 @@ package app.controller.user.HomePage;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.user.BookDetail.BookDetailController;
 import app.controller.user.BookLoan.BookLoanController;
 import app.domain.Book;
+import app.domain.BorrowReport;
+import app.repository.BookRepository;
+import app.service.mainService.BookService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,15 +20,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 
 
 public class CardReport implements BaseController{
-    public static final String PENDING_STATUS = "pending";
-    public static final String BORROWING_STATUS = "borrowing";
-    public static final String RETURNED_STATUS = "returned";
-
     @FXML
     private Button cardButton;
 
@@ -45,17 +48,22 @@ public class CardReport implements BaseController{
     @FXML
     private Label returnedLabel;
 
+    private BorrowReport borrowReport;
+
     private Book book;
 
     private String status;
 
-    public void loadBookWithStatus(Book book, String status) {
-        this.book = book;
-        this.status = status;
+    private BookService bookService;
+
+    public void loadCardReport(BorrowReport borrowReport) {
+        this.borrowReport = borrowReport;
+        this.book = bookService.findByISBN(borrowReport.getBookId());
+        this.status = borrowReport.getStatus();
         bookName.setText(book.getName());
         authorName.setText(book.getAuthor());
         loadImage(book);
-        setStatus();     
+        setStatus();
     }
 
     private void loadImage(Book book) {
@@ -72,11 +80,11 @@ public class CardReport implements BaseController{
         pendingLabel.setVisible(false);
         borrowingLabel.setVisible(false);
         returnedLabel.setVisible(false);
-        if (status == PENDING_STATUS) {
+        if (status.equals(BorrowReport.PENDING)) {
             pendingLabel.setVisible(true);
-        } else if (status == BORROWING_STATUS) {
+        } else if (status.equals(BorrowReport.BORROWED)) {
             borrowingLabel.setVisible(true);
-        } else if (status == RETURNED_STATUS) {
+        } else if (status.equals(BorrowReport.RETURNED)) {
             returnedLabel.setVisible(true);
         }
     }
@@ -90,12 +98,11 @@ public class CardReport implements BaseController{
     private void loadBookLoan() {
         FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
         BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.LoadBookLoanWithBookAndStatus(book, status);
-    }
+        controller.LoadBookLoan(book, borrowReport, status);    }
 
     @Override
     public void initialize() {
-        // TODO Auto-generated method stub
+        bookService = new BookService(new BookRepository());
     }
 
     

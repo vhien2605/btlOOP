@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookLoan.BookLoanController">
@@ -117,19 +118,19 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="borrowDateTextFiled" editable="false" layoutX="60.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
+            <DatePicker fx:id="borrowDateTextField" editable="false" layoutX="60.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
             <Label layoutX="60.0" layoutY="470.0" text="Due Date:" textFill="#1d3ec4">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="dueDateTextFiled" editable="false" layoutX="60.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0" promptText="No data" styleClass="datepicker" />
+            <DatePicker fx:id="dueDateTextField" editable="false" layoutX="60.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0" promptText="No data" styleClass="datepicker" />
             <Label layoutX="320.0" layoutY="400.0" text="Return Date:" textFill="#1d3ec4">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="returnDateTextFiled" editable="false" layoutX="320.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
+            <DatePicker fx:id="returnDateTextField" editable="false" layoutX="320.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
             <Label layoutX="320.0" layoutY="470.0" text="Status:" textFill="#1d3ec4">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -140,10 +141,20 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="852.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="852.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/QRCode.png" />
+               </image></ImageView>
             <Separator layoutY="554.0" prefWidth="1100.0" />
             <Button fx:id="backButton" layoutX="832.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="82.0" text="Back" />
             <Button fx:id="exportButton" layoutX="937.0" layoutY="575.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Export" />
+            <StackPane fx:id="stackpaneStatus" layoutX="320.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0">
+               <children>
+                  <Label fx:id="pendingStatusLabel" alignment="CENTER" prefHeight="30.0" prefWidth="120.0" text="Pending" visible="false" />
+                  <Label fx:id="borrowingStatusLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="120.0" text="Borrowing" visible="false" />
+                  <Label fx:id="returnedStatusLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="120.0" text="Returned" visible="false" />
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </center>

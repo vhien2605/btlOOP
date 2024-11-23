@@ -113,14 +113,6 @@ public class BookDetailController implements BaseController {
             FXMLResolver.getInstance().renderScene("user/homeTab/home");
         } else if (e.getSource() == sendBorrowBookRequestButton) {
             sendBorrowBookRequest();
-        } else if (e.getSource() == viewBookLoanBorrowingButton) {
-            FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
-            BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-            controller.LoadBookLoanWithBookAndStatus(book, status);
-        } else if (e.getSource() == viewBookLoanPendingButton) {
-            FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
-            BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-            controller.LoadBookLoanWithBookAndStatus(book, status);
         }
     }
 
