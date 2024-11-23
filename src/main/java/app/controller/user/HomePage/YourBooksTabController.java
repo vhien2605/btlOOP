@@ -37,8 +37,6 @@ public class YourBooksTabController {
 
     private ReportService reportService;
 
-    private BookService bookService;
-
     public AuthenticationService authService;
 
     protected YourBooksTabController(MainHomePageController mainHomePageController) {
@@ -47,7 +45,6 @@ public class YourBooksTabController {
 
     public void initialize() {
         reportService = new ReportService(new ReportRepository(), new UserService(new UserRepository()), new BookService(new BookRepository()));
-        bookService = new BookService(new BookRepository());
         authService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
         getUserInfo();
         getAllReportToThisCurrentUser();
@@ -77,35 +74,34 @@ public class YourBooksTabController {
 
     public void handleAllButtonIsClicked() {
         clearYourBooksMainPage();
-        renderBookListByStatus(pendingBorrowReportList, CardReport.PENDING_STATUS);
-        renderBookListByStatus(borrowingBorrowReportList, CardReport.BORROWING_STATUS);
-        renderBookListByStatus(returnedBorrowReportList, CardReport.RETURNED_STATUS);
+        renderBookListByStatus(pendingBorrowReportList);
+        renderBookListByStatus(borrowingBorrowReportList);
+        renderBookListByStatus(returnedBorrowReportList);
     }
 
     public void handlePendingButtonIsClicked() {
         clearYourBooksMainPage();
-        renderBookListByStatus(pendingBorrowReportList, CardReport.PENDING_STATUS);
+        renderBookListByStatus(pendingBorrowReportList);
     }
 
     public void handleBorrowingButtonIsClicked() {
         clearYourBooksMainPage();
-        renderBookListByStatus(borrowingBorrowReportList, CardReport.BORROWING_STATUS);
+        renderBookListByStatus(borrowingBorrowReportList);
     }
 
     public void handleReturnedButtonIsClicked() {
         clearYourBooksMainPage();
-        renderBookListByStatus(returnedBorrowReportList, CardReport.RETURNED_STATUS);
+        renderBookListByStatus(returnedBorrowReportList);
     }
 
-    private void renderBookListByStatus(ObservableList<BorrowReport> borrowReportList, String status) {
+    private void renderBookListByStatus(ObservableList<BorrowReport> borrowReportList) {
         for (BorrowReport borrowReport : borrowReportList) {
-            Book book = bookService.findByISBN(borrowReport.getBookId());
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/HomeTab/cardreport.fxml"));
                 Button cardReport = loader.load();
 
-                CardReport cardController = loader.getController();
-                cardController.loadBookWithStatus(book, status);
+                CardReport cardReportController = loader.getController();
+                cardReportController.loadCardReport(borrowReport);
 
                 homeController.yourBooksMainPage.getChildren().add(cardReport);
             } catch (IOException e) {

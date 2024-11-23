@@ -26,3 +26,40 @@
     -fx-background-radius: 10 0 0 10;
     -fx-border-color: #2dadf8;
 }
+
+.date-picker .text-field {
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 4 8;
+    -fx-font-size: 13px;
+    -fx-border-width: 1px;
+}
+
+#stackpaneStatus {
+    -fx-border-radius: 5;
+}
+
+#pendingStatusLabel {
+    -fx-font-weight: bold;           
+    -fx-background-color: #c97cf6;  
+    -fx-text-fill: #3e3e3e;
+    -fx-border-radius: 5; 
+    -fx-background-radius: 15;
+}
+
+#borrowingStatusLabel {
+    -fx-font-weight: bold;           
+    -fx-background-color: #5bef4b;  
+    -fx-text-fill: #3e3e3e;
+    -fx-border-radius: 5; 
+    -fx-background-radius: 15;
+}
+
+#returnedStatusLabel {
+    -fx-font-weight: bold;           
+    -fx-background-color: #5675f3;  
+    -fx-text-fill: #3e3e3e;
+    -fx-border-radius: 5; 
+    -fx-background-radius: 15;
+}
