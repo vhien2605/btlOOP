@@ -1,0 +1,28 @@
+#backgroundPane {
+    -fx-background-color: #d8feff;
+}
+
+#bookLoanLabel {
+    -fx-font-weight: bold;
+    -fx-text-fill: blue;
+    -fx-font-size: 40px;
+}
+
+.text-field {
+    -fx-border-color: #2dadf8;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-padding: 4 8;
+
+}
+
+.header_pane {
+    -fx-background-color: #ebd7d7;
+    -fx-border-color: #3d85dc;
+}
+
+.datepicker {
+    -fx-border-radius: 10 0 0 10;
+    -fx-background-radius: 10 0 0 10;
+    -fx-border-color: #2dadf8;
+}
