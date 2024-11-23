@@ -5,8 +5,11 @@ import java.time.format.DateTimeFormatter;
 
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
+import app.domain.Book;
 import app.domain.BorrowReport;
+import app.repository.BookRepository;
 import app.repository.ReportRepository;
+import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,6 +31,8 @@ public class MainIssuedRowController implements BaseController {
 
     ReportService reportService;
 
+    BookService bookService;
+
     ShowAlert showAlert;
 
     MainAllIssueController mainAllIssueCtrl;
@@ -40,6 +45,7 @@ public class MainIssuedRowController implements BaseController {
     public void initialize() {
         showAlert = new ShowAlert();
         reportService = new ReportService(new ReportRepository(), null, null);
+        bookService = new BookService(new BookRepository());
         new AllSetUp().initMainIssueRowCtrl(this);
     }
 
@@ -128,8 +134,30 @@ public class MainIssuedRowController implements BaseController {
             borrowReport.setReturnDate(null);
         }
 
+        String oldStatus = borrowReport.getStatus();
         String newStatus = changeStatusButton.getText();
-        borrowReport.setStatus(newStatus);
+
+        if (!oldStatus.equals(newStatus)) {
+            borrowReport.setStatus(newStatus);
+            return updateBookQuantity(oldStatus, newStatus);
+        }
+
+        return true;
+    }
+
+    private Boolean updateBookQuantity(String oldStatus, String newStatus) {
+        Book book = bookService.findByISBN(borrowReport.getBookId());
+        if (book == null) {
+            return false;
+        }
+
+        if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+            book.setBookRemaining(book.getBookRemaining() - 1);
+            return bookService.handleUpdateOne(book);
+        } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
+            book.setBookRemaining(book.getBookRemaining() + 1);
+            return bookService.handleUpdateOne(book);
+        }
 
         return true;
     }
