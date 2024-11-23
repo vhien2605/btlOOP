@@ -8,6 +8,7 @@ import com.itextpdf.kernel.colors.Lab;
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
+import app.controller.user.BookLoan.BookLoanController;
 import app.controller.user.HomePage.Card;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
@@ -67,6 +68,9 @@ public class BookDetailController implements BaseController {
     @FXML
     public AnchorPane borrowingBox;
 
+    @FXML
+    private Button viewBookLoanBorrowingButton;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
@@ -106,6 +110,11 @@ public class BookDetailController implements BaseController {
             FXMLResolver.getInstance().renderScene("user/homeTab/home");
         } else if (e.getSource() == sendBorrowBookRequestButton) {
             sendBorrowBookRequest();
+        } else if (e.getSource() == viewBookLoanBorrowingButton) {
+            FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
+
+            // BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
+            // controller.loadBookWithStatus(book, status);
         }
     }
 

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookLoan.BookLoanController">
+   <top>
+      <fx:include source="../staticLayout/header.fxml" />
+   </top>
+   <center>
+      <AnchorPane fx:id="backgroundPane" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookloan.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="bookLoanLabel" layoutX="50.0" text="Book loan" />
+            <ImageView fitHeight="109.0" fitWidth="115.0" layoutX="45.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/other/user_bookloan_img.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="250.0" layoutY="85.0" prefHeight="38.0" prefWidth="110.0" text="User Id:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userIdTextField" editable="false" layoutX="250.0" layoutY="115.0" prefHeight="25.0" prefWidth="250.0" promptText="Enter User Id" />
+            <Label layoutX="250.0" layoutY="150.0" text="Full Name:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="fullNameTextField" editable="false" layoutX="250.0" layoutY="175.0" prefHeight="25.0" prefWidth="250.0" promptText="Full Name" />
+            <Label layoutX="560.0" layoutY="95.0" text="Phone Number:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="phoneNumberTextField" editable="false" layoutX="730.0" layoutY="95.0" prefHeight="25.0" prefWidth="250.0" promptText="Phone Number" />
+            <Label layoutX="560.0" layoutY="135.0" text="Email:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="emailTextField" editable="false" layoutX="730.0" layoutY="135.0" prefHeight="25.0" prefWidth="250.0" promptText="Email" />
+            <Label layoutX="560.0" layoutY="175.0" text="Address:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="addressTextField" editable="false" layoutX="730.0" layoutY="175.0" prefHeight="25.0" prefWidth="250.0" promptText="Address" />
+            <Pane layoutY="55.0" prefHeight="34.0" prefWidth="1100.0" styleClass="header_pane">
+               <children>
+                  <Label layoutX="470.0" layoutY="3.0" text="User Information" textFill="#1d3ec4">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#1054dc" glyphName="USER" layoutX="450.0" layoutY="22.0" size="1.3em" />
+               </children>
+            </Pane>
+            <Pane layoutY="215.0" prefHeight="34.0" prefWidth="1100.0" styleClass="header_pane">
+               <children>
+                  <Label layoutX="469.0" layoutY="4.0" text="Book Information" textFill="#1d3ec4">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <FontAwesomeIconView fill="#1054dc" glyphName="ADDRESS_BOOK" layoutX="449.0" layoutY="22.0" size="1.2em" text="" />
+               </children>
+            </Pane>
+            <ImageView fitHeight="132.0" fitWidth="128.0" layoutX="31.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/other/book.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="250.0" layoutY="255.0" text="Book ISBN:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="bookISBNTextField" editable="false" layoutX="250.0" layoutY="280.0" prefHeight="25.0" prefWidth="250.0" promptText="Enter Book ISBN" />
+            <Label layoutX="250.0" layoutY="320.0" text="Book Name:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="bookNameTextField" editable="false" layoutX="250.0" layoutY="345.0" prefHeight="25.0" prefWidth="250.0" promptText="Book Name" />
+            <Label layoutX="560.0" layoutY="257.0" text="Book Author:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="560.0" layoutY="300.0" text="Book Publisher:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="560.0" layoutY="345.0" text="Book Category:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="bookAuthorTextField" editable="false" layoutX="730.0" layoutY="257.0" prefHeight="25.0" prefWidth="250.0" promptText="Book Author" />
+            <TextField fx:id="bookPublisherTextField" editable="false" layoutX="730.0" layoutY="299.0" prefHeight="25.0" prefWidth="250.0" promptText="Book Publisher" />
+            <TextField fx:id="bookCategoryTextField" editable="false" layoutX="730.0" layoutY="344.0" prefHeight="25.0" prefWidth="250.0" promptText="Book Category" />
+            <Separator layoutY="385.0" prefWidth="1100.0" />
+            <Label layoutX="60.0" layoutY="400.0" text="Borrow Date:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="borrowDateTextFiled" editable="false" layoutX="60.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
+            <Label layoutX="60.0" layoutY="470.0" text="Due Date:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="dueDateTextFiled" editable="false" layoutX="60.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0" promptText="No data" styleClass="datepicker" />
+            <Label layoutX="320.0" layoutY="400.0" text="Return Date:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="returnDateTextFiled" editable="false" layoutX="320.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
+            <Label layoutX="320.0" layoutY="470.0" text="Status:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="736.0" layoutY="398.0" text="QR Code:" textFill="#1d3ec4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="852.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true" />
+            <Separator layoutY="554.0" prefWidth="1100.0" />
+            <Button fx:id="backButton" layoutX="832.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="82.0" text="Back" />
+            <Button fx:id="exportButton" layoutX="937.0" layoutY="575.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Export" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

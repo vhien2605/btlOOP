@@ -1,6 +1,33 @@
 #imgview {
-    -fx-border-color: black;  
-    -fx-border-width: 2px; 
+    /* -fx-border-color: black;  
+    -fx-border-width: 2px;  */
+}
+
+#bookDetailBackground {
+    -fx-background-color: rgb(234, 251, 250);  
+}
+
+#bookDetailStackPaneBox {
+    -fx-background-color: rgb(255, 255, 255);  
+    -fx-background-radius: 15px; 
+}
+
+#borrowBookRequestLabel {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;  
+    -fx-text-fill: rgb(12, 82, 231);
+}
+
+#borrowRequestInPendingLabel {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;  
+    -fx-text-fill: rgb(222, 31, 244);
+}
+
+#currentlyBorrowingLabel {
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;  
+    -fx-text-fill: rgb(22, 249, 22);
 }
 
 #bookNameLabel {

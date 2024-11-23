@@ -117,7 +117,7 @@
                         <TextField fx:id="fullNameTextFiled" editable="false" layoutX="394.0" layoutY="214.0" prefHeight="25.0" prefWidth="250.0" promptText="Full Name" />
                         <TextField fx:id="phoneNumberTextFiled" editable="false" layoutX="394.0" layoutY="248.0" prefHeight="25.0" prefWidth="250.0" promptText="Phone Number" />
                         <TextField fx:id="emailTextFiled" editable="false" layoutX="394.0" layoutY="281.0" prefHeight="25.0" prefWidth="250.0" promptText="Email" />
-                        <TextField fx:id="addressTextFiled" editable="false" layoutX="394.0" layoutY="315.0" prefHeight="25.0" prefWidth="250.0" promptText="Assress" />
+                        <TextField fx:id="addressTextFiled" editable="false" layoutX="394.0" layoutY="315.0" prefHeight="25.0" prefWidth="250.0" promptText="Address" />
                         <Label layoutX="40.0" layoutY="365.0" text="Borrow Date:" textFill="#1d3ec4">
                            <font>
                               <Font name="System Bold" size="14.0" />
