@@ -9,7 +9,7 @@
 
 <Button fx:id="cardButton" mnemonicParsing="false" onAction="#handleCardEvent" stylesheets="@../../../css/user/card.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.Card">
    <graphic>
-      <VBox fx:id="cardVBox" prefHeight="270.0" prefWidth="166.0" styleClass="card" stylesheets="@../../../css/user/booksection.css">
+      <VBox fx:id="cardVBox" prefHeight="255.0" prefWidth="166.0" styleClass="card" stylesheets="@../../../css/user/booksection.css">
          <children>
             <AnchorPane prefHeight="155.0" prefWidth="163.0">
                <children>

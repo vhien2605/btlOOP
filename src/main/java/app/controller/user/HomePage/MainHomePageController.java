@@ -50,26 +50,10 @@ public class MainHomePageController implements BaseController{
     @FXML
     public Button returnedButtonYourBooks;
 
-    public ObservableList<String> discoverBookSectionTitleList;
-
-    public ObservableList<BorrowReport> allBorrowReportToThisCurrentUser;
-
-    public ObservableList<Book> allStatusBookList;
-
-    public ObservableList<Book> pendingBookList;
-
-    public ObservableList<Book> borrowingBookList;
-
-    public ObservableList<Book> returnedBookList;
-
     public static SurfaceUserDTO user;
 
-    public AuthenticationService authService;
-
-    public ReportService reportService;
-
-    public BookService bookService;
-
+    public ObservableList<String> discoverBookSectionTitleList;
+    
     private DiscoverTabController discoverTabController;
 
     private YourBooksTabController yourBooksTabController;
@@ -89,13 +73,8 @@ public class MainHomePageController implements BaseController{
 
     @Override
     public void initialize() {
-        authService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
-        reportService = new ReportService(new ReportRepository(), new UserService(new UserRepository()), new BookService(new BookRepository()));
-        bookService = new BookService(new BookRepository());
-        getUserInfo();
-        getAllReportToThisCurrentUser();
-        TransferBorrowReportToBookLists();
         DivideToOtherControllers();
+        GetUserInfo();
     }
 
     public void handleEvent(ActionEvent e) {
@@ -110,34 +89,8 @@ public class MainHomePageController implements BaseController{
         }
     }
     
-    private void TransferBorrowReportToBookLists() {
-        allStatusBookList = FXCollections.observableArrayList();
-        borrowingBookList = FXCollections.observableArrayList();
-        pendingBookList = FXCollections.observableArrayList();
-        returnedBookList = FXCollections.observableArrayList();
-        for (BorrowReport borrowReport : allBorrowReportToThisCurrentUser) {
-            Book book = bookService.findByISBN(borrowReport.getBookId());
-            allStatusBookList.add(book);
-            if (borrowReport.getStatus().equals(BorrowReport.PENDING)) {
-                pendingBookList.add(book);
-            } else if (borrowReport.getStatus().equals(BorrowReport.BORROWED)) {
-                borrowingBookList.add(book);
-            } else if (borrowReport.getStatus().equals(BorrowReport.RETURNED)) {
-                returnedBookList.add(book);
-            }
-        }
+    private void GetUserInfo() {
+        user = yourBooksTabController.user;
     }
-
-    private void getAllReportToThisCurrentUser() {
-        allBorrowReportToThisCurrentUser = FXCollections.observableArrayList();
-        allBorrowReportToThisCurrentUser = reportService.findByOneColumn("userID", MainHomePageController.user.getId());
-    }
-
-    private void getUserInfo() {
-        try {
-            user = authService.getCurrentUser();
-        } catch (SessionException exception) {
-            FXMLResolver.getInstance().renderScene("auth/login");
-        }
-    }
+    
 }

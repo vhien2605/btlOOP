@@ -71,6 +71,9 @@ public class BookDetailController implements BaseController {
     @FXML
     private Button viewBookLoanBorrowingButton;
 
+    @FXML
+    private Button viewBookLoanPendingButton;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
@@ -84,7 +87,7 @@ public class BookDetailController implements BaseController {
         this.status = status;
         loadImage();
         loadData();
-        loadBox();
+        // loadBox();
     }
 
     private void loadData() {
@@ -112,9 +115,12 @@ public class BookDetailController implements BaseController {
             sendBorrowBookRequest();
         } else if (e.getSource() == viewBookLoanBorrowingButton) {
             FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
-
-            // BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-            // controller.loadBookWithStatus(book, status);
+            BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
+            controller.LoadBookLoanWithBookAndStatus(book, status);
+        } else if (e.getSource() == viewBookLoanPendingButton) {
+            FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
+            BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
+            controller.LoadBookLoanWithBookAndStatus(book, status);
         }
     }
 
@@ -136,7 +142,6 @@ public class BookDetailController implements BaseController {
             showAlert.showAlert("Create new borrow book request successfully!", "success");
         } else {
             showAlert.showAlert("Create new borrow book request fail!", "error");
-
         }
     }
 
@@ -164,16 +169,16 @@ public class BookDetailController implements BaseController {
         reportService = new ReportService(new ReportRepository(), null, null);
     }
 
-    private void loadBox() {
-        borrowRequestBox.setVisible(false);
-        pendingBox.setVisible(false);
-        borrowingBox.setVisible(false);
-        if (status.equals(Card.RETURNED_STATUS)) {
-            borrowRequestBox.setVisible(true);
-        } else if (status.equals(Card.PENDING_STATUS)) {
-            pendingBox.setVisible(true);
-        } else if (status.equals(Card.BORROWING_STATUS)) {
-            borrowingBox.setVisible(true);
-        }
-    }
+    // private void loadBox() {
+    //     borrowRequestBox.setVisible(false);
+    //     pendingBox.setVisible(false);
+    //     borrowingBox.setVisible(false);
+    //     if (status.equals(Card.RETURNED_STATUS)) {
+    //         borrowRequestBox.setVisible(true);
+    //     } else if (status.equals(Card.PENDING_STATUS)) {
+    //         pendingBox.setVisible(true);
+    //     } else if (status.equals(Card.BORROWING_STATUS)) {
+    //         borrowingBox.setVisible(true);
+    //     }
+    // }
 }

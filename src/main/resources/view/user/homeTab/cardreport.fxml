@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<Button fx:id="cardButton" mnemonicParsing="false" onAction="#handleCardEvent" stylesheets="@../../../css/user/card.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.CardReport">
+   <graphic>
+      <VBox fx:id="cardVBox" prefHeight="270.0" prefWidth="166.0" styleClass="card" stylesheets="@../../../css/user/booksection.css">
+         <children>
+            <AnchorPane prefHeight="155.0" prefWidth="163.0">
+               <children>
+                  <ImageView fx:id="imageURL" fitHeight="189.0" fitWidth="126.0" layoutX="20.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <Label fx:id="bookName" alignment="CENTER" prefHeight="27.0" prefWidth="163.0" text="Bookname here">
+               <VBox.margin>
+                  <Insets top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="authorName" alignment="CENTER" layoutX="11.0" layoutY="215.0" prefHeight="27.0" prefWidth="163.0" text="Author name here" />
+            <StackPane prefHeight="29.0" prefWidth="163.0">
+               <children>
+                  <Label fx:id="pendingLabel" alignment="CENTER" prefHeight="20.0" prefWidth="166.0" stylesheets="@../../../css/user/cardreport.css" text="Pending" wrapText="true" />
+                  <Label fx:id="borrowingLabel" alignment="CENTER" prefHeight="25.0" prefWidth="166.0" stylesheets="@../../../css/user/cardreport.css" text="Borrowing" visible="false" wrapText="true" />
+                  <Label fx:id="returnedLabel" alignment="CENTER" prefHeight="25.0" prefWidth="166.0" stylesheets="@../../../css/user/cardreport.css" text="Returned" visible="false" wrapText="true" />
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </graphic>
+</Button>
