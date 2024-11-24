@@ -3,11 +3,17 @@ package app.controller.admin.BookLoanTab;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import app.controller.helper.BookLoanHelper;
+import app.controller.helper.SendMailHelper;
 import app.domain.Book;
 import app.domain.BorrowReport;
+import app.domain.User;
 
 public class UpdateIssueController {
     final MainBookLoanController mainBookLoanCtrl;
+
+    private String oldStatus;
+    private String newStatus;
 
     public UpdateIssueController(MainBookLoanController mainBookLoanCtrl) {
         this.mainBookLoanCtrl = mainBookLoanCtrl;
@@ -24,6 +30,19 @@ public class UpdateIssueController {
 
         if (mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport)) {
             mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
+
+            // Send mail
+            if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+                String userId = mainBookLoanCtrl.borrowReport.getUserId();
+                User user = mainBookLoanCtrl.userService.findById(userId);
+                if (user != null) {
+                    MainBookLoanController controller = BookLoanHelper
+                            .getBookLoanController(mainBookLoanCtrl.borrowReport);
+                    if (controller != null) {
+                        SendMailHelper.sendMail(controller, user.getEmail());
+                    }
+                }
+            }
         } else {
             mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
         }
@@ -51,8 +70,8 @@ public class UpdateIssueController {
             mainBookLoanCtrl.borrowReport.setReturnDate(null);
         }
 
-        String oldStatus = mainBookLoanCtrl.borrowReport.getStatus();
-        String newStatus = mainBookLoanCtrl.changeStatusButton.getText();
+        oldStatus = mainBookLoanCtrl.borrowReport.getStatus();
+        newStatus = mainBookLoanCtrl.changeStatusButton.getText();
 
         if (!oldStatus.equals(newStatus)) {
             mainBookLoanCtrl.borrowReport.setStatus(newStatus);
