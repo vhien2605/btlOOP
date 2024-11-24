@@ -5,7 +5,6 @@ import java.time.format.DateTimeFormatter;
 
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
-import app.domain.Book;
 import app.domain.BorrowReport;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -110,56 +109,6 @@ public class MainIssuedRowController implements BaseController {
         userIdLabel.setText(borrowReport.getUserId());
         bookIdLabel.setText(borrowReport.getBookId());
 
-    }
-
-    boolean updateDataBorrowReport() {
-        if (!validate()) {
-            return false;
-        }
-
-        LocalDate borrowDate = borrowDatePicker.getValue();
-        if (borrowDate != null) {
-            borrowReport.setBorrowDate(borrowDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate dueDate = dueDatePicker.getValue();
-        if (dueDate != null) {
-            borrowReport.setExpectedReturnDate(dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate returnDate = returnDatePicker.getValue();
-        if (returnDate != null) {
-            borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        } else {
-            borrowReport.setReturnDate(null);
-        }
-
-        String oldStatus = borrowReport.getStatus();
-        String newStatus = changeStatusButton.getText();
-
-        if (!oldStatus.equals(newStatus)) {
-            borrowReport.setStatus(newStatus);
-            return updateBookQuantity(oldStatus, newStatus);
-        }
-
-        return true;
-    }
-
-    private Boolean updateBookQuantity(String oldStatus, String newStatus) {
-        Book book = bookService.findByISBN(borrowReport.getBookId());
-        if (book == null) {
-            return false;
-        }
-
-        if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
-            book.setBookRemaining(book.getBookRemaining() - 1);
-            return bookService.handleUpdateOne(book);
-        } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
-            book.setBookRemaining(book.getBookRemaining() + 1);
-            return bookService.handleUpdateOne(book);
-        }
-
-        return true;
     }
 
     boolean validate() {

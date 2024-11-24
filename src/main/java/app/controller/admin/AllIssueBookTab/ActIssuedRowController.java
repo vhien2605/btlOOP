@@ -1,7 +1,12 @@
 package app.controller.admin.AllIssueBookTab;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.admin.BookLoanTab.MainBookLoanController;
+import app.domain.Book;
+import app.domain.BorrowReport;
 
 public class ActIssuedRowController {
     final MainIssuedRowController mainIssueRowCtrl;
@@ -27,7 +32,7 @@ public class ActIssuedRowController {
     }
 
     private void updateIssue() {
-        if (!mainIssueRowCtrl.updateDataBorrowReport()) {
+        if (!updateDataBorrowReport()) {
             return;
         }
 
@@ -48,5 +53,55 @@ public class ActIssuedRowController {
         } else {
             mainIssueRowCtrl.showAlert.showAlert("Delete failed!", "error");
         }
+    }
+
+    boolean updateDataBorrowReport() {
+        if (!mainIssueRowCtrl.validate()) {
+            return false;
+        }
+
+        LocalDate borrowDate = mainIssueRowCtrl.borrowDatePicker.getValue();
+        if (borrowDate != null) {
+            mainIssueRowCtrl.borrowReport.setBorrowDate(borrowDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+
+        LocalDate dueDate = mainIssueRowCtrl.dueDatePicker.getValue();
+        if (dueDate != null) {
+            mainIssueRowCtrl.borrowReport.setExpectedReturnDate(dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        }
+
+        LocalDate returnDate = mainIssueRowCtrl.returnDatePicker.getValue();
+        if (returnDate != null) {
+            mainIssueRowCtrl.borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
+        } else {
+            mainIssueRowCtrl.borrowReport.setReturnDate(null);
+        }
+
+        String oldStatus = mainIssueRowCtrl.borrowReport.getStatus();
+        String newStatus = mainIssueRowCtrl.changeStatusButton.getText();
+
+        if (!oldStatus.equals(newStatus)) {
+            mainIssueRowCtrl.borrowReport.setStatus(newStatus);
+            return updateBookQuantity(oldStatus, newStatus);
+        }
+
+        return true;
+    }
+
+    private Boolean updateBookQuantity(String oldStatus, String newStatus) {
+        Book book = mainIssueRowCtrl.bookService.findByISBN(mainIssueRowCtrl.borrowReport.getBookId());
+        if (book == null) {
+            return false;
+        }
+
+        if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+            book.setBookRemaining(book.getBookRemaining() - 1);
+            return mainIssueRowCtrl.bookService.handleUpdateOne(book);
+        } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
+            book.setBookRemaining(book.getBookRemaining() + 1);
+            return mainIssueRowCtrl.bookService.handleUpdateOne(book);
+        }
+
+        return true;
     }
 }
