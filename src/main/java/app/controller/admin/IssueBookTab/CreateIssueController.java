@@ -2,6 +2,8 @@ package app.controller.admin.IssueBookTab;
 
 import java.io.File;
 
+import com.google.zxing.qrcode.encoder.QRCode;
+
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.admin.BookLoanTab.MainBookLoanController;
 import app.domain.BorrowReport;
@@ -39,6 +41,8 @@ public class CreateIssueController {
         }
 
         if (mainIssueCtrl.reportService.handleSave(data)) {
+            createQRImage(data);
+
             String currentPath = "admin/issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
             resolver.renderScene("admin/bookLoanTab/bookloan_tab");
@@ -82,5 +86,15 @@ public class CreateIssueController {
                 System.err.println("Lỗi khi tạo file PDF.");
             }
         });
+    }
+
+    void createQRImage(BorrowReport data) {
+        String path = mainIssueCtrl.fileService.createQRImage(data, "QRcode");
+        if (path != null) {
+            data.setQrcodeUrl(path);
+            mainIssueCtrl.reportService.handleUpdateOne(data);
+        } else {
+            System.out.println("file service return path null");
+        }
     }
 }

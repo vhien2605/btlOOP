@@ -123,7 +123,7 @@ public class BorrowReport {
     }
 
     public void setQrcodeUrl(String qr) {
-        this.status = new SimpleStringProperty(qr);
+        this.qrcodeUrl = new SimpleStringProperty(qr);
     }
 
     @Override

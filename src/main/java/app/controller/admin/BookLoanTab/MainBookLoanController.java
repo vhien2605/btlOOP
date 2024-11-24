@@ -145,9 +145,20 @@ public class MainBookLoanController {
     }
 
     void setImage() {
-        String imagePath = getClass().getResource("/image/QRCode.png").toExternalForm();
-        Image image = new Image(imagePath);
-        qrImageView.setImage(image);
+        String path = borrowReport.getQrcodeUrl();
+        if (path == null) {
+            return;
+        }
+
+        try {
+            String imagePath = getClass().getResource("/image/QRCode/" + path).toExternalForm();
+            Image image = new Image(imagePath);
+            qrImageView.setImage(image);
+        } catch (Exception e) {
+            System.out.println("Load image fail");
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     void setBookInfo(Book book) {

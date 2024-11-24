@@ -47,7 +47,6 @@ public class FileService {
         return "";
     }
 
-
     /**
      * create QR image method service.
      *
@@ -81,7 +80,7 @@ public class FileService {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
-        return "";
+        return null;
     }
 
     /**
@@ -114,7 +113,6 @@ public class FileService {
         }
         return null;
     }
-
 
     /**
      * method handle delete file in target folder
