@@ -9,7 +9,6 @@
 
 /* CSS cho các button */
 .button {
-    -fx-background-color: transparent;
     -fx-font-size: 13px;
     -fx-background-radius: 5px;
     -fx-cursor: hand;

@@ -16,7 +16,6 @@ import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -30,16 +29,13 @@ public class MainBookLoanController {
             fullNameTextFiled, phoneNumberTextFiled, emailTextFiled, addressTextFiled;
 
     @FXML
-    ChoiceBox<String> statusChoiceBox;
-
-    @FXML
     DatePicker borrowDateTextFiled, dueDateTextFiled, returnDateTextFiled;
 
     @FXML
     ImageView qrImageView;
 
     @FXML
-    Button updateButton, comeBackButton, exportButton;
+    Button updateButton, comeBackButton, exportButton, changeStatusButton;
 
     @FXML
     Pane pane_data;
@@ -89,12 +85,14 @@ public class MainBookLoanController {
             setBookInfo(book);
         }
 
-        setDateAndStatus();
+        setDate();
+
+        setChangeStatusButton();
 
         setImage();
     }
 
-    void setDateAndStatus() {
+    void setDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         if (borrowReport.getBorrowDate() != null) {
@@ -111,9 +109,39 @@ public class MainBookLoanController {
             LocalDate date = LocalDate.parse(borrowReport.getReturnDate(), formatter);
             returnDateTextFiled.setValue(date);
         }
+    }
 
-        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
-        statusChoiceBox.setValue(borrowReport.getStatus());
+    void setChangeStatusButton() {
+        String initialStatus = borrowReport.getStatus();
+        changeStatusButton.setText(initialStatus);
+
+        switch (initialStatus) {
+            case BorrowReport.PENDING:
+                changeStatusButton.setStyle("-fx-background-color: #32e544; ");
+                break;
+            case BorrowReport.BORROWED:
+                changeStatusButton.setStyle("-fx-background-color: #6fd1ef; ");
+                break;
+            case BorrowReport.RETURNED:
+                changeStatusButton.setStyle("-fx-background-color: #f0ad4e; ");
+                break;
+        }
+
+        // Thêm sự kiện khi người dùng thay đổi giá trị button status
+        changeStatusButton.setOnAction(event -> {
+            String selectedStatus = changeStatusButton.getText();
+
+            switch (selectedStatus) {
+                case BorrowReport.PENDING:
+                    changeStatusButton.setStyle("-fx-background-color: #6fd1ef; ");
+                    changeStatusButton.setText(BorrowReport.BORROWED);
+                    break;
+                case BorrowReport.BORROWED:
+                    changeStatusButton.setStyle("-fx-background-color:#f0ad4e ; ");
+                    changeStatusButton.setText(BorrowReport.RETURNED);
+                    break;
+            }
+        });
     }
 
     void setImage() {
@@ -138,36 +166,8 @@ public class MainBookLoanController {
         addressTextFiled.setText(user.getAddress());
     }
 
-    boolean updateDataBorrowReport() {
-        if (!validate()) {
-            return false;
-        }
-
-        LocalDate borrowDate = borrowDateTextFiled.getValue();
-        if (borrowDate != null) {
-            borrowReport.setBorrowDate(borrowDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate dueDate = dueDateTextFiled.getValue();
-        if (dueDate != null) {
-            borrowReport.setExpectedReturnDate(dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate returnDate = returnDateTextFiled.getValue();
-        if (returnDate != null) {
-            borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        } else {
-            borrowReport.setReturnDate(null);
-        }
-
-        String status = statusChoiceBox.getValue();
-        borrowReport.setStatus(status);
-
-        return true;
-    }
-
     boolean validate() {
-        String status = statusChoiceBox.getValue();
+        String status = changeStatusButton.getText();
 
         if (status.equals(BorrowReport.BORROWED)) {
             if (borrowDateTextFiled.getValue() == null || dueDateTextFiled.getValue() == null) {
