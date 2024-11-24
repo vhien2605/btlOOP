@@ -85,12 +85,14 @@ public class MainBookLoanController {
             setBookInfo(book);
         }
 
-        setDateAndStatus();
+        setDate();
+
+        setChangeStatusButton();
 
         setImage();
     }
 
-    void setDateAndStatus() {
+    void setDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         if (borrowReport.getBorrowDate() != null) {
@@ -107,8 +109,6 @@ public class MainBookLoanController {
             LocalDate date = LocalDate.parse(borrowReport.getReturnDate(), formatter);
             returnDateTextFiled.setValue(date);
         }
-
-        setChangeStatusButton();
     }
 
     void setChangeStatusButton() {
@@ -164,34 +164,6 @@ public class MainBookLoanController {
         phoneNumberTextFiled.setText(user.getPhoneNumber());
         emailTextFiled.setText(user.getEmail());
         addressTextFiled.setText(user.getAddress());
-    }
-
-    boolean updateDataBorrowReport() {
-        if (!validate()) {
-            return false;
-        }
-
-        LocalDate borrowDate = borrowDateTextFiled.getValue();
-        if (borrowDate != null) {
-            borrowReport.setBorrowDate(borrowDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate dueDate = dueDateTextFiled.getValue();
-        if (dueDate != null) {
-            borrowReport.setExpectedReturnDate(dueDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        }
-
-        LocalDate returnDate = returnDateTextFiled.getValue();
-        if (returnDate != null) {
-            borrowReport.setReturnDate(returnDate.format(DateTimeFormatter.ISO_LOCAL_DATE));
-        } else {
-            borrowReport.setReturnDate(null);
-        }
-
-        String status = changeStatusButton.getText();
-        borrowReport.setStatus(status);
-
-        return true;
     }
 
     boolean validate() {
