@@ -45,6 +45,11 @@ public class ActIssuedRowController {
     }
 
     void deleteIssue() {
+        if (mainIssueRowCtrl.borrowReport.getStatus().equals(BorrowReport.BORROWED)) {
+            mainIssueRowCtrl.showAlert.showAlert("You cannot delete while it is in borrowed state!", "error");
+            return;
+        }
+
         int id = mainIssueRowCtrl.borrowReport.getId();
 
         if (mainIssueRowCtrl.reportService.handleDeleteById(id)) {
