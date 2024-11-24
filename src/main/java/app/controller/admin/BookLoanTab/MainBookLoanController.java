@@ -16,7 +16,6 @@ import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -30,16 +29,13 @@ public class MainBookLoanController {
             fullNameTextFiled, phoneNumberTextFiled, emailTextFiled, addressTextFiled;
 
     @FXML
-    ChoiceBox<String> statusChoiceBox;
-
-    @FXML
     DatePicker borrowDateTextFiled, dueDateTextFiled, returnDateTextFiled;
 
     @FXML
     ImageView qrImageView;
 
     @FXML
-    Button updateButton, comeBackButton, exportButton;
+    Button updateButton, comeBackButton, exportButton, changeStatusButton;
 
     @FXML
     Pane pane_data;
@@ -112,8 +108,40 @@ public class MainBookLoanController {
             returnDateTextFiled.setValue(date);
         }
 
-        statusChoiceBox.getItems().addAll(BorrowReport.PENDING, BorrowReport.BORROWED, BorrowReport.RETURNED);
-        statusChoiceBox.setValue(borrowReport.getStatus());
+        setChangeStatusButton();
+    }
+
+    void setChangeStatusButton() {
+        String initialStatus = borrowReport.getStatus();
+        changeStatusButton.setText(initialStatus);
+
+        switch (initialStatus) {
+            case BorrowReport.PENDING:
+                changeStatusButton.setStyle("-fx-background-color: #32e544; ");
+                break;
+            case BorrowReport.BORROWED:
+                changeStatusButton.setStyle("-fx-background-color: #6fd1ef; ");
+                break;
+            case BorrowReport.RETURNED:
+                changeStatusButton.setStyle("-fx-background-color: #f0ad4e; ");
+                break;
+        }
+
+        // Thêm sự kiện khi người dùng thay đổi giá trị button status
+        changeStatusButton.setOnAction(event -> {
+            String selectedStatus = changeStatusButton.getText();
+
+            switch (selectedStatus) {
+                case BorrowReport.PENDING:
+                    changeStatusButton.setStyle("-fx-background-color: #6fd1ef; ");
+                    changeStatusButton.setText(BorrowReport.BORROWED);
+                    break;
+                case BorrowReport.BORROWED:
+                    changeStatusButton.setStyle("-fx-background-color:#f0ad4e ; ");
+                    changeStatusButton.setText(BorrowReport.RETURNED);
+                    break;
+            }
+        });
     }
 
     void setImage() {
@@ -160,14 +188,14 @@ public class MainBookLoanController {
             borrowReport.setReturnDate(null);
         }
 
-        String status = statusChoiceBox.getValue();
+        String status = changeStatusButton.getText();
         borrowReport.setStatus(status);
 
         return true;
     }
 
     boolean validate() {
-        String status = statusChoiceBox.getValue();
+        String status = changeStatusButton.getText();
 
         if (status.equals(BorrowReport.BORROWED)) {
             if (borrowDateTextFiled.getValue() == null || dueDateTextFiled.getValue() == null) {
