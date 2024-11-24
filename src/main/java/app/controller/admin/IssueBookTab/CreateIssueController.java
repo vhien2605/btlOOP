@@ -30,6 +30,12 @@ public class CreateIssueController {
         if (mainIssueCtrl.bookInfo.getBookRemaining() <= 0) {
             mainIssueCtrl.showAlert.showAlert("The number of books left is not enough!", "error");
             return;
+        } else {
+            mainIssueCtrl.bookInfo.setBookRemaining(mainIssueCtrl.bookInfo.getBookRemaining() - 1);
+            if (!mainIssueCtrl.bookService.handleUpdateOne(mainIssueCtrl.bookInfo)) {
+                mainIssueCtrl.showAlert.showAlert("Create fail new borrow report!", "error");
+                return;
+            }
         }
 
         if (mainIssueCtrl.reportService.handleSave(data)) {
