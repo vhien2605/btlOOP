@@ -5,11 +5,17 @@ import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.admin.BookLoanTab.MainBookLoanController;
+import app.controller.helper.BookLoanHelper;
+import app.controller.helper.SendMailHelper;
 import app.domain.Book;
 import app.domain.BorrowReport;
+import app.domain.User;
 
 public class ActIssuedRowController {
     final MainIssuedRowController mainIssueRowCtrl;
+
+    private String oldStatus;
+    private String newStatus;
 
     public ActIssuedRowController(MainIssuedRowController mainIssuedRowCtrl) {
         this.mainIssueRowCtrl = mainIssuedRowCtrl;
@@ -39,6 +45,19 @@ public class ActIssuedRowController {
         if (mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport)) {
             mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
             mainIssueRowCtrl.mainAllIssueCtrl.resetData();
+
+            // Send mail
+            if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+                String userId = mainIssueRowCtrl.borrowReport.getUserId();
+                User user = mainIssueRowCtrl.userService.findById(userId);
+                if (user != null) {
+                    MainBookLoanController controller = BookLoanHelper
+                            .getBookLoanController(mainIssueRowCtrl.borrowReport);
+                    if (controller != null) {
+                        SendMailHelper.sendMail(controller, user.getEmail());
+                    }
+                }
+            }
         } else {
             mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
         }
@@ -82,8 +101,8 @@ public class ActIssuedRowController {
             mainIssueRowCtrl.borrowReport.setReturnDate(null);
         }
 
-        String oldStatus = mainIssueRowCtrl.borrowReport.getStatus();
-        String newStatus = mainIssueRowCtrl.changeStatusButton.getText();
+        oldStatus = mainIssueRowCtrl.borrowReport.getStatus();
+        newStatus = mainIssueRowCtrl.changeStatusButton.getText();
 
         if (!oldStatus.equals(newStatus)) {
             mainIssueRowCtrl.borrowReport.setStatus(newStatus);
@@ -109,4 +128,5 @@ public class ActIssuedRowController {
 
         return true;
     }
+
 }

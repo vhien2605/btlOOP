@@ -8,8 +8,10 @@ import app.controller.helper.ShowAlert;
 import app.domain.BorrowReport;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
+import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
+import app.service.mainService.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -32,6 +34,8 @@ public class MainIssuedRowController implements BaseController {
 
     BookService bookService;
 
+    UserService userService;
+
     ShowAlert showAlert;
 
     MainAllIssueController mainAllIssueCtrl;
@@ -45,6 +49,7 @@ public class MainIssuedRowController implements BaseController {
         showAlert = new ShowAlert();
         reportService = new ReportService(new ReportRepository(), null, null);
         bookService = new BookService(new BookRepository());
+        userService = new UserService(new UserRepository());
         new AllSetUp().initMainIssueRowCtrl(this);
     }
 
