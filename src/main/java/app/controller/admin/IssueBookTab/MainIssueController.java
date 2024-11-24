@@ -9,6 +9,7 @@ import app.repository.UserRepository;
 import app.service.mainService.BookService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+import app.service.subService.FileService;
 
 import java.time.format.DateTimeFormatter;
 
@@ -37,6 +38,8 @@ public class MainIssueController {
 
     ReportService reportService;
 
+    FileService fileService;
+
     ShowAlert showAlert;
 
     Book bookInfo;
@@ -48,6 +51,7 @@ public class MainIssueController {
         userService = new UserService(new UserRepository());
         reportService = new ReportService(new ReportRepository(), userService, bookService);
         showAlert = new ShowAlert();
+        fileService = new FileService();
         new AllSetUp().init_function(this);
     }
 
