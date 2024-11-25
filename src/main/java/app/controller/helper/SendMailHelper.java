@@ -10,7 +10,7 @@ import javafx.application.Platform;
 public class SendMailHelper {
     /**
      * Function to send email when user successfully borrows book.
-     * 
+     *
      * @param bookLoanController BookLoanTab controller renders book loan card
      *                           details.
      * @param email              Recipient email address.
@@ -29,7 +29,6 @@ public class SendMailHelper {
                                         + "Khi đến trả sách, vui lòng mang bill đến để scan thông tin\n\n"
                                         + "Trân trọng cảm ơn!",
                                 tempPdfFile);
-
                         System.out.println("Gửi email thành công!");
                     } catch (Exception e) {
                         e.printStackTrace();

@@ -121,7 +121,7 @@ public class UserService {
      * @return User with the mapping email or null if not exists
      */
     public User findByEmail(String email) {
-        Optional<User> wrapperResult = this.userRepository.findByUsername(email);
+        Optional<User> wrapperResult = this.userRepository.findByEmail(email);
         return wrapperResult.orElse(null);
     }
 
@@ -133,6 +133,18 @@ public class UserService {
      */
     public boolean updateOne(User user) {
         return this.userRepository.update(user);
+    }
+
+    /**
+     * Update password by email.
+     *
+     * @param email       email
+     * @param newPassword new password
+     */
+    public void updatePasswordByEmail(String email, String newPassword) {
+        User user = this.findByEmail(email);
+        user.setPassword(newPassword);
+        this.updateOne(user);
     }
 
     /**

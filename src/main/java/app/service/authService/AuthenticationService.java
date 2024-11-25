@@ -52,12 +52,23 @@ public class AuthenticationService {
         }
     }
 
+    public void verifyEmail(String email) throws DuplicateException {
+        boolean check = isEmailExists(email);
+        if (!isEmailExists(email)) {
+            throw new DuplicateException("Email is invalid!");
+        }
+    }
+
     public boolean isUsernameExists(String username) {
         return this.userService.findByUsername(username) != null;
     }
 
     public boolean isIdExists(String id) {
         return this.userService.findById(id) != null;
+    }
+
+    private boolean isEmailExists(String email) {
+        return this.userService.findByEmail(email) != null;
     }
 
     public boolean isUsernameAndPasswordMapping(String username, String password) {

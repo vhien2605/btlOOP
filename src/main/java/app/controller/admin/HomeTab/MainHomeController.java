@@ -2,6 +2,7 @@ package app.controller.admin.HomeTab;
 
 import app.controller.BaseController;
 import app.domain.Book;
+import app.domain.BorrowReport;
 import app.domain.DTO.ReportDetail;
 import app.domain.User;
 import app.exception.auth.SessionException;
@@ -27,6 +28,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -61,12 +63,6 @@ public class MainHomeController implements BaseController {
     private AuthenticationService authenticationService;
     private UserService userService;
 
-    private void setDataCard(int dataBook, int dataUser, int dataIssued, int dataBorrowed) {
-        dataBookLabel.setText(String.valueOf(dataBook));
-        dataUserLabel.setText(String.valueOf(dataUser));
-        dataAllIssuedabel.setText(String.valueOf(dataIssued));
-        dataBorrowedLabel.setText(String.valueOf(dataBorrowed));
-    }
 
     @Override
     public void initialize() {
@@ -82,18 +78,22 @@ public class MainHomeController implements BaseController {
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.userService.getAllUsers()));
+        multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Borrowed")));
+        multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Pending")));
         try {
             List<ResultTask<?>> tasksResults = multiTaskService.handleTasks();
             List<Book> listBook = (List<Book>) tasksResults.get(0).getData();
             List<ReportDetail> listReport = ((List<ReportDetail>) tasksResults.get(1).getData());
             List<User> users = (List<User>) tasksResults.get(2).getData();
+            List<BorrowReport> borrowedReports = (List<BorrowReport>) tasksResults.get(3).getData();
+            List<BorrowReport> pendingReports = (List<BorrowReport>) tasksResults.get(4).getData();
             Platform.runLater(() -> {
                 addDataToCategoryChart(listBook);
                 addDataToBookBorrowChart(listReport);
-                addDataToIssueBookChart();
-                addDataToUserChart();
+                addDataToIssueBookChart(listBook, borrowedReports, pendingReports);
+                addDataToUserChart(listReport);
                 setDataCard(listBook.size()
-                        , users.size(), listReport.size(), 50);
+                        , users.size(), listReport.size(), borrowedReports.size());
             });
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e.getMessage());
@@ -119,12 +119,19 @@ public class MainHomeController implements BaseController {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
+    private void setDataCard(int dataBook, int dataUser, int dataIssued, int dataBorrowed) {
+        dataBookLabel.setText(String.valueOf(dataBook));
+        dataUserLabel.setText(String.valueOf(dataUser));
+        dataAllIssuedabel.setText(String.valueOf(dataIssued));
+        dataBorrowedLabel.setText(String.valueOf(dataBorrowed));
+    }
+
     private void addDataToCategoryChart(List<Book> listBook) {
         XYChart.Series<String, Number> categorySeries = new XYChart.Series<>();
         categorySeries.setName("Category number");
         HashMap<String, Integer> categoryQuantity = new HashMap<>();
         for (Book book : listBook) {
-            categoryQuantity.put(book.getCategory(), categoryQuantity.getOrDefault(book.getCategory(), 0) + 1);
+            categoryQuantity.put(book.getCategory(), categoryQuantity.getOrDefault(book.getBookQuantity(), 0) + book.getBookQuantity());
         }
         for (String key : categoryQuantity.keySet()) {
             categorySeries.getData().add(new XYChart.Data<>(key, categoryQuantity.get(key)));
@@ -145,30 +152,44 @@ public class MainHomeController implements BaseController {
         bookBorrowChart.getData().add(borrowedSeries);
     }
 
-    private void addDataToIssueBookChart() {
+    private void addDataToIssueBookChart(List<Book> listBook,
+                                         List<BorrowReport> borrowedReports,
+                                         List<BorrowReport> pendingReports) {
         // Thong ke lien quan den muon sach,tra sach
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
-                new PieChart.Data("Books in stock", 60),
-                new PieChart.Data("Books are borrowed and in require date", 30),
-                new PieChart.Data("Books are borrowed and out of require date", 10));
+                new PieChart.Data("Books in stock", listBook.size()),
+                new PieChart.Data("Books are borrowed", borrowedReports.size()),
+                new PieChart.Data("Books are in pending", pendingReports.size()));
         issueBookChart.setData(pieChartData);
     }
 
-    private void addDataToUserChart() {
+    private void addDataToUserChart(List<ReportDetail> listReport) {
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("Data Series 1");
-        series1.getData().add(new XYChart.Data<>("Hien", 5));
-        series1.getData().add(new XYChart.Data<>("Hau", 10));
-        series1.getData().add(new XYChart.Data<>("Hieu", 15));
-        series1.getData().add(new XYChart.Data<>("Hai", 20));
-        series1.getData().add(new XYChart.Data<>("Huy", 20));
+        series1.setName("Borrow date data");
+        Map<String, Integer> map1 = new HashMap<>();
+        for (ReportDetail report : listReport) {
+            if (report.getStatus().equals("Borrowed")) {
+                String borrowedDate = report.getBorrowDate();
+                map1.put(borrowedDate,
+                        map1.getOrDefault(map1.get(borrowedDate), 0) + 1);
+            }
+        }
+        for (String key : map1.keySet()) {
+            series1.getData().add(new XYChart.Data<>(key, map1.get(key)));
+        }
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
-        series2.setName("Data Series 2");
-        series2.getData().add(new XYChart.Data<>("Hien", 5));
-        series2.getData().add(new XYChart.Data<>("Hau", 10));
-        series2.getData().add(new XYChart.Data<>("Hieu", 15));
-        series2.getData().add(new XYChart.Data<>("Hai", 20));
-        series2.getData().add(new XYChart.Data<>("Huy", 20));
+        series2.setName("Return date data");
+        Map<String, Integer> map2 = new HashMap<>();
+        for (ReportDetail report : listReport) {
+            if (report.getStatus().equals("Returned")) {
+                String borrowedDate = report.getBorrowDate();
+                map2.put(borrowedDate,
+                        map2.getOrDefault(map1.get(borrowedDate), 0) + 1);
+            }
+        }
+        for (String key : map2.keySet()) {
+            series2.getData().add(new XYChart.Data<>(key, map2.get(key)));
+        }
         userChart.getData().add(series1);
         userChart.getData().add(series2);
     }
