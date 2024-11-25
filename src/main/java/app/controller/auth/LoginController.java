@@ -31,6 +31,9 @@ public class LoginController {
     @FXML
     PasswordField passwordField;
 
+    @FXML
+    Button forgetPasswordButton;
+
     ShowAlert showAlert;
 
     AuthenticationService authService;
@@ -52,6 +55,11 @@ public class LoginController {
         } else if (e.getSource() == loginRedirectButton) {
             FXMLResolver.getInstance().renderScene("auth/login");
         }
+    }
+
+    @FXML
+    private void handleForgetPasswordButton() {
+        FXMLResolver.getInstance().renderScene("auth/forgetPassword");
     }
 
     private void submitLogin() {
