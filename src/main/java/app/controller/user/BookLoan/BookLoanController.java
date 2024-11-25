@@ -104,6 +104,14 @@ public class BookLoanController implements BaseController {
         RenderUserInfo();
         RenderBookInfo();
         RenderDateAndStatus(borrowReport);
+        RenderCancelBorrowReportButton();
+    }
+
+    private void RenderCancelBorrowReportButton() {
+        cancelBorrowBookRequestButton.setVisible(false);
+        if (status.equals(BorrowReport.PENDING)) {
+            cancelBorrowBookRequestButton.setVisible(true);
+        }
     }
 
     private void RenderDateAndStatus(BorrowReport borrowReport) {
