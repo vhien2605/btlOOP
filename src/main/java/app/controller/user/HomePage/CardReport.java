@@ -98,7 +98,8 @@ public class CardReport implements BaseController{
     private void loadBookLoan() {
         FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
         BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.LoadBookLoan(book, borrowReport, status);    }
+        controller.LoadBookLoan(book, borrowReport, status);  
+    }
 
     @Override
     public void initialize() {

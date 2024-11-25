@@ -7,13 +7,18 @@ import com.itextpdf.kernel.colors.Lab;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.ShowAlert;
 import app.domain.Book;
 import app.domain.BorrowReport;
 import app.domain.DTO.SurfaceUserDTO;
 import app.exception.auth.SessionException;
+import app.repository.BookRepository;
+import app.repository.ReportRepository;
 import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
+import app.service.mainService.BookService;
+import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,6 +80,11 @@ public class BookLoanController implements BaseController {
     @FXML
     private Label returnedStatusLabel;
 
+    @FXML
+    private Button cancelBorrowBookRequestButton;
+
+    private BorrowReport borrowReport;
+
     private Book book;
 
     private SurfaceUserDTO user;
@@ -83,9 +93,14 @@ public class BookLoanController implements BaseController {
 
     private AuthenticationService authService;
 
+    private ReportService reportService;
+
+    private ShowAlert showAlert;
+
     public void LoadBookLoan(Book book, BorrowReport borrowReport, String status) {
         this.book = book;
         this.status = status;
+        this.borrowReport = borrowReport;
         RenderUserInfo();
         RenderBookInfo();
         RenderDateAndStatus(borrowReport);
@@ -140,12 +155,22 @@ public class BookLoanController implements BaseController {
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == backButton) {
             FXMLResolver.getInstance().renderScene("user/homeTab/home");
+        } if (e.getSource() == cancelBorrowBookRequestButton) {
+            DeleteBorrowReport();
+            FXMLResolver.getInstance().renderScene("user/homeTab/home");
         }
+    }
+
+    private void DeleteBorrowReport() {
+        reportService.handleDeleteById(borrowReport.getId());
+        showAlert.showAlert("Delete borrow book request successfully!", "success");
     }
 
     @Override
     public void initialize() {
+        showAlert = new ShowAlert();
         authService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
+        reportService = new ReportService(new ReportRepository(), new UserService(new UserRepository()), new BookService(new BookRepository()));
         getCurrentUserInfo();
     }
 
