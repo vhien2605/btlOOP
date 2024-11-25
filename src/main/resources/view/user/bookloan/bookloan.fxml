@@ -155,6 +155,11 @@
                   <Label fx:id="returnedStatusLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="120.0" text="Returned" visible="false" />
                </children>
             </StackPane>
+            <StackPane layoutX="640.0" layoutY="575.0" prefHeight="25.0" prefWidth="169.0">
+               <children>
+                  <Button fx:id="cancelBorrowBookRequestButton" mnemonicParsing="false" onAction="#handleEvent" text="Cancel borrow book request" />
+               </children>
+            </StackPane>
          </children>
       </AnchorPane>
    </center>
