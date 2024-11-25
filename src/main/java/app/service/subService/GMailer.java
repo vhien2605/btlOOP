@@ -61,26 +61,28 @@ public class GMailer {
         email.setFrom(new InternetAddress(TEST_EMAIL));
         email.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(TEST_EMAIL));
         email.setSubject(subject);
+        if (file != null) {
+            // create file in body email
+            // Create the message body part
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            messageBodyPart.setText(message);
 
-        // create file in body email
-        // Create the message body part
-        MimeBodyPart messageBodyPart = new MimeBodyPart();
-        messageBodyPart.setText(message);
+            // Create the attachment part
+            MimeBodyPart attachmentPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(file.getPath());
+            attachmentPart.setDataHandler(new javax.activation.DataHandler(source));
+            attachmentPart.setFileName(Paths.get(file.getPath()).getFileName().toString());
 
-        // Create the attachment part
-        MimeBodyPart attachmentPart = new MimeBodyPart();
-        DataSource source = new FileDataSource(file.getPath());
-        attachmentPart.setDataHandler(new javax.activation.DataHandler(source));
-        attachmentPart.setFileName(Paths.get(file.getPath()).getFileName().toString());
+            // Combine message and attachment into a multipart
+            MimeMultipart multipart = new MimeMultipart();
+            multipart.addBodyPart(messageBodyPart);
+            multipart.addBodyPart(attachmentPart);
 
-        // Combine message and attachment into a multipart
-        MimeMultipart multipart = new MimeMultipart();
-        multipart.addBodyPart(messageBodyPart);
-        multipart.addBodyPart(attachmentPart);
-
-        // Set the multipart as the email content
-        email.setContent(multipart);
-
+            // Set the multipart as the email content
+            email.setContent(multipart);
+        } else {
+            email.setText(message);
+        }
         // Encode and wrap the MIME message into a gmail message
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         email.writeTo(buffer);
