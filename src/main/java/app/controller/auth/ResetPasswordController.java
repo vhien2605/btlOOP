@@ -67,5 +67,6 @@ public class ResetPasswordController implements BaseController {
         }
         userService.updatePasswordByEmail(targetEmail, newPassword);
         showAlert.showAlert("Reset password successfully!, now redirect to Login page", "success");
+        FXMLResolver.getInstance().renderScene("auth/login");
     }
 }
