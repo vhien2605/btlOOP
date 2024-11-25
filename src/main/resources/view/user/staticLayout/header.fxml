@@ -7,19 +7,26 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.HeaderController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="1100.0" styleClass="pane" stylesheets="@../../../css/admin/header.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.admin.Panel.HeaderController">
     <children>
         <Label layoutX="440.0" layoutY="-2.0" prefHeight="34.0" prefWidth="215.0" text="Library Application" textFill="#848080">
             <font>
                 <Font size="23.0" />
             </font>
         </Label>
-        <Button fx:id="closeProgramButton" layoutX="1050.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="50.0">
+        <Button fx:id="closeProgramButton" layoutX="1050.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="50.0">
             <font>
                 <Font size="10.0" />
             </font>
+         <graphic>
+                <ImageView fitHeight="12.0" fitWidth="13.0">
+                    <image>
+                        <Image url="@../../../image/black_close.png" />
+                    </image>
+                </ImageView>
+         </graphic>
         </Button>
-        <Button fx:id="minimizeProgramButton" layoutX="1000.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="21.0" prefWidth="50.0">
+        <Button fx:id="minimizeProgramButton" layoutX="1000.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="30.0" prefWidth="50.0">
             <font>
                 <Font size="10.0" />
             </font>
@@ -31,10 +38,5 @@
                 </ImageView>
             </graphic>
         </Button>
-          <ImageView fitHeight="12.0" fitWidth="13.0" layoutX="1069.0" layoutY="4.0">
-              <image>
-                  <Image url="@../../../image/black_close.png" />
-              </image>
-          </ImageView>
     </children>
 </Pane>

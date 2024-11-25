@@ -2,6 +2,7 @@ package app.controller.user.HomePage;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -53,6 +54,8 @@ public class MainHomePageController implements BaseController{
     @FXML
     public TilePane searchBooksMainPage;
 
+    List<Button> buttons;
+
     public static SurfaceUserDTO user;
 
     public ObservableList<String> discoverBookSectionTitleList;
@@ -88,16 +91,34 @@ public class MainHomePageController implements BaseController{
     public void initialize() {
         DivideToOtherControllers();
         GetUserInfo();
+        buttons = List.of(allButtonYourBooks, pendingButtonYourBooks, borrowingButtonYourBooks, returnedButtonYourBooks);
+        updateButtonStyle(0);
+    }
+
+    void updateButtonStyle(int ordinalNumber) {
+        for (int i = 0; i < buttons.size(); i++) {
+            if (i != ordinalNumber) {
+                buttons.get(i).getStyleClass().removeAll("selected-button");
+                buttons.get(i).getStyleClass().add("unselected-button");
+            } else {
+                buttons.get(i).getStyleClass().removeAll("unselected-button");
+                buttons.get(i).getStyleClass().add("selected-button");
+            }
+        }
     }
 
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == allButtonYourBooks) {
+            updateButtonStyle(0);
             yourBooksTabController.handleAllButtonIsClicked();
         } else if (e.getSource() == pendingButtonYourBooks) {
+            updateButtonStyle(1);
             yourBooksTabController.handlePendingButtonIsClicked();
         } else if (e.getSource() == borrowingButtonYourBooks) {
+            updateButtonStyle(2);
             yourBooksTabController.handleBorrowingButtonIsClicked();
         } else if (e.getSource() == returnedButtonYourBooks) {
+            updateButtonStyle(3);
             yourBooksTabController.handleReturnedButtonIsClicked();
         }
     }

@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.MainHomePageController">
-    <top>
+   <top>
       <fx:include source="../staticLayout/header.fxml" />
    </top>
    <center>
@@ -132,9 +132,13 @@
                                  <children>
                                     <AnchorPane prefHeight="41.0" prefWidth="1100.0">
                                        <children>
-                                          <TextField fx:id="searchBoxTextField" layoutX="387.0" layoutY="5.0" prefHeight="34.0" prefWidth="330.0" promptText="Search" />
                                           <FontAwesomeIconView fill="#1548b4" glyphName="SEARCH" layoutX="360.0" layoutY="26.0" size="1.7em" text="" />
-                                          <ChoiceBox fx:id="choiceBoxSearchFilter" layoutX="633.0" layoutY="6.0" prefHeight="30.0" prefWidth="84.0" />
+                                          <Pane layoutX="388.0" layoutY="4.0" prefHeight="33.0" prefWidth="310.0" styleClass="search-block" stylesheets="@../../../css/admin/search_box.css">
+                                             <children>
+                                                <TextField fx:id="searchBoxTextField" prefHeight="33.0" prefWidth="227.0" promptText="Search" />
+                                                <ChoiceBox fx:id="choiceBoxSearchFilter" layoutX="227.0" prefHeight="33.0" prefWidth="84.0" />
+                                             </children>
+                                          </Pane>
                                        </children>
                                     </AnchorPane>
                                     <TilePane fx:id="searchBooksMainPage" hgap="30.0" prefWidth="1100.0" vgap="50.0">
@@ -156,9 +160,9 @@
                                  <children>
                                     <Pane prefHeight="70.0" prefWidth="1100.0">
                                        <children>
-                                          <Button fx:id="pendingButtonYourBooks" layoutX="148.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Pending" />
-                                          <Button fx:id="borrowingButtonYourBooks" layoutX="237.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Borrowing" />
-                                          <Button fx:id="returnedButtonYourBooks" layoutX="351.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Returned" />
+                                          <Button fx:id="pendingButtonYourBooks" layoutX="128.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Pending" />
+                                          <Button fx:id="borrowingButtonYourBooks" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Borrowing" />
+                                          <Button fx:id="returnedButtonYourBooks" layoutX="293.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Returned" />
                                           <Button fx:id="allButtonYourBooks" layoutX="51.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="61.0" text="All" />
                                        </children>
                                     </Pane>
@@ -181,7 +185,12 @@
                   <Insets />
                </opaqueInsets>
             </TabPane>
-            <ChoiceBox fx:id="userButton" layoutX="1020.0" layoutY="3.0" prefHeight="25.0" prefWidth="39.0" stylesheets="@../../../css/user/userbutton.css" />
+            <ImageView fitHeight="35.0" fitWidth="40.0" layoutX="1018.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../image/other/avt.png" />
+               </image>
+            </ImageView>
+            <ChoiceBox fx:id="userButton" layoutX="1017.0" layoutY="8.0" maxHeight="34.0" maxWidth="42.0" minHeight="34.0" minWidth="30.0" prefHeight="34.0" prefWidth="42.0" stylesheets="@../../../css/user/userbutton.css" />
          </children>
       </AnchorPane>
    </center>
