@@ -5,7 +5,8 @@ import java.io.FileOutputStream;
 import java.nio.file.Files;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.service.subService.PdfExportService;
+import app.service.subService.exportFileService.ExportContext;
+import app.service.subService.exportFileService.PdfExportStrategy;
 import javafx.stage.FileChooser;
 
 public class ExportDataController {
@@ -21,7 +22,7 @@ public class ExportDataController {
 
     void exportData() {
         try {
-            File tempPdfFile = PdfExportService.exportPaneToPdf(mainBookLoanCtrl.pane_data);
+            File tempPdfFile = new ExportContext(new PdfExportStrategy()).export(mainBookLoanCtrl.pane_data);
             if (tempPdfFile == null) {
                 System.err.println("Không thể tạo file PDF tạm.");
                 return;

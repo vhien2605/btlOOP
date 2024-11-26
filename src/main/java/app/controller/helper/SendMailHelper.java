@@ -4,7 +4,8 @@ import java.io.File;
 
 import app.controller.admin.BookLoanTab.MainBookLoanController;
 import app.service.subService.GMailer;
-import app.service.subService.PdfExportService;
+import app.service.subService.exportFileService.ExportContext;
+import app.service.subService.exportFileService.PdfExportStrategy;
 import javafx.application.Platform;
 
 public class SendMailHelper {
@@ -17,7 +18,7 @@ public class SendMailHelper {
      */
     public static void sendMail(MainBookLoanController bookLoanController, String email) {
         Platform.runLater(() -> {
-            File tempPdfFile = PdfExportService.exportPaneToPdf(bookLoanController.getPaneData());
+            File tempPdfFile = new ExportContext(new PdfExportStrategy()).export(bookLoanController.getPaneData());
 
             if (tempPdfFile != null) {
                 new Thread(() -> {
