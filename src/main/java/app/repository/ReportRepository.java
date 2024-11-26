@@ -389,9 +389,9 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
 
                 // Cập nhật BorrowReport
                 stmt1.setString(1, borrowReport.getBookId());
-                stmt1.setDate(2, Date.valueOf(borrowReport.getBorrowDate()));
-                stmt1.setDate(3, Date.valueOf(borrowReport.getReturnDate()));
-                stmt1.setDate(4, Date.valueOf(borrowReport.getExpectedReturnDate()));
+                stmt1.setString(2, borrowReport.getBorrowDate());
+                stmt1.setString(3, borrowReport.getReturnDate());
+                stmt1.setString(4, borrowReport.getExpectedReturnDate());
                 stmt1.setString(5, borrowReport.getStatus());
                 stmt1.setString(6, borrowReport.getQrcodeUrl());
                 stmt1.setInt(7, borrowReport.getId());

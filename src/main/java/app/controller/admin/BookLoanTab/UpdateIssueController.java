@@ -28,21 +28,22 @@ public class UpdateIssueController {
             return;
         }
 
-        if (mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport)) {
-            mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
+        boolean success = false;
 
-            // Send mail
-            if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
-                String userId = mainBookLoanCtrl.borrowReport.getUserId();
-                User user = mainBookLoanCtrl.userService.findById(userId);
-                if (user != null) {
-                    MainBookLoanController controller = BookLoanHelper
-                            .getBookLoanController(mainBookLoanCtrl.borrowReport);
-                    if (controller != null) {
-                        SendMailHelper.sendMail(controller, user.getEmail());
-                    }
-                }
+        if (oldStatus.equals(newStatus)) {
+            success = mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport);
+        } else {
+            Book book = getNewBookAfterUpdateReport(oldStatus, newStatus);
+            BorrowReport report = mainBookLoanCtrl.borrowReport;
+
+            if (book != null && mainBookLoanCtrl.reportService.updateReportAndBookTransaction(report, book)) {
+                success = true;
+                sendMail();
             }
+        }
+
+        if (success) {
+            mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
         } else {
             mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
         }
@@ -73,28 +74,43 @@ public class UpdateIssueController {
         oldStatus = mainBookLoanCtrl.borrowReport.getStatus();
         newStatus = mainBookLoanCtrl.changeStatusButton.getText();
 
-        if (!oldStatus.equals(newStatus)) {
-            mainBookLoanCtrl.borrowReport.setStatus(newStatus);
-            return updateBookQuantity(oldStatus, newStatus);
-        }
+        mainBookLoanCtrl.borrowReport.setStatus(newStatus);
 
         return true;
     }
 
-    private Boolean updateBookQuantity(String oldStatus, String newStatus) {
+    private Book getNewBookAfterUpdateReport(String oldStatus, String newStatus) {
         Book book = mainBookLoanCtrl.bookService.findByISBN(mainBookLoanCtrl.borrowReport.getBookId());
         if (book == null) {
-            return false;
+            return null;
         }
 
         if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
             book.setBookRemaining(book.getBookRemaining() - 1);
-            return mainBookLoanCtrl.bookService.handleUpdateOne(book);
         } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
             book.setBookRemaining(book.getBookRemaining() + 1);
-            return mainBookLoanCtrl.bookService.handleUpdateOne(book);
         }
 
-        return true;
+        return book;
+    }
+
+    private void sendMail() {
+        if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+            String userId = mainBookLoanCtrl.borrowReport.getUserId();
+            User user = mainBookLoanCtrl.userService.findById(userId);
+
+            if (user == null) {
+                return;
+            }
+
+            MainBookLoanController controller = BookLoanHelper
+                    .getBookLoanController(mainBookLoanCtrl.borrowReport);
+
+            if (controller == null) {
+                return;
+            }
+
+            SendMailHelper.sendMail(controller, user.getEmail());
+        }
     }
 }
