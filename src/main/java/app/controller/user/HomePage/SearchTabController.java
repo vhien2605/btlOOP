@@ -88,8 +88,6 @@ public class SearchTabController {
         String col = DISPLAY_TO_VALUE_MAP.get(homeController.choiceBoxSearchFilter.getValue());
         String value = homeController.searchBoxTextField.getText();
 
-        System.out.println(col + " LIKE %" + value + "%");
-
         bookList = bookService.search(col, value);
         renderBookListToTilePane();
     }

@@ -7,11 +7,14 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="bookdescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" stylesheets="@../../../css/user/bookdetail.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.BookDetail.BookDetailController">
@@ -73,6 +76,41 @@
                   <Label fx:id="publisherLabel" layoutX="444.0" layoutY="246.0" styleClass="auxiliaryLabel" text="Publisher name here" />
                   <TextArea fx:id="descriptionArea" editable="false" layoutX="333.0" layoutY="330.0" prefHeight="200.0" prefWidth="595.0" text="Book description here&#10;" wrapText="true" />
                   <Label layoutX="333.0" layoutY="302.0" styleClass="auxiliaryLabel" text="Description" />
+                  <Pane fx:id="commentHeaderPane" layoutX="333.0" layoutY="590.0" prefHeight="140.0" prefWidth="595.0" stylesheets="@../../../css/user/commentsection.css">
+                     <children>
+                        <Separator layoutY="50.0" prefWidth="595.0" />
+                        <Label layoutX="35.0" layoutY="5.0" prefHeight="46.0" prefWidth="174.0" text="Comment">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="75.0" fitWidth="40.0" layoutX="30.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../image/other/avt.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="commentTextField" layoutX="89.0" layoutY="65.0" prefHeight="50.0" prefWidth="420.0" promptText="Write a comment" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="allCommentHeaderPane" layoutX="333.0" layoutY="790.0" prefHeight="70.0" prefWidth="595.0" stylesheets="@../../../css/user/commentsection.css">
+                     <children>
+                        <Label layoutX="35.0" layoutY="14.0" prefHeight="46.0" prefWidth="387.0" text="All Comments">
+                           <font>
+                              <Font size="31.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <VBox layoutX="333.0" layoutY="860.0" prefHeight="100.0" prefWidth="595.0" />
+                  <Pane fx:id="paneWhenNoComment" layoutX="333.0" layoutY="860.0" prefHeight="70.0" prefWidth="595.0" stylesheets="@../../../css/user/commentsection.css" visible="false">
+                     <children>
+                        <Label layoutX="35.0" layoutY="18.0" prefHeight="33.0" prefWidth="238.0" text="No comment yet">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
                <padding>
                   <Insets bottom="40.0" />
