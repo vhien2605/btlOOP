@@ -32,8 +32,8 @@ public class CommentService {
         Optional<Comment> wrapper = this.commentRepository.findById(id);
         return wrapper.orElse(null);
     }
-    
-    public List<CommentDTO> findAllCommentDTO() {
-        return FXCollections.observableList(this.commentRepository.getAllCommentDTO());
+
+    public ObservableList<CommentDTO> findAllCommentDTOByBserId(String bookId) {
+        return FXCollections.observableList(this.commentRepository.getAllCommentDTOByBookId(bookId));
     }
 }

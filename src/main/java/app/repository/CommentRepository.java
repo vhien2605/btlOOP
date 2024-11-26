@@ -132,13 +132,16 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
      *
      * @return {@code List<CommentDTO>}
      */
-    public List<CommentDTO> getAllCommentDTO() {
+    public List<CommentDTO> getAllCommentDTOByBookId(String bookId) {
         List<CommentDTO> list = new ArrayList<>();
-        String query = "SELECT * FROM comment INNER JOIN" +
-                " user JOIN comment.userId=user.id";
+        String query = "SELECT * FROM comment " +
+                "JOIN user " +
+                "ON comment.userId=user.id " +
+                "WHERE comment.bookId = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
-            ResultSet resultSet = statement.executeQuery(query);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, bookId);
+            ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 list.add(new CommentDTO(
                                 resultSet.getInt("id"),

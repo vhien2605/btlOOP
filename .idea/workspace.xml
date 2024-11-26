@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/domain/DTO/CommentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/service/CommentServiceTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/service/ReportServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/BookRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service/AuthServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/AuthenticationServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/service/BookServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/BookServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/CommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/CommentServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,6 +72,8 @@
     "JUnit.BookRepositoryTest.findByCategory.executor": "Run",
     "JUnit.BookRepositoryTest.testFindAll.executor": "Run",
     "JUnit.BookServiceTest.executor": "Run",
+    "JUnit.CommentServiceTest.executor": "Run",
+    "JUnit.CommentServiceTest.findCommentByIdTest.executor": "Run",
     "JUnit.ReportRepositoryTest.executor": "Run",
     "JUnit.ReportRepositoryTest.findByOneColumnTest.executor": "Run",
     "JUnit.ReportServiceTest.executor": "Run",
@@ -103,7 +98,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.CommentServiceTest.findCommentByIdTest">
+  <component name="RunManager" selected="JUnit.CommentServiceTest">
     <configuration name="GMailer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.service.subService.GMailer" />
       <module name="library_app" />
@@ -113,6 +108,21 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.CommentServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -128,22 +138,6 @@
       <option name="PACKAGE_NAME" value="service" />
       <option name="MAIN_CLASS_NAME" value="service.CommentServiceTest" />
       <option name="METHOD_NAME" value="findCommentByIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportRepositoryTest.findByOneColumnTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.ReportRepositoryTest" />
-      <option name="METHOD_NAME" value="findByOneColumnTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -182,11 +176,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CommentServiceTest" />
         <item itemvalue="JUnit.CommentServiceTest.findCommentByIdTest" />
         <item itemvalue="JUnit.ReportServiceTest" />
         <item itemvalue="JUnit.ReportServiceTest.getAllReportsTest" />
         <item itemvalue="Application.GMailer" />
-        <item itemvalue="JUnit.ReportRepositoryTest.findByOneColumnTest" />
       </list>
     </recent_temporary>
   </component>
