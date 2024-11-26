@@ -74,4 +74,15 @@ public class ReportService {
     public ObservableList<BorrowReport> findByOneColumn(String col, String value) {
         return FXCollections.observableList(this.reportRepository.findByOneColumn(col, value));
     }
+
+    /**
+     * Handle transaction book and report.
+     *
+     * @param book         book
+     * @param borrowReport borrowReport
+     * @return {@code boolean true/false}
+     */
+    public boolean updateReportAndBookTransaction(BorrowReport borrowReport, Book book) {
+        return this.reportRepository.updateReportAndBookTransaction(borrowReport, book);
+    }
 }
