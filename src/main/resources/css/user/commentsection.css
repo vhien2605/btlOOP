@@ -1,0 +1,17 @@
+#commentsection {
+
+}
+
+#commentHeaderPane {
+    -fx-background-color: white;
+}
+
+#allCommentHeaderPane {
+    -fx-background-color: white;
+
+}
+
+#paneWhenNoComment {
+    -fx-background-color: rgb(175, 57, 57);
+
+}

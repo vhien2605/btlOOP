@@ -3,8 +3,6 @@ package app.controller.user.BookDetail;
 import java.io.InputStream;
 import java.time.format.DateTimeFormatter;
 
-import com.itextpdf.kernel.colors.Lab;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
@@ -16,7 +14,9 @@ import app.domain.BorrowReport;
 import app.domain.DTO.SurfaceUserDTO;
 import app.domain.User;
 import app.exception.auth.SessionException;
+import app.repository.CommentRepository;
 import app.repository.ReportRepository;
+import app.service.mainService.CommentService;
 import app.service.mainService.ReportService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,8 +24,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 
 public class BookDetailController implements BaseController {
@@ -74,9 +76,14 @@ public class BookDetailController implements BaseController {
     @FXML
     private Button viewBookLoanPendingButton;
 
+    @FXML
+    private TextField commentTextField;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
+
+    private CommentService commentService;
 
     private Book book;
 
@@ -158,12 +165,31 @@ public class BookDetailController implements BaseController {
             showAlert.showAlert("Expected return date must be after borrow date!", "error");
             return false;
         }
+
+        if (book.getBookQuantity() <= 0) {
+            showAlert.showAlert("This book is out of stock!", "error");
+        }
+
         return true;
+    }
+
+    private void sendComment() {
+        
+    }
+
+    private void setCommentTextFieldHandleEvent() {
+        commentTextField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                sendComment();
+            }
+        });
     }
 
     @Override
     public void initialize() {
         showAlert = new ShowAlert();
+        commentService = new CommentService(new CommentRepository());
         reportService = new ReportService(new ReportRepository(), null, null);
+        setCommentTextFieldHandleEvent();
     }
 }
