@@ -1,32 +1,23 @@
-package app.service.subService;
+package app.service.subService.exportFileService;
 
-import com.itextpdf.kernel.pdf.PdfWriter;
-import com.itextpdf.layout.Document;
-import com.itextpdf.kernel.pdf.PdfDocument;
-import javafx.embed.swing.SwingFXUtils;
-import javafx.scene.Node;
-import javafx.scene.image.WritableImage;
-
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-/**
- * This service exports content from a container in javafx
- * to a pdf file to save to your computer.
- * Data from a JavaFX interface will be exported to a PDF
- * file at a user-selected location.
- */
-public class PdfExportService {
+import javax.imageio.ImageIO;
 
-    /**
-     * 
-     * @param pane Container in javafx.
-     * 
-     * @author minhhai205MNgc.
-     */
-    public static File exportPaneToPdf(Node pane) {
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.Node;
+import javafx.scene.image.WritableImage;
+
+public class PdfExportStrategy implements ExportStrategy {
+
+    @Override
+    public File export(Node pane) {
         // Take a photo from pane
         WritableImage snapshot = pane.snapshot(null, null);
 
@@ -64,4 +55,5 @@ public class PdfExportService {
             return null;
         }
     }
+
 }
