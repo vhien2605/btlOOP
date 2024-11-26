@@ -2,20 +2,14 @@ package service;
 
 import app.domain.DTO.PasswordChangeDTO;
 import app.domain.User;
-import app.repository.BookRepository;
 import app.repository.UserRepository;
-import app.service.mainService.BookService;
 import app.service.mainService.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 
-public class AuthServiceTest {
+public class AuthenticationServiceTest {
 
     private UserService userService;
 

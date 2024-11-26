@@ -64,8 +64,7 @@ public class MainHomeController implements BaseController {
     private UserService userService;
 
 
-    @Override
-    public void initialize() {
+    private void setUpDependencies() {
         authenticationService = new AuthenticationService(new SessionService()
                 , new UserService(new UserRepository()));
         bookService = new BookService(new BookRepository());
@@ -73,13 +72,23 @@ public class MainHomeController implements BaseController {
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
         userService = new UserService(new UserRepository());
         multiTaskService = new MultiTaskService(5);
-        setupClock();
-        setHelloLabel();
+    }
+
+    private void addLayoutTaskToMultiThread() {
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.userService.getAllUsers()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Borrowed")));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Pending")));
+    }
+
+
+    @Override
+    public void initialize() {
+        setUpDependencies();
+        setupClock();
+        setHelloLabel();
+        addLayoutTaskToMultiThread();
         try {
             List<ResultTask<?>> tasksResults = multiTaskService.handleTasks();
             List<Book> listBook = (List<Book>) tasksResults.get(0).getData();

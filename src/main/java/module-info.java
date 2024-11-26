@@ -18,7 +18,7 @@ module app {
     requires layout;
     requires io;
     requires javafx.swing;
-    
+
     requires cloudinary.core;
 
     requires com.google.api.client;
@@ -32,6 +32,7 @@ module app {
     requires mail;
     requires jdk.httpserver;
     requires activation;
+    requires org.checkerframework.checker.qual;
 
     opens app.controller to javafx.fxml;
     opens app.controller.admin.Panel to javafx.fxml;
