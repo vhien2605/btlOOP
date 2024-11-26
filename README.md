@@ -30,7 +30,7 @@
 - Nếu tên đăng nhập hoặc mật khẩu không đúng sẽ hiện lên thông bào và yêu cầu người dùng nhập lại.
 
 - Khi người dùng xác thực đăng nhập thành công, tài khoản sẽ được xác thực quyền, nếu là admin thì sẽ được chuyển hướng về giao diện admin, nếu là user sẽ được chuyển hướng về giao diện user.
-![alt text](image.png)
+![alt text](preview/image.png)
 
 ### Chức năng đăng kí
 - Nếu người dùng chưa có tài khoản, có thể vàn trang đăng kí để đăng kí tài khoản sử dụng ứng dụng.
@@ -38,20 +38,20 @@
 - Chức năng đăng kí chỉ dành cho người dùng mượn sách, admin không thể đăng kí tài khoản mà sẽ được người phát triển ứng dụng tào tài khoản sẵn cho.
 
 - Người dùng nhập các thông tin để đăng kí tài khoản và sẽ được hiện thông báo nếu id vè username đẽ tồn tại, đã được đăng kí tài khoản rồi.
-![alt text](image-1.png)
+![alt text](preview/image-1.png)
 
 ### Chức năng lấy lại tài khoản nếu quên mật khẩu
 
 - Khi người dùng quên mất khẩu và không thể vào ứng dụng thì có thể chọn chức năng quên mật khẩu ở trang login.
 
 - Người dùng nhập email đăng kí tài khoản và lấy mà OTP xác thực được gửi về email.
-![alt text](image-2.png)
+![alt text](preview/image-2.png)
 
 - Khi thấy thông báo gửi OTP thành công thì một mã OTP xác thực đã được gửi mề email.
-![alt text](image-3.png)
+![alt text](preview/image-3.png)
 
 - Thực hiện nhập OTP để nhận được để xác thực, nếu xác thực mã otp thành công sẽ được chuyển hướng sang trang tạo mật khẩu mới.
-![alt text](image-4.png)
+![alt text](preview/image-4.png)
 
 - Người dùng thực hiện lấy lại mật khẩu và sẽ được chuyển hướng về trang admin để đăng nhập.
 
