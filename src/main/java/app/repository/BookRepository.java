@@ -249,59 +249,6 @@ public class BookRepository implements CrudRepository<Book, String> {
         return list;
     }
 
-    /**
-     * Special method for update book quantity and report.
-     * when only 1 in 2 query failed. Reject all request
-     *
-     * @param book         {@link Book}
-     * @param borrowReport {@link BorrowReport}
-     */
-    public void updateBookAndReportTransaction(Book book, BorrowReport borrowReport) {
-        try (Connection connection = DbConfig.getInstance().getConnection()) {
-            String query1 = "UPDATE borrow_report SET bookId = ?, borrowDate = ?, returnDate = ?, "
-                    + "expectedReturnDate = ?, status = ?, qrcodeUrl = ? WHERE id = ?";
-            String query2 = "UPDATE book SET name = ?, author = ?, description = ?, category = ?, "
-                    + "bookPublisher = ?, bookQuantity = ?, bookRemaining = ?, imagePath = ? WHERE id = ?";
-
-            connection.setAutoCommit(false);
-
-            try (PreparedStatement stmt1 = connection.prepareStatement(query1);
-                 PreparedStatement stmt2 = connection.prepareStatement(query2)) {
-
-                // Cập nhật BorrowReport
-                stmt1.setString(1, borrowReport.getBookId());
-                stmt1.setDate(2, Date.valueOf(borrowReport.getBorrowDate()));
-                stmt1.setDate(3, Date.valueOf(borrowReport.getReturnDate()));
-                stmt1.setDate(4, Date.valueOf(borrowReport.getExpectedReturnDate()));
-                stmt1.setString(5, borrowReport.getStatus());
-                stmt1.setString(6, borrowReport.getQrcodeUrl());
-                stmt1.setInt(7, borrowReport.getId());
-                stmt1.executeUpdate();
-
-                // Cập nhật Book
-                stmt2.setString(1, book.getName());
-                stmt2.setString(2, book.getAuthor());
-                stmt2.setString(3, book.getDescription());
-                stmt2.setString(4, book.getCategory());
-                stmt2.setString(5, book.getBookPublisher());
-                stmt2.setInt(6, book.getBookQuantity());
-                stmt2.setInt(7, book.getBookRemaining());
-                stmt2.setString(8, book.getImagePath());
-                stmt2.setString(9, book.getId());
-                stmt2.executeUpdate();
-
-                // Cam kết transaction
-                connection.commit();
-            } catch (SQLException e) {
-                connection.rollback();
-                System.err.println("Transaction rolled back due to error: " + e.getMessage());
-                throw e;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.err.println("Database operation failed.");
-        }
-    }
 
 }
 
