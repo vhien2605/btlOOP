@@ -33,20 +33,28 @@ public class UpdateIssueController {
         if (oldStatus.equals(newStatus)) {
             success = mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport);
         } else {
-            Book book = getNewBookAfterUpdateReport(oldStatus, newStatus);
+            Book book = mainBookLoanCtrl.bookService.findByISBN(mainBookLoanCtrl.borrowReport.getBookId());
             BorrowReport report = mainBookLoanCtrl.borrowReport;
 
-            if (book != null && mainBookLoanCtrl.reportService.updateReportAndBookTransaction(report, book)) {
+            if (book == null) {
+                showResult(success);
+                return;
+            }
+
+            if (book.getBookRemaining() <= 0) {
+                mainBookLoanCtrl.showAlert.showAlert("The number of books left is not enough!", "error");
+                return;
+            }
+
+            updateBookAfterUpdateReport(book);
+
+            if (mainBookLoanCtrl.reportService.updateReportAndBookTransaction(report, book)) {
                 success = true;
                 sendMail();
             }
         }
 
-        if (success) {
-            mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
-        } else {
-            mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
-        }
+        showResult(success);
     }
 
     boolean updateDataBorrowReport() {
@@ -79,19 +87,12 @@ public class UpdateIssueController {
         return true;
     }
 
-    private Book getNewBookAfterUpdateReport(String oldStatus, String newStatus) {
-        Book book = mainBookLoanCtrl.bookService.findByISBN(mainBookLoanCtrl.borrowReport.getBookId());
-        if (book == null) {
-            return null;
-        }
-
+    private void updateBookAfterUpdateReport(Book book) {
         if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
             book.setBookRemaining(book.getBookRemaining() - 1);
         } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
             book.setBookRemaining(book.getBookRemaining() + 1);
         }
-
-        return book;
     }
 
     private void sendMail() {
@@ -111,6 +112,14 @@ public class UpdateIssueController {
             }
 
             SendMailHelper.sendMail(controller, user.getEmail());
+        }
+    }
+
+    private void showResult(boolean success) {
+        if (success) {
+            mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
+        } else {
+            mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
         }
     }
 }

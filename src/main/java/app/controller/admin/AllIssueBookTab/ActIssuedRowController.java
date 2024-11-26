@@ -47,21 +47,28 @@ public class ActIssuedRowController {
         if (oldStatus.equals(newStatus)) {
             success = mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport);
         } else {
-            Book book = getNewBookAfterUpdateReport(oldStatus, newStatus);
+            Book book = mainIssueRowCtrl.bookService.findByISBN(mainIssueRowCtrl.borrowReport.getBookId());
             BorrowReport report = mainIssueRowCtrl.borrowReport;
 
-            if (book != null && mainIssueRowCtrl.reportService.updateReportAndBookTransaction(report, book)) {
+            if (book == null) {
+                showResult(success);
+                return;
+            }
+
+            if (book.getBookRemaining() <= 0) {
+                mainIssueRowCtrl.showAlert.showAlert("The number of books left is not enough!", "error");
+                return;
+            }
+
+            updateBookAfterUpdateReport(book);
+
+            if (mainIssueRowCtrl.reportService.updateReportAndBookTransaction(report, book)) {
                 success = true;
                 sendMail();
             }
         }
 
-        if (success) {
-            mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
-            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
-        } else {
-            mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
-        }
+        showResult(success);
     }
 
     void deleteIssue() {
@@ -110,19 +117,12 @@ public class ActIssuedRowController {
         return true;
     }
 
-    private Book getNewBookAfterUpdateReport(String oldStatus, String newStatus) {
-        Book book = mainIssueRowCtrl.bookService.findByISBN(mainIssueRowCtrl.borrowReport.getBookId());
-        if (book == null) {
-            return null;
-        }
-
+    private void updateBookAfterUpdateReport(Book book) {
         if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
             book.setBookRemaining(book.getBookRemaining() - 1);
         } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
             book.setBookRemaining(book.getBookRemaining() + 1);
         }
-
-        return book;
     }
 
     private void sendMail() {
@@ -142,6 +142,15 @@ public class ActIssuedRowController {
             }
 
             SendMailHelper.sendMail(controller, user.getEmail());
+        }
+    }
+
+    void showResult(boolean success) {
+        if (success) {
+            mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
+            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
+        } else {
+            mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
         }
     }
 
