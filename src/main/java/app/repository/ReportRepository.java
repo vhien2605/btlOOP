@@ -2,6 +2,7 @@ package app.repository;
 
 import app.config.DbConfig;
 import app.domain.BorrowReport;
+import app.domain.DTO.ReportDetail;
 import app.domain.User;
 
 import java.sql.*;
@@ -330,5 +331,38 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
             e.printStackTrace();
         }
         return list;
+    }
+
+
+    public List<ReportDetail> getAllReportDetailDTO() {
+        String query = "SELECT b1.id,u.name AS userName,b2.name AS bookName,b1.borrowDate,b1.returnDate,b1.expectedReturnDate,b1.status " +
+                "FROM borrow_report b1 " +
+                "INNER JOIN user u " +
+                "ON b1.userId=u.id " +
+                "INNER JOIN book b2 " +
+                "ON b1.bookId=b2.id ";
+        List<ReportDetail> listOfReports = new ArrayList<>();
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+        ) {
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                ReportDetail report = new ReportDetail(
+                        resultSet.getInt("id"),
+                        resultSet.getString("userName"),
+                        resultSet.getString("bookName"),
+                        resultSet.getString("borrowDate"),
+                        resultSet.getString("returnDate"),
+                        resultSet.getString("expectedReturnDate"),
+                        resultSet.getString("status")
+                );
+                listOfReports.add(report);
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return listOfReports;
     }
 }

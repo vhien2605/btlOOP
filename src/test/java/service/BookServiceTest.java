@@ -37,9 +37,7 @@ public class BookServiceTest {
         mockBooks.add(new Book("2", "Head first design pattern", "Author2", "sach xau trai",
                 "Sex gay", "Kim dong", 140, 120, "dshadsahds"));
         Mockito.when(bookRepository.findAll()).thenReturn(mockBooks);
-
         ObservableList<Book> result = bookService.getAllBooks();
-
         Assertions.assertEquals(2, result.size());
     }
 

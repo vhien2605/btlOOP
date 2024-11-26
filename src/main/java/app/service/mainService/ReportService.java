@@ -37,29 +37,7 @@ public class ReportService {
     }
 
     public List<ReportDetail> transferToReportDetail() {
-        List<BorrowReport> borrowReports = this.reportRepository.findAll();
-        List<ReportDetail> DTOreports = new ArrayList<>();
-        List<User> users = this.userService.getAllUsers();
-        List<Book> books = this.bookService.getAllBooks();
-        HashMap<String, String> userMap = new HashMap<>();
-        HashMap<String, String> bookMap = new HashMap<>();
-        for (User user : users) {
-            userMap.put(user.getId(), user.getName());
-        }
-        for (Book book : books) {
-            bookMap.put(book.getId(), book.getName());
-        }
-        for (BorrowReport borrowReport : borrowReports) {
-            DTOreports.add(new ReportDetail(
-                    borrowReport.getId(),
-                    userMap.get(borrowReport.getUserId()),
-                    bookMap.get(borrowReport.getBookId()),
-                    borrowReport.getBorrowDate(),
-                    borrowReport.getReturnDate(),
-                    borrowReport.getExpectedReturnDate(),
-                    borrowReport.getStatus()));
-        }
-        return DTOreports;
+        return this.reportRepository.getAllReportDetailDTO();
     }
 
     public boolean handleUpdateOne(BorrowReport entity) {
