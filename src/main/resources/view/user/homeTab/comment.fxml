@@ -5,16 +5,23 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="151.0" prefWidth="595.0" stylesheets="@../../../css/user/comment.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.CommentController">
+<AnchorPane fx:id="background" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="135.0" prefWidth="618.0" stylesheets="@../../../css/user/comment.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.CommentController">
    <children>
-      <TextArea fx:id="commentTextArea" editable="false" layoutX="97.0" prefHeight="68.0" prefWidth="415.0" scrollLeft="10.0" wrapText="true" AnchorPane.bottomAnchor="35.0" AnchorPane.topAnchor="45.0" />
-      <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <TextArea fx:id="commentTextArea" editable="false" layoutX="97.0" prefHeight="44.0" prefWidth="500.0" scrollLeft="10.0" wrapText="true" AnchorPane.bottomAnchor="46.0" AnchorPane.topAnchor="45.0" />
+      <ImageView fitHeight="44.0" fitWidth="41.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/other/small_user_icon.png" />
          </image>
       </ImageView>
-      <Label fx:id="usernameLabel" layoutX="97.0" layoutY="14.0" text="Username" />
-      <Label fx:id="commentDateLabel" layoutX="110.0" layoutY="120.0" text="Date" />
+      <Label fx:id="usernameLabel" layoutX="97.0" layoutY="14.0" text="Username" textFill="#1c5bcf">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <Label fx:id="commentDateLabel" layoutX="97.0" layoutY="95.0" text="Date" textFill="#1c5bcf">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
    </children>
 </AnchorPane>
