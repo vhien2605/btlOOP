@@ -191,6 +191,9 @@ public class BookDetailController implements BaseController {
     }
 
     private void sendComment() {
+        if (commentTextField.getText().equals("")) {
+            return;
+        }
         renderComment(user.getUsername(), commentTextField.getText(), LocalDate.now().toString());
         Comment comment = new Comment(0, user.getId(), book.getId(), commentTextField.getText(), LocalDate.now().toString());
         commentService.handleSaveComment(comment);
