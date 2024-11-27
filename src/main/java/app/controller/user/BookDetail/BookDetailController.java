@@ -1,6 +1,7 @@
 package app.controller.user.BookDetail;
 
 import java.io.InputStream;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
@@ -10,14 +11,19 @@ import app.controller.user.BookLoan.BookLoanController;
 import app.controller.user.HomePage.Card;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
+import app.domain.Comment;
 import app.domain.BorrowReport;
 import app.domain.DTO.SurfaceUserDTO;
 import app.domain.User;
 import app.exception.auth.SessionException;
 import app.repository.CommentRepository;
 import app.repository.ReportRepository;
+import app.repository.UserRepository;
+import app.service.authService.AuthenticationService;
+import app.service.authService.SessionService;
 import app.service.mainService.CommentService;
 import app.service.mainService.ReportService;
+import app.service.mainService.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -84,6 +90,8 @@ public class BookDetailController implements BaseController {
     private ReportService reportService;
 
     private CommentService commentService;
+
+    private AuthenticationService authenticationService;
 
     private Book book;
 
@@ -174,7 +182,19 @@ public class BookDetailController implements BaseController {
     }
 
     private void sendComment() {
-        
+        // String userID = "";
+
+        // try {
+        //     userID = authenticationService.getCurrentUser().getId();
+        // }catch (Exception e) {
+        //     e.printStackTrace();
+        // }
+
+        // Comment comment = new Comment(0,
+        //         userID,
+        //         book.getId(), commentTextField.getText(),
+        //         LocalDate.now().toString());
+        // commentService.
     }
 
     private void setCommentTextFieldHandleEvent() {
@@ -188,6 +208,7 @@ public class BookDetailController implements BaseController {
     @Override
     public void initialize() {
         showAlert = new ShowAlert();
+        authenticationService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
         commentService = new CommentService(new CommentRepository());
         reportService = new ReportService(new ReportRepository(), null, null);
         setCommentTextFieldHandleEvent();

@@ -33,7 +33,7 @@ public class CommentService {
         return wrapper.orElse(null);
     }
 
-    public ObservableList<CommentDTO> findAllCommentDTOByBserId(String bookId) {
+    public ObservableList<CommentDTO> findAllCommentDTOByUserId(String bookId) {
         return FXCollections.observableList(this.commentRepository.getAllCommentDTOByBookId(bookId));
     }
 }

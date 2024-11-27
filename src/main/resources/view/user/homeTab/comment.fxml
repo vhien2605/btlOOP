@@ -6,9 +6,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="137.0" prefWidth="595.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.CommentController">
    <children>
-      <TextArea layoutX="97.0" layoutY="47.333333333333336" prefHeight="68.0" prefWidth="415.0" scrollLeft="10.0" wrapText="true" AnchorPane.bottomAnchor="22.0" AnchorPane.topAnchor="47.0" />
+      <TextArea fx:id="commentTextArea" layoutX="97.0" layoutY="47.333333333333336" prefHeight="68.0" prefWidth="415.0" scrollLeft="10.0" wrapText="true" AnchorPane.bottomAnchor="22.0" AnchorPane.topAnchor="47.0" />
       <ImageView fitHeight="47.0" fitWidth="45.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../image/other/small_user_icon.png" />
