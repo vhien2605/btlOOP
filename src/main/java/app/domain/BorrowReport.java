@@ -17,9 +17,8 @@ public class BorrowReport {
     private SimpleStringProperty status;
     private SimpleStringProperty qrcodeUrl;
 
-    public BorrowReport(int id, String userId, String bookId, String borrowDate
-            , String returnDate, String expectedReturnDate, String status, String qrcodeUrl
-    ) {
+    public BorrowReport(int id, String userId, String bookId, String borrowDate, String returnDate,
+            String expectedReturnDate, String status, String qrcodeUrl) {
         this.id = new SimpleIntegerProperty(id);
         this.userId = new SimpleStringProperty(userId);
         this.bookId = new SimpleStringProperty(bookId);
@@ -28,6 +27,17 @@ public class BorrowReport {
         this.expectedReturnDate = new SimpleStringProperty(expectedReturnDate);
         this.status = new SimpleStringProperty(status);
         this.qrcodeUrl = new SimpleStringProperty(qrcodeUrl);
+    }
+
+    public BorrowReport(BorrowReport data) {
+        this.id = data.id;
+        this.userId = data.userId;
+        this.bookId = data.bookId;
+        this.borrowDate = data.borrowDate;
+        this.returnDate = data.returnDate;
+        this.expectedReturnDate = data.expectedReturnDate;
+        this.status = data.status;
+        this.qrcodeUrl = data.qrcodeUrl;
     }
 
     public int getId() {

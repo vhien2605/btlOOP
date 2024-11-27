@@ -27,7 +27,7 @@ public class ActIssuedRowController {
         mainIssueRowCtrl.deleteButton.setOnAction(e -> deleteIssue());
     }
 
-    private void renderDetail() {
+    void renderDetail() {
         String currentPath = "admin/allIssueBookTab/all_issuebook_tab";
 
         FXMLResolver resolver = FXMLResolver.getInstance();
@@ -37,30 +37,39 @@ public class ActIssuedRowController {
         bookLoanController.renderData(mainIssueRowCtrl.borrowReport, currentPath);
     }
 
-    private void updateIssue() {
+    void updateIssue() {
         if (!updateDataBorrowReport()) {
             return;
         }
 
-        if (mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport)) {
-            mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
-            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
+        boolean success = false;
+        BorrowReport copyBorrowReport = new BorrowReport(mainIssueRowCtrl.borrowReport);
 
-            // Send mail
-            if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
-                String userId = mainIssueRowCtrl.borrowReport.getUserId();
-                User user = mainIssueRowCtrl.userService.findById(userId);
-                if (user != null) {
-                    MainBookLoanController controller = BookLoanHelper
-                            .getBookLoanController(mainIssueRowCtrl.borrowReport);
-                    if (controller != null) {
-                        SendMailHelper.sendMail(controller, user.getEmail());
-                    }
-                }
-            }
+        if (oldStatus.equals(newStatus)) {
+            success = mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport);
         } else {
-            mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
+            Book book = mainIssueRowCtrl.bookService.findByISBN(mainIssueRowCtrl.borrowReport.getBookId());
+            BorrowReport report = mainIssueRowCtrl.borrowReport;
+
+            if (book == null) {
+                showResult(success, copyBorrowReport);
+                return;
+            }
+
+            if (book.getBookRemaining() <= 0) {
+                mainIssueRowCtrl.showAlert.showAlert("The number of books left is not enough!", "error");
+                return;
+            }
+
+            updateBookAfterUpdateReport(book);
+
+            if (mainIssueRowCtrl.reportService.updateReportAndBookTransaction(report, book)) {
+                success = true;
+                sendMail();
+            }
         }
+
+        showResult(success, copyBorrowReport);
     }
 
     void deleteIssue() {
@@ -104,29 +113,47 @@ public class ActIssuedRowController {
         oldStatus = mainIssueRowCtrl.borrowReport.getStatus();
         newStatus = mainIssueRowCtrl.changeStatusButton.getText();
 
-        if (!oldStatus.equals(newStatus)) {
-            mainIssueRowCtrl.borrowReport.setStatus(newStatus);
-            return updateBookQuantity(oldStatus, newStatus);
-        }
+        mainIssueRowCtrl.borrowReport.setStatus(newStatus);
 
         return true;
     }
 
-    private Boolean updateBookQuantity(String oldStatus, String newStatus) {
-        Book book = mainIssueRowCtrl.bookService.findByISBN(mainIssueRowCtrl.borrowReport.getBookId());
-        if (book == null) {
-            return false;
-        }
-
+    private void updateBookAfterUpdateReport(Book book) {
         if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
             book.setBookRemaining(book.getBookRemaining() - 1);
-            return mainIssueRowCtrl.bookService.handleUpdateOne(book);
         } else if (oldStatus.equals(BorrowReport.BORROWED) && newStatus.equals(BorrowReport.RETURNED)) {
             book.setBookRemaining(book.getBookRemaining() + 1);
-            return mainIssueRowCtrl.bookService.handleUpdateOne(book);
         }
+    }
 
-        return true;
+    private void sendMail() {
+        if (oldStatus.equals(BorrowReport.PENDING) && newStatus.equals(BorrowReport.BORROWED)) {
+            String userId = mainIssueRowCtrl.borrowReport.getUserId();
+            User user = mainIssueRowCtrl.userService.findById(userId);
+
+            if (user == null) {
+                return;
+            }
+
+            MainBookLoanController controller = BookLoanHelper
+                    .getBookLoanController(mainIssueRowCtrl.borrowReport);
+
+            if (controller == null) {
+                return;
+            }
+
+            SendMailHelper.sendMail(controller, user.getEmail());
+        }
+    }
+
+    void showResult(boolean success, BorrowReport copyBorrowReport) {
+        if (success) {
+            mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
+            mainIssueRowCtrl.mainAllIssueCtrl.resetData();
+        } else {
+            mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
+            mainIssueRowCtrl.borrowReport = copyBorrowReport;
+        }
     }
 
 }
