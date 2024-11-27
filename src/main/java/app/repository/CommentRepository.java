@@ -100,7 +100,21 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
      */
     @Override
     public boolean save(Comment comment) {
-        return false;
+        String query = "INSERT INTO comment (userId,bookId,information,date) "
+                + "VALUES(?,?,?,?)";
+        try (Connection connection = DbConfig.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, comment.getUserId());
+            statement.setString(2, comment.getBookId());
+            statement.setString(3, comment.getInformation());
+            statement.setString(4, comment.getDate());
+            int count = statement.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("error in save function in Book repo");
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     /**

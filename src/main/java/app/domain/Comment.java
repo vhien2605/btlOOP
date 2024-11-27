@@ -30,15 +30,15 @@ public class Comment {
         this.id = new SimpleIntegerProperty(id);
     }
 
-    public String getStudentId() {
+    public String getUserId() {
         return userId.get();
     }
 
-    public SimpleStringProperty getStudentIdProperty() {
+    public SimpleStringProperty getUserIdProperty() {
         return userId;
     }
 
-    public void setStudentId(String id) {
+    public void setUserId(String id) {
         userId = new SimpleStringProperty(id);
     }
 

@@ -14,7 +14,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
-public class CommentController implements BaseController{
+public class CommentController implements BaseController {
     @FXML
     private TextArea commentTextArea;
 
@@ -29,11 +29,11 @@ public class CommentController implements BaseController{
     private BookService bookService;
 
     public void loadComment(Comment comment) {
-        String userID = comment.getStudentId();
+        String userID = comment.getUserId();
         User user = userService.findById(userID);
         String bookID = comment.getBookId();
         Book book = bookService.findByISBN(bookID);
-        
+
         usernameLabel.setText(user.getName());
         commentTextArea.setText(comment.getInformation());
         commentDateLabel.setText(comment.getDate());
@@ -44,5 +44,5 @@ public class CommentController implements BaseController{
         bookService = new BookService(new BookRepository());
         userService = new UserService(new UserRepository());
     }
-    
+
 }
