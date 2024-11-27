@@ -198,7 +198,7 @@
                         <Label layoutX="90.0" layoutY="156.0" text="Email" />
                      </children>
                   </AnchorPane>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="212.0" text="View Profile" />
+                  <Button fx:id="ViewProfileButton" mnemonicParsing="false" onAction="#handleEvent" prefHeight="45.0" prefWidth="212.0" text="View Profile" />
                   <Button layoutX="10.0" layoutY="182.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="228.0" text="Change password" />
                   <Button fx:id="signOutButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="45.0" prefWidth="228.0" text="Sign out" />
                </children>
@@ -209,6 +209,44 @@
                </image>
             </ImageView>
             <Button fx:id="userButton" layoutX="1025.0" layoutY="13.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="43.0" prefWidth="43.0" stylesheets="@../../../css/user/userinfobox.css" />
+            <AnchorPane fx:id="ViewUserProfilePage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/viewuserprofile.css" visible="false">
+               <children>
+                  <Label layoutX="56.0" layoutY="14.0" prefHeight="82.0" prefWidth="309.0" style="-fx-font-weight: bold;" text="User profile" textFill="#1a2dff">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="InfoPane" layoutX="140.0" layoutY="132.0" prefHeight="235.0" prefWidth="375.0">
+                     <children>
+                        <Label layoutX="24.0" layoutY="14.0" prefHeight="39.0" prefWidth="236.0" style="-fx-font-weight: bold;" text="Information">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="70.0" prefHeight="29.0" prefWidth="81.0" styleClass="TitleNameLabel" text="Name:" />
+                        <Label layoutX="50.0" layoutY="118.0" prefHeight="30.0" prefWidth="146.0" styleClass="TitleNameLabel" text="Username:" />
+                        <Label layoutX="50.0" layoutY="172.0" prefHeight="29.0" prefWidth="81.0" styleClass="TitleNameLabel" text="Address:" />
+                        <Label fx:id="userProfileName" layoutX="180.0" layoutY="70.0" prefHeight="26.0" prefWidth="175.0" styleClass="TitleNameLabel" text="Label" />
+                        <Label fx:id="userProfileUsername" layoutX="180.0" layoutY="118.0" prefHeight="26.0" prefWidth="173.0" styleClass="TitleNameLabel" text="Label" />
+                        <Label fx:id="userProfileAddress" layoutX="180.0" layoutY="172.0" prefHeight="26.0" prefWidth="174.0" styleClass="TitleNameLabel" text="Label" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="ContactPane" layoutX="600.0" layoutY="367.0" prefHeight="216.0" prefWidth="375.0">
+                     <children>
+                        <Label layoutX="23.0" layoutY="14.0" prefHeight="39.0" prefWidth="236.0" style="-fx-font-weight: bold;" text="Contact">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="50.0" layoutY="61.0" prefHeight="29.0" prefWidth="81.0" styleClass="TitleNameLabel" text="Email:" />
+                        <Label layoutX="50.0" layoutY="135.0" prefHeight="29.0" prefWidth="152.0" styleClass="TitleNameLabel" text="Phone number:" />
+                        <Label fx:id="userProfileEmail" layoutX="80.0" layoutY="90.0" prefHeight="26.0" prefWidth="285.0" styleClass="TitleNameLabel" text="Label" />
+                        <Label fx:id="userProfilePhoneNumber" layoutX="80.0" layoutY="163.0" prefHeight="26.0" prefWidth="265.0" styleClass="TitleNameLabel" text="Label" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="ViewProfileBackButton" layoutX="939.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="68.0" text="Back" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </center>
