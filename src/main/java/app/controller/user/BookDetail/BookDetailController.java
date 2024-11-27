@@ -106,11 +106,8 @@ public class BookDetailController implements BaseController {
 
     private Book book;
 
-    private String status;
-
-    public void loadBookWithStatus(Book book, String status) {
+    public void loadBookWithStatus(Book book) {
         this.book = book;
-        this.status = status;
         loadImage();
         loadData();
         loadCommentFromDatabase();
@@ -167,7 +164,7 @@ public class BookDetailController implements BaseController {
     private void loadBookLoan(BorrowReport borrowReport) {
         FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
         BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.LoadBookLoan(book, borrowReport, status);  
+        controller.LoadBookLoan(book, borrowReport, BorrowReport.PENDING);  
     }
 
     private boolean validateFields() {

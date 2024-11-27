@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -199,7 +200,7 @@
                      </children>
                   </AnchorPane>
                   <Button fx:id="ViewProfileButton" mnemonicParsing="false" onAction="#handleEvent" prefHeight="45.0" prefWidth="212.0" text="View Profile" />
-                  <Button layoutX="10.0" layoutY="182.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="228.0" text="Change password" />
+                  <Button fx:id="ChangePasswordButton" layoutX="10.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="45.0" prefWidth="228.0" text="Change password" />
                   <Button fx:id="signOutButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="45.0" prefWidth="228.0" text="Sign out" />
                </children>
             </VBox>
@@ -245,6 +246,35 @@
                      </children>
                   </Pane>
                   <Button fx:id="ViewProfileBackButton" layoutX="939.0" layoutY="42.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="68.0" text="Back" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ChangePasswordPage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/changepassword.css">
+               <children>
+                  <Label layoutX="56.0" layoutY="14.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Change password" textFill="#1a2dff">
+                     <font>
+                        <Font size="40.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="changePasswordBackButton" layoutX="82.0" layoutY="548.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="35.0" prefWidth="66.0" text="Back" />
+                  <Label layoutX="200.0" layoutY="145.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Current password" textFill="#1a2dff">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="200.0" layoutY="270.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="New Password" textFill="#1a2dff">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="200.0" layoutY="404.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Confirm new password" textFill="#1a2dff">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="currentPasswordField" layoutX="520.0" layoutY="162.0" prefHeight="43.0" prefWidth="289.0" promptText="Current password" styleClass="layoutField" />
+                  <PasswordField fx:id="newPasswordField" layoutX="516.0" layoutY="288.0" prefHeight="43.0" prefWidth="291.0" promptText="New password" styleClass="layoutField" />
+                  <PasswordField fx:id="confirmNewPasswordField" layoutX="518.0" layoutY="422.0" prefHeight="43.0" prefWidth="293.0" promptText="Confirm your new password" styleClass="layoutField" />
+                  <Button fx:id="SaveChangePasswordButton" layoutX="529.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="44.0" prefWidth="117.0" text="Save change" />
                </children>
             </AnchorPane>
          </children>
