@@ -89,6 +89,18 @@ public class MainHomePageController implements BaseController{
     @FXML
     public Button ViewProfileBackButton;
 
+    @FXML
+    public Button ChangePasswordButton;
+
+    @FXML
+    public Button changePasswordBackButton;
+
+    @FXML
+    public AnchorPane ChangePasswordPage;
+
+    @FXML
+    public Button SaveChangePasswordButton;
+
     List<Button> buttons;
 
     public static SurfaceUserDTO user;
@@ -109,6 +121,8 @@ public class MainHomePageController implements BaseController{
 
     private ViewProfileController viewProfileController;
 
+    private ChangePasswordController changePasswordController;
+
     private void DivideToOtherControllers() {
         discoverTabController = new DiscoverTabController(this);
         discoverTabController.initialize();
@@ -127,6 +141,9 @@ public class MainHomePageController implements BaseController{
 
         viewProfileController = new ViewProfileController(this);
         viewProfileController.initialize();
+
+        changePasswordController = new ChangePasswordController(this);
+        changePasswordController.initialize();
     }
 
     @Override
@@ -170,6 +187,12 @@ public class MainHomePageController implements BaseController{
             viewProfileController.handleBackButton();
         } else if (e.getSource() == ViewProfileButton) {
             viewProfileController.handleViewProfilePage();
+        } else if (e.getSource() == ChangePasswordButton) {
+            changePasswordController.handleChangePasswordButtonIsclicked();
+        } else if (e.getSource() == changePasswordBackButton) {
+            changePasswordController.handleChangePasswordBackButton();
+        } else if (e.getSource() == SaveChangePasswordButton) {
+            changePasswordController.handleSaveChangePassword();
         }
     }
     
