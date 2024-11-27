@@ -22,9 +22,6 @@ import javafx.scene.layout.VBox;
 
 public class MainHomePageController implements BaseController{
     @FXML
-    public ChoiceBox<String> userButton;
-
-    @FXML
     public VBox discoverMainPage;
 
     @FXML
@@ -54,6 +51,15 @@ public class MainHomePageController implements BaseController{
     @FXML
     public TilePane searchBooksMainPage;
 
+    @FXML
+    public Button userButton;
+
+    @FXML
+    public VBox userInfoBox;
+
+    @FXML
+    public Button signOutButton;
+
     List<Button> buttons;
 
     public static SurfaceUserDTO user;
@@ -64,11 +70,11 @@ public class MainHomePageController implements BaseController{
 
     private YourBooksTabController yourBooksTabController;
 
-    private UserButtonController userButtonController;
-
     private DashboardTabController dashboardTabController;
 
     private SearchTabController searchTabController;
+
+    private UserInfoBoxController userInfoBoxController;
 
     private void DivideToOtherControllers() {
         discoverTabController = new DiscoverTabController(this);
@@ -83,8 +89,8 @@ public class MainHomePageController implements BaseController{
         searchTabController = new SearchTabController(this);
         searchTabController.initialize();
 
-        userButtonController = new UserButtonController(this);
-        userButtonController.initialize();
+        userInfoBoxController = new UserInfoBoxController(this);
+        userInfoBoxController.initialize();
     }
 
     @Override
@@ -120,6 +126,10 @@ public class MainHomePageController implements BaseController{
         } else if (e.getSource() == returnedButtonYourBooks) {
             updateButtonStyle(3);
             yourBooksTabController.handleReturnedButtonIsClicked();
+        } else if (e.getSource() == userButton) {
+            userInfoBoxController.handleChangeStateUserBox();
+        } else if (e.getSource() == signOutButton) {
+            userInfoBoxController.handleSignOut();
         }
     }
     

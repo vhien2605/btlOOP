@@ -1,0 +1,12 @@
+#userInfoBox {
+    -fx-background-color: white;
+
+}
+
+#userButton {
+    -fx-background-color: transparent; 
+    -fx-text-fill: white;         
+    -fx-background-radius: 50%;    
+    -fx-padding: 10px 20px;        
+    -fx-font-size: 14px;   
+}
