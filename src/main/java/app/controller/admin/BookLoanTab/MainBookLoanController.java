@@ -1,5 +1,7 @@
 package app.controller.admin.BookLoanTab;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -151,8 +153,20 @@ public class MainBookLoanController {
         }
 
         try {
-            String imagePath = getClass().getResource("/image/QRCode/" + path).toExternalForm();
-            Image image = new Image(imagePath);
+            String rootPath = Paths.get("").toAbsolutePath().toString();
+
+            String imagePath = Paths.get(rootPath, "src", "main", "resources", "image", "QRCode", path)
+                    .toAbsolutePath().toString();
+
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                System.out.println("Image file not found: " + imagePath);
+                return;
+            }
+
+            String imageURI = imageFile.toURI().toString();
+            Image image = new Image(imageURI);
+
             qrImageView.setImage(image);
         } catch (Exception e) {
             System.out.println("Load image fail");

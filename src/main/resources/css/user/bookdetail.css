@@ -4,52 +4,74 @@
 }
 
 #bookDetailBackground {
-    -fx-background-color: rgb(234, 251, 250);  
+    -fx-background-color: rgb(234, 251, 250);
 }
 
 #bookDetailStackPaneBox {
-    -fx-background-color: rgb(255, 255, 255);  
-    -fx-background-radius: 15px; 
+    -fx-background-color: rgb(255, 255, 255);
+    -fx-background-radius: 15px;
 }
 
 #borrowBookRequestLabel {
     -fx-font-weight: bold;
-    -fx-font-size: 15px;  
+    -fx-font-size: 15px;
     -fx-text-fill: rgb(12, 82, 231);
 }
 
 #borrowRequestInPendingLabel {
     -fx-font-weight: bold;
-    -fx-font-size: 15px;  
+    -fx-font-size: 15px;
     -fx-text-fill: rgb(222, 31, 244);
 }
 
 #currentlyBorrowingLabel {
     -fx-font-weight: bold;
-    -fx-font-size: 15px;  
+    -fx-font-size: 15px;
     -fx-text-fill: rgb(22, 249, 22);
 }
 
-#bookNameLabel {
-    -fx-font-weight: bold;
-    -fx-font-size: 30px;  
-    -fx-text-fill: black;
-}
-
-#authorNameLabel {
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;  
-    -fx-text-fill: rgb(117, 117, 117);
-}
 
 #descriptionArea {
-    -fx-font-family: "Arial"; 
-    -fx-font-size: 16px;      
-    -fx-text-fill: #333333;  
+    -fx-font-family: "bold";
+    -fx-font-size: 16px;
+    -fx-text-fill: #333333;
 }
 
 .auxiliaryLabel {
     -fx-font-weight: bold;
-    -fx-font-size: 15px;  
+    -fx-font-size: 15px;
     -fx-text-fill: rgb(16, 16, 16);
+}
+
+.info-pane {
+    -fx-padding: 20px;
+    -fx-background-color: #ebf5f8;
+    -fx-background-radius: 10px;
+    -fx-border-color: #ef5f5f;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+}
+
+#sendBorrowBookRequestButton {
+    -fx-background-color: #cc99ff;
+}
+
+#backToHomeButton {
+    -fx-background-color: #66ccff;
+}
+
+
+#backToHomeButton:hover {
+    -fx-background-color: #3399ff;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
+}
+
+
+#sendBorrowBookRequestButton:hover {
+    -fx-background-color: #9966ff;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 10, 0, 0, 5);
 }
