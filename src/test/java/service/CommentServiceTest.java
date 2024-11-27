@@ -45,7 +45,7 @@ public class CommentServiceTest {
         List<CommentDTO> list = List.of(new CommentDTO(12, "", "",
                 "123", "", ""));
         Mockito.when(this.commentRepository.getAllCommentDTOByBookId(bookId)).thenReturn(list);
-        ObservableList<CommentDTO> result = this.commentService.findAllCommentDTOByUserId(bookId);
+        ObservableList<CommentDTO> result = this.commentService.findAllCommentDTOByBookId(bookId);
         Assertions.assertEquals(1, result.size());
     }
 }
