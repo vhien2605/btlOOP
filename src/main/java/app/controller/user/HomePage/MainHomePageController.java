@@ -9,6 +9,10 @@ import java.util.concurrent.TimeUnit;
 
 import app.controller.BaseController;
 import app.domain.DTO.SurfaceUserDTO;
+import app.repository.UserRepository;
+import app.service.authService.AuthenticationService;
+import app.service.authService.SessionService;
+import app.service.mainService.UserService;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -17,6 +21,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 
@@ -60,11 +65,37 @@ public class MainHomePageController implements BaseController{
     @FXML
     public Button signOutButton;
 
+    @FXML
+    public Button ViewProfileButton;
+
+    @FXML
+    public AnchorPane ViewUserProfilePage;
+
+    @FXML
+    public Label userProfileName;
+
+    @FXML 
+    public Label userProfileUsername;
+
+    @FXML
+    public Label userProfileAddress;
+
+    @FXML
+    public Label userProfileEmail;
+
+    @FXML
+    public Label userProfilePhoneNumber;
+
+    @FXML
+    public Button ViewProfileBackButton;
+
     List<Button> buttons;
 
     public static SurfaceUserDTO user;
 
     public ObservableList<String> discoverBookSectionTitleList;
+
+    private AuthenticationService authenticationService;
     
     private DiscoverTabController discoverTabController;
 
@@ -75,6 +106,8 @@ public class MainHomePageController implements BaseController{
     private SearchTabController searchTabController;
 
     private UserInfoBoxController userInfoBoxController;
+
+    private ViewProfileController viewProfileController;
 
     private void DivideToOtherControllers() {
         discoverTabController = new DiscoverTabController(this);
@@ -91,12 +124,15 @@ public class MainHomePageController implements BaseController{
 
         userInfoBoxController = new UserInfoBoxController(this);
         userInfoBoxController.initialize();
+
+        viewProfileController = new ViewProfileController(this);
+        viewProfileController.initialize();
     }
 
     @Override
     public void initialize() {
-        DivideToOtherControllers();
         GetUserInfo();
+        DivideToOtherControllers();
         buttons = List.of(allButtonYourBooks, pendingButtonYourBooks, borrowingButtonYourBooks, returnedButtonYourBooks);
         updateButtonStyle(0);
     }
@@ -130,11 +166,20 @@ public class MainHomePageController implements BaseController{
             userInfoBoxController.handleChangeStateUserBox();
         } else if (e.getSource() == signOutButton) {
             userInfoBoxController.handleSignOut();
+        } else if (e.getSource() == ViewProfileBackButton) {
+            viewProfileController.handleBackButton();
+        } else if (e.getSource() == ViewProfileButton) {
+            viewProfileController.handleViewProfilePage();
         }
     }
     
     private void GetUserInfo() {
-        user = yourBooksTabController.user;
+        authenticationService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
+        try {
+            user = authenticationService.getCurrentUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
 }

@@ -1,0 +1,18 @@
+#ViewUserProfilePage {
+    -fx-background-color: rgb(217, 233, 253);
+}
+
+#InfoPane {
+    -fx-background-color: rgb(24, 245, 253);
+    -fx-background-radius: 15px;
+}
+
+#ContactPane {
+    -fx-background-color: rgb(252, 250, 138);
+    -fx-background-radius: 15px;
+}
+
+.TitleNameLabel {
+    -fx-font-weight : bold;
+    -fx-font-size: 17px
+}
