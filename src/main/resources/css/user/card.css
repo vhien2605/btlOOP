@@ -1,24 +1,73 @@
 #cardButton {
     -fx-padding: 0;
-    -fx-background-color: transparent; 
-    -fx-border-color: transparent;     
-    -fx-border-width: 0px;  
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px;
     -fx-background-radius: 0;
-    
+    -fx-cursor: hand;
+    /* Con trỏ chỉ tay khi hover */
 }
 
 .card {
-    -fx-background-color: white; 
-    -fx-border-color: transparent;     
-    -fx-border-width: 1px;     
+    -fx-background-color: #fdfdfd;
+    /* Màu nền nhẹ */
+    -fx-border-color: #e0e0e0;
+    /* Viền nhạt */
+    -fx-border-width: 1px;
     -fx-border-radius: 10px;
-    -fx-background-radius: 15;
+    -fx-background-radius: 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0.1, 0, 2);
+    /* Đổ bóng */
+    -fx-padding: 15px;
+    -fx-min-width: 170px;
+    /* Chiều rộng tối thiểu cố định */
+    -fx-min-height: 255px;
+    /* Chiều cao tối thiểu cố định */
+    -fx-max-width: 170px;
+    /* Chiều rộng tối đa cố định */
+    -fx-max-height: 255px;
+    /* Chiều cao tối đa cố định */
+    -fx-alignment: center;
+    /* Canh giữa nội dung */
+    -fx-transition: 0.3s;
+    /* Hiệu ứng mượt */
+}
+
+.card:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 4);
+    /* Tăng đổ bóng khi hover */
+    -fx-scale-x: 1.02;
+    /* Zoom nhẹ khi hover */
+    -fx-scale-y: 1.02;
 }
 
 #bookName {
     -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-text-fill: #2f2e2e;
+    /* Màu chữ tối */
+    -fx-wrap-text: true;
+    /* Bọc chữ khi quá dài */
+    -fx-text-alignment: center;
+    /* Canh giữa văn bản */
 }
 
 #authorName {
-    -fx-text-fill: rgba(47, 46, 46, 0.938);
+    -fx-text-fill: rgba(47, 46, 46, 0.75);
+    /* Màu chữ nhạt hơn */
+    -fx-font-size: 14px;
+    -fx-text-alignment: center;
+}
+
+#bookImage {
+    -fx-background-color: transparent;
+    /* Không có nền cho ảnh */
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-fit-width: 127.5px;
+    /* Đặt chiều rộng cố định cho ảnh */
+    -fx-fit-height: 170px;
+    /* Đặt chiều cao cố định cho ảnh */
+    -fx-alignment: center;
+    /* Canh giữa ảnh */
 }
