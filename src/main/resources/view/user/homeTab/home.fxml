@@ -41,64 +41,7 @@
                                           <String fx:value="root" />
                                        </styleClass>
                                     </Label>
-                                    <Pane layoutX="165.0" layoutY="204.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #d2ebc0;" styleClass="card_info">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Books">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="dataBookLabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                             <font>
-                                                <Font name="System Bold" size="36.0" />
-                                             </font>
-                                          </Label>
-                                          <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../image/other/card_book.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane layoutX="437.0" layoutY="204.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #e7c8ae;" styleClass="card_info">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="Users">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="dataUserLabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                             <font>
-                                                <Font name="System Bold" size="36.0" />
-                                             </font>
-                                          </Label>
-                                          <ImageView fitHeight="88.0" fitWidth="86.0" layoutX="105.0" layoutY="-4.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../image/other/card_user.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Pane layoutX="725.0" layoutY="204.0" prefHeight="98.0" prefWidth="183.0" style="-fx-background-color: #f3edae;" styleClass="card_info">
-                                       <children>
-                                          <Label layoutX="14.0" layoutY="14.0" text="All Issued">
-                                             <font>
-                                                <Font size="21.0" />
-                                             </font>
-                                          </Label>
-                                          <Label fx:id="dataAllIssuedabel" layoutX="44.0" layoutY="41.0" text="50 ">
-                                             <font>
-                                                <Font name="System Bold" size="36.0" />
-                                             </font>
-                                          </Label>
-                                          <ImageView fitHeight="54.0" fitWidth="62.0" layoutX="120.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../image/other/card_issue.png" />
-                                             </image>
-                                          </ImageView>
-                                       </children>
-                                    </Pane>
-                                    <Label fx:id="helloLabel" layoutX="63.0" layoutY="38.0" prefHeight="94.0" prefWidth="373.0" text="Hello ! JavaFX Developer">
+                                    <Label fx:id="helloLabel" layoutX="63.0" layoutY="14.0" prefHeight="94.0" prefWidth="423.0" text="Welcome ! JavaFX Developer">
                                        <font>
                                           <Font name="System Bold" size="28.0" />
                                        </font>
