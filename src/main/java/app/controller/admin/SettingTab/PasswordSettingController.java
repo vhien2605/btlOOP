@@ -56,7 +56,7 @@ public class PasswordSettingController implements BaseController {
                         confirmNewPasswordField.getText());
                 authenticationService.verifyPasswordChangeRequest(userDTO);
                 userService.handleUpdatePassword(userDTO);
-                showAlert.showAlert("Confirm password can't be empty!", "success");
+                showAlert.showAlert("Change password sucessfully!", "success");
                 clearField();
             } catch (PasswordException e) {
                 showAlert.showAlert(e.getMessage(), "error");
@@ -81,6 +81,6 @@ public class PasswordSettingController implements BaseController {
     private void clearField() {
         currentPasswordField.clear();
         newPasswordField.clear();
-        currentPasswordField.clear();
+        confirmNewPasswordField.clear();
     }
 }

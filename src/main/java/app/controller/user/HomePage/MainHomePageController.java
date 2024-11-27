@@ -1,5 +1,6 @@
 package app.controller.user.HomePage;
 
+import java.security.PublicKey;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -100,6 +101,15 @@ public class MainHomePageController implements BaseController{
 
     @FXML
     public Button SaveChangePasswordButton;
+
+    @FXML
+    public TextField currentPasswordField;
+
+    @FXML
+    public TextField newPasswordField;
+
+    @FXML
+    public TextField confirmNewPasswordField;
 
     List<Button> buttons;
 
