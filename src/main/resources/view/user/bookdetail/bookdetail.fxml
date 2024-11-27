@@ -34,25 +34,34 @@
                   <Separator layoutX="41.0" layoutY="64.0" prefHeight="14.0" prefWidth="1028.0" />
                   <Pane layoutX="410.0" layoutY="78.0" prefHeight="346.0" prefWidth="618.0" styleClass="info-pane">
                      <children>
-                        <Label layoutX="40.0" layoutY="111.0" styleClass="auxiliaryLabel" text="Category :" />
-                        <Label layoutX="40.0" layoutY="145.0" prefHeight="30.0" prefWidth="111.0" styleClass="auxiliaryLabel" text="Publisher :" />
+                        <Label layoutX="40.0" layoutY="111.0" text="Category :">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Label>
+                        <Label layoutX="40.0" layoutY="145.0" prefHeight="30.0" prefWidth="111.0" text="Publisher :">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Label>
                         <Label fx:id="categoryLabel" layoutX="150.0" layoutY="112.0" text="Category name here">
                            <font>
-                              <Font name="System Bold Italic" size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font></Label>
                         <Label fx:id="publisherLabel" layoutX="150.0" layoutY="149.0" text="Publisher name here">
                            <font>
-                              <Font name="System Bold Italic" size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font></Label>
-                        <TextArea fx:id="descriptionArea" editable="false" layoutX="39.0" layoutY="216.0" prefHeight="86.0" prefWidth="554.0" text="Book description here&#10;" wrapText="true" />
-                        <Label layoutX="40.0" layoutY="185.0" styleClass="auxiliaryLabel" text="Description:" />
+                        <TextArea fx:id="descriptionArea" editable="false" layoutX="39.0" layoutY="216.0" prefHeight="86.0" prefWidth="554.0" styleClass="textArea" text="Book description here&#10;" wrapText="true" />
+                        <Label layoutX="40.0" layoutY="185.0" text="Description:">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Label>
                         <Label fx:id="bookNameLabel" layoutX="39.0" layoutY="14.0" prefHeight="45.0" prefWidth="251.0" text="Book name here">
                            <font>
                               <Font name="System Bold" size="30.0" />
                            </font></Label>
                         <Label fx:id="authorNameLabel" layoutX="150.0" layoutY="70.0" prefHeight="32.0" prefWidth="188.0" text="Author name here">
                            <font>
-                              <Font name="System Bold Italic" size="16.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font></Label>
                         <Label layoutX="40.0" layoutY="73.0" text="Author:">
                            <font>
@@ -120,7 +129,7 @@
                               <Image url="@../../../image/other/avt.png" />
                            </image>
                         </ImageView>
-                        <TextField fx:id="commentTextField" layoutX="89.0" layoutY="65.0" prefHeight="50.0" prefWidth="508.0" promptText="Write a comment" />
+                        <TextField fx:id="commentTextField" layoutX="89.0" layoutY="65.0" prefHeight="50.0" prefWidth="508.0" promptText="Write a comment" style="-fx-background-radius: 10px; -fx-border-radius: 10px; -fx-border-color: #2dadf8;" />
                      </children>
                   </Pane>
                   <Pane fx:id="allCommentHeaderPane" layoutX="410.0" layoutY="641.0" prefHeight="70.0" prefWidth="618.0" styleClass="info-pane">
