@@ -6,6 +6,10 @@ import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
 import app.controller.user.HomePage.BookDiscoverSection;
+import app.domain.DTO.PasswordChangeDTO;
+import app.domain.DTO.SurfaceUserDTO;
+import app.exception.auth.PasswordException;
+import app.exception.auth.SessionException;
 import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
@@ -40,7 +44,49 @@ public class ChangePasswordController {
     }
 
     public void handleSaveChangePassword() {
-        
+        if (homeController.currentPasswordField.getText().isEmpty()) {
+            showAlert.showAlert("Current password can't be empty!", "error");
+            clearField();
+            return;
+        }
+        if (homeController.newPasswordField.getText().isEmpty()) {
+            showAlert.showAlert("New password can't be empty!", "error");
+            clearField();
+            return;
+        }
+        if (homeController.confirmNewPasswordField.getText().isEmpty()) {
+            showAlert.showAlert("Confirm password can't be empty!", "error");
+            clearField();
+            return;
+        }
+        handleSubmitSave();
+    }
+
+    private void handleSubmitSave() {
+        try {
+            SurfaceUserDTO user = authenticationService.getCurrentUser();
+            try {
+                PasswordChangeDTO userDTO = new PasswordChangeDTO(user.getUsername(),
+                        homeController.currentPasswordField.getText(),
+                        homeController.newPasswordField.getText(),
+                        homeController.confirmNewPasswordField.getText());
+                authenticationService.verifyPasswordChangeRequest(userDTO);
+                userService.handleUpdatePassword(userDTO);
+                showAlert.showAlert("Change password sucessfully!", "success");
+                clearField();
+            } catch (PasswordException e) {
+                clearField();
+                showAlert.showAlert(e.getMessage(), "error");
+            }
+        } catch (SessionException e) {
+            FXMLResolver.getInstance().renderScene("auth/login");
+        }
+    }
+
+    private void clearField() {
+        homeController.currentPasswordField.clear();
+        homeController.newPasswordField.clear();
+        homeController.confirmNewPasswordField.clear();
     }
 
     public void initialize() {
