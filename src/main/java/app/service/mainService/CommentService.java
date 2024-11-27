@@ -36,4 +36,9 @@ public class CommentService {
     public ObservableList<CommentDTO> findAllCommentDTOByUserId(String bookId) {
         return FXCollections.observableList(this.commentRepository.getAllCommentDTOByBookId(bookId));
     }
+
+
+    public boolean handleSaveComment(Comment comment) {
+        return this.commentRepository.save(comment);
+    }
 }
