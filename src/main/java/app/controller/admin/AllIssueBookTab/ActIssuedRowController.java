@@ -43,6 +43,7 @@ public class ActIssuedRowController {
         }
 
         boolean success = false;
+        BorrowReport copyBorrowReport = new BorrowReport(mainIssueRowCtrl.borrowReport);
 
         if (oldStatus.equals(newStatus)) {
             success = mainIssueRowCtrl.reportService.handleUpdateOne(mainIssueRowCtrl.borrowReport);
@@ -51,7 +52,7 @@ public class ActIssuedRowController {
             BorrowReport report = mainIssueRowCtrl.borrowReport;
 
             if (book == null) {
-                showResult(success);
+                showResult(success, copyBorrowReport);
                 return;
             }
 
@@ -68,7 +69,7 @@ public class ActIssuedRowController {
             }
         }
 
-        showResult(success);
+        showResult(success, copyBorrowReport);
     }
 
     void deleteIssue() {
@@ -145,12 +146,13 @@ public class ActIssuedRowController {
         }
     }
 
-    void showResult(boolean success) {
+    void showResult(boolean success, BorrowReport copyBorrowReport) {
         if (success) {
             mainIssueRowCtrl.showAlert.showAlert("Updated successfully!", "success");
             mainIssueRowCtrl.mainAllIssueCtrl.resetData();
         } else {
             mainIssueRowCtrl.showAlert.showAlert("Update failed!", "error");
+            mainIssueRowCtrl.borrowReport = copyBorrowReport;
         }
     }
 

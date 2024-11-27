@@ -29,6 +29,7 @@ public class UpdateIssueController {
         }
 
         boolean success = false;
+        BorrowReport copyBorrowReport = new BorrowReport(mainBookLoanCtrl.borrowReport);
 
         if (oldStatus.equals(newStatus)) {
             success = mainBookLoanCtrl.reportService.handleUpdateOne(mainBookLoanCtrl.borrowReport);
@@ -37,7 +38,7 @@ public class UpdateIssueController {
             BorrowReport report = mainBookLoanCtrl.borrowReport;
 
             if (book == null) {
-                showResult(success);
+                showResult(success, copyBorrowReport);
                 return;
             }
 
@@ -54,7 +55,7 @@ public class UpdateIssueController {
             }
         }
 
-        showResult(success);
+        showResult(success, copyBorrowReport);
     }
 
     boolean updateDataBorrowReport() {
@@ -115,11 +116,12 @@ public class UpdateIssueController {
         }
     }
 
-    private void showResult(boolean success) {
+    private void showResult(boolean success, BorrowReport copyBorrowReport) {
         if (success) {
             mainBookLoanCtrl.showAlert.showAlert("Updated successfully!", "success");
         } else {
             mainBookLoanCtrl.showAlert.showAlert("Update failed!", "error");
+            mainBookLoanCtrl.borrowReport = copyBorrowReport;
         }
     }
 }
