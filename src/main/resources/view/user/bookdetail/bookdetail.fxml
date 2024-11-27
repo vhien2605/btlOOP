@@ -101,7 +101,6 @@
                         </Label>
                      </children>
                   </Pane>
-                  <VBox layoutX="333.0" layoutY="860.0" prefHeight="100.0" prefWidth="595.0" />
                   <Pane fx:id="paneWhenNoComment" layoutX="333.0" layoutY="860.0" prefHeight="70.0" prefWidth="595.0" stylesheets="@../../../css/user/commentsection.css" visible="false">
                      <children>
                         <Label layoutX="35.0" layoutY="18.0" prefHeight="33.0" prefWidth="238.0" text="No comment yet">
@@ -111,6 +110,7 @@
                         </Label>
                      </children>
                   </Pane>
+                  <VBox fx:id="commentVBoxView" layoutX="333.0" layoutY="860.0" prefHeight="100.0" prefWidth="595.0" />
                </children>
                <padding>
                   <Insets bottom="40.0" />

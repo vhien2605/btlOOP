@@ -24,25 +24,15 @@ public class CommentController implements BaseController {
     @FXML
     private Label commentDateLabel;
 
-    private UserService userService;
-
-    private BookService bookService;
-
-    public void loadComment(Comment comment) {
-        String userID = comment.getUserId();
-        User user = userService.findById(userID);
-        String bookID = comment.getBookId();
-        Book book = bookService.findByISBN(bookID);
-
-        usernameLabel.setText(user.getName());
-        commentTextArea.setText(comment.getInformation());
-        commentDateLabel.setText(comment.getDate());
+    public void loadComment(String username, String commentText, String date) {
+        usernameLabel.setText(username);
+        commentTextArea.setText(commentText);
+        commentDateLabel.setText(date);
     }
 
     @Override
     public void initialize() {
-        bookService = new BookService(new BookRepository());
-        userService = new UserService(new UserRepository());
+
     }
 
 }

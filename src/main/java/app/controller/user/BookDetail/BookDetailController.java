@@ -1,5 +1,6 @@
 package app.controller.user.BookDetail;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,10 +10,12 @@ import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
 import app.controller.user.BookLoan.BookLoanController;
 import app.controller.user.HomePage.Card;
+import app.controller.user.HomePage.CommentController;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
 import app.domain.Comment;
 import app.domain.BorrowReport;
+import app.domain.DTO.CommentDTO;
 import app.domain.DTO.SurfaceUserDTO;
 import app.domain.User;
 import app.exception.auth.SessionException;
@@ -24,8 +27,10 @@ import app.service.authService.SessionService;
 import app.service.mainService.CommentService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -35,6 +40,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class BookDetailController implements BaseController {
     @FXML
@@ -85,6 +91,11 @@ public class BookDetailController implements BaseController {
     @FXML
     private TextField commentTextField;
 
+    @FXML
+    private VBox commentVBoxView;
+
+    private SurfaceUserDTO user;
+
     private ShowAlert showAlert;
 
     private ReportService reportService;
@@ -102,6 +113,7 @@ public class BookDetailController implements BaseController {
         this.status = status;
         loadImage();
         loadData();
+        loadCommentFromDatabase();
     }
 
     private void loadData() {
@@ -182,19 +194,10 @@ public class BookDetailController implements BaseController {
     }
 
     private void sendComment() {
-        // String userID = "";
-
-        // try {
-        //     userID = authenticationService.getCurrentUser().getId();
-        // }catch (Exception e) {
-        //     e.printStackTrace();
-        // }
-
-        // Comment comment = new Comment(0,
-        //         userID,
-        //         book.getId(), commentTextField.getText(),
-        //         LocalDate.now().toString());
-        // commentService.
+        renderComment(user.getUsername(), commentTextField.getText(), LocalDate.now().toString());
+        Comment comment = new Comment(0, user.getId(), book.getId(), commentTextField.getText(), LocalDate.now().toString());
+        commentService.handleSaveComment(comment);
+        commentTextField.clear();
     }
 
     private void setCommentTextFieldHandleEvent() {
@@ -205,6 +208,34 @@ public class BookDetailController implements BaseController {
         });
     }
 
+    private void loadCommentFromDatabase() {
+        ObservableList<CommentDTO> commentList = commentService.findAllCommentDTOByBookId(book.getId());
+        for (CommentDTO comment : commentList) {
+            renderComment(comment.getUsername(), comment.getInformation(), comment.getDate());
+        }
+    }
+
+    private void renderComment(String username, String commentText, String date) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/comment.fxml"));
+            AnchorPane card = loader.load();
+            commentVBoxView.getChildren().add(card);
+
+            CommentController controller = loader.getController();
+            controller.loadComment(username, commentText, date);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getUserInfo() {
+        try {
+            user = authenticationService.getCurrentUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void initialize() {
         showAlert = new ShowAlert();
@@ -212,5 +243,6 @@ public class BookDetailController implements BaseController {
         commentService = new CommentService(new CommentRepository());
         reportService = new ReportService(new ReportRepository(), null, null);
         setCommentTextFieldHandleEvent();
+        getUserInfo();
     }
 }
