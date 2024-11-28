@@ -111,6 +111,12 @@ public class MainHomePageController implements BaseController{
     @FXML
     public TextField confirmNewPasswordField;
 
+    @FXML
+    public Label usernameLabelUserInfoBox;
+
+    @FXML
+    public Label emailLabelUserInfoBox;
+
     List<Button> buttons;
 
     public static SurfaceUserDTO user;
