@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.SendMailHelper;
 import app.controller.helper.ShowAlert;
 import app.controller.user.BookLoan.BookLoanController;
 import app.controller.user.HomePage.Card;
@@ -181,6 +182,7 @@ public class BookDetailController implements BaseController {
             showAlert.showAlert("Create new borrow book request successfully!", "success");
             createQRImage(borrowReport);
             loadBookLoan(borrowReport);
+            SendMailHelper.sendMailForUser(FXMLResolver.getInstance().getLoader().getController(), user.getEmail());
         } else {
             showAlert.showAlert("Create new borrow book request fail!", "error");
         }

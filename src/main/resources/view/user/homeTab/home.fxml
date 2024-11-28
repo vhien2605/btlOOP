@@ -112,7 +112,7 @@
                   <Insets />
                </opaqueInsets>
             </TabPane>
-            <VBox fx:id="userInfoBox" layoutX="829.0" layoutY="60.0" prefHeight="358.0" prefWidth="249.0" stylesheets="@../../../css/user/userinfobox.css">
+            <VBox fx:id="userInfoBox" layoutX="829.0" layoutY="60.0" prefHeight="358.0" prefWidth="249.0" stylesheets="@../../../css/user/userinfobox.css" visible="false">
                <children>
                   <AnchorPane prefHeight="244.0" prefWidth="249.0">
                      <children>
@@ -128,9 +128,9 @@
                         <Label fx:id="emailLabelUserInfoBox" alignment="CENTER" layoutY="164.0" text="Email" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="ViewProfileButton" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="253.0" text="View Profile" />
-                  <Button fx:id="ChangePasswordButton" layoutX="10.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="253.0" text="Change password" />
-                  <Button fx:id="signOutButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="249.0" text="Sign out" />
+                  <Button fx:id="ViewProfileButton" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="253.0" styleClass="choicebutton" text="View Profile" />
+                  <Button fx:id="ChangePasswordButton" layoutX="10.0" layoutY="182.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="253.0" styleClass="choicebutton" text="Change password" />
+                  <Button fx:id="signOutButton" layoutX="10.0" layoutY="231.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="40.0" prefWidth="249.0" styleClass="choicebutton" text="Sign out" />
                </children>
             </VBox>
             <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="1025.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
