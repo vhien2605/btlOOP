@@ -54,6 +54,7 @@ public class Card implements BaseController {
             if (file.exists()) {
                 try {
                     inputStream = new FileInputStream(file);
+                    imageURL.setImage(new Image(inputStream));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
