@@ -1,5 +1,7 @@
 package app.controller.user.BookLoan;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -27,6 +29,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class BookLoanController implements BaseController {
     @FXML
@@ -83,6 +87,9 @@ public class BookLoanController implements BaseController {
     @FXML
     private Button cancelBorrowBookRequestButton;
 
+    @FXML
+    ImageView qrImageView;
+
     private BorrowReport borrowReport;
 
     private Book book;
@@ -105,6 +112,36 @@ public class BookLoanController implements BaseController {
         RenderBookInfo();
         RenderDateAndStatus(borrowReport);
         RenderCancelBorrowReportButton();
+        renderImage();
+    }
+
+    private void renderImage() {
+        String path = borrowReport.getQrcodeUrl();
+        if (path == null) {
+            return;
+        }
+
+        try {
+            String rootPath = Paths.get("").toAbsolutePath().toString();
+
+            String imagePath = Paths.get(rootPath, "src", "main", "resources", "image", "QRCode", path)
+                    .toAbsolutePath().toString();
+
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                System.out.println("Image file not found: " + imagePath);
+                return;
+            }
+
+            String imageURI = imageFile.toURI().toString();
+            Image image = new Image(imageURI);
+
+            qrImageView.setImage(image);
+        } catch (Exception e) {
+            System.out.println("Load image fail");
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     private void RenderCancelBorrowReportButton() {

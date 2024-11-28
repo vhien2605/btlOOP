@@ -117,14 +117,14 @@
                         <TextField fx:id="phoneNumberTextFiled" editable="false" layoutX="394.0" layoutY="281.0" prefHeight="29.0" prefWidth="252.0" promptText="Phone Number" />
                         <TextField fx:id="emailTextFiled" editable="false" layoutX="394.0" layoutY="319.0" prefHeight="29.0" prefWidth="250.0" promptText="Email" />
                         <TextField fx:id="addressTextFiled" editable="false" layoutX="394.0" layoutY="359.0" prefHeight="29.0" prefWidth="250.0" promptText="Assress" />
-                        <DatePicker fx:id="dueDateTextFIled" layoutX="502.0" layoutY="435.0" prefHeight="25.0" prefWidth="200.0" promptText="Due Date" styleClass="datepicker" />
-                        <DatePicker fx:id="borrowDateTextFiled" layoutX="100.0" layoutY="435.0" prefHeight="25.0" prefWidth="200.0" promptText="Borrow Date" styleClass="datepicker" />
-                        <Label layoutX="100.0" layoutY="413.0" text="Borrow Date:" textFill="#1d3ec4">
+                        <DatePicker fx:id="dueDateTextFIled" layoutX="534.0" layoutY="435.0" prefHeight="30.0" prefWidth="140.0" promptText="Due Date" styleClass="datepicker" />
+                        <DatePicker fx:id="borrowDateTextFiled" layoutX="123.0" layoutY="435.0" prefHeight="30.0" prefWidth="139.0" promptText="Borrow Date" styleClass="datepicker" />
+                        <Label layoutX="123.0" layoutY="413.0" text="Borrow Date:" textFill="#1d3ec4">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Label>
-                        <Label layoutX="502.0" layoutY="413.0" text="Due Date:" textFill="#1d3ec4">
+                        <Label layoutX="534.0" layoutY="413.0" text="Due Date:" textFill="#1d3ec4">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>

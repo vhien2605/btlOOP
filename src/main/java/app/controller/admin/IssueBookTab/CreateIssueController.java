@@ -37,11 +37,11 @@ public class CreateIssueController {
         if (mainIssueCtrl.reportService.handleSave(data)) {
             createQRImage(data);
 
+            mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
+
             String currentPath = "admin/issueBookTab/issuebook_tab";
             FXMLResolver resolver = FXMLResolver.getInstance();
             resolver.renderScene("admin/bookLoanTab/bookloan_tab");
-
-            mainIssueCtrl.showAlert.showAlert("Create success new borrow report!", "success");
 
             MainBookLoanController bookLoanController = resolver.getLoader().getController();
             bookLoanController.renderData(data, currentPath);
@@ -54,7 +54,7 @@ public class CreateIssueController {
 
     }
 
-    void createQRImage(BorrowReport data) {
+    private void createQRImage(BorrowReport data) {
         String path = mainIssueCtrl.fileService.createQRImage(data, "QRcode");
         if (path != null) {
             data.setQrcodeUrl(path);
