@@ -4,70 +4,68 @@
     -fx-border-color: transparent;
     -fx-border-width: 0px;
     -fx-background-radius: 0;
-    -fx-cursor: hand;
-    /* Con trỏ chỉ tay khi hover */
+    -fx-cursor: hand; /* Con trỏ chỉ tay khi hover */
 }
 
 .card {
-    -fx-background-color: #fdfdfd;
-    /* Màu nền nhẹ */
-    -fx-border-color: #e0e0e0;
-    /* Viền nhạt */
+    -fx-background-color: #ffffff; /* Màu nền trắng tinh */
+    -fx-border-color: #dcdcdc; /* Viền nhạt */
     -fx-border-width: 1px;
     -fx-border-radius: 10px;
-    -fx-background-radius: 15px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 5, 0.1, 0, 2);
-    /* Đổ bóng */
-    -fx-padding: 15px;
-    -fx-min-width: 170px;
-    /* Chiều rộng tối thiểu cố định */
-    -fx-min-height: 255px;
-    /* Chiều cao tối thiểu cố định */
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.1, 0, 2); /* Đổ bóng nhẹ */
+    -fx-padding: 10px;
+    -fx-min-width: 170px; /* Chiều rộng cố định */
+    -fx-min-height: 255px; /* Chiều cao cố định */
     -fx-max-width: 170px;
-    /* Chiều rộng tối đa cố định */
     -fx-max-height: 255px;
-    /* Chiều cao tối đa cố định */
-    -fx-alignment: center;
-    /* Canh giữa nội dung */
-    -fx-transition: 0.3s;
-    /* Hiệu ứng mượt */
+    -fx-alignment: center; /* Canh giữa nội dung */
+    -fx-transition: all 0.3s ease; /* Hiệu ứng mượt */
 }
 
 .card:hover {
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.2, 0, 4);
-    /* Tăng đổ bóng khi hover */
-    -fx-scale-x: 1.02;
-    /* Zoom nhẹ khi hover */
-    -fx-scale-y: 1.02;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0.2, 0, 4); /* Tăng đổ bóng khi hover */
+    -fx-scale-x: 1.05; /* Zoom nhẹ */
+    -fx-scale-y: 1.05;
+    -fx-border-color: #bfbfbf; /* Đổi màu viền khi hover */
+}
+
+/* Viền cho AnchorPane */
+.anchor-pane {
+    -fx-border-color: #cccccc; /* Viền nhạt */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-padding: 5px;
+    -fx-alignment: center; /* Căn giữa */
+    -fx-background-color: #f9f9f9; /* Nền nhẹ */
+}
+
+/* Viền cho sách (ImageView) */
+#bookImage {
+    -fx-background-color: transparent; /* Không có nền */
+    -fx-border-color: #dcdcdc; /* Viền nhạt */
+    -fx-border-width: 1px;
+    -fx-border-radius: 8px; /* Bo góc viền */
+    -fx-background-radius: 8px;
+    -fx-fit-width: 135px; /* Kích thước tối ưu */
+    -fx-fit-height: 155px; /* Giới hạn chiều cao */
+    -fx-preserve-ratio: true; /* Giữ tỉ lệ ảnh */
+    -fx-alignment: center; /* Canh giữa ảnh */
 }
 
 #bookName {
     -fx-font-weight: bold;
-    -fx-font-size: 16px;
-    -fx-text-fill: #2f2e2e;
-    /* Màu chữ tối */
-    -fx-wrap-text: true;
-    /* Bọc chữ khi quá dài */
+    -fx-font-size: 15px;
+    -fx-text-fill: #333333; /* Màu chữ đậm */
+    -fx-wrap-text: true; /* Bọc chữ */
     -fx-text-alignment: center;
-    /* Canh giữa văn bản */
+    -fx-padding: 5 0 0 0; /* Cách đều với các phần khác */
 }
 
 #authorName {
-    -fx-text-fill: rgba(47, 46, 46, 0.75);
-    /* Màu chữ nhạt hơn */
-    -fx-font-size: 14px;
+    -fx-text-fill: rgba(51, 51, 51, 0.7); /* Màu chữ nhạt */
+    -fx-font-size: 13px;
     -fx-text-alignment: center;
-}
-
-#bookImage {
-    -fx-background-color: transparent;
-    /* Không có nền cho ảnh */
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-    -fx-fit-width: 127.5px;
-    /* Đặt chiều rộng cố định cho ảnh */
-    -fx-fit-height: 170px;
-    /* Đặt chiều cao cố định cho ảnh */
-    -fx-alignment: center;
-    /* Canh giữa ảnh */
+    -fx-padding: 5 0 0 0;
 }

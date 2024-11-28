@@ -25,12 +25,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 
 
-
-public class CardReport implements BaseController{
+public class CardReport implements BaseController {
     @FXML
     private Button cardButton;
 
-    @FXML  
+    @FXML
     private ImageView imageURL;
 
     @FXML
@@ -69,10 +68,11 @@ public class CardReport implements BaseController{
     private void loadImage(Book book) {
         InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
         if (inputStream == null) {
+            imageURL.setPreserveRatio(false);
             imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
         } else {
+            imageURL.setPreserveRatio(false);
             imageURL.setImage(new Image(inputStream));
-
         }
     }
 
@@ -98,7 +98,7 @@ public class CardReport implements BaseController{
     private void loadBookLoan() {
         FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
         BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.LoadBookLoan(book, borrowReport, status);  
+        controller.LoadBookLoan(book, borrowReport, status);
     }
 
     @Override
@@ -106,5 +106,5 @@ public class CardReport implements BaseController{
         bookService = new BookService(new BookRepository());
     }
 
-    
+
 }

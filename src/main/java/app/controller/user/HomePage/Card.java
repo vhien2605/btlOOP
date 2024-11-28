@@ -17,12 +17,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 
-
-public class Card implements BaseController{
+public class Card implements BaseController {
     @FXML
     private Button cardButton;
 
-    @FXML  
+    @FXML
     private ImageView imageURL;
 
     @FXML
@@ -40,16 +39,17 @@ public class Card implements BaseController{
         this.book = book;
         bookName.setText(book.getName());
         authorName.setText(book.getAuthor());
-        loadImage(book);              
+        loadImage(book);
     }
 
-     private void loadImage(Book book) {
+    private void loadImage(Book book) {
         InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
         if (inputStream == null) {
+            imageURL.setPreserveRatio(false);
             imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
         } else {
+            imageURL.setPreserveRatio(false);
             imageURL.setImage(new Image(inputStream));
-
         }
     }
 
@@ -70,5 +70,5 @@ public class Card implements BaseController{
         // TODO Auto-generated method stub
     }
 
-    
+
 }
