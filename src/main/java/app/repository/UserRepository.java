@@ -26,7 +26,7 @@ public class UserRepository implements CrudRepository<User, String> {
     @Override
     public List<User> findAll() {
         List<User> list = new ArrayList<>();
-        String query = "SELECT * FROM user";
+        String query = "SELECT * FROM user WHERE role = 'USER'";
         try (Connection connection = DbConfig.getInstance().getConnection();
              Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
@@ -319,10 +319,10 @@ public class UserRepository implements CrudRepository<User, String> {
 
     public List<User> findByInput(String col, String value) {
         List<User> list = new ArrayList<>();
-        String query = "SELECT * FROM user WHERE " + col + " LIKE ?";
+        String query = "SELECT * FROM user WHERE " + col + " LIKE ? AND role='USER'";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, "%" + value +"%");
+            preparedStatement.setString(1, "%" + value + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 list.add(new User(resultSet.getString("id"),

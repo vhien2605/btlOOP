@@ -41,6 +41,7 @@ public class SearchTabController {
     private static final String CATEGORY_VALUE = "Category";
 
     private static final Map<String, String> DISPLAY_TO_VALUE_MAP = new LinkedHashMap<>();
+
     static {
         DISPLAY_TO_VALUE_MAP.put(ISBN_VALUE, "id");
         DISPLAY_TO_VALUE_MAP.put(TITLE_VALUE, "name");
@@ -93,19 +94,17 @@ public class SearchTabController {
     }
 
     private void renderBookListToTilePane() {
+        homeController.searchBooksMainPage.getChildren().clear();
         for (Book book : bookList) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/card.fxml"));
                 Button card = loader.load();
                 homeController.searchBooksMainPage.getChildren().add(card);
-
                 Card controller = loader.getController();
                 controller.loadBook(book);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
-            
         }
     }
 
