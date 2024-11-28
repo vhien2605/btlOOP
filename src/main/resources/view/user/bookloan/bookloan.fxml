@@ -143,8 +143,8 @@
             </Label>
             <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="820.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true" />
             <Separator layoutY="554.0" prefWidth="1100.0" />
-            <Button fx:id="backButton" layoutX="832.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="82.0" text="Back" />
             <Button fx:id="exportButton" layoutX="937.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="79.0" text="Export" />
+            <Button fx:id="backButton" layoutX="832.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="82.0" text="Back" />
             <StackPane fx:id="stackpaneStatus" layoutX="384.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0">
                <children>
                   <Label fx:id="pendingStatusLabel" alignment="CENTER" prefHeight="30.0" prefWidth="120.0" text="Pending" visible="false" />
