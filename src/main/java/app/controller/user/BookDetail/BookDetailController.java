@@ -27,6 +27,7 @@ import app.service.authService.SessionService;
 import app.service.mainService.CommentService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
+import app.service.subService.FileService;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -104,6 +105,8 @@ public class BookDetailController implements BaseController {
 
     private AuthenticationService authenticationService;
 
+    private FileService fileService;
+
     private Book book;
 
     public void loadBookWithStatus(Book book) {
@@ -161,9 +164,20 @@ public class BookDetailController implements BaseController {
         );
         if (reportService.handleSave(borrowReport)) {
             showAlert.showAlert("Create new borrow book request successfully!", "success");
+            createQRImage(borrowReport);
             loadBookLoan(borrowReport);
         } else {
             showAlert.showAlert("Create new borrow book request fail!", "error");
+        }
+    }
+
+    private void createQRImage(BorrowReport data) {
+        String path = fileService.createQRImage(data, "QRcode");
+        if (path != null) {
+            data.setQrcodeUrl(path);
+            reportService.handleUpdateOne(data);
+        } else {
+            System.out.println("file service return path null");
         }
     }
 
@@ -247,6 +261,7 @@ public class BookDetailController implements BaseController {
         showAlert = new ShowAlert();
         authenticationService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
         commentService = new CommentService(new CommentRepository());
+        fileService = new FileService();
         reportService = new ReportService(new ReportRepository(), null, null);
         setCommentTextFieldHandleEvent();
         getUserInfo();

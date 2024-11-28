@@ -125,13 +125,13 @@
                </font>
             </Label>
             <DatePicker fx:id="dueDateTextField" editable="false" layoutX="60.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0" promptText="No data" styleClass="datepicker" />
-            <Label layoutX="320.0" layoutY="400.0" text="Return Date:" textFill="#1d3ec4">
+            <Label layoutX="384.0" layoutY="400.0" text="Return Date:" textFill="#1d3ec4">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <DatePicker fx:id="returnDateTextField" editable="false" layoutX="320.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
-            <Label layoutX="320.0" layoutY="470.0" text="Status:" textFill="#1d3ec4">
+            <DatePicker fx:id="returnDateTextField" editable="false" layoutX="384.0" layoutY="425.0" prefHeight="30.0" prefWidth="120.0" promptText="No data " styleClass="datepicker" />
+            <Label layoutX="384.0" layoutY="470.0" text="Status:" textFill="#1d3ec4">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -141,14 +141,11 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="852.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../image/QRCode.png" />
-               </image></ImageView>
+            <ImageView fx:id="qrImageView" fitHeight="125.0" fitWidth="136.0" layoutX="820.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true" />
             <Separator layoutY="554.0" prefWidth="1100.0" />
             <Button fx:id="backButton" layoutX="832.0" layoutY="575.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="25.0" prefWidth="82.0" text="Back" />
             <Button fx:id="exportButton" layoutX="937.0" layoutY="575.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="79.0" text="Export" />
-            <StackPane fx:id="stackpaneStatus" layoutX="320.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0">
+            <StackPane fx:id="stackpaneStatus" layoutX="384.0" layoutY="495.0" prefHeight="30.0" prefWidth="120.0">
                <children>
                   <Label fx:id="pendingStatusLabel" alignment="CENTER" prefHeight="30.0" prefWidth="120.0" text="Pending" visible="false" />
                   <Label fx:id="borrowingStatusLabel" alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="120.0" text="Borrowing" visible="false" />
