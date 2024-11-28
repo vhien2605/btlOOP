@@ -10,19 +10,19 @@
 
 <Button fx:id="cardButton" mnemonicParsing="false" onAction="#handleCardEvent" stylesheets="@../../../css/user/card.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.user.HomePage.CardReport">
    <graphic>
-      <VBox fx:id="cardVBox" prefHeight="270.0" prefWidth="166.0" styleClass="card" stylesheets="@../../../css/user/booksection.css">
+      <VBox fx:id="cardVBox" prefHeight="270.0" prefWidth="166.0" styleClass="card">
          <children>
-            <AnchorPane prefHeight="155.0" prefWidth="163.0">
+            <AnchorPane prefHeight="181.0" prefWidth="147.0">
                <children>
-                  <ImageView fx:id="imageURL" fitHeight="140.0" fitWidth="122.0" layoutX="13.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageURL" fitHeight="169.0" fitWidth="122.0" layoutX="13.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
-            <Label fx:id="bookName" alignment="CENTER" prefHeight="27.0" prefWidth="163.0" text="Bookname here">
+            <Label fx:id="bookName" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="Bookname here">
                <VBox.margin>
                   <Insets top="2.0" />
                </VBox.margin>
             </Label>
-            <Label fx:id="authorName" alignment="CENTER" layoutX="11.0" layoutY="215.0" prefHeight="27.0" prefWidth="163.0" text="Author name here" />
+            <Label fx:id="authorName" alignment="CENTER" layoutX="11.0" layoutY="215.0" prefHeight="13.0" prefWidth="147.0" text="Author name here" />
             <StackPane prefHeight="29.0" prefWidth="163.0">
                <children>
                   <Label fx:id="pendingLabel" alignment="CENTER" prefHeight="20.0" prefWidth="166.0" stylesheets="@../../../css/user/cardreport.css" text="Pending" wrapText="true" />

@@ -60,12 +60,12 @@
     -fx-text-fill: #333333; /* Màu chữ đậm */
     -fx-wrap-text: true; /* Bọc chữ */
     -fx-text-alignment: center;
-    -fx-padding: 5 0 0 0; /* Cách đều với các phần khác */
+    -fx-padding: 0 0 0 0; /* Cách đều với các phần khác */
 }
 
 #authorName {
     -fx-text-fill: rgba(51, 51, 51, 0.7); /* Màu chữ nhạt */
     -fx-font-size: 13px;
     -fx-text-alignment: center;
-    -fx-padding: 5 0 0 0;
+    -fx-padding: 3 0 0 0;
 }
