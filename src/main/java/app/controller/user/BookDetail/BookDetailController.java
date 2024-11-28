@@ -143,6 +143,12 @@ public class BookDetailController implements BaseController {
         if (!validateFields()) {
             return;
         }
+
+        if(book.getBookRemaining() <= 0){
+            showAlert.showAlert("The number of books left is not enough!", "error");
+            return;
+        }
+
         BorrowReport borrowReport = new BorrowReport(
                 0,
                 MainHomePageController.user.getId(),
