@@ -1,4 +1,4 @@
-#ViewUserProfilePage {
+/* #ViewUserProfilePage {
     -fx-background-color: rgb(217, 233, 253);
 }
 
@@ -15,4 +15,63 @@
 .TitleNameLabel {
     -fx-font-weight : bold;
     -fx-font-size: 17px
+} */
+
+#ViewUserProfilePage {
+    -fx-background-color: #EBF5FF;
+    -fx-padding: 20;
+}
+
+#ViewUserProfileTitle {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2563EB;
+}
+
+#InfoPane {
+    -fx-background-color: #BFDBFE;
+    -fx-background-radius: 12;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+#ContactPane {
+    -fx-background-color: #FEF3C7;
+    -fx-background-radius: 12;
+    -fx-padding: 24;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
+}
+
+.section-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 16 0;
+}
+
+.field-label {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 4 0;
+}
+
+.info-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #1F2937;
+    -fx-padding: 8;
+    -fx-background-color: rgba(255,255,255,0.5);
+    -fx-background-radius: 4;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+    -fx-min-width: 200;
+}
+
+#ViewProfileBackButton {
+    -fx-background-color: #0575bc;
+    -fx-background-radius: 4;
+    -fx-padding: 6 16;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#ViewProfileBackButton:hover {
+    -fx-background-color: #3864ca;
 }

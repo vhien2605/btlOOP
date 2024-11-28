@@ -24,6 +24,7 @@ public class ViewProfileController {
 
     public void handleBackButton() {
         homeController.ViewUserProfilePage.setVisible(false);
+        homeController.userInfoBox.setVisible(false);
     }
 
     public void handleViewProfilePage() {
