@@ -58,7 +58,7 @@
                            <content>
                               <VBox fx:id="discoverMainPage" prefWidth="1100.0">
                                  <children>
-                                    <Pane fx:id="discoverBanner" prefHeight="93.0" prefWidth="1100.0" />
+                                    <Pane fx:id="discoverBanner" prefHeight="180.0" prefWidth="1100.0" />
                                  </children>
                                  <padding>
                                     <Insets bottom="50.0" />
