@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
@@ -46,23 +47,22 @@ public class Card implements BaseController {
     }
 
     private void loadImage(Book book) {
-        String path = "/image/book/" + book.getImagePath();
-        InputStream inputStream = getClass().getResourceAsStream(path);
-        if (inputStream == null) {
-            imageURL.setPreserveRatio(false);
-            File file = new File(path);
-            if (file.exists()) {
-                try {
-                    inputStream = new FileInputStream(file);
-                    imageURL.setImage(new Image(inputStream));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
+        try {
+            String rootPath = Paths.get("").toAbsolutePath().toString();
+            String imagePath = Paths.get(rootPath, "src", "main", "resources", "image", "book", book.getImagePath())
+                    .toAbsolutePath().toString();
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                System.out.println("Image file not found: " + imagePath);
+                return;
             }
-            return;
-        } else {
-            imageURL.setPreserveRatio(false);
-            imageURL.setImage(new Image(inputStream));
+            String imageURI = imageFile.toURI().toString();
+            Image image = new Image(imageURI);
+            imageURL.setImage(image);
+        } catch (Exception e) {
+            System.out.println("Load image fail");
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
