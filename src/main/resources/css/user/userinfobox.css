@@ -12,7 +12,7 @@
 }
 
 /* Base style for borderless buttons */
-.button {
+.choicebutton {
     -fx-background-color: #f9f9f9; /* Light gray to differentiate from box */
     -fx-text-fill: #000000; /* Black text */
     -fx-font-size: 14px; /* Medium font size */
@@ -23,13 +23,13 @@
 }
 
 /* Hover effect */
-.button:hover {
+.choicebutton:hover {
     -fx-background-color: #e6e6e6; /* Slightly darker gray for hover feedback */
     -fx-cursor: hand; /* Pointer cursor on hover */
 }
 
 /* Pressed effect */
-.button:pressed {
+.choicebutton:pressed {
     -fx-background-color: #dcdcdc; /* Darker gray on click */
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 3, 0, 0, 1); /* Stronger shadow on click */
 }

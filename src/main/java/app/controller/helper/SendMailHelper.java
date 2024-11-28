@@ -3,13 +3,17 @@ package app.controller.helper;
 import java.io.File;
 
 import app.controller.admin.BookLoanTab.MainBookLoanController;
+import app.controller.user.BookLoan.BookLoanController;
 import app.service.subService.GMailer;
 import app.service.subService.exportFileService.ExportContext;
 import app.service.subService.exportFileService.PdfExportStrategy;
 import javafx.application.Platform;
+import javafx.scene.layout.Pane;
 
 public class SendMailHelper {
     /**
+     * Admin
+     * 
      * Function to send email when user successfully borrows book.
      *
      * @param bookLoanController BookLoanTab controller renders book loan card
@@ -17,8 +21,25 @@ public class SendMailHelper {
      * @param email              Recipient email address.
      */
     public static void sendMail(MainBookLoanController bookLoanController, String email) {
+        sendMailWithpane(bookLoanController.getPaneData(), email);
+    }
+
+    /**
+     * User
+     * 
+     * Function to send email when user successfully borrows book.
+     *
+     * @param bookLoanController BookLoanTab controller renders book loan card
+     *                           details.
+     * @param email              Recipient email address.
+     */
+    public static void sendMailForUser(BookLoanController bookLoanController, String email) {
+        sendMailWithpane(bookLoanController.getPaneData(), email);
+    }
+
+    private static void sendMailWithpane(Pane pane, String email) {
         Platform.runLater(() -> {
-            File tempPdfFile = new ExportContext(new PdfExportStrategy()).export(bookLoanController.getPaneData());
+            File tempPdfFile = new ExportContext(new PdfExportStrategy()).export(pane);
 
             if (tempPdfFile != null) {
                 new Thread(() -> {
