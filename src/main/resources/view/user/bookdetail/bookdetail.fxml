@@ -74,7 +74,10 @@
                      <children>
                         <Pane fx:id="imgview" layoutX="45.0" layoutY="14.0" prefHeight="330.0" prefWidth="220.0">
                            <children>
-                              <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" />
+                              <ImageView fx:id="imageURL" fitHeight="330.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../image/book/book-default-cover.jpg" />
+                                 </image></ImageView>
                            </children>
                         </Pane>
                         <StackPane fx:id="bookDetailStackPaneBox" layoutX="45.0" layoutY="356.0" prefHeight="180.0" prefWidth="220.0" style="-fx-border-radius: 5px; -fx-background-radius: 10px;">

@@ -127,7 +127,7 @@ public class BookDetailController implements BaseController {
     private void loadImage() {
         InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
         if (inputStream == null) {
-            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
+            return;
         } else {
             imageURL.setImage(new Image(inputStream));
 

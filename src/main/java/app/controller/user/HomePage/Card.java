@@ -1,5 +1,8 @@
 package app.controller.user.HomePage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -43,10 +46,19 @@ public class Card implements BaseController {
     }
 
     private void loadImage(Book book) {
-        InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
+        String path = "/image/book/" + book.getImagePath();
+        InputStream inputStream = getClass().getResourceAsStream(path);
         if (inputStream == null) {
             imageURL.setPreserveRatio(false);
-            imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
+            File file = new File(path);
+            if (file.exists()) {
+                try {
+                    inputStream = new FileInputStream(file);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            return;
         } else {
             imageURL.setPreserveRatio(false);
             imageURL.setImage(new Image(inputStream));

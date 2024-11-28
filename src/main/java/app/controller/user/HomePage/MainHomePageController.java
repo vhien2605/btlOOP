@@ -123,8 +123,6 @@ public class MainHomePageController implements BaseController{
 
     private YourBooksTabController yourBooksTabController;
 
-    private DashboardTabController dashboardTabController;
-
     private SearchTabController searchTabController;
 
     private UserInfoBoxController userInfoBoxController;
@@ -139,9 +137,6 @@ public class MainHomePageController implements BaseController{
 
         yourBooksTabController = new YourBooksTabController(this);
         yourBooksTabController.initialize();
-
-        dashboardTabController = new DashboardTabController(this);
-        dashboardTabController.initialize();
 
         searchTabController = new SearchTabController(this);
         searchTabController.initialize();

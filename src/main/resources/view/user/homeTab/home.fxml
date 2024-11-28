@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
@@ -29,29 +28,6 @@
          <children>
             <TabPane fx:id="tabpane" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/home.css" tabClosingPolicy="UNAVAILABLE">
                <tabs>
-                  <Tab text="Dashboard">
-                     <content>
-                        <ScrollPane hbarPolicy="NEVER" prefHeight="5000.0" prefWidth="1100.0">
-                           <content>
-                              <AnchorPane prefHeight="2000.0" prefWidth="1100.0">
-                                 <children>
-                                    <Label fx:id="clockLabel" layoutX="795.0" layoutY="41.0" prefHeight="87.0" prefWidth="243.0" stylesheets="@../../../css/admin/home_tab.css" text="Label">
-                                       <styleClass>
-                                          <String fx:value="clock-label" />
-                                          <String fx:value="root" />
-                                       </styleClass>
-                                    </Label>
-                                    <Label fx:id="helloLabel" layoutX="63.0" layoutY="14.0" prefHeight="94.0" prefWidth="423.0" text="Welcome ! JavaFX Developer">
-                                       <font>
-                                          <Font name="System Bold" size="28.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                           </content>
-                        </ScrollPane>
-                     </content>
-                  </Tab>
                   <Tab text="Discover">
                      <content>
                         <ScrollPane hbarPolicy="NEVER" prefWidth="1100.0">
