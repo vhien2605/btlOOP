@@ -13,9 +13,9 @@
    <graphic>
       <VBox fx:id="cardVBox" prefHeight="255.0" prefWidth="166.0" styleClass="card">
          <children>
-            <AnchorPane fx:id="cardAnchorPane" prefHeight="155.0" prefWidth="163.0" stylesheets="@../../../css/user/card.css">
+            <AnchorPane fx:id="cardAnchorPane" prefHeight="164.0" prefWidth="147.0" stylesheets="@../../../css/user/card.css">
                <children>
-                  <ImageView fx:id="imageURL" fitHeight="140.0" fitWidth="122.0" layoutX="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imageURL" fitHeight="179.0" fitWidth="134.0" layoutX="15.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../image/book/book-default-cover.jpg" />
                      </image></ImageView>

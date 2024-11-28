@@ -47,6 +47,7 @@ public class Card implements BaseController {
     }
 
     private void loadImage(Book book) {
+        // imageURL.setPreserveRatio(false);
         try {
             String rootPath = Paths.get("").toAbsolutePath().toString();
             String imagePath = Paths.get(rootPath, "src", "main", "resources", "image", "book", book.getImagePath())

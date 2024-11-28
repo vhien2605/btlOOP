@@ -1,7 +1,9 @@
 package app.controller.user.BookDetail;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -125,12 +127,23 @@ public class BookDetailController implements BaseController {
     }
 
     private void loadImage() {
-        InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
-        if (inputStream == null) {
-            return;
-        } else {
-            imageURL.setImage(new Image(inputStream));
-
+        // imageURL.setPreserveRatio(false);
+        try {
+            String rootPath = Paths.get("").toAbsolutePath().toString();
+            String imagePath = Paths.get(rootPath, "src", "main", "resources", "image", "book", book.getImagePath())
+                    .toAbsolutePath().toString();
+            File imageFile = new File(imagePath);
+            if (!imageFile.exists()) {
+                System.out.println("Image file not found: " + imagePath);
+                return;
+            }
+            String imageURI = imageFile.toURI().toString();
+            Image image = new Image(imageURI);
+            imageURL.setImage(image);
+        } catch (Exception e) {
+            System.out.println("Load image fail");
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
