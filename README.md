@@ -14,14 +14,52 @@
 
 - Được viết bằng ngôn ngữ Java và hỗ trợ bởi thư viện JavaFX để tạo ra giao diện đồ hoạ thú vị, đẹp mắt.
 
-## Table of contents
-- [Chức năng](#Chức-năng)
+# Table of contents
+- [Thư viện và API được sử dụng](#một-số-thư-viện-và-api-quan-trọng-được-sử-dụng)
+- [Điểm nổi bật và chức năng chính của ứng dụng](#điểm-nổi-bật-và-chức-năng-chính-của-ứng-dụng)
+- [Chất lượng code và quy tắc lập trình](#chất-lượng-code-và-quy-tắc-lập-trình)
+- [Chi tiết các chức năng](#chi-tiết-các-chức-năng)
   - [Đăng nhập và đăng kí tài khoản](#Đăng-nhập-và-đăng-kí-tài-khoản)
     - [Chức năng đăng nhập](#Chức-năng-đăng-nhập)
     - [Chức năng đăng kí](#Chức-năng-đăng-kí)
     - [Chức năng lấy lại tài khoản nếu quên mật khẩu](#Chức-năng-lấy-lại-tài-khoản-nếu-quên-mật-khẩu)
 
-# Chức năng
+# Một số thư viện và API quan trọng được sử dụng
+- Google API Libraries: Làm việc với Gmail API và Google Book API.
+
+- JavaMail API: Gửi email qua SMTP(Simple Mail Transfer Protocol).
+- MySQL Connector: Kết nối ứng dụng với MySQL.
+- HikariCP: Connection pooling hiệu suất cao.
+- ZXing: Tạo và đọc mã QR.
+- Commons-io: Xử lý mã hóa file.
+- Gson: Chuyển đổi giữa JSON và Java Objects.
+- iTextPDF: Tạo và chỉnh sửa file PDF.
+- JUnit & Mockito: Hỗ trợ unit testing.
+- SQLite JDBC: Kết nối SQLite cho môi trường test.
+
+# Điểm nổi bật và chức năng chính của ứng dụng
+- Quản lý tài liệu (thông tin tài liệu, thêm, xóa, sửa, tìm kiếm).
+
+- Quản lý người dùng thư viện (mượn/trả tài liệu,
+thông tin thành viên, thêm, sửa, xóa, tìm kiếm).
+- Xử lý các trường hợp lỗi, như kiểm tra điều kiện khi
+mượn tài liệu, thêm user, ...
+- Giao diện người dùng dễ nhìn, thân thiện.
+- Tích hợp Google Book API tra cứu thông tin tài liệu.
+- Sử dụng đa luồng để cải thiện trải nghiệm người
+dùng mượt mà hơn, không bị đứng hình, delay.
+- Tạo mã QR cho thông tin phiếu mượn sách.
+
+# Chất lượng code và quy tắc lập trình
+- Phát triển ứng dụng sử dụng mô hình MVC.
+- Phân chia lớp và thư mục rõ ràng, dễ phát triển, bảo trì.
+- Đặt tên biến, phương thức, và lớp đúng và dễ hiểu.
+- Sử dụng đúng và áp dụng các nguyên tắc OOP.
+
+- Sử dụng các nguyên tắc coding convention.
+- Cài đặt Unit Test bằng JUnit để test chương trình.
+- Sử dụng Design Pattern vào ứng dụng như Singleton, Object Pool, Strategy, ...
+# Chi tiết các chức năng
 Ứng dụng được phát triển các tính năng cho cả người quản trị thư viện và người dùng mượn sách.
 ## Đăng nhập và đăng kí tài khoản
 ### Chức năng đăng nhập
