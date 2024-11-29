@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.util.List;
 import java.util.Optional;
 
 public class UserServiceTest {
@@ -44,5 +45,29 @@ public class UserServiceTest {
                 , "0368379729")));
         User user = this.userService.findByUsername("23020064");
         Assertions.assertNotNull(user);
+    }
+
+
+    @Test
+    public void findByEmailTest() {
+        String email = "hvu6582@gmail.com";
+        Mockito.when(userRepository.findByEmail(email)).thenReturn(Optional.of(new User("23020064", "hvu6582"
+                , "hienhien123@", "ADMIN", "Vu Minh Hien", "Nam Dinh", "hvu6582@gmail.com"
+                , "0368379729")));
+        User user = this.userService.findByEmail(email);
+        Assertions.assertEquals(email, user.getEmail());
+    }
+
+    @Test
+    public void searchMethodTest() {
+        String col = "name";
+        String value = "Vu Minh Hien";
+        Mockito.when(userRepository.findByInput(col, value)).thenReturn(List.of(
+                new User("23020064", "hvu6582"
+                        , "hienhien123@", "ADMIN", "Vu Minh Hien", "Nam Dinh", "hvu6582@gmail.com"
+                        , "0368379729")
+        ));
+        List<User> list = this.userService.search(col, value);
+        Assertions.assertEquals(1, list.size());
     }
 }
