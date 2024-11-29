@@ -6,6 +6,7 @@ import java.util.Map;
 
 import app.controller.BaseController;
 import app.controller.admin.Panel.SidebarController;
+import app.controller.helper.ShowAlert;
 import app.domain.BorrowReport;
 import app.repository.BookRepository;
 import app.repository.ReportRepository;
@@ -51,6 +52,8 @@ public class MainAllIssueController implements BaseController {
 
     FileService fileService;
 
+    ShowAlert showAlert;
+
     ObservableList<BorrowReport> listBorrowReport;
 
     static final String USER_ID_VALUE = "User id";
@@ -74,6 +77,7 @@ public class MainAllIssueController implements BaseController {
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(), userService, bookService);
         fileService = new FileService();
+        showAlert = new ShowAlert();
 
         new AllSetUp().initMainAllIssuedCtrl(this);
 
