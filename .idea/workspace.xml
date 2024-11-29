@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/GoogleApiServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/service/SendEmailServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +67,7 @@
     "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
     "JUnit.AuthServiceTest.executor": "Run",
     "JUnit.AuthServiceTest.testHandleUpdatePassword.executor": "Run",
+    "JUnit.AuthenticationServiceTest.executor": "Run",
     "JUnit.BookRepositoryTest.executor": "Run",
     "JUnit.BookRepositoryTest.findByCategory.executor": "Run",
     "JUnit.BookRepositoryTest.findByInputTest.executor": "Run",
@@ -78,6 +79,9 @@
     "JUnit.CommentRepositoryTest.saveCommentTest.executor": "Run",
     "JUnit.CommentServiceTest.executor": "Run",
     "JUnit.CommentServiceTest.findCommentByIdTest.executor": "Run",
+    "JUnit.GoogleApiServiceTest.executor": "Run",
+    "JUnit.GoogleApiServiceTest.findBookTest.executor": "Run",
+    "JUnit.GoogleApiServiceTest.findBookTest2.executor": "Run",
     "JUnit.ReportRepositoryTest.executor": "Run",
     "JUnit.ReportRepositoryTest.findAllReportByUserNameTest.executor": "Run",
     "JUnit.ReportRepositoryTest.findAllReportByUserNameTest2.executor": "Run",
@@ -86,11 +90,13 @@
     "JUnit.ReportRepositoryTest.updateOneTest.executor": "Run",
     "JUnit.ReportServiceTest.executor": "Run",
     "JUnit.ReportServiceTest.getAllReportsTest.executor": "Run",
+    "JUnit.SendEmailServiceTest.executor": "Run",
     "JUnit.UserRepositoryTest.executor": "Run",
     "JUnit.UserRepositoryTest.findAllTest.executor": "Run",
     "JUnit.UserRepositoryTest.findByInputTest.executor": "Run",
     "JUnit.UserRepositoryTest.findByUsernameTest.executor": "Run",
     "JUnit.UserServiceTest.executor": "Run",
+    "JUnit.UserServiceTest.findByEmailTest.executor": "Run",
     "JUnit.UserServiceTest.findByUsernameTest.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -108,80 +114,80 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="ReportRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserServiceTest">
+    <configuration name="GoogleApiServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.ReportRepositoryTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.GoogleApiServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="GoogleApiServiceTest.findBookTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.GoogleApiServiceTest" />
+      <option name="METHOD_NAME" value="findBookTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.findAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.findByEmailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findAllTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
+      <option name="METHOD_NAME" value="findByEmailTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserRepositoryTest.findByInputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserServiceTest.searchMethodTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="repository.*" />
+          <option name="PATTERN" value="service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findByInputTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserRepositoryTest.findByUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="repository.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
-      <option name="METHOD_NAME" value="findByUsernameTest" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
+      <option name="METHOD_NAME" value="searchMethodTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -189,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UserRepositoryTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.findByInputTest" />
-        <item itemvalue="JUnit.UserRepositoryTest.findAllTest" />
-        <item itemvalue="JUnit.ReportRepositoryTest" />
+        <item itemvalue="JUnit.UserServiceTest" />
+        <item itemvalue="JUnit.UserServiceTest.searchMethodTest" />
+        <item itemvalue="JUnit.UserServiceTest.findByEmailTest" />
+        <item itemvalue="JUnit.GoogleApiServiceTest" />
+        <item itemvalue="JUnit.GoogleApiServiceTest.findBookTest2" />
       </list>
     </recent_temporary>
   </component>
