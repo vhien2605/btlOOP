@@ -46,6 +46,7 @@ thông tin thành viên, thêm, sửa, xóa, tìm kiếm).
 mượn tài liệu, thêm user, ...
 - Giao diện người dùng dễ nhìn, thân thiện.
 - Tích hợp Google Book API tra cứu thông tin tài liệu.
+- Tích hợp Google Mail API để gửi mail cho người dùng.
 - Sử dụng đa luồng để cải thiện trải nghiệm người
 dùng mượt mà hơn, không bị đứng hình, delay.
 - Tạo mã QR cho thông tin phiếu mượn sách.
