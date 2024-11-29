@@ -154,7 +154,7 @@
             </StackPane>
             <StackPane layoutX="640.0" layoutY="575.0" prefHeight="25.0" prefWidth="169.0">
                <children>
-                  <Button fx:id="cancelBorrowBookRequestButton" mnemonicParsing="false" onAction="#handleEvent" text="Cancel borrow book request" visible="false" />
+                  <Button fx:id="cancelBorrowBookRequestButton" mnemonicParsing="false" onAction="#handleEvent" text="Cancel borrow request" visible="false" />
                </children>
             </StackPane>
          </children>

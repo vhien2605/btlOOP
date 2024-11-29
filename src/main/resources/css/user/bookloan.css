@@ -73,7 +73,7 @@
 }
 
 #backButton:hover {
-    -fx-background-color: #3864ca;
+    -fx-background-color: #022678;
 }
 
 #exportButton {
@@ -86,4 +86,16 @@
 
 #exportButton:hover {
     -fx-background-color: #027213;
+}
+
+#cancelBorrowBookRequestButton {
+    -fx-background-color: #ff4234;
+    -fx-background-radius: 4;
+    -fx-padding: 6 16;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+#cancelBorrowBookRequestButton:hover {
+    -fx-background-color: #710802;
 }
