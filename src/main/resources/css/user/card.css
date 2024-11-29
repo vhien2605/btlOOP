@@ -8,14 +8,14 @@
 }
 
 .card {
-    -fx-background-color: #fff8e6; /* Màu nền vàng nhạt */
-    -fx-border-color: #ffc107; /* Viền vàng */
-    -fx-border-width: 2px; /* Tăng độ dày viền */
+    -fx-background-color: #f8fafa; /* Màu nền vàng nhạt */
+    -fx-border-color: #73cef5; /* Viền vàng */
+    -fx-border-width: 1px; /* Tăng độ dày viền */
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.1, 0, 2); /* Đổ bóng nhẹ */
-    -fx-padding: 10px;
-    -fx-min-width: 170px; /* Chiều rộng cố định */
+    -fx-padding: 5px;
+    -fx-min-width: 166px; /* Chiều rộng cố định */
     -fx-min-height: 255px; /* Chiều cao cố định */
     -fx-max-width: 170px;
     -fx-max-height: 255px;

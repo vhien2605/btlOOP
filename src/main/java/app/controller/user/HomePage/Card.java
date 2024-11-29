@@ -49,6 +49,7 @@ public class Card implements BaseController {
     }
 
     private void loadImage(Book book) {
+        imageURL.setPreserveRatio(false);
         if (book.getImagePath() == null) {
             return;
         }
