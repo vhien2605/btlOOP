@@ -174,32 +174,37 @@ public class MainHomeController implements BaseController {
 
     private void addDataToUserChart(List<ReportDetail> listReport) {
         XYChart.Series<String, Number> series1 = new XYChart.Series<>();
-        series1.setName("Borrow date data");
+        series1.setName("Borrow date");
         Map<String, Integer> map1 = new HashMap<>();
         for (ReportDetail report : listReport) {
             if (report.getStatus().equals("Borrowed")) {
                 String borrowedDate = report.getBorrowDate();
-                map1.put(borrowedDate,
-                        map1.getOrDefault(map1.get(borrowedDate), 0) + 1);
+                map1.put(borrowedDate, map1.getOrDefault(borrowedDate, 0) + 1);
+                System.out.println(borrowedDate);
             }
         }
-        for (String key : map1.keySet()) {
-            series1.getData().add(new XYChart.Data<>(key, map1.get(key)));
+        if (!map1.isEmpty()) {
+            for (String key : map1.keySet()) {
+                series1.getData().add(new XYChart.Data<>(key, map1.get(key)));
+            }
+            userChart.getData().add(series1);
         }
         XYChart.Series<String, Number> series2 = new XYChart.Series<>();
-        series2.setName("Return date data");
+        series2.setName("Return date");
         Map<String, Integer> map2 = new HashMap<>();
         for (ReportDetail report : listReport) {
             if (report.getStatus().equals("Returned")) {
                 String borrowedDate = report.getBorrowDate();
-                map2.put(borrowedDate,
-                        map2.getOrDefault(map1.get(borrowedDate), 0) + 1);
+                System.out.println(borrowedDate);
+                map2.put(borrowedDate, map2.getOrDefault(borrowedDate, 0) + 1);
             }
         }
-        for (String key : map2.keySet()) {
-            series2.getData().add(new XYChart.Data<>(key, map2.get(key)));
+        if (!map2.isEmpty()) {
+            for (String key : map2.keySet()) {
+                series2.getData().add(new XYChart.Data<>(key, map2.get(key)));
+            }
+            userChart.getData().add(series2);
         }
-        userChart.getData().add(series1);
-        userChart.getData().add(series2);
+
     }
 }

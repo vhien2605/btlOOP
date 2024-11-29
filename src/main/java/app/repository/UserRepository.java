@@ -230,7 +230,7 @@ public class UserRepository implements CrudRepository<User, String> {
      * @return {@code Optional<User>}
      */
     public Optional<User> findByUsername(String username) {
-        String query = "SELECT * FROM user WHERE username=? AND role='USER'";
+        String query = "SELECT * FROM user WHERE username=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
         ) {
