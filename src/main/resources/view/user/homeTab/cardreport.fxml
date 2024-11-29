@@ -14,7 +14,7 @@
          <children>
             <AnchorPane prefHeight="181.0" prefWidth="147.0">
                <children>
-                  <ImageView fx:id="imageURL" fitHeight="169.0" fitWidth="122.0" layoutX="13.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="imageURL" fitHeight="169.0" fitWidth="122.0" layoutX="17.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </AnchorPane>
             <Label fx:id="bookName" alignment="CENTER" prefHeight="30.0" prefWidth="147.0" text="Bookname here">
