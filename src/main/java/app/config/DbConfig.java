@@ -45,7 +45,8 @@ public class DbConfig {
      * </p>
      */
     private DbConfig() {
-        try (InputStream input = getClass().getClassLoader().getResourceAsStream("database.properties")) {
+        String fileName = System.getProperty("db.config", "database.properties");
+        try (InputStream input = getClass().getClassLoader().getResourceAsStream(fileName)) {
             Properties prop = new Properties();
             if (input == null) {
                 System.out.println("Sorry, unable to find database.properties");

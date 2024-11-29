@@ -13,25 +13,26 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @BeforeEach
-    public void init() {
+    public void initialize() {
+        System.setProperty("db.config", "database-testing.properties");
         userRepository = new UserRepository();
     }
 
     @Test
     public void findAllTest() {
         List<User> users = this.userRepository.findAll();
-        Assertions.assertEquals(2, users.size());
+        Assertions.assertEquals(3, users.size());
     }
 
     @Test
     public void findByInputTest() {
-        List<User> users = this.userRepository.findByInput("role", "USER");
-        Assertions.assertEquals(2, users.size());
+        List<User> users = this.userRepository.findByInput("email", "jane.smith@email.com");
+        Assertions.assertEquals(1, users.size());
     }
 
     @Test
     public void findByUsernameTest() {
-        String username = "23020064";
+        String username = "jane_smith";
         Optional<User> user = this.userRepository.findByUsername(username);
         Assertions.assertNotNull(user.get());
     }

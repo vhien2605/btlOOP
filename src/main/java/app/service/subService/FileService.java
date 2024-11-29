@@ -102,10 +102,14 @@ public class FileService {
                     jsonObject.getString("userId"),
                     jsonObject.getString("bookId"),
                     jsonObject.getString("borrowDate"),
-                    jsonObject.getString("returnDate"),
+                    jsonObject.has("returnDate") && !jsonObject.isNull("returnDate")
+                            ? jsonObject.getString("returnDate")
+                            : null,
                     jsonObject.getString("expectedReturnDate"),
                     jsonObject.getString("status"),
-                    jsonObject.getString("qrcodeUrl"));
+                    jsonObject.has("returnDate") && !jsonObject.isNull("returnDate")
+                            ? jsonObject.getString("returnDate")
+                            : null);
 
         } catch (IOException | NotFoundException e) {
             e.printStackTrace();
