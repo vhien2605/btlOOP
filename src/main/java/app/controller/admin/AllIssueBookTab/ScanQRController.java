@@ -25,10 +25,23 @@ public class ScanQRController {
         File selectedFile = fileChooser.showOpenDialog(null);
 
         if (selectedFile != null) {
-            BorrowReport borrowReport = mainAllIssueCtrl.fileService.scanQRCode(selectedFile);
+            BorrowReport data = mainAllIssueCtrl.fileService.scanQRCode(selectedFile);
+
+            if (data == null) {
+                mainAllIssueCtrl.showAlert.showAlert("No data found!", "error");
+                return;
+            }
+
+            // Tìm đúng data tương ứng với id
+            int id = data.getId();
+            BorrowReport borrowReport = mainAllIssueCtrl.reportService.findById(id);
+
+            if (borrowReport == null) {
+                mainAllIssueCtrl.showAlert.showAlert("No data found!", "error");
+                return;
+            }
+
             displayData(borrowReport);
-        } else {
-            System.out.println("loi");
         }
     }
 
