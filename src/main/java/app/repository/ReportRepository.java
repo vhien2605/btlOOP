@@ -172,7 +172,7 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
      * @return List of all {@link BorrowReport} which is exists with the condition in DB
      */
     public List<BorrowReport> findReportByUsername(String name) {
-        String query = "SELECT b.id,b.userId,b.bookId,b.borrowDate,b.returnDate,b.expectedReturnDate,b.status" +
+        String query = "SELECT b.id,b.userId,b.bookId,b.borrowDate,b.returnDate,b.expectedReturnDate,b.status,b.qrcodeUrl" +
                 " FROM borrow_report b " +
                 "JOIN user u ON b.userId = u.id  WHERE u.name = ?";
         List<BorrowReport> listOfReports = new ArrayList<>();

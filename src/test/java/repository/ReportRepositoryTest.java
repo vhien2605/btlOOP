@@ -13,30 +13,37 @@ public class ReportRepositoryTest {
 
     @BeforeEach
     public void initialize() {
+        System.setProperty("db.config", "database-testing.properties");
         reportRepository = new ReportRepository();
     }
 
     @Test
     public void findAllReportTest() {
         List<BorrowReport> result = this.reportRepository.findAll();
-        Assertions.assertNotEquals(0, result.size());
+        Assertions.assertEquals(5, result.size());
     }
 
     @Test
     public void findAllReportByUserNameTest() {
-        List<BorrowReport> result = this.reportRepository.findReportByUsername("Vũ Minh Hiến");
-        Assertions.assertEquals(80, result.size());
+        List<BorrowReport> result = this.reportRepository.findReportByUsername("John Doe");
+        Assertions.assertEquals(1, result.size());
+    }
+
+    @Test
+    public void findAllReportByUserNameTest2() {
+        List<BorrowReport> result = this.reportRepository.findReportByUsername("Jane Smith");
+        Assertions.assertEquals(1, result.size());
     }
 
     @Test
     public void findByStatusTest() {
-        List<BorrowReport> result = this.reportRepository.findByStatus("Borrowed");
-        Assertions.assertEquals(80, result.size());
+        List<BorrowReport> result = this.reportRepository.findByStatus("Returned");
+        Assertions.assertEquals(2, result.size());
     }
 
     @Test
     public void updateOneTest() {
-        BorrowReport reportTest = new BorrowReport(15, "23020064", "1974709930"
+        BorrowReport reportTest = new BorrowReport(5, "3", "1"
                 , "2024-11-01", "", "2024-12-01", "Borrowed", "vailon");
         boolean check = this.reportRepository.updateOne(reportTest);
         Assertions.assertTrue(check);
@@ -44,7 +51,7 @@ public class ReportRepositoryTest {
 
     @Test
     public void findByOneColumnTest() {
-        List<BorrowReport> list = this.reportRepository.findByOneColumn("userId", "23020064");
-        Assertions.assertEquals(4, list.size());
+        List<BorrowReport> list = this.reportRepository.findByOneColumn("status", "Not Returned");
+        Assertions.assertEquals(2, list.size());
     }
 }

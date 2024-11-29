@@ -230,7 +230,7 @@ public class UserRepository implements CrudRepository<User, String> {
      * @return {@code Optional<User>}
      */
     public Optional<User> findByUsername(String username) {
-        String query = "SELECT * FROM user WHERE username=?";
+        String query = "SELECT * FROM user WHERE username=? AND role='USER'";
         try (Connection connection = DbConfig.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query);
         ) {
@@ -336,7 +336,7 @@ public class UserRepository implements CrudRepository<User, String> {
             }
             resultSet.close();
         } catch (SQLException e) {
-            System.out.println("error in findAll function in User repo");
+            System.out.println("error in findByInput function in User repo");
             System.out.println(e.getMessage());
         }
         return list;

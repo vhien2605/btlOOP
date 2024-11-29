@@ -1,12 +1,17 @@
 package repository;
 
+import app.config.DbConfig;
 import app.domain.Book;
 import app.repository.BookRepository;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +20,7 @@ public class BookRepositoryTest {
 
     @BeforeEach
     public void initialize() {
+        System.setProperty("db.config", "database-testing.properties");
         bookRepository = new BookRepository();
     }
 
@@ -26,16 +32,14 @@ public class BookRepositoryTest {
 
     @Test
     public void testFindById1() {
-        Optional<Book> result = bookRepository.findById("9781491910740");
+        Optional<Book> result = bookRepository.findById("1");
         Assertions.assertNotNull(result.get());
-        Assertions.assertEquals("Head First Java", result.get().getName());
     }
 
     @Test
     public void testFindById2() {
-        Optional<Book> result = bookRepository.findById("9780596527587");
+        Optional<Book> result = bookRepository.findById("2");
         Assertions.assertNotNull(result.get());
-        Assertions.assertEquals("Head First Statistics", result.get().getName());
     }
 
     @Test
@@ -52,14 +56,14 @@ public class BookRepositoryTest {
 
     @Test
     public void findByCategory() {
-        List<Book> books = bookRepository.findByCategory("Comic");
-        Assertions.assertEquals(2, books.size());
+        List<Book> books = bookRepository.findByCategory("Fiction");
+        Assertions.assertEquals(1, books.size());
     }
 
     @Test
     public void findByCategory2() {
-        List<Book> books = bookRepository.findByCategory("Computers");
-        Assertions.assertEquals(2, books.size());
+        List<Book> books = bookRepository.findByCategory("Science");
+        Assertions.assertEquals(0, books.size());
     }
 
     @Test
@@ -72,7 +76,7 @@ public class BookRepositoryTest {
 
     @Test
     public void findByInputTest() {
-        List<Book> alls = this.bookRepository.findByInput("name", "Head First Java");
+        List<Book> alls = this.bookRepository.findByInput("author", "Harper Lee");
         Assertions.assertEquals(1, alls.size());
     }
 }

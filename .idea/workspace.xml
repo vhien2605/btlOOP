@@ -5,14 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/java/app/controller/helper/EditImageView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/database-testing.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/HandleBookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/BookTab/HandleBookController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CardReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CardReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/user/card.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/user/card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1731341506365-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1731515332257-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732435255746-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727208746-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727416204-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727514798-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732730540355-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732801032325-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732801589459-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732815283267-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732818748079-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732818937583-qr.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732848830450-qr.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/user/homeTab/card.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/user/homeTab/card.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/CommentRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/CommentRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,48 +79,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppAdmin.executor&quot;: &quot;Run&quot;,
-    &quot;Application.AppUser.executor&quot;: &quot;Run&quot;,
-    &quot;Application.GMailer.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthServiceTest.changePasswordServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.AuthServiceTest.testHandleUpdatePassword.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookRepositoryTest.findByCategory.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookRepositoryTest.testFindAll.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.BookServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CommentRepositoryTest.saveCommentTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CommentServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CommentServiceTest.findCommentByIdTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportRepositoryTest.findByOneColumnTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReportServiceTest.getAllReportsTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserRepositoryTest.findByUsernameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserServiceTest.findByUsernameTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hienonichan&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Computer/Downloads/CA_Tools/CA_Tools&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.AppAdmin.executor": "Run",
+    "Application.AppUser.executor": "Run",
+    "Application.GMailer.executor": "Run",
+    "JUnit.AuthServiceTest.changePasswordServiceTest.executor": "Run",
+    "JUnit.AuthServiceTest.executor": "Run",
+    "JUnit.AuthServiceTest.testHandleUpdatePassword.executor": "Run",
+    "JUnit.BookRepositoryTest.executor": "Run",
+    "JUnit.BookRepositoryTest.findByCategory.executor": "Run",
+    "JUnit.BookRepositoryTest.findByInputTest.executor": "Run",
+    "JUnit.BookRepositoryTest.testFindAll.executor": "Run",
+    "JUnit.BookRepositoryTest.testFindById1.executor": "Run",
+    "JUnit.BookServiceTest.executor": "Run",
+    "JUnit.CommentRepositoryTest.executor": "Run",
+    "JUnit.CommentRepositoryTest.findCommentByIdTest.executor": "Run",
+    "JUnit.CommentRepositoryTest.saveCommentTest.executor": "Run",
+    "JUnit.CommentServiceTest.executor": "Run",
+    "JUnit.CommentServiceTest.findCommentByIdTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.findAllReportByUserNameTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.findAllReportByUserNameTest2.executor": "Run",
+    "JUnit.ReportRepositoryTest.findByOneColumnTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.findByStatusTest.executor": "Run",
+    "JUnit.ReportRepositoryTest.updateOneTest.executor": "Run",
+    "JUnit.ReportServiceTest.executor": "Run",
+    "JUnit.ReportServiceTest.getAllReportsTest.executor": "Run",
+    "JUnit.UserRepositoryTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findAllTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findByInputTest.executor": "Run",
+    "JUnit.UserRepositoryTest.findByUsernameTest.executor": "Run",
+    "JUnit.UserServiceTest.executor": "Run",
+    "JUnit.UserServiceTest.findByUsernameTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "hienonichan",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Computer/Downloads/CA_Tools/CA_Tools",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "http.proxy"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="CommentRepositoryTest.saveCommentTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.UserRepositoryTest">
+    <configuration name="ReportRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
@@ -112,70 +139,70 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="repository" />
-      <option name="MAIN_CLASS_NAME" value="repository.CommentRepositoryTest" />
-      <option name="METHOD_NAME" value="saveCommentTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommentServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.CommentServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="repository.ReportRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentServiceTest.findCommentByIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="service.*" />
+          <option name="PATTERN" value="repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.CommentServiceTest" />
-      <option name="METHOD_NAME" value="findCommentByIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ReportServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="library_app" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.ReportServiceTest" />
+      <option name="PACKAGE_NAME" value="repository" />
+      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ReportServiceTest.getAllReportsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserRepositoryTest.findAllTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="service.*" />
+          <option name="PATTERN" value="repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.ReportServiceTest" />
-      <option name="METHOD_NAME" value="getAllReportsTest" />
+      <option name="PACKAGE_NAME" value="repository" />
+      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="findAllTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.findByInputTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repository" />
+      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="findByInputTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserRepositoryTest.findByUsernameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="library_app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="repository" />
+      <option name="MAIN_CLASS_NAME" value="repository.UserRepositoryTest" />
+      <option name="METHOD_NAME" value="findByUsernameTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -183,11 +210,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommentRepositoryTest.saveCommentTest" />
-        <item itemvalue="JUnit.CommentServiceTest" />
-        <item itemvalue="JUnit.CommentServiceTest.findCommentByIdTest" />
-        <item itemvalue="JUnit.ReportServiceTest" />
-        <item itemvalue="JUnit.ReportServiceTest.getAllReportsTest" />
+        <item itemvalue="JUnit.UserRepositoryTest" />
+        <item itemvalue="JUnit.UserRepositoryTest.findByUsernameTest" />
+        <item itemvalue="JUnit.UserRepositoryTest.findByInputTest" />
+        <item itemvalue="JUnit.UserRepositoryTest.findAllTest" />
+        <item itemvalue="JUnit.ReportRepositoryTest" />
       </list>
     </recent_temporary>
   </component>
