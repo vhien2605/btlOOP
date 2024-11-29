@@ -52,7 +52,7 @@ public abstract class HandleBookController implements BaseController {
         FileChooser fileChooser = new FileChooser();
         // filter file
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("TEXT files (*.png,*.jpeg,*.jpg)",
-                "*.png", "*.jpeg", "jpg");
+                "*.png", "*.jpeg", "*.jpg");
         fileChooser.getExtensionFilters().add(extFilter);
         selectedFile = fileChooser.showOpenDialog(FXMLResolver.getInstance().getStage());
         if (selectedFile != null) {

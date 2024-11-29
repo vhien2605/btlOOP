@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.EditImageView;
 import app.controller.user.BookDetail.BookDetailController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
@@ -19,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.shape.Rectangle;
 
 
 public class Card implements BaseController {
@@ -61,6 +63,8 @@ public class Card implements BaseController {
             }
             String imageURI = imageFile.toURI().toString();
             Image image = new Image(imageURI);
+            imageURL.setPreserveRatio(false);
+            EditImageView.border(imageURL, 10);
             imageURL.setImage(image);
         } catch (Exception e) {
             System.out.println("Load image fail");
