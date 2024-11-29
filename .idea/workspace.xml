@@ -5,31 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/database-testing.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/ReportRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/FileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1731341506365-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1731515332257-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732435255746-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727208746-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727416204-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732727514798-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732730540355-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732801032325-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732801589459-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732815283267-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732818748079-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732818937583-qr.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/image/QRcode/1732848830450-qr.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/CommentRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/CommentRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/ReportRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/UserRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +108,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserRepositoryTest">
+  <component name="RunManager">
     <configuration name="ReportRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
