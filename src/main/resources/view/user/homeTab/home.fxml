@@ -177,14 +177,14 @@
                   <Button fx:id="ViewProfileBackButton" layoutX="69.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="35.0" prefWidth="91.0" text="Back" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ChangePasswordPage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/changepassword.css" visible="false">
+            <AnchorPane fx:id="ChangePasswordPage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/changepassword.css">
                <children>
                   <Label layoutX="56.0" layoutY="14.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Change password" textFill="#1a2dff">
                      <font>
                         <Font size="40.0" />
                      </font>
                   </Label>
-                  <Button fx:id="changePasswordBackButton" layoutX="82.0" layoutY="548.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="35.0" prefWidth="66.0" text="Back" />
+                  <Button fx:id="changePasswordBackButton" layoutX="82.0" layoutY="548.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="35.0" prefWidth="78.0" text="Back" />
                   <Label layoutX="200.0" layoutY="145.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Current password" textFill="#1a2dff">
                      <font>
                         <Font size="25.0" />
