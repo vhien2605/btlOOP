@@ -8,9 +8,9 @@
 }
 
 .card {
-    -fx-background-color: #ffffff; /* Màu nền trắng tinh */
-    -fx-border-color: #dcdcdc; /* Viền nhạt */
-    -fx-border-width: 1px;
+    -fx-background-color: #fff8e6; /* Màu nền vàng nhạt */
+    -fx-border-color: #ffc107; /* Viền vàng */
+    -fx-border-width: 2px; /* Tăng độ dày viền */
     -fx-border-radius: 10px;
     -fx-background-radius: 10px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 5, 0.1, 0, 2); /* Đổ bóng nhẹ */
@@ -23,12 +23,18 @@
     -fx-transition: all 0.3s ease; /* Hiệu ứng mượt */
 }
 
+.image-view{
+ -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
 .card:hover {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 15, 0.2, 0, 4); /* Tăng đổ bóng khi hover */
     -fx-scale-x: 1.05; /* Zoom nhẹ */
     -fx-scale-y: 1.05;
-    -fx-border-color: #bfbfbf; /* Đổi màu viền khi hover */
+    -fx-border-color: #ffa000; /* Đổi màu viền vàng đậm hơn khi hover */
 }
+
 
 /* Viền cho AnchorPane */
 .anchor-pane {

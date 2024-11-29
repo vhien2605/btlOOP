@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.EditImageView;
 import app.controller.user.BookDetail.BookDetailController;
 import app.controller.user.BookLoan.BookLoanController;
 import app.domain.Book;
@@ -69,9 +70,11 @@ public class CardReport implements BaseController {
         InputStream inputStream = getClass().getResourceAsStream("/image/book/" + book.getImagePath());
         if (inputStream == null) {
             imageURL.setPreserveRatio(false);
+            EditImageView.border(imageURL, 10);
             imageURL.setImage(new Image(getClass().getResourceAsStream("/image/book/book-default-cover.jpg")));
         } else {
             imageURL.setPreserveRatio(false);
+            EditImageView.border(imageURL, 10);
             imageURL.setImage(new Image(inputStream));
         }
     }
