@@ -4,6 +4,7 @@
 
 ## Team Members
 - Vũ Minh Hiến - 23020064
+
 - Nguyễn Minh Hải - 23020055
 - Nguyễn Như Hiếu - 23020067
 
@@ -75,6 +76,7 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 - service : phần logic chính của ứng dụng , nhận yêu cầu từ **Controller** , sau đó gọi đến **Repository Layer** để lấy dữ liệu database và xử lí.
 - resources : chứa những tài nguyên tĩnh.
    - image : folder chứa ảnh dùng trong ứng dụng.
+   
    - css : folder chứa css cho javafx component.
    - view : chứa các file fxml cho các scene trong ứng dụng.
 
