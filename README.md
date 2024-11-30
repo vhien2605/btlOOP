@@ -67,6 +67,7 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 
 # Cấu trúc dự án
 - config : Các file cấu hình setup cho ứng dụng.
+  
 - controller : Nhận request , action từ phía **front-end** , sau đó gọi đến **Service Layer** để lấy data cập nhật lên giao diện.
 - domain : Thành phần Model trong MVC , mô hình hóa giữa table trong database thành các đối tượng.
 - exception : Gồm các custom exception để xử lí trong ứng dụng.
