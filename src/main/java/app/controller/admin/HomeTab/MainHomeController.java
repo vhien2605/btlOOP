@@ -28,6 +28,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListResourceBundle;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -101,8 +102,7 @@ public class MainHomeController implements BaseController {
                 addDataToBookBorrowChart(listReport);
                 addDataToIssueBookChart(listBook, borrowedReports, pendingReports);
                 addDataToUserChart(listReport);
-                setDataCard(listBook.size()
-                        , users.size(), listReport.size(), borrowedReports.size());
+                setDataCard(listBook, users, listReport, borrowedReports);
             });
         } catch (InterruptedException | ExecutionException e) {
             System.out.println(e.getMessage());
@@ -128,11 +128,15 @@ public class MainHomeController implements BaseController {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    private void setDataCard(int dataBook, int dataUser, int dataIssued, int dataBorrowed) {
-        dataBookLabel.setText(String.valueOf(dataBook));
-        dataUserLabel.setText(String.valueOf(dataUser));
-        dataAllIssuedabel.setText(String.valueOf(dataIssued));
-        dataBorrowedLabel.setText(String.valueOf(dataBorrowed));
+    private void setDataCard(List<Book> books, List<User> users, List<ReportDetail> reports, List<BorrowReport> borrowedReports) {
+        int totalBookRemaining = 0;
+        for (Book book : books) {
+            totalBookRemaining += book.getBookRemaining();
+        }
+        dataBookLabel.setText(String.valueOf(totalBookRemaining));
+        dataUserLabel.setText(String.valueOf(users.size()));
+        dataAllIssuedabel.setText(String.valueOf(reports.size()));
+        dataBorrowedLabel.setText(String.valueOf(borrowedReports.size()));
     }
 
     private void addDataToCategoryChart(List<Book> listBook) {
