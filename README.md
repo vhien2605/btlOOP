@@ -60,6 +60,21 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 - Sử dụng các nguyên tắc coding convention.
 - Cài đặt Unit Test bằng JUnit để test chương trình.
 - Sử dụng Design Pattern vào ứng dụng như Singleton, Object Pool, Strategy, ...
+
+
+# Cấu trúc dự án
+- config : Các file cấu hình setup cho ứng dụng.
+- controller : Nhận request , action từ phía **front-end** , sau đó gọi đến **Service Layer** để lấy data cập nhật lên giao diện.
+- domain : Thành phần Model trong MVC , mô hình hóa giữa table trong database thành các đối tượng.
+- exception : Gồm các custom exception để xử lí trong ứng dụng.
+- repository : Đảm nhiệm phần kết nối với database và trả về dữ liệu.
+- service : phần logic chính của ứng dụng , nhận yêu cầu từ **Controller** , sau đó gọi đến **Repository Layer** để lấy dữ liệu database và xử lí.
+- resources : chứa những tài nguyên tĩnh.
+   - image : folder chứa ảnh dùng trong ứng dụng.
+   - css : folder chứa css cho javafx component.
+   - view : chứa các file fxml cho các scene trong ứng dụng
+
+
 # Chi tiết các chức năng
 Ứng dụng được phát triển các tính năng cho cả người quản trị thư viện và người dùng mượn sách.
 ## Đăng nhập và đăng kí tài khoản
