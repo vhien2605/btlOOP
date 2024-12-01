@@ -182,7 +182,7 @@
                   <Button fx:id="ViewProfileBackButton" layoutX="69.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleEvent" prefHeight="35.0" prefWidth="91.0" text="Back" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ChangePasswordPage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/changepassword.css">
+            <AnchorPane fx:id="ChangePasswordPage" prefHeight="620.0" prefWidth="1100.0" stylesheets="@../../../css/user/changepassword.css" visible="false">
                <children>
                   <Label layoutX="56.0" layoutY="14.0" prefHeight="82.0" prefWidth="461.0" style="-fx-font-weight: bold;" text="Password setting" textFill="#1a2dff">
                      <font>
