@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
+import app.controller.helper.EditImageView;
 import app.controller.helper.SendMailHelper;
 import app.controller.helper.ShowAlert;
 import app.controller.user.BookLoan.BookLoanController;
@@ -142,7 +143,9 @@ public class BookDetailController implements BaseController {
             }
             String imageURI = imageFile.toURI().toString();
             Image image = new Image(imageURI);
+            imageURL.setPreserveRatio(false);
             imageURL.setImage(image);
+            EditImageView.border(imageURL, 10);
         } catch (Exception e) {
             System.out.println("Load image fail");
             e.printStackTrace();
@@ -163,7 +166,7 @@ public class BookDetailController implements BaseController {
             return;
         }
 
-        if(book.getBookRemaining() <= 0){
+        if (book.getBookRemaining() <= 0) {
             showAlert.showAlert("The number of books left is not enough!", "error");
             return;
         }
@@ -201,7 +204,7 @@ public class BookDetailController implements BaseController {
     private void loadBookLoan(BorrowReport borrowReport) {
         FXMLResolver.getInstance().renderScene("user/bookloan/bookloan");
         BookLoanController controller = FXMLResolver.getInstance().getLoader().getController();
-        controller.LoadBookLoan(book, borrowReport, BorrowReport.PENDING);  
+        controller.LoadBookLoan(book, borrowReport, BorrowReport.PENDING);
     }
 
     private boolean validateFields() {
