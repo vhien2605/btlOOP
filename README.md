@@ -130,7 +130,26 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 - Trang hiện thị tất cả các phiếu mượn, và các chức năng như thay đổi trạng thái, quét mã QR, xem chi tiết, sửa, xóa.
 ![alt text](preview/image-14.png)
 ## Phía người dùng mượn sách.
-- Bổ sung sau.
+- Trang dashboard chính cho người dùng , liệt kê các loại sách đang được ưu chuộng nhất tại thư viện theo từng thể loại.
+
+
+![alt text](preview/image-18.png)
+- Trang searching , nơi user có thể tìm kiếm sách mong muốn theo tên, thể loại, tác giả.
+
+
+![alt text](preview/image-19.png)
+- Phần thông tin chi tiết cho sách, user có thể đọc các thông tin mô tả và có thể đọc review sách từ những user khác. Nếu muốn mượn sách online, user chỉ cần gửi request với ngày mượn và trả để ADMIN duyệt.
+
+
+![alt text](preview/image-20.png)
+- User có thể comment nhận xét để chia sẻ cảm nghĩ với người khác.
+
+
+![alt text](preview/image-21.png)
+- Trang chứa thông tin về tình trạng sách của User: đang mượn, đã trả hoặc đang chờ ADMIN duyệt
+
+
+![alt text](preview/image-22.png)
 ## Một vài tính năng chung khác của cả trang admin và user.
 - Xem chi tiết thông tin tài khoản.
 ![alt text](preview/image-15.png)
