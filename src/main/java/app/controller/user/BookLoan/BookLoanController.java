@@ -84,14 +84,14 @@ public class BookLoanController implements BaseController {
 
     @FXML
     private DatePicker dueDateTextField;
-    
+
     @FXML
     private DatePicker returnDateTextField;
 
     @FXML
     private Label pendingStatusLabel;
 
-    @FXML 
+    @FXML
     private Label borrowingStatusLabel;
 
     @FXML
@@ -145,10 +145,8 @@ public class BookLoanController implements BaseController {
                 System.out.println("Image file not found: " + imagePath);
                 return;
             }
-
             String imageURI = imageFile.toURI().toString();
             Image image = new Image(imageURI);
-
             qrImageView.setImage(image);
         } catch (Exception e) {
             System.out.println("Load image fail");
@@ -181,7 +179,7 @@ public class BookLoanController implements BaseController {
             LocalDate date = LocalDate.parse(borrowReport.getReturnDate(), formatter);
             returnDateTextField.setValue(date);
         }
-        
+
         pendingStatusLabel.setVisible(false);
         borrowingStatusLabel.setVisible(false);
         returnedStatusLabel.setVisible(false);
@@ -213,7 +211,8 @@ public class BookLoanController implements BaseController {
     public void handleEvent(ActionEvent e) {
         if (e.getSource() == backButton) {
             FXMLResolver.getInstance().renderScene("user/homeTab/home");
-        } if (e.getSource() == cancelBorrowBookRequestButton) {
+        }
+        if (e.getSource() == cancelBorrowBookRequestButton) {
             DeleteBorrowReport();
             FXMLResolver.getInstance().renderScene("user/homeTab/home");
         } else if (e.getSource() == exportButton) {
@@ -279,5 +278,5 @@ public class BookLoanController implements BaseController {
             FXMLResolver.getInstance().renderScene("auth/login");
         }
     }
-    
+
 }
