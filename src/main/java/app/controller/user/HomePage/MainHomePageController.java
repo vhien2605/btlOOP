@@ -117,6 +117,9 @@ public class MainHomePageController implements BaseController{
     @FXML
     public Label emailLabelUserInfoBox;
 
+    @FXML
+    public Label helloUserLabel;
+
     List<Button> buttons;
 
     public static SurfaceUserDTO user;
@@ -214,6 +217,7 @@ public class MainHomePageController implements BaseController{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        helloUserLabel.setText("Hello, " + user.getName());
     }
     
 }

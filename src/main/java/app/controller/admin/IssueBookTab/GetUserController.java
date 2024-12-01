@@ -23,7 +23,7 @@ public class GetUserController {
 
         User user = mainIssueCtrl.userService.findById(userId);
 
-        if (user == null) {
+        if (user == null || !user.getRole().equals("USER")) {
             mainIssueCtrl.showAlert.showAlert("User not found!", "error");
             return;
         }

@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * All logic business with Report in application here
@@ -26,6 +27,11 @@ public class ReportService {
         this.reportRepository = reportRepository;
         this.userService = userService;
         this.bookService = bookService;
+    }
+
+    public BorrowReport findById(int id) {
+        Optional<BorrowReport> wrapperResult = this.reportRepository.findById(id);
+        return wrapperResult.orElse(null);
     }
 
     public ObservableList<BorrowReport> getAllReports() {
