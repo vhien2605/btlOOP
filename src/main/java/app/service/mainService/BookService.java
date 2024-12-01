@@ -84,7 +84,14 @@ public class BookService {
     public boolean deleteBook(String id) {
         return this.bookRepository.deleteById(id);
     }
-    
+
+    /**
+     * Find by one field method contribute for searching service.
+     *
+     * @param col   col
+     * @param value value of col
+     * @return {@code ObservableList<Book>} result of search
+     */
     public ObservableList<Book> search(String col, String value) {
         return FXCollections.observableList(this.bookRepository.findByInput(col, value));
     }

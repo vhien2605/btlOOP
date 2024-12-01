@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,16 +238,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="complete BookRepository" />
     <option name="LAST_COMMIT_MESSAGE" value="complete BookRepository" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
