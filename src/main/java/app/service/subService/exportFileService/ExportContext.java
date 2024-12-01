@@ -1,6 +1,7 @@
 package app.service.subService.exportFileService;
 
 import java.io.File;
+
 import javafx.scene.Node;
 
 public class ExportContext {
@@ -10,6 +11,11 @@ public class ExportContext {
         this.strategy = strategy;
     }
 
+    /**
+     * Setter behavior for {@link ExportContext}
+     *
+     * @param strategy behavior to change
+     */
     public void setStrategy(ExportStrategy strategy) {
         this.strategy = strategy;
     }

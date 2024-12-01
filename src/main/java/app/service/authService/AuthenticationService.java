@@ -17,11 +17,25 @@ public class AuthenticationService {
     private final SessionService sessionService;
     private final UserService userService;
 
+    /**
+     * Constructor .
+     *
+     * @param sessionService dependency session service.
+     * @param userService    dependency user service.
+     */
     public AuthenticationService(SessionService sessionService, UserService userService) {
         this.sessionService = sessionService;
         this.userService = userService;
     }
 
+    /**
+     * Login validation method.
+     *
+     * @param username username
+     * @param password password
+     * @throws DuplicateException exception when duplicate field
+     * @throws PasswordException  exception with password logic
+     */
     public void verifyLogin(String username, String password) throws DuplicateException, PasswordException {
         if (!isUsernameExists(username)) {
             throw new DuplicateException("Username is not found!");
@@ -31,6 +45,13 @@ public class AuthenticationService {
         }
     }
 
+    /**
+     * Register validation logic.
+     *
+     * @param user user register DTO from front-end
+     * @throws DuplicateException exception when duplicate field
+     * @throws PasswordException  exception with password logic
+     */
     public void verifyRegister(RegisterUserDTO user) throws DuplicateException, PasswordException {
         if (isUsernameExists(user.getUsername())) {
             throw new DuplicateException("Existing username!");
@@ -41,6 +62,12 @@ public class AuthenticationService {
         }
     }
 
+    /**
+     * Change password validation logic.
+     *
+     * @param user userDTO from front-end
+     * @throws PasswordException exception with password logic
+     */
     public void verifyPasswordChangeRequest(PasswordChangeDTO user) throws PasswordException {
         if (this.userService.findByUsernameAndPassword(user.getUsername()
                 , user.getCurrentPassword()) == null) {
@@ -52,6 +79,12 @@ public class AuthenticationService {
         }
     }
 
+    /**
+     * Check is email exists in database.
+     *
+     * @param email email input
+     * @throws DuplicateException when email isn't exists in database
+     */
     public void verifyEmail(String email) throws DuplicateException {
         boolean check = isEmailExists(email);
         if (!isEmailExists(email)) {
@@ -59,18 +92,43 @@ public class AuthenticationService {
         }
     }
 
+    /**
+     * Check username exists.
+     *
+     * @param username username
+     * @return {@code true/false}
+     */
     public boolean isUsernameExists(String username) {
         return this.userService.findByUsername(username) != null;
     }
 
+    /**
+     * Check id exists.
+     *
+     * @param id id
+     * @return {@code true/false}
+     */
     public boolean isIdExists(String id) {
         return this.userService.findById(id) != null;
     }
 
+    /**
+     * Check email exists.
+     *
+     * @param email email
+     * @return {@code true/false}
+     */
     private boolean isEmailExists(String email) {
         return this.userService.findByEmail(email) != null;
     }
 
+    /**
+     * Check password right or invalid.
+     *
+     * @param username username
+     * @param password password
+     * @return {@code true/false}
+     */
     public boolean isUsernameAndPasswordMapping(String username, String password) {
         User user = this.userService.findByUsernameAndPassword(username, password);
         if (user == null) {
