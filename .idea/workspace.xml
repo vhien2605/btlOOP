@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +121,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BookRepositoryTest">
+  <component name="RunManager">
     <configuration name="BookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">
