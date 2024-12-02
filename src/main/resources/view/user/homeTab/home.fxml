@@ -56,7 +56,7 @@
                      <content>
                         <ScrollPane hbarPolicy="NEVER" prefWidth="1100.0">
                            <content>
-                              <VBox prefWidth="1100.0">
+                              <VBox fx:id="searchPane" prefWidth="1100.0" stylesheets="@../../../css/user/searchtab.css">
                                  <children>
                                     <AnchorPane prefHeight="41.0" prefWidth="1100.0">
                                        <children>
@@ -69,7 +69,7 @@
                                           </Pane>
                                        </children>
                                     </AnchorPane>
-                                    <TilePane fx:id="searchBooksMainPage" hgap="30.0" prefWidth="1100.0" vgap="50.0">
+                                    <TilePane fx:id="searchBooksMainPage" hgap="30.0" prefWidth="1100.0" stylesheets="@../../../css/user/searchtab.css" vgap="50.0">
                                        <padding>
                                           <Insets bottom="60.0" left="65.0" right="55.0" top="30.0" />
                                        </padding>
