@@ -7,8 +7,6 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import com.itextpdf.kernel.colors.Lab;
-
 import app.config.ViewConfig.FXMLResolver;
 import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
@@ -29,7 +27,6 @@ import app.service.subService.exportFileService.PdfExportStrategy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -229,7 +226,8 @@ public class BookLoanController implements BaseController {
     public void initialize() {
         showAlert = new ShowAlert();
         authService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
-        reportService = new ReportService(new ReportRepository(), new UserService(new UserRepository()), new BookService(new BookRepository()));
+        reportService = new ReportService(new ReportRepository(), new UserService(new UserRepository()),
+                new BookService(new BookRepository()));
         getCurrentUserInfo();
     }
 

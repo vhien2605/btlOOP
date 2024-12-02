@@ -2,20 +2,17 @@ package app.repository;
 
 import app.config.DbConfig;
 import app.domain.User;
-import com.mysql.cj.jdbc.result.UpdatableResultSet;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 /**
  * {@link UserRepository}
  * Doing all accessData logics in table Student mapping to
  * {@link User} object in Java application
  *
- * @author hienonichan
  */
 public class UserRepository implements CrudRepository<User, String> {
     /**
@@ -28,7 +25,7 @@ public class UserRepository implements CrudRepository<User, String> {
         List<User> list = new ArrayList<>();
         String query = "SELECT * FROM user WHERE role = 'USER'";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new User(resultSet.getString("id"),
@@ -52,13 +49,14 @@ public class UserRepository implements CrudRepository<User, String> {
      * Find the {@link User} entity which have {@code Id} input in database.
      *
      * @param Id Document's {@code Id} want to query from database
-     * @return {@code Optional<Student>} wrapper of {@link User} object. Avoid null pointer access error
+     * @return {@code Optional<Student>} wrapper of {@link User} object. Avoid null
+     *         pointer access error
      */
     @Override
     public Optional<User> findById(String Id) {
         String query = "SELECT * FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -81,7 +79,6 @@ public class UserRepository implements CrudRepository<User, String> {
         return Optional.empty();
     }
 
-
     /**
      * Delete document which have {@code Id} input from database.
      *
@@ -91,9 +88,10 @@ public class UserRepository implements CrudRepository<User, String> {
     public boolean deleteById(String Id) {
         String query = "DELETE FROM user WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             System.out.println("error in delete function in User repo");
@@ -113,7 +111,7 @@ public class UserRepository implements CrudRepository<User, String> {
         String query = "INSERT INTO user(id,username,password,role,name,address,email,phoneNumber)" +
                 " VALUES(?,?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, user.getId());
             statement.setString(2, user.getUsername());
             statement.setString(3, user.getPassword());
@@ -123,6 +121,7 @@ public class UserRepository implements CrudRepository<User, String> {
             statement.setString(7, user.getEmail());
             statement.setString(8, user.getPhoneNumber());
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             System.out.println("error in save function in User repo");
@@ -140,7 +139,7 @@ public class UserRepository implements CrudRepository<User, String> {
     public int count() {
         String query = "SELECT COUNT(*) FROM user";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
                 int result = rs.getInt(1);
@@ -167,8 +166,7 @@ public class UserRepository implements CrudRepository<User, String> {
         String query = "UPDATE user SET username=?,password=?,role=?,name=?,address=?" +
                 ",email=?,phoneNumber=? WHERE id=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getRole());
@@ -186,7 +184,6 @@ public class UserRepository implements CrudRepository<User, String> {
         }
     }
 
-
     /**
      * Find user by username and password for authentication.
      *
@@ -197,8 +194,7 @@ public class UserRepository implements CrudRepository<User, String> {
     public Optional<User> findByUsernameAndPassword(String username, String password) {
         String query = "SELECT * FROM user WHERE username=? AND password=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -222,7 +218,6 @@ public class UserRepository implements CrudRepository<User, String> {
         return Optional.empty();
     }
 
-
     /**
      * Access data method find user by username.
      *
@@ -232,8 +227,7 @@ public class UserRepository implements CrudRepository<User, String> {
     public Optional<User> findByUsername(String username) {
         String query = "SELECT * FROM user WHERE username=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -265,8 +259,7 @@ public class UserRepository implements CrudRepository<User, String> {
     public Optional<User> findByEmail(String email) {
         String query = "SELECT * FROM user WHERE email=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
@@ -299,7 +292,7 @@ public class UserRepository implements CrudRepository<User, String> {
         String query = "UPDATE user SET username=?, password=?, role=?, name=?" +
                 ", address=?, email=?, phoneNumber=? WHERE id=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getRole());
@@ -309,6 +302,7 @@ public class UserRepository implements CrudRepository<User, String> {
             preparedStatement.setString(7, user.getPhoneNumber());
             preparedStatement.setString(8, user.getId());
             int rowsUpdated = preparedStatement.executeUpdate();
+            System.out.println(rowsUpdated);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -321,7 +315,7 @@ public class UserRepository implements CrudRepository<User, String> {
         List<User> list = new ArrayList<>();
         String query = "SELECT * FROM user WHERE " + col + " LIKE ? AND role='USER'";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, "%" + value + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

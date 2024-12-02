@@ -1,13 +1,8 @@
 package app.config;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.controller.helper.ShowAlert;
-import app.controller.user.HomePage.MainHomePageController;
 import app.exception.auth.SessionException;
-import app.repository.UserRepository;
-import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
-import app.service.mainService.UserService;
 
 /**
  * This class is responsible for setting up and redirecting the application

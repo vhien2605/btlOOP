@@ -1,6 +1,5 @@
 package repository;
 
-import app.config.DbConfig;
 import app.domain.Comment;
 import app.domain.DTO.CommentDTO;
 import app.repository.CommentRepository;
@@ -15,7 +14,7 @@ public class CommentRepositoryTest {
     private CommentRepository commentRepository;
 
     @BeforeEach
-    public void initialzie() {
+    public void initialize() {
         System.setProperty("db.config", "database-testing.properties");
         commentRepository = new CommentRepository();
     }

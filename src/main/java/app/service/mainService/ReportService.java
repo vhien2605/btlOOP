@@ -3,13 +3,10 @@ package app.service.mainService;
 import app.domain.Book;
 import app.domain.BorrowReport;
 import app.domain.DTO.ReportDetail;
-import app.domain.User;
 import app.repository.ReportRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 

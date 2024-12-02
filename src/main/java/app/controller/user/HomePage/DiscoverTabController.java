@@ -1,15 +1,9 @@
 package app.controller.user.HomePage;
 
 import java.io.IOException;
-import app.controller.BaseController;
-import app.controller.user.HomePage.BookDiscoverSection;
-import app.service.authService.AuthenticationService;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class DiscoverTabController {
     private MainHomePageController homeController;

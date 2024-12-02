@@ -6,7 +6,6 @@ import app.repository.CommentRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
