@@ -7,7 +7,6 @@ import java.util.Optional;
  *
  * @param <T>  Object type reference to entity in database
  * @param <ID> Other data type used in implement methods
- * @author hienonichan
  */
 public interface CrudRepository<T, ID> {
     /**

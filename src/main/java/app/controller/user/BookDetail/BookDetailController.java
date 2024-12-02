@@ -2,7 +2,7 @@ package app.controller.user.BookDetail;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -13,7 +13,6 @@ import app.controller.helper.EditImageView;
 import app.controller.helper.SendMailHelper;
 import app.controller.helper.ShowAlert;
 import app.controller.user.BookLoan.BookLoanController;
-import app.controller.user.HomePage.Card;
 import app.controller.user.HomePage.CommentController;
 import app.controller.user.HomePage.MainHomePageController;
 import app.domain.Book;
@@ -21,8 +20,6 @@ import app.domain.Comment;
 import app.domain.BorrowReport;
 import app.domain.DTO.CommentDTO;
 import app.domain.DTO.SurfaceUserDTO;
-import app.domain.User;
-import app.exception.auth.SessionException;
 import app.repository.CommentRepository;
 import app.repository.ReportRepository;
 import app.repository.UserRepository;
@@ -179,8 +176,7 @@ public class BookDetailController implements BaseController {
                 null,
                 expectedReturnDatePicker.getValue().format(DateTimeFormatter.ISO_LOCAL_DATE),
                 BorrowReport.PENDING,
-                ""
-        );
+                "");
         if (reportService.handleSave(borrowReport)) {
             showAlert.showAlert("Create new borrow book request successfully!", "success");
             createQRImage(borrowReport);
@@ -235,7 +231,8 @@ public class BookDetailController implements BaseController {
             return;
         }
         renderComment(user.getUsername(), commentTextField.getText(), LocalDate.now().toString());
-        Comment comment = new Comment(0, user.getId(), book.getId(), commentTextField.getText(), LocalDate.now().toString());
+        Comment comment = new Comment(0, user.getId(), book.getId(), commentTextField.getText(),
+                LocalDate.now().toString());
         commentService.handleSaveComment(comment);
         commentTextField.clear();
     }

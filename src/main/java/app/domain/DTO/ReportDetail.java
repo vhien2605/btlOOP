@@ -1,84 +1,86 @@
 package app.domain.DTO;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class ReportDetail {
-    private SimpleIntegerProperty id;
-    private SimpleStringProperty userName;
-    private SimpleStringProperty bookName;
-    private SimpleStringProperty borrowDate;
-    private SimpleStringProperty returnDate;
-    private SimpleStringProperty expectedReturnDate;
-    private SimpleStringProperty status;
+    private int id;
+    private String userName;
+    private String bookName;
+    private String borrowDate;
+    private String returnDate;
+    private String expectedReturnDate;
+    private String status;
 
     public ReportDetail(int id, String userName, String bookName,
-                        String borrowDate, String returnDate, String expectedReturnDate, String status) {
-        this.id = new SimpleIntegerProperty(id);
-        this.userName = new SimpleStringProperty(userName);
-        this.bookName = new SimpleStringProperty(bookName);
-        this.borrowDate = new SimpleStringProperty(borrowDate);
-        this.returnDate = new SimpleStringProperty(returnDate);
-        this.expectedReturnDate = new SimpleStringProperty(expectedReturnDate);
-        this.status = new SimpleStringProperty(status);
+            String borrowDate, String returnDate, String expectedReturnDate, String status) {
+        this.id = id;
+        this.userName = userName;
+        this.bookName = bookName;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.expectedReturnDate = expectedReturnDate;
+        this.status = status;
     }
 
     public int getId() {
-        return id.get();
-    }
-
-    public SimpleIntegerProperty getIdProperty() {
         return id;
     }
 
-    public String getUserName() {
-        return userName.get();
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public SimpleStringProperty getUserNameProperty() {
+    public String getUserName() {
         return userName;
     }
 
-    public String getBookName() {
-        return bookName.get();
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public SimpleStringProperty getBookNameProperty() {
+    public String getBookName() {
         return bookName;
     }
 
-
-    public String getBorrowDate() {
-        return borrowDate.get();
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
     }
 
-    public SimpleStringProperty getBorrowDateProperty() {
+    public String getBorrowDate() {
         return borrowDate;
     }
 
-
-    public String getReturnDate() {
-        return returnDate.get();
+    public void setBorrowDate(String borrowDate) {
+        this.borrowDate = borrowDate;
     }
 
-    public SimpleStringProperty getReturnDateProperty() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public String getExpectedReturnDate() {
-        return expectedReturnDate.get();
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
 
-    public SimpleStringProperty getExpectedReturnDateProperty() {
+    public String getExpectedReturnDate() {
         return expectedReturnDate;
     }
 
-    public String getStatus() {
-        return status.get();
+    public void setExpectedReturnDate(String expectedReturnDate) {
+        this.expectedReturnDate = expectedReturnDate;
     }
 
-    public SimpleStringProperty getStatusProperty() {
+    public String getStatus() {
         return status;
     }
-}
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "ReportDetail [id=" + id + ", userName=" + userName + ", bookName=" + bookName + ", borrowDate="
+                + borrowDate + ", returnDate=" + returnDate + ", expectedReturnDate=" + expectedReturnDate + ", status="
+                + status + "]";
+    }
+
+}

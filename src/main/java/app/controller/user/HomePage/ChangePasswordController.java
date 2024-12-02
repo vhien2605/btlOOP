@@ -1,11 +1,8 @@
 package app.controller.user.HomePage;
 
-import java.io.IOException;
 
 import app.config.ViewConfig.FXMLResolver;
-import app.controller.BaseController;
 import app.controller.helper.ShowAlert;
-import app.controller.user.HomePage.BookDiscoverSection;
 import app.domain.DTO.PasswordChangeDTO;
 import app.domain.DTO.SurfaceUserDTO;
 import app.exception.auth.PasswordException;
@@ -14,12 +11,6 @@ import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
 import app.service.mainService.UserService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
 public class ChangePasswordController {
     private MainHomePageController homeController;

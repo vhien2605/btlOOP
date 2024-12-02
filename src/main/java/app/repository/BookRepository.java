@@ -2,19 +2,17 @@ package app.repository;
 
 import app.config.DbConfig;
 import app.domain.Book;
-import app.domain.BorrowReport;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-
 /**
- * {@link BookRepository} for doing all accessData logic in table Book mapping to
+ * {@link BookRepository} for doing all accessData logic in table Book mapping
+ * to
  * {@link Book} class in Java application
  *
- * @author hienonichan
  */
 public class BookRepository implements CrudRepository<Book, String> {
     /**
@@ -27,7 +25,7 @@ public class BookRepository implements CrudRepository<Book, String> {
         List<Book> list = new ArrayList<>();
         String query = "SELECT * FROM book";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new Book(
@@ -59,7 +57,7 @@ public class BookRepository implements CrudRepository<Book, String> {
     public Optional<Book> findById(String Id) {
         String query = "SELECT * FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -92,9 +90,10 @@ public class BookRepository implements CrudRepository<Book, String> {
     public boolean deleteById(String Id) {
         String query = "DELETE FROM book WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, Id);
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             System.out.println("error in deleteById function in Book repo");
@@ -112,7 +111,7 @@ public class BookRepository implements CrudRepository<Book, String> {
         String query = "INSERT INTO book(id,name,author,description,category,bookPublisher,bookQuantity,bookRemaining,imagePath) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, entity.getId());
             statement.setString(2, entity.getName());
             statement.setString(3, entity.getAuthor());
@@ -123,6 +122,7 @@ public class BookRepository implements CrudRepository<Book, String> {
             statement.setInt(8, entity.getBookRemaining());
             statement.setString(9, entity.getImagePath());
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             System.out.println("error in save function in Book repo");
@@ -140,7 +140,7 @@ public class BookRepository implements CrudRepository<Book, String> {
     public int count() {
         String query = "SELECT COUNT(*) FROM book";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
                 int result = rs.getInt(1);
@@ -154,7 +154,6 @@ public class BookRepository implements CrudRepository<Book, String> {
         return 0;
     }
 
-
     /**
      * Searching {@link Book} by category method.
      *
@@ -165,7 +164,7 @@ public class BookRepository implements CrudRepository<Book, String> {
         List<Book> list = new ArrayList<>();
         String query = "SELECT * FROM book WHERE category LIKE ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, "%" + keywordCategory + "%");
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -194,14 +193,14 @@ public class BookRepository implements CrudRepository<Book, String> {
      * This method only update one book because of unique id
      * </p>
      *
-     * @param book the new {@link Book} entity want to replace the current {@link Book}
+     * @param book the new {@link Book} entity want to replace the current
+     *             {@link Book}
      */
     public boolean updateOne(Book book) {
         String query = "UPDATE book SET name=?,author=?,description=?,category=?,bookPublisher=?" +
                 ",bookQuantity=?,bookRemaining=?,imagePath=? WHERE id=?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-        ) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query);) {
             preparedStatement.setString(1, book.getName());
             preparedStatement.setString(2, book.getAuthor());
             preparedStatement.setString(3, book.getDescription());
@@ -222,12 +221,11 @@ public class BookRepository implements CrudRepository<Book, String> {
         }
     }
 
-
     public List<Book> findByInput(String col, String value) {
         List<Book> list = new ArrayList<>();
         String query = "SELECT * FROM book WHERE " + col + " LIKE ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, "%" + value + "%");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -249,7 +247,4 @@ public class BookRepository implements CrudRepository<Book, String> {
         return list;
     }
 
-
 }
-
-
