@@ -28,6 +28,8 @@
   - [Phía người quản trị thư viện.](#phía-người-quản-trị-thư-viện)
   - [Phía người dùng mượn sách](#phía-người-dùng-mượn-sách)
   - [Một vài tính năng chung khác của cả trang admin và user.](#một-vài-tính-năng-chung-khác-của-cả-trang-admin-và-user)
+- [Cây kế thừa của ứng dụng.](#cây-kế-thừa-của-ứng-dụng)
+- [Lược đồ cơ sở dữ liệu của hệ thống.](#lược-đồ-cơ-sở-dữ-liệu-của-hệ-thống)
 # Một số thư viện và API quan trọng được sử dụng.
 - Google API Libraries: Làm việc với Gmail API và Google Book API.
 
