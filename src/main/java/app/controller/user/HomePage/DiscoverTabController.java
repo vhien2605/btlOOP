@@ -1,6 +1,8 @@
 package app.controller.user.HomePage;
 
 import java.io.IOException;
+
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -29,20 +31,24 @@ public class DiscoverTabController {
 
     public void initialize() {
         getBookSectionList();
-        loadSection();
+        loadAllSection();
     }
 
-    private void loadSection() {
+    private void loadAllSection() {
         for (String bookSectionTitle : homeController.discoverBookSectionTitleList) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/bookdiscoversection.fxml"));
-                AnchorPane section = loader.load();
-                homeController.discoverMainPage.getChildren().add(section);
-                BookDiscoverSection controller = loader.getController();
-                controller.InitBookSectionByTitle(bookSectionTitle);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            loadSectionByTitle(bookSectionTitle);
+        }
+    }
+
+    private void loadSectionByTitle(String bookSectionTitle) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/user/homeTab/bookdiscoversection.fxml"));
+            AnchorPane section = loader.load();
+            homeController.discoverMainPage.getChildren().add(section);
+            BookDiscoverSection controller = loader.getController();
+            controller.InitBookSectionByTitle(bookSectionTitle);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     
