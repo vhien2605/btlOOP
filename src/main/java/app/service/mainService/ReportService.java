@@ -13,6 +13,7 @@ import java.util.Optional;
 /**
  * All logic business with Report in application here
  */
+@SuppressWarnings("unused")
 public class ReportService {
     private final ReportRepository reportRepository;
     private final UserService userService;
@@ -26,8 +27,8 @@ public class ReportService {
      * @param bookService      book service dependency
      */
     public ReportService(ReportRepository reportRepository,
-                         UserService userService,
-                         BookService bookService) {
+            UserService userService,
+            BookService bookService) {
         this.reportRepository = reportRepository;
         this.userService = userService;
         this.bookService = bookService;

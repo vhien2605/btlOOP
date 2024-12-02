@@ -146,6 +146,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
      *
      * @return {@code List<CommentDTO>}
      */
+    @SuppressWarnings("exports")
     public List<CommentDTO> getAllCommentDTOByBookId(String bookId) {
         List<CommentDTO> list = new ArrayList<>();
         String query = "SELECT * FROM comment " +
