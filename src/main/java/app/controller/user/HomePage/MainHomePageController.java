@@ -8,6 +8,7 @@ import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
 import app.service.mainService.UserService;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -138,19 +139,19 @@ public class MainHomePageController implements BaseController{
         discoverTabController.initialize();
 
         yourBooksTabController = new YourBooksTabController(this);
-        yourBooksTabController.initialize();
+        Platform.runLater(() -> yourBooksTabController.initialize());
 
         searchTabController = new SearchTabController(this);
-        searchTabController.initialize();
+        Platform.runLater(() -> searchTabController.initialize());
 
         userInfoBoxController = new UserInfoBoxController(this);
-        userInfoBoxController.initialize();
+        Platform.runLater(() -> userInfoBoxController.initialize());
 
         viewProfileController = new ViewProfileController(this);
-        viewProfileController.initialize();
+        Platform.runLater(() -> viewProfileController.initialize());
 
         changePasswordController = new ChangePasswordController(this);
-        changePasswordController.initialize();
+        Platform.runLater(() -> changePasswordController.initialize());
     }
 
     @Override
