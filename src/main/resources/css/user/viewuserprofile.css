@@ -1,68 +1,50 @@
-/* #ViewUserProfilePage {
-    -fx-background-color: rgb(217, 233, 253);
-}
-
-#InfoPane {
-    -fx-background-color: rgb(24, 245, 253);
-    -fx-background-radius: 15px;
-}
-
-#ContactPane {
-    -fx-background-color: rgb(252, 250, 138);
-    -fx-background-radius: 15px;
-}
-
-.TitleNameLabel {
-    -fx-font-weight : bold;
-    -fx-font-size: 17px
-} */
-
 #ViewUserProfilePage {
-    -fx-background-color: #EBF5FF;
-    -fx-padding: 20;
+    -fx-background-color: #d8feff
 }
 
-#ViewUserProfileTitle {
-    -fx-font-size: 32px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #2563EB;
-}
-
-#InfoPane {
-    -fx-background-color: #BFDBFE;
-    -fx-background-radius: 12;
-    -fx-padding: 24;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
-}
-
-#ContactPane {
-    -fx-background-color: #FEF3C7;
-    -fx-background-radius: 12;
-    -fx-padding: 24;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 4);
-}
-
-.section-title {
+#profileDetail {
     -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-padding: 0 0 16 0;
+    -fx-text-fill: #1d3ec4; /* Blue color */
+    -fx-padding: 10px;
 }
 
-.field-label {
-    -fx-font-size: 14px;
+#ContactInfo {
+    -fx-font-size: 24px;
     -fx-font-weight: bold;
-    -fx-padding: 0 0 4 0;
+    -fx-text-fill: #1d3ec4;
+    -fx-padding: 10px;
 }
 
-.info-label {
-    -fx-font-size: 14px;
-    -fx-text-fill: #1F2937;
-    -fx-padding: 8;
-    -fx-background-color: rgba(255,255,255,0.5);
-    -fx-background-radius: 4;
-    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
-    -fx-min-width: 200;
+#Address, #Name, #Username, #Email, #PhoneNumber {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d3ec4;
+    -fx-padding: 5px;
 }
+
+#userProfileName, #userProfileUsername, #userProfileAddress, #userProfileEmail, #userProfilePhoneNumber {
+    -fx-background-color: #f0f4ff; /* Light blue background for input fields */
+    -fx-text-fill: #333; /* Dark text */
+    -fx-font-size: 16px;
+    -fx-padding: 5px;
+    -fx-border-color: #1d3ec4; /* Blue border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+#pane_profile,#pane_contact_info  {
+    -fx-background-color: #fafafa; /* Nền sáng nhẹ */
+    -fx-border-color: #ef5f5f; /* Viền xanh nhạt */
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0.2, 3, 3);
+    -fx-padding: 20px;
+    -fx-spacing: 15px;
+}
+
 
 #ViewProfileBackButton {
     -fx-background-color: #0575bc;

@@ -1,6 +1,5 @@
 package app.service.authService;
 
-
 import app.domain.DTO.PasswordChangeDTO;
 import app.domain.DTO.RegisterUserDTO;
 import app.domain.DTO.SurfaceUserDTO;
@@ -69,8 +68,7 @@ public class AuthenticationService {
      * @throws PasswordException exception with password logic
      */
     public void verifyPasswordChangeRequest(PasswordChangeDTO user) throws PasswordException {
-        if (this.userService.findByUsernameAndPassword(user.getUsername()
-                , user.getCurrentPassword()) == null) {
+        if (this.userService.findByUsernameAndPassword(user.getUsername(), user.getCurrentPassword()) == null) {
             throw new PasswordException("Current password is incorrect!");
         } else if (!user.getNewPassword().equals(user.getConfirmNewPassword())) {
             throw new PasswordException("Confirm password is not mapping!");
@@ -85,6 +83,7 @@ public class AuthenticationService {
      * @param email email input
      * @throws DuplicateException when email isn't exists in database
      */
+    @SuppressWarnings("unused")
     public void verifyEmail(String email) throws DuplicateException {
         boolean check = isEmailExists(email);
         if (!isEmailExists(email)) {

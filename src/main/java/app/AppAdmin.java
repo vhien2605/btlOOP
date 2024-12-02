@@ -23,6 +23,7 @@ public class AppAdmin extends Application {
      *              not be
      *              primary stages.
      */
+    @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) {
         stage.initStyle(StageStyle.UNDECORATED);

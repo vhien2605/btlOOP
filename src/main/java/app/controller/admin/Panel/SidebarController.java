@@ -39,7 +39,6 @@ public class SidebarController implements BaseController {
     private static int USER_BUTTON = 2;
     private static int ISSUEBOOK_BUTTON = 3;
     private static int ALL_ISSUEBOOK_BUTTON = 4;
-    private static int SETTING_BUTTON = 5;
     private static int currButton = HOME_BUTTON;
 
     private ShowAlert showAlert;

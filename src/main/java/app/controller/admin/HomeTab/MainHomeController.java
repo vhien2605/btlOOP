@@ -82,6 +82,7 @@ public class MainHomeController implements BaseController {
                 .addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Pending")));
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void initialize() {
         setUpDependencies();

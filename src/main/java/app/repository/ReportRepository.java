@@ -325,6 +325,7 @@ public class ReportRepository implements CrudRepository<BorrowReport, Integer> {
         return list;
     }
 
+    @SuppressWarnings("exports")
     public List<ReportDetail> getAllReportDetailDTO() {
         String query = "SELECT b1.id,u.name AS userName,b2.name AS bookName,b1.borrowDate,b1.returnDate,b1.expectedReturnDate,b1.status "
                 +
