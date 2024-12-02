@@ -159,3 +159,5 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 ![alt text](preview/LibraryApp.png)
 ## Có dependencies:
 ![alt text](preview/LibraryApp_dep.png)
+# Lược đồ cơ sở dữ liệu của hệ thống.
+![alt text](preview/library.png)
