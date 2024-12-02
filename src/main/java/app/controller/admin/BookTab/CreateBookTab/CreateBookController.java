@@ -103,6 +103,7 @@ public class CreateBookController extends HandleBookController {
         bookPublisherTextField.clear();
         bookCategoryTextField.clear();
         bookDescriptionTextArea.clear();
+        imagePathTextField.clear();
     }
 
     @Override
