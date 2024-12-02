@@ -7,6 +7,27 @@
     <list default="true" id="b2fb6f16-f061-4277-af5d-9ee76b35712a" name="Changes" comment="complete BookRepository">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/AppAdmin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/DbConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/config/SetUpApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/config/SetUpApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/AllIssueBookTab/MainAllIssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/AllIssueBookTab/MainAllIssueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/HomeTab/MainHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/admin/UserTab/DeleteUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/admin/UserTab/DeleteUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/BookDetail/BookDetailController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/BookDetail/BookDetailController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/BookLoan/BookLoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/BookLoan/BookLoanController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CardReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CardReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/ChangePasswordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/ChangePasswordController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/DiscoverTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/DiscoverTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/MainHomePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/MainHomePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/SearchTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/SearchTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/UserInfoBoxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/UserInfoBoxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/ViewProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/ViewProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/YourBooksTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/controller/user/HomePage/YourBooksTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/repository/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/repository/BookRepositoryTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +142,7 @@
       <recent name="C:\learning_code\JavaFx\library_app\src\main\resources\css" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.BookRepositoryTest">
     <configuration name="BookRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="library_app" />
       <extension name="coverage">

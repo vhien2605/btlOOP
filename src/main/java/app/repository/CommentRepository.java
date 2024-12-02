@@ -21,7 +21,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
         List<Comment> list = new ArrayList<>();
         String query = "SELECT * FROM comment";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 list.add(new Comment(
@@ -29,8 +29,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
                         resultSet.getString("userId"),
                         resultSet.getString("bookId"),
                         resultSet.getString("information"),
-                        resultSet.getString("date"))
-                );
+                        resultSet.getString("date")));
             }
             resultSet.close();
         } catch (SQLException e) {
@@ -50,7 +49,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
     public Optional<Comment> findById(Integer id) {
         String query = "SELECT * FROM comment WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -59,8 +58,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
                         resultSet.getString("userId"),
                         resultSet.getString("bookId"),
                         resultSet.getString("information"),
-                        resultSet.getString("date")
-                );
+                        resultSet.getString("date"));
                 resultSet.close();
                 return Optional.of(comment);
             }
@@ -81,9 +79,10 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
     public boolean deleteById(Integer id) {
         String query = "DELETE FROM comment WHERE id = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, id);
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +94,8 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
     /**
      * Save {@link Comment} to the database.
      *
-     * @param comment Object want to save to database (mapping to {@link Comment} type table)
+     * @param comment Object want to save to database (mapping to {@link Comment}
+     *                type table)
      * @return {@code true/false}
      */
     @Override
@@ -103,12 +103,13 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
         String query = "INSERT INTO comment (userId,bookId,information,date) "
                 + "VALUES(?,?,?,?)";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, comment.getUserId());
             statement.setString(2, comment.getBookId());
             statement.setString(3, comment.getInformation());
             statement.setString(4, comment.getDate());
             int count = statement.executeUpdate();
+            System.out.println(count);
             return true;
         } catch (SQLException e) {
             System.out.println("error in save function in Book repo");
@@ -118,7 +119,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
     }
 
     /**
-     * Count all the document {@link  Comment } in database.
+     * Count all the document {@link Comment } in database.
      *
      * @return the number of {@link Comment}
      */
@@ -126,7 +127,7 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
     public int count() {
         String query = "SELECT COUNT(*) FROM comment";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             Statement statement = connection.createStatement()) {
+                Statement statement = connection.createStatement()) {
             ResultSet rs = statement.executeQuery(query);
             if (rs.next()) {
                 int result = rs.getInt(1);
@@ -140,7 +141,6 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
         return 0;
     }
 
-
     /**
      * Get all commentDTO.
      *
@@ -153,19 +153,17 @@ public class CommentRepository implements CrudRepository<Comment, Integer> {
                 "ON comment.userId=user.id " +
                 "WHERE comment.bookId = ?";
         try (Connection connection = DbConfig.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+                PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, bookId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 list.add(new CommentDTO(
-                                resultSet.getInt("id"),
-                                resultSet.getString("name"),
-                                resultSet.getString("email"),
-                                resultSet.getString("bookId"),
-                                resultSet.getString("information"),
-                                resultSet.getString("date")
-                        )
-                );
+                        resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("bookId"),
+                        resultSet.getString("information"),
+                        resultSet.getString("date")));
             }
             resultSet.close();
         } catch (SQLException e) {

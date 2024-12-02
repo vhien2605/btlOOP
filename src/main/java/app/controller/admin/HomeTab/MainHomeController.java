@@ -23,12 +23,11 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 
-
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
-import java.util.ListResourceBundle;
+
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
@@ -50,7 +49,7 @@ public class MainHomeController implements BaseController {
     StackedAreaChart<String, Number> userChart;
 
     @FXML
-    Label dataBookLabel, dataUserLabel, dataAllIssuedabel, dataBorrowedLabel;
+    Label dataBookLabel, dataUserLabel, dataAllIssueLabel, dataBorrowedLabel;
 
     @FXML
     Label clockLabel;
@@ -64,10 +63,8 @@ public class MainHomeController implements BaseController {
     private AuthenticationService authenticationService;
     private UserService userService;
 
-
     private void setUpDependencies() {
-        authenticationService = new AuthenticationService(new SessionService()
-                , new UserService(new UserRepository()));
+        authenticationService = new AuthenticationService(new SessionService(), new UserService(new UserRepository()));
         bookService = new BookService(new BookRepository());
         reportService = new ReportService(new ReportRepository(),
                 new UserService(new UserRepository()), new BookService(new BookRepository()));
@@ -79,10 +76,11 @@ public class MainHomeController implements BaseController {
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.bookService.getAllBooks()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.transferToReportDetail()));
         multiTaskService.addTasks(() -> new ResultTask<>("List", this.userService.getAllUsers()));
-        multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Borrowed")));
-        multiTaskService.addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Pending")));
+        multiTaskService
+                .addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Borrowed")));
+        multiTaskService
+                .addTasks(() -> new ResultTask<>("List", this.reportService.findByOneColumn("status", "Pending")));
     }
-
 
     @Override
     public void initialize() {
@@ -128,14 +126,15 @@ public class MainHomeController implements BaseController {
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    private void setDataCard(List<Book> books, List<User> users, List<ReportDetail> reports, List<BorrowReport> borrowedReports) {
+    private void setDataCard(List<Book> books, List<User> users, List<ReportDetail> reports,
+            List<BorrowReport> borrowedReports) {
         int totalBookRemaining = 0;
         for (Book book : books) {
             totalBookRemaining += book.getBookRemaining();
         }
         dataBookLabel.setText(String.valueOf(totalBookRemaining));
         dataUserLabel.setText(String.valueOf(users.size()));
-        dataAllIssuedabel.setText(String.valueOf(reports.size()));
+        dataAllIssueLabel.setText(String.valueOf(reports.size()));
         dataBorrowedLabel.setText(String.valueOf(borrowedReports.size()));
     }
 
@@ -144,7 +143,8 @@ public class MainHomeController implements BaseController {
         categorySeries.setName("Category number");
         HashMap<String, Integer> categoryQuantity = new HashMap<>();
         for (Book book : listBook) {
-            categoryQuantity.put(book.getCategory(), categoryQuantity.getOrDefault(book.getBookQuantity(), 0) + book.getBookQuantity());
+            categoryQuantity.put(book.getCategory(),
+                    categoryQuantity.getOrDefault(book.getBookQuantity(), 0) + book.getBookQuantity());
         }
         for (String key : categoryQuantity.keySet()) {
             categorySeries.getData().add(new XYChart.Data<>(key, categoryQuantity.get(key)));
@@ -166,9 +166,8 @@ public class MainHomeController implements BaseController {
     }
 
     private void addDataToIssueBookChart(List<Book> listBook,
-                                         List<BorrowReport> borrowedReports,
-                                         List<BorrowReport> pendingReports) {
-        // Thong ke lien quan den muon sach,tra sach
+            List<BorrowReport> borrowedReports,
+            List<BorrowReport> pendingReports) {
         ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
                 new PieChart.Data("Books in stock", listBook.size()),
                 new PieChart.Data("Books are borrowed", borrowedReports.size()),

@@ -1,32 +1,29 @@
 package app.domain;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class BorrowReport {
     public static final String PENDING = "Pending";
     public static final String BORROWED = "Borrowed";
     public static final String RETURNED = "Returned";
 
-    private SimpleIntegerProperty id;
-    private SimpleStringProperty userId;
-    private SimpleStringProperty bookId;
-    private SimpleStringProperty borrowDate;
-    private SimpleStringProperty returnDate;
-    private SimpleStringProperty expectedReturnDate;
-    private SimpleStringProperty status;
-    private SimpleStringProperty qrcodeUrl;
+    private int id;
+    private String userId;
+    private String bookId;
+    private String borrowDate;
+    private String returnDate;
+    private String expectedReturnDate;
+    private String status;
+    private String qrcodeUrl;
 
     public BorrowReport(int id, String userId, String bookId, String borrowDate, String returnDate,
             String expectedReturnDate, String status, String qrcodeUrl) {
-        this.id = new SimpleIntegerProperty(id);
-        this.userId = new SimpleStringProperty(userId);
-        this.bookId = new SimpleStringProperty(bookId);
-        this.borrowDate = new SimpleStringProperty(borrowDate);
-        this.returnDate = new SimpleStringProperty(returnDate);
-        this.expectedReturnDate = new SimpleStringProperty(expectedReturnDate);
-        this.status = new SimpleStringProperty(status);
-        this.qrcodeUrl = new SimpleStringProperty(qrcodeUrl);
+        this.id = id;
+        this.userId = userId;
+        this.bookId = bookId;
+        this.borrowDate = borrowDate;
+        this.returnDate = returnDate;
+        this.expectedReturnDate = expectedReturnDate;
+        this.status = status;
+        this.qrcodeUrl = qrcodeUrl;
     }
 
     public BorrowReport(BorrowReport data) {
@@ -40,113 +37,87 @@ public class BorrowReport {
         this.qrcodeUrl = data.qrcodeUrl;
     }
 
-    public int getId() {
-        return id.get();
+    public static String getPending() {
+        return PENDING;
     }
 
-    public SimpleIntegerProperty getIdProperty() {
+    public static String getBorrowed() {
+        return BORROWED;
+    }
+
+    public static String getReturned() {
+        return RETURNED;
+    }
+
+    public int getId() {
         return id;
     }
 
     public void setId(int id) {
-        this.id = new SimpleIntegerProperty(id);
+        this.id = id;
     }
 
     public String getUserId() {
-        return userId.get();
-    }
-
-    public SimpleStringProperty getUserIdProperty() {
         return userId;
     }
 
-    public void setUserId(String id) {
-        this.userId = new SimpleStringProperty(id);
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getBookId() {
-        return bookId.get();
-    }
-
-    public SimpleStringProperty getBookIdProperty() {
         return bookId;
     }
 
-    public void setBookId(String id) {
-        this.bookId = new SimpleStringProperty(id);
+    public void setBookId(String bookId) {
+        this.bookId = bookId;
     }
 
     public String getBorrowDate() {
-        return borrowDate.get();
-    }
-
-    public SimpleStringProperty getBorrowDateProperty() {
         return borrowDate;
     }
 
-    public void setBorrowDate(String date) {
-        this.borrowDate = new SimpleStringProperty(date);
+    public void setBorrowDate(String borrowDate) {
+        this.borrowDate = borrowDate;
     }
 
     public String getReturnDate() {
-        return returnDate.get();
-    }
-
-    public SimpleStringProperty getReturnDateProperty() {
         return returnDate;
     }
 
-    public void setReturnDate(String date) {
-        this.returnDate = new SimpleStringProperty(date);
+    public void setReturnDate(String returnDate) {
+        this.returnDate = returnDate;
     }
 
     public String getExpectedReturnDate() {
-        return expectedReturnDate.get();
-    }
-
-    public SimpleStringProperty getExpectedReturnDateProperty() {
         return expectedReturnDate;
     }
 
-    public void setExpectedReturnDate(String date) {
-        this.expectedReturnDate = new SimpleStringProperty(date);
+    public void setExpectedReturnDate(String expectedReturnDate) {
+        this.expectedReturnDate = expectedReturnDate;
     }
 
     public String getStatus() {
-        return status.get();
-    }
-
-    public SimpleStringProperty getStatusProperty() {
         return status;
     }
 
     public void setStatus(String status) {
-        this.status = new SimpleStringProperty(status);
+        this.status = status;
     }
 
     public String getQrcodeUrl() {
-        return qrcodeUrl.get();
-    }
-
-    public SimpleStringProperty getQrcodeUrlProperty() {
         return qrcodeUrl;
     }
 
-    public void setQrcodeUrl(String qr) {
-        this.qrcodeUrl = new SimpleStringProperty(qr);
+    public void setQrcodeUrl(String qrcodeUrl) {
+        this.qrcodeUrl = qrcodeUrl;
     }
 
     @Override
     public String toString() {
-        return "BorrowReport{" +
-                "id=" + id.get() +
-                ", userId=" + userId.get() +
-                ", bookId=" + bookId.get() +
-                ", borrowDate=" + borrowDate.get() +
-                ", expectedReturnDate=" + expectedReturnDate.get() +
-                ", returnDate=" + returnDate.get() +
-                ", status=" + status.get() +
-                ", qrcodeUrl=" + qrcodeUrl.get() +
-                '}';
+        return "BorrowReport [id=" + id + ", userId=" + userId + ", bookId=" + bookId + ", borrowDate=" + borrowDate
+                + ", returnDate=" + returnDate + ", expectedReturnDate=" + expectedReturnDate + ", status=" + status
+                + ", qrcodeUrl=" + qrcodeUrl + "]";
     }
+
 }

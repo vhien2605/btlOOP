@@ -1,161 +1,114 @@
 package app.domain;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-
 public class Book {
-    private SimpleStringProperty id;
-    private SimpleStringProperty name;
-    private SimpleStringProperty author;
-    private SimpleStringProperty description;
-    private SimpleStringProperty category;
-    private SimpleStringProperty bookPublisher;
-    private SimpleIntegerProperty bookQuantity;
-    private SimpleIntegerProperty bookRemaining;
-    private SimpleStringProperty imagePath;
+    private String id;
+    private String name;
+    private String author;
+    private String description;
+    private String category;
+    private String bookPublisher;
+    private Integer bookQuantity;
+    private Integer bookRemaining;
+    private String imagePath;
 
     public Book(String id, String name, String author, String description, String category, String bookPublisher,
-                int bookQuantity, int bookRemaining, String imagePath) {
-        this.id = new SimpleStringProperty(id);
-        this.name = new SimpleStringProperty(name);
-        this.author = new SimpleStringProperty(author);
-        this.description = new SimpleStringProperty(description);
-        this.category = new SimpleStringProperty(category);
-        this.bookPublisher = new SimpleStringProperty(bookPublisher);
-        this.bookQuantity = new SimpleIntegerProperty(bookQuantity);
-        this.bookRemaining = new SimpleIntegerProperty(bookRemaining);
-        this.imagePath = new SimpleStringProperty(imagePath);
+            int bookQuantity, int bookRemaining, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.category = category;
+        this.bookPublisher = bookPublisher;
+        this.bookQuantity = bookQuantity;
+        this.bookRemaining = bookRemaining;
+        this.imagePath = imagePath;
     }
 
     public Book(String id, String name, String author, String description, String category, String bookPublisher) {
-        this.id = new SimpleStringProperty(id);
-        this.name = new SimpleStringProperty(name);
-        this.author = new SimpleStringProperty(author);
-        this.description = new SimpleStringProperty(description);
-        this.category = new SimpleStringProperty(category);
-        this.bookPublisher = new SimpleStringProperty(bookPublisher);
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.description = description;
+        this.category = category;
+        this.bookPublisher = bookPublisher;
     }
 
     public String getId() {
-        return id.get();
-    }
-
-    public SimpleStringProperty getIdProperty() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = new SimpleStringProperty(id);
+        this.id = id;
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public SimpleStringProperty getNameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
     }
 
     public String getAuthor() {
-        return author.get();
-    }
-
-    public SimpleStringProperty getAuthorProperty() {
         return author;
     }
 
     public void setAuthor(String author) {
-        this.author = new SimpleStringProperty(author);
+        this.author = author;
     }
 
     public String getDescription() {
-        return description.get();
-    }
-
-    public SimpleStringProperty getDescriptionProperty() {
         return description;
     }
 
-    public void setDescription(String desc) {
-        this.description = new SimpleStringProperty(desc);
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {
-        return category.get();
-    }
-
-    public SimpleStringProperty getCategoryProperty() {
         return category;
     }
 
-    public void setCategory(String newCate) {
-        category = new SimpleStringProperty(newCate);
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getBookPublisher() {
-        return bookPublisher.get();
-    }
-
-    public SimpleStringProperty getBookPublisherProperty() {
         return bookPublisher;
     }
 
     public void setBookPublisher(String bookPublisher) {
-        this.bookPublisher = new SimpleStringProperty(bookPublisher);
+        this.bookPublisher = bookPublisher;
     }
 
-    public int getBookQuantity() {
-        return bookQuantity.get();
-    }
-
-    public SimpleIntegerProperty getBookQuantityProperty() {
+    public Integer getBookQuantity() {
         return bookQuantity;
     }
 
-    public void setBookQuantity(int bookQuantity) {
-        this.bookQuantity = new SimpleIntegerProperty(bookQuantity);
+    public void setBookQuantity(Integer bookQuantity) {
+        this.bookQuantity = bookQuantity;
     }
 
-    public int getBookRemaining() {
-        return bookRemaining.get();
-    }
-
-    public SimpleIntegerProperty getBookRemainingProperty() {
+    public Integer getBookRemaining() {
         return bookRemaining;
     }
 
-    public void setBookRemaining(int bookRemaining) {
-        this.bookRemaining = new SimpleIntegerProperty(bookRemaining);
+    public void setBookRemaining(Integer bookRemaining) {
+        this.bookRemaining = bookRemaining;
     }
 
     public String getImagePath() {
-        return imagePath.get();
-    }
-
-    public SimpleStringProperty getImagePathProperty() {
         return imagePath;
     }
 
-    public void setImagePath(String newImagePath) {
-        this.imagePath = new SimpleStringProperty(newImagePath);
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     @Override
     public String toString() {
-        return "Book{" +
-                "id=" + id.get() +
-                ", name=" + name.get() +
-                ", author=" + author.get() +
-                ", description=" + description.get() +
-                ", category=" + category.get() +
-                ", bookPublisher=" + bookPublisher.get() +
-                ", bookQuantity=" + bookQuantity.get() +
-                ", bookRemaining=" + bookRemaining.get() +
-                ", imagePath=" + imagePath.get() +
-                '}';
+        return "Book [id=" + id + ", name=" + name + ", author=" + author + ", description=" + description
+                + ", category=" + category + ", bookPublisher=" + bookPublisher + ", bookQuantity=" + bookQuantity
+                + ", bookRemaining=" + bookRemaining + ", imagePath=" + imagePath + "]";
     }
 }

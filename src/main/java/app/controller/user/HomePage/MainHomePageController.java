@@ -1,12 +1,6 @@
 package app.controller.user.HomePage;
 
-import java.security.PublicKey;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import app.controller.BaseController;
 import app.domain.DTO.SurfaceUserDTO;
@@ -14,7 +8,6 @@ import app.repository.UserRepository;
 import app.service.authService.AuthenticationService;
 import app.service.authService.SessionService;
 import app.service.mainService.UserService;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

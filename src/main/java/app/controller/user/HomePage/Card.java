@@ -1,10 +1,6 @@
 package app.controller.user.HomePage;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Paths;
 
 import app.config.ViewConfig.FXMLResolver;
@@ -14,13 +10,11 @@ import app.controller.user.BookDetail.BookDetailController;
 import app.domain.Book;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.shape.Rectangle;
 
 
 public class Card implements BaseController {

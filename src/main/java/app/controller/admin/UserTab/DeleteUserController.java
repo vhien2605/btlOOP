@@ -1,6 +1,5 @@
 package app.controller.admin.UserTab;
 
-import app.domain.User;
 
 public class DeleteUserController {
     final MainUserController mainUserCtrl;
