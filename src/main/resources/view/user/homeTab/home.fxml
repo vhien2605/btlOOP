@@ -86,7 +86,7 @@
                            <content>
                               <VBox prefWidth="1100.0">
                                  <children>
-                                    <Pane prefHeight="70.0" prefWidth="1100.0">
+                                    <Pane fx:id="yourBooksHeadPane" prefHeight="70.0" prefWidth="1100.0">
                                        <children>
                                           <Button fx:id="pendingButtonYourBooks" layoutX="128.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Pending" />
                                           <Button fx:id="borrowingButtonYourBooks" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleEvent" text="Borrowing" />
