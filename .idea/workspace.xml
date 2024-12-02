@@ -8,6 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/serverSession.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/serverSession.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/authService/AuthenticationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/mainService/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/ExportContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/service/subService/exportFileService/PdfExportStrategy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,6 +275,7 @@
     <MESSAGE value="complete BookRepository" />
     <option name="LAST_COMMIT_MESSAGE" value="complete BookRepository" />
   </component>
+  <<<<<<< HEAD
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -284,4 +291,6 @@
     <expand />
     <select />
   </component>
+=======
+>>>>>>> 058095776bfbb35de0a2213de4fa5b2e1cb16e16
 </project>

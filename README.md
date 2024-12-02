@@ -155,3 +155,7 @@ dùng mượt mà hơn, không bị đứng hình, delay.
 ![alt text](preview/image-15.png)
 - Thay đổi mật khẩu.
 ![alt text](preview/image-16.png)
+# Cây kế thừa của ứng dụng.
+![alt text](preview/LibraryApp.png)
+## Có dependencies:
+![alt text](preview/LibraryApp_dep.png)

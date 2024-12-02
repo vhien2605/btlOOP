@@ -14,8 +14,17 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.Node;
 import javafx.scene.image.WritableImage;
 
+/**
+ * One of behaviors.
+ */
 public class PdfExportStrategy implements ExportStrategy {
 
+    /**
+     * PDF exporting method.
+     *
+     * @param pane Container in javafx.
+     * @return {@code File} PDF
+     */
     @Override
     public File export(Node pane) {
         // Take a photo from pane
