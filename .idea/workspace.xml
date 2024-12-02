@@ -275,7 +275,6 @@
     <MESSAGE value="complete BookRepository" />
     <option name="LAST_COMMIT_MESSAGE" value="complete BookRepository" />
   </component>
-  <<<<<<< HEAD
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -291,6 +290,4 @@
     <expand />
     <select />
   </component>
-=======
->>>>>>> 058095776bfbb35de0a2213de4fa5b2e1cb16e16
 </project>
