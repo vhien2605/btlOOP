@@ -38,4 +38,10 @@ public class CommentRepositoryTest {
         List<CommentDTO> list = this.commentRepository.getAllCommentDTOByBookId(bookId);
         Assertions.assertEquals(1, list.size());
     }
+
+    @Test
+    public void countMethodTest() {
+        int count = this.commentRepository.count();
+        Assertions.assertEquals(6, count);
+    }
 }
