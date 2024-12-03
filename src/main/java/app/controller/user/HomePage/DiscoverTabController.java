@@ -1,8 +1,6 @@
 package app.controller.user.HomePage;
 
 import java.io.IOException;
-
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -21,12 +19,11 @@ public class DiscoverTabController {
     private void getBookSectionList() {
         homeController.discoverBookSectionTitleList = FXCollections.observableArrayList();
         homeController.discoverBookSectionTitleList.addAll(
-            "History",
-            "Science",
-            "Fiction",
-            "Non-Fiction",
-            "Fantasy"
-        );
+                "History",
+                "Science",
+                "Fiction",
+                "Non-Fiction",
+                "Fantasy");
     }
 
     public void initialize() {
@@ -51,6 +48,5 @@ public class DiscoverTabController {
             e.printStackTrace();
         }
     }
-    
-    
+
 }

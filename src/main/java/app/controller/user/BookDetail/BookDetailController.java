@@ -29,7 +29,6 @@ import app.service.mainService.CommentService;
 import app.service.mainService.ReportService;
 import app.service.mainService.UserService;
 import app.service.subService.FileService;
-import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
